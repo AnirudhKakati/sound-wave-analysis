@@ -35,12 +35,8 @@ def download_file_helper(url,filepath):
 
 
 if __name__=="__main__":
-    categories = [
-        "rain sounds", "thunder sounds", "birds", "wind sounds", "dog bark", "cat meow",
-        "car horn", "fireworks", "crowd noise", "applause", "laughter",
-        "speech", "piano", "drums", "guitar", "footsteps", "sirens",
-        "train sounds", "traffic sounds", "construction noise"
-    ]
+    with open("categories.txt","r") as f: #the categories are mentioned in categories.txt file
+        categories = f.read().split()
 
     for category in categories: 
         download_audio(category)

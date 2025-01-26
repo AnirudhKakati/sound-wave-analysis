@@ -2,3 +2,4 @@ audiofiles/
 *.mp3
 *.wav
 *.log
+.env

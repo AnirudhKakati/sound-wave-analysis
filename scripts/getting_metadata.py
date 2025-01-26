@@ -2,7 +2,12 @@ import requests
 import json
 import os
 
-API_KEY="rzksVVc2cB9oxIQ35BXVLjSk2qfU5ZiiZhwxeHow"
+# the next 3 lines can be skipped by replacing API_key value with the generated API key from Freesound API
+# here the API key was stored in a .env file and retrieved
+from dotenv import load_dotenv
+load_dotenv() 
+API_KEY=os.getenv("API_KEY") #replace with the generated API key
+
 BASE_URL="https://freesound.org/apiv2"
 
 def search_sounds(query,max_results=150, page=1):
@@ -47,7 +52,7 @@ def get_category_data(category,total_results=750):
 
     all_data=[]
     page=1 #to keep track of the current page to fetch
-    while len(all_data)<total_results: #keep fetching till we have atleast 500 sounds
+    while len(all_data)<total_results: #keep fetching till we have atleast 750 sounds
         data,next_page=search_sounds(category,page=page)
         all_data.extend(data)
         if not next_page: #if no more pages to fetch then break
@@ -57,16 +62,12 @@ def get_category_data(category,total_results=750):
     if len(all_data)<total_results: # if the loop breaks early (i.e. not enough data) then log that
         print("Not enough data to fetch!")
 
-    save_metadata(all_data[:total_results],category) #save the first 500 results
+    save_metadata(all_data[:total_results],category) #save the first 750 results
 
 if __name__=="__main__":
-    categories = [
-        "rain sounds", "thunder sounds", "birds", "wind sounds", "dog bark", "cat meow",
-        "car horn", "fireworks", "crowd noise", "applause", "laughter",
-        "speech", "piano", "drums", "guitar", "footsteps", "sirens",
-        "train sounds", "traffic sounds", "construction noise"
-    ]
+    with open("categories.txt","r") as f: #the categories are mentioned in categories.txt file
+        categories = f.read().split()
     
-    for category in ["laughter"]:
+    for category in categories:
         print(f"Fetching data for category: {category}")
         get_category_data(category)

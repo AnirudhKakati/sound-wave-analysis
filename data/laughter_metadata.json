@@ -1,26 +1,5 @@
 [
     {
-        "id": 96208,
-        "url": "https://freesound.org/people/Robinhood76/sounds/96208/",
-        "name": "01689 male laughter.wav",
-        "tags": [
-            "adult",
-            "laugh",
-            "laughter",
-            "male",
-            "man"
-        ],
-        "description": "Male laughter rec by Neumann TLM 103",
-        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-        "duration": 1.18707,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/96/96208_321967-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/96/96208_321967-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/96/96208_321967-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/96/96208_321967-lq.ogg"
-        }
-    },
-    {
         "id": 171168,
         "url": "https://freesound.org/people/Robinhood76/sounds/171168/",
         "name": "03814 male evil cackle laughter.wav",
@@ -326,57 +305,52 @@
         }
     },
     {
-        "id": 786074,
-        "url": "https://freesound.org/people/amauri8BIT/sounds/786074/",
-        "name": "Anxious Evil Laughter",
+        "id": 786073,
+        "url": "https://freesound.org/people/amauri8BIT/sounds/786073/",
+        "name": "Taunting Evil Laughter",
         "tags": [
             "laughing",
-            "anxious",
+            "horror",
             "terror",
             "laugh",
             "ghostly",
+            "demonic",
             "scary",
             "evil",
             "eerie",
+            "taunting",
             "spooky",
             "laughter",
-            "horror"
+            "ghost"
         ],
-        "description": "Listening to this evil ghost breakdown in nervous laughter will haunt you for weeks... Created using pitch darkening, echo and delay effects... Performed by Super Amauri.",
+        "description": "Taunt the living with this spooky, evil and arrogant laughter... Created using pitch deepening effects... Performed by Super Amauri.",
         "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 12.353,
+        "duration": 3.93578,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/786/786074_11123204-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/786/786074_11123204-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/786/786074_11123204-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/786/786074_11123204-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/786/786073_11123204-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/786/786073_11123204-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/786/786073_11123204-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/786/786073_11123204-lq.ogg"
         }
     },
     {
-        "id": 786075,
-        "url": "https://freesound.org/people/amauri8BIT/sounds/786075/",
-        "name": "Sinister Laughter",
+        "id": 60976,
+        "url": "https://freesound.org/people/Robinhood76/sounds/60976/",
+        "name": "00417 laughter hehe synchro pretended.wav",
         "tags": [
-            "laughing",
-            "mocking",
-            "terror",
-            "laugh",
-            "scary",
-            "evil",
-            "eerie",
-            "spooky",
-            "sinister",
+            "funny",
             "laughter",
-            "horror"
+            "man",
+            "pretended"
         ],
-        "description": "Mock your victims with this bone-chilling sinister laughter... Performed by Super Amauri.",
-        "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 3.4366,
+        "description": "three man pretend synchro laughter they do it in funny way. Rec by AKG D80",
+        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "duration": 3.45141,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/786/786075_11123204-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/786/786075_11123204-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/786/786075_11123204-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/786/786075_11123204-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/60/60976_321967-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/60/60976_321967-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/60/60976_321967-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/60/60976_321967-lq.ogg"
         }
     },
     {
@@ -456,52 +430,78 @@
         }
     },
     {
-        "id": 786073,
-        "url": "https://freesound.org/people/amauri8BIT/sounds/786073/",
-        "name": "Taunting Evil Laughter",
+        "id": 96208,
+        "url": "https://freesound.org/people/Robinhood76/sounds/96208/",
+        "name": "01689 male laughter.wav",
         "tags": [
-            "laughing",
-            "horror",
-            "terror",
+            "adult",
             "laugh",
-            "ghostly",
-            "demonic",
-            "scary",
-            "evil",
-            "eerie",
-            "taunting",
-            "spooky",
             "laughter",
-            "ghost"
+            "male",
+            "man"
         ],
-        "description": "Taunt the living with this spooky, evil and arrogant laughter... Created using pitch deepening effects... Performed by Super Amauri.",
-        "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 3.93578,
+        "description": "Male laughter rec by Neumann TLM 103",
+        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "duration": 1.18707,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/786/786073_11123204-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/786/786073_11123204-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/786/786073_11123204-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/786/786073_11123204-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/96/96208_321967-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/96/96208_321967-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/96/96208_321967-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/96/96208_321967-lq.ogg"
         }
     },
     {
-        "id": 60976,
-        "url": "https://freesound.org/people/Robinhood76/sounds/60976/",
-        "name": "00417 laughter hehe synchro pretended.wav",
+        "id": 786075,
+        "url": "https://freesound.org/people/amauri8BIT/sounds/786075/",
+        "name": "Sinister Laughter",
         "tags": [
-            "funny",
+            "laughing",
+            "mocking",
+            "terror",
+            "laugh",
+            "scary",
+            "evil",
+            "eerie",
+            "spooky",
+            "sinister",
             "laughter",
-            "man",
-            "pretended"
+            "horror"
         ],
-        "description": "three man pretend synchro laughter they do it in funny way. Rec by AKG D80",
-        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-        "duration": 3.45141,
+        "description": "Mock your victims with this bone-chilling sinister laughter... Performed by Super Amauri.",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "duration": 3.4366,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/60/60976_321967-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/60/60976_321967-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/60/60976_321967-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/60/60976_321967-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/786/786075_11123204-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/786/786075_11123204-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/786/786075_11123204-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/786/786075_11123204-lq.ogg"
+        }
+    },
+    {
+        "id": 786074,
+        "url": "https://freesound.org/people/amauri8BIT/sounds/786074/",
+        "name": "Anxious Evil Laughter",
+        "tags": [
+            "laughing",
+            "anxious",
+            "terror",
+            "laugh",
+            "ghostly",
+            "scary",
+            "evil",
+            "eerie",
+            "spooky",
+            "laughter",
+            "horror"
+        ],
+        "description": "Listening to this evil ghost breakdown in nervous laughter will haunt you for weeks... Created using pitch darkening, echo and delay effects... Performed by Super Amauri.",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "duration": 12.353,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/786/786074_11123204-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/786/786074_11123204-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/786/786074_11123204-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/786/786074_11123204-lq.ogg"
         }
     },
     {
@@ -3205,35 +3205,6 @@
         }
     },
     {
-        "id": 243022,
-        "url": "https://freesound.org/people/plasterbrain/sounds/243022/",
-        "name": "Shrieking Laughter",
-        "tags": [
-            "insane",
-            "man",
-            "crazy",
-            "cackle",
-            "maniac",
-            "evil",
-            "joker",
-            "psychotic",
-            "mad",
-            "laugh",
-            "male",
-            "laughter",
-            "laughing"
-        ],
-        "description": "Some fast, hysterical laughter. Maybe your heroes are being attacked by an evil clown! This is my brother laughing during outtakes sped up.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 1.20163,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/243/243022_4284968-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/243/243022_4284968-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/243/243022_4284968-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/243/243022_4284968-lq.ogg"
-        }
-    },
-    {
         "id": 92390,
         "url": "https://freesound.org/people/sandyrb/sounds/92390/",
         "name": "CLOSE FEMALE LAUGH 031.wav",
@@ -3583,30 +3554,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/40/40175_215874-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/40/40175_215874-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/40/40175_215874-lq.ogg"
-        }
-    },
-    {
-        "id": 654372,
-        "url": "https://freesound.org/people/artboy_sf/sounds/654372/",
-        "name": "evil_laughter.wav",
-        "tags": [
-            "scary",
-            "horror",
-            "sinister",
-            "creepy",
-            "demonic",
-            "haunted",
-            "evil",
-            "laughter"
-        ],
-        "description": "Evil laughter processed with vocoder.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 9.0,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/654/654372_13122492-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/654/654372_13122492-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/654/654372_13122492-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/654/654372_13122492-lq.ogg"
         }
     },
     {
@@ -4136,27 +4083,6 @@
         }
     },
     {
-        "id": 612031,
-        "url": "https://freesound.org/people/univ_lyon3/sounds/612031/",
-        "name": "COULEAUD_Celia_2021_2022_Laughters.wav",
-        "tags": [
-            "villain",
-            "laughter",
-            "evil",
-            "laugh",
-            "laughing"
-        ],
-        "description": "This sound is a recording of a laugh we had with my friends.\nWith Audacity, I added reverb and movement from right to left. The goal is to give an evil aspect to the laughter.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 6.12427,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/612/612031_2465261-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/612/612031_2465261-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/612/612031_2465261-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/612/612031_2465261-lq.ogg"
-        }
-    },
-    {
         "id": 491786,
         "url": "https://freesound.org/people/NicknameLarry/sounds/491786/",
         "name": "Cartoon Children Laughter",
@@ -4339,30 +4265,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/459/459454_7872308-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/459/459454_7872308-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/459/459454_7872308-lq.ogg"
-        }
-    },
-    {
-        "id": 336534,
-        "url": "https://freesound.org/people/giddster/sounds/336534/",
-        "name": "Laughter, raw 2",
-        "tags": [
-            "voice",
-            "old",
-            "raw",
-            "wheezing",
-            "laugh",
-            "male",
-            "Laughter",
-            "man"
-        ],
-        "description": "Another recording of slightly raw laughter. Some wheezing might ensue.\r\n\r\nRecorded with a Zoom H1.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 7.08646,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/336/336534_1738686-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/336/336534_1738686-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/336/336534_1738686-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/336/336534_1738686-lq.ogg"
         }
     },
     {
@@ -5790,33 +5692,6 @@
         }
     },
     {
-        "id": 371562,
-        "url": "https://freesound.org/people/Kinoton/sounds/371562/",
-        "name": "Sitcom Laughter with Applause, Small Audience",
-        "tags": [
-            "group",
-            "applause",
-            "crowd",
-            "clapping",
-            "applauding",
-            "audience",
-            "theatre",
-            "clap",
-            "laughter",
-            "laugh",
-            "children"
-        ],
-        "description": "laugh machine, canned laughter\r\n\r\nORTF wide stereo field\r\nRecorder: Tascam DR-60D MkII\r\nMicrophone: 2x R\u00d8DE M5\r\n\r\nCheck out the pack for more laughter and applause recorded in the same theatre.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 5.8,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/371/371562_2247456-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/371/371562_2247456-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/371/371562_2247456-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/371/371562_2247456-lq.ogg"
-        }
-    },
-    {
         "id": 196069,
         "url": "https://freesound.org/people/arnaud%20coutancier/sounds/196069/",
         "name": "Children's laughter  #3 rires d'enfants.wav",
@@ -5837,61 +5712,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/196/196069_520316-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/196/196069_520316-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/196/196069_520316-lq.ogg"
-        }
-    },
-    {
-        "id": 581528,
-        "url": "https://freesound.org/people/HowardV/sounds/581528/",
-        "name": "live audience comedy show genuine laughter_moderate.wav",
-        "tags": [
-            "funny",
-            "humor",
-            "crowd",
-            "humour",
-            "giggle",
-            "show",
-            "audience",
-            "laughing",
-            "laugh",
-            "laugh-track",
-            "comedy",
-            "laughter"
-        ],
-        "description": "Recording from live comedy show performance (no dialogue) - natural authentic audience laughter. Small/medium crowd, venue is slightly echoey.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 16.36,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/581/581528_1654262-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/581/581528_1654262-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/581/581528_1654262-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/581/581528_1654262-lq.ogg"
-        }
-    },
-    {
-        "id": 122614,
-        "url": "https://freesound.org/people/urupin/sounds/122614/",
-        "name": "Crowd laughter (XOXOT).",
-        "tags": [
-            "crowd",
-            "laughter",
-            "meditation",
-            "people",
-            "voices",
-            "atmosphere",
-            "field-recording",
-            "ambiance",
-            "talking",
-            "ambient",
-            "ambience"
-        ],
-        "description": "The crowd of people in wood meditated on laughter.",
-        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-        "duration": 51.6843,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/122/122614_2462-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/122/122614_2462-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/122/122614_2462-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/122/122614_2462-lq.ogg"
         }
     },
     {
@@ -5948,34 +5768,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/205/205752_2389125-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/205/205752_2389125-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/205/205752_2389125-lq.ogg"
-        }
-    },
-    {
-        "id": 420982,
-        "url": "https://freesound.org/people/kyles/sounds/420982/",
-        "name": "crowd ext medium excited entertained walla and audience reactions to talent show performers raucous laughter and applause Uganda, Africa 2016.wav",
-        "tags": [
-            "walla",
-            "reactions",
-            "medium",
-            "applause",
-            "crowd",
-            "Africa",
-            "audience",
-            "raucous",
-            "ext",
-            "Uganda",
-            "laughter",
-            "excited"
-        ],
-        "description": "crowd ext medium excited entertained walla and audience reactions to talent show performers raucous laughter and applause Uganda, Africa 2016.wav",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 419.961,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/420/420982_612689-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/420/420982_612689-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/420/420982_612689-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/420/420982_612689-lq.ogg"
         }
     },
     {
@@ -6081,6 +5873,124 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/382/382906_2456794-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/382/382906_2456794-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/382/382906_2456794-lq.ogg"
+        }
+    },
+    {
+        "id": 196078,
+        "url": "https://freesound.org/people/arnaud%20coutancier/sounds/196078/",
+        "name": "Children's laughter  #19 rires d'enfants.wav",
+        "tags": [
+            "atmosphere",
+            "recording",
+            "field",
+            "laugh",
+            "child",
+            "laughter",
+            "children"
+        ],
+        "description": "I worked with 5 and 6-year-old children at Morisset-Couillard school for the sound track of a new circus play \" La f\u00e9e des gouttes\" (the fairy of drops) -Cie Chapazard-Laure Pique-\r\nWith them, I recorded atmospheres (wispers, invented words, some breaths to mix with a real wind) and LAUGHTER ! (Thanks to Eileen & children).\r\n\r\nI had already recorded there the school courtyard a few years ago  which is my sound the most downloaded on Freesound and allowed me some nice meet.\r\n<a href=\"http://www.freesound.org/people/arnaud%20coutancier/sounds/47503/\" rel=\"nofollow\">http://www.freesound.org/people/arnaud%20coutancier/sounds/47503/</a>\r\n\r\nrecorded by myself with Zoom H4\r\n",
+        "license": "http://creativecommons.org/licenses/by-nc/3.0/",
+        "duration": 2.45948,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/196/196078_520316-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/196/196078_520316-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/196/196078_520316-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/196/196078_520316-lq.ogg"
+        }
+    },
+    {
+        "id": 718345,
+        "url": "https://freesound.org/people/rydra_wong/sounds/718345/",
+        "name": "Distorted female and male laughter",
+        "tags": [
+            "woman",
+            "female",
+            "spooky",
+            "evil",
+            "laughter",
+            "creepy"
+        ],
+        "description": "some creepy distorted laughter overlayed on top of one another.\ngood for ghosts, or demons, or a main character having a mental breakdown as the female bullies laugh at him",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 17.8393,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/718/718345_13685159-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/718/718345_13685159-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/718/718345_13685159-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/718/718345_13685159-lq.ogg"
+        }
+    },
+    {
+        "id": 383207,
+        "url": "https://freesound.org/people/Kinoton/sounds/383207/",
+        "name": "Sitcom Laughter 9x, Small Audience",
+        "tags": [
+            "group",
+            "crowd",
+            "theatre",
+            "audience",
+            "laugh",
+            "laughter",
+            "children"
+        ],
+        "description": "laugh machine, canned laughter\r\n\r\nORTF wide stereo field\r\nRecorder: Tascam DR-60D MkII\r\nMicrophone: 2x R\u00d8DE M5",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 43.3548,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/383/383207_2247456-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/383/383207_2247456-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/383/383207_2247456-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/383/383207_2247456-lq.ogg"
+        }
+    },
+    {
+        "id": 196077,
+        "url": "https://freesound.org/people/arnaud%20coutancier/sounds/196077/",
+        "name": "Children's laughter  #2 rires d'enfants.wav",
+        "tags": [
+            "atmosphere",
+            "recording",
+            "field",
+            "laugh",
+            "child",
+            "laughter",
+            "children"
+        ],
+        "description": "I worked with 5 and 6-year-old children at Morisset-Couillard school for the sound track of a new circus play \" La f\u00e9e des gouttes\" (the fairy of drops) -Cie Chapazard-Laure Pique-\r\nWith them, I recorded atmospheres (wispers, invented words, some breaths to mix with a real wind) and LAUGHTER ! (Thanks to Eileen & children).\r\n\r\nI had already recorded there the school courtyard a few years ago  which is my sound the most downloaded on Freesound and allowed me some nice meet.\r\n<a href=\"http://www.freesound.org/people/arnaud%20coutancier/sounds/47503/\" rel=\"nofollow\">http://www.freesound.org/people/arnaud%20coutancier/sounds/47503/</a>\r\n\r\nrecorded by myself with Zoom H4\r\n",
+        "license": "http://creativecommons.org/licenses/by-nc/3.0/",
+        "duration": 7.44941,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/196/196077_520316-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/196/196077_520316-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/196/196077_520316-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/196/196077_520316-lq.ogg"
+        }
+    },
+    {
+        "id": 122614,
+        "url": "https://freesound.org/people/urupin/sounds/122614/",
+        "name": "Crowd laughter (XOXOT).",
+        "tags": [
+            "crowd",
+            "laughter",
+            "meditation",
+            "people",
+            "voices",
+            "atmosphere",
+            "field-recording",
+            "ambiance",
+            "talking",
+            "ambient",
+            "ambience"
+        ],
+        "description": "The crowd of people in wood meditated on laughter.",
+        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "duration": 51.6843,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/122/122614_2462-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/122/122614_2462-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/122/122614_2462-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/122/122614_2462-lq.ogg"
         }
     },
     {
@@ -6503,130 +6413,184 @@
         }
     },
     {
-        "id": 718345,
-        "url": "https://freesound.org/people/rydra_wong/sounds/718345/",
-        "name": "Distorted female and male laughter",
+        "id": 654372,
+        "url": "https://freesound.org/people/artboy_sf/sounds/654372/",
+        "name": "evil_laughter.wav",
         "tags": [
-            "woman",
-            "female",
-            "spooky",
+            "scary",
+            "horror",
+            "sinister",
+            "creepy",
+            "demonic",
+            "haunted",
             "evil",
-            "laughter",
-            "creepy"
+            "laughter"
         ],
-        "description": "some creepy distorted laughter overlayed on top of one another.\ngood for ghosts, or demons, or a main character having a mental breakdown as the female bullies laugh at him",
+        "description": "Evil laughter processed with vocoder.",
         "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 17.8393,
+        "duration": 9.0,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/718/718345_13685159-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/718/718345_13685159-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/718/718345_13685159-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/718/718345_13685159-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/654/654372_13122492-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/654/654372_13122492-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/654/654372_13122492-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/654/654372_13122492-lq.ogg"
         }
     },
     {
-        "id": 383207,
-        "url": "https://freesound.org/people/Kinoton/sounds/383207/",
-        "name": "Sitcom Laughter 9x, Small Audience",
+        "id": 420982,
+        "url": "https://freesound.org/people/kyles/sounds/420982/",
+        "name": "crowd ext medium excited entertained walla and audience reactions to talent show performers raucous laughter and applause Uganda, Africa 2016.wav",
+        "tags": [
+            "walla",
+            "reactions",
+            "medium",
+            "applause",
+            "crowd",
+            "Africa",
+            "audience",
+            "raucous",
+            "ext",
+            "Uganda",
+            "laughter",
+            "excited"
+        ],
+        "description": "crowd ext medium excited entertained walla and audience reactions to talent show performers raucous laughter and applause Uganda, Africa 2016.wav",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 419.961,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/420/420982_612689-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/420/420982_612689-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/420/420982_612689-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/420/420982_612689-lq.ogg"
+        }
+    },
+    {
+        "id": 581528,
+        "url": "https://freesound.org/people/HowardV/sounds/581528/",
+        "name": "live audience comedy show genuine laughter_moderate.wav",
+        "tags": [
+            "funny",
+            "humor",
+            "crowd",
+            "humour",
+            "giggle",
+            "show",
+            "audience",
+            "laughing",
+            "laugh",
+            "laugh-track",
+            "comedy",
+            "laughter"
+        ],
+        "description": "Recording from live comedy show performance (no dialogue) - natural authentic audience laughter. Small/medium crowd, venue is slightly echoey.",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 16.36,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/581/581528_1654262-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/581/581528_1654262-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/581/581528_1654262-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/581/581528_1654262-lq.ogg"
+        }
+    },
+    {
+        "id": 243022,
+        "url": "https://freesound.org/people/plasterbrain/sounds/243022/",
+        "name": "Shrieking Laughter",
+        "tags": [
+            "insane",
+            "man",
+            "crazy",
+            "cackle",
+            "maniac",
+            "evil",
+            "joker",
+            "psychotic",
+            "mad",
+            "laugh",
+            "male",
+            "laughter",
+            "laughing"
+        ],
+        "description": "Some fast, hysterical laughter. Maybe your heroes are being attacked by an evil clown! This is my brother laughing during outtakes sped up.",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 1.20163,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/243/243022_4284968-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/243/243022_4284968-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/243/243022_4284968-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/243/243022_4284968-lq.ogg"
+        }
+    },
+    {
+        "id": 371562,
+        "url": "https://freesound.org/people/Kinoton/sounds/371562/",
+        "name": "Sitcom Laughter with Applause, Small Audience",
         "tags": [
             "group",
+            "applause",
             "crowd",
-            "theatre",
+            "clapping",
+            "applauding",
             "audience",
-            "laugh",
+            "theatre",
+            "clap",
             "laughter",
+            "laugh",
             "children"
         ],
-        "description": "laugh machine, canned laughter\r\n\r\nORTF wide stereo field\r\nRecorder: Tascam DR-60D MkII\r\nMicrophone: 2x R\u00d8DE M5",
+        "description": "laugh machine, canned laughter\r\n\r\nORTF wide stereo field\r\nRecorder: Tascam DR-60D MkII\r\nMicrophone: 2x R\u00d8DE M5\r\n\r\nCheck out the pack for more laughter and applause recorded in the same theatre.",
         "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 43.3548,
+        "duration": 5.8,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/383/383207_2247456-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/383/383207_2247456-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/383/383207_2247456-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/383/383207_2247456-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/371/371562_2247456-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/371/371562_2247456-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/371/371562_2247456-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/371/371562_2247456-lq.ogg"
         }
     },
     {
-        "id": 196077,
-        "url": "https://freesound.org/people/arnaud%20coutancier/sounds/196077/",
-        "name": "Children's laughter  #2 rires d'enfants.wav",
+        "id": 336534,
+        "url": "https://freesound.org/people/giddster/sounds/336534/",
+        "name": "Laughter, raw 2",
         "tags": [
-            "atmosphere",
-            "recording",
-            "field",
+            "voice",
+            "old",
+            "raw",
+            "wheezing",
             "laugh",
-            "child",
-            "laughter",
-            "children"
-        ],
-        "description": "I worked with 5 and 6-year-old children at Morisset-Couillard school for the sound track of a new circus play \" La f\u00e9e des gouttes\" (the fairy of drops) -Cie Chapazard-Laure Pique-\r\nWith them, I recorded atmospheres (wispers, invented words, some breaths to mix with a real wind) and LAUGHTER ! (Thanks to Eileen & children).\r\n\r\nI had already recorded there the school courtyard a few years ago  which is my sound the most downloaded on Freesound and allowed me some nice meet.\r\n<a href=\"http://www.freesound.org/people/arnaud%20coutancier/sounds/47503/\" rel=\"nofollow\">http://www.freesound.org/people/arnaud%20coutancier/sounds/47503/</a>\r\n\r\nrecorded by myself with Zoom H4\r\n",
-        "license": "http://creativecommons.org/licenses/by-nc/3.0/",
-        "duration": 7.44941,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/196/196077_520316-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/196/196077_520316-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/196/196077_520316-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/196/196077_520316-lq.ogg"
-        }
-    },
-    {
-        "id": 196078,
-        "url": "https://freesound.org/people/arnaud%20coutancier/sounds/196078/",
-        "name": "Children's laughter  #19 rires d'enfants.wav",
-        "tags": [
-            "atmosphere",
-            "recording",
-            "field",
-            "laugh",
-            "child",
-            "laughter",
-            "children"
-        ],
-        "description": "I worked with 5 and 6-year-old children at Morisset-Couillard school for the sound track of a new circus play \" La f\u00e9e des gouttes\" (the fairy of drops) -Cie Chapazard-Laure Pique-\r\nWith them, I recorded atmospheres (wispers, invented words, some breaths to mix with a real wind) and LAUGHTER ! (Thanks to Eileen & children).\r\n\r\nI had already recorded there the school courtyard a few years ago  which is my sound the most downloaded on Freesound and allowed me some nice meet.\r\n<a href=\"http://www.freesound.org/people/arnaud%20coutancier/sounds/47503/\" rel=\"nofollow\">http://www.freesound.org/people/arnaud%20coutancier/sounds/47503/</a>\r\n\r\nrecorded by myself with Zoom H4\r\n",
-        "license": "http://creativecommons.org/licenses/by-nc/3.0/",
-        "duration": 2.45948,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/196/196078_520316-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/196/196078_520316-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/196/196078_520316-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/196/196078_520316-lq.ogg"
-        }
-    },
-    {
-        "id": 95875,
-        "url": "https://freesound.org/people/Timbre/sounds/95875/",
-        "name": "Remix of 26729__Leady__insane_laughter_man_reverb_Beefier.wav",
-        "tags": [
-            "asylum",
-            "deranged",
-            "hysterical",
-            "insane",
-            "laugh",
-            "laughter",
-            "lunatic",
-            "mad",
             "male",
-            "man",
-            "mock",
-            "mocking",
-            "psychosis",
-            "psychotic",
-            "villain",
-            "baddie",
-            "laughing",
-            "joker",
-            "26729",
-            "evil"
+            "Laughter",
+            "man"
         ],
-        "description": "Remix of Leady's insane laughter: i.e. ... <a href=\"http://www.freesound.org/people/Leady/sounds/26729/\" rel=\"nofollow\">http://www.freesound.org/people/Leady/sounds/26729/</a>\r\n I've modified stereo image, equalization and added more reverb and echo. \r\n",
-        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-        "duration": 69.1189,
+        "description": "Another recording of slightly raw laughter. Some wheezing might ensue.\r\n\r\nRecorded with a Zoom H1.",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 7.08646,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/95/95875_1015240-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/95/95875_1015240-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/95/95875_1015240-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/95/95875_1015240-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/336/336534_1738686-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/336/336534_1738686-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/336/336534_1738686-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/336/336534_1738686-lq.ogg"
+        }
+    },
+    {
+        "id": 612031,
+        "url": "https://freesound.org/people/univ_lyon3/sounds/612031/",
+        "name": "COULEAUD_Celia_2021_2022_Laughters.wav",
+        "tags": [
+            "villain",
+            "laughter",
+            "evil",
+            "laugh",
+            "laughing"
+        ],
+        "description": "This sound is a recording of a laugh we had with my friends.\nWith Audacity, I added reverb and movement from right to left. The goal is to give an evil aspect to the laughter.",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 6.12427,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/612/612031_2465261-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/612/612031_2465261-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/612/612031_2465261-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/612/612031_2465261-lq.ogg"
         }
     },
     {
@@ -6666,6 +6630,42 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/103/103987_149596-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/103/103987_149596-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/103/103987_149596-lq.ogg"
+        }
+    },
+    {
+        "id": 95875,
+        "url": "https://freesound.org/people/Timbre/sounds/95875/",
+        "name": "Remix of 26729__Leady__insane_laughter_man_reverb_Beefier.wav",
+        "tags": [
+            "asylum",
+            "deranged",
+            "hysterical",
+            "insane",
+            "laugh",
+            "laughter",
+            "lunatic",
+            "mad",
+            "male",
+            "man",
+            "mock",
+            "mocking",
+            "psychosis",
+            "psychotic",
+            "villain",
+            "baddie",
+            "laughing",
+            "joker",
+            "26729",
+            "evil"
+        ],
+        "description": "Remix of Leady's insane laughter: i.e. ... <a href=\"http://www.freesound.org/people/Leady/sounds/26729/\" rel=\"nofollow\">http://www.freesound.org/people/Leady/sounds/26729/</a>\r\n I've modified stereo image, equalization and added more reverb and echo. \r\n",
+        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "duration": 69.1189,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/95/95875_1015240-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/95/95875_1015240-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/95/95875_1015240-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/95/95875_1015240-lq.ogg"
         }
     },
     {
@@ -7163,28 +7163,6 @@
         }
     },
     {
-        "id": 96974,
-        "url": "https://freesound.org/people/Robinhood76/sounds/96974/",
-        "name": "01691 child laughter.wav",
-        "tags": [
-            "baby",
-            "child",
-            "enjoy",
-            "kid",
-            "laugh",
-            "laughter"
-        ],
-        "description": "Small girl laughs rec by Shure BG 5.1",
-        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-        "duration": 2.77361,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/96/96974_321967-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/96/96974_321967-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/96/96974_321967-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/96/96974_321967-lq.ogg"
-        }
-    },
-    {
         "id": 198248,
         "url": "https://freesound.org/people/unfa/sounds/198248/",
         "name": "Laughter 04",
@@ -7228,30 +7206,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/452/452748_954919-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/452/452748_954919-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/452/452748_954919-lq.ogg"
-        }
-    },
-    {
-        "id": 558245,
-        "url": "https://freesound.org/people/Gerent/sounds/558245/",
-        "name": "laughter-male_029-030 023-028.ogg",
-        "tags": [
-            "male",
-            "laugh",
-            "laughing",
-            "human",
-            "voice",
-            "laughter",
-            "masculine",
-            "man"
-        ],
-        "description": "Male voice, laughing. Noise reduction applied.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 2.54756,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/558/558245_556505-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/558/558245_556505-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/558/558245_556505-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/558/558245_556505-lq.ogg"
         }
     },
     {
@@ -7440,6 +7394,52 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/132/132252_321967-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/132/132252_321967-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/132/132252_321967-lq.ogg"
+        }
+    },
+    {
+        "id": 96974,
+        "url": "https://freesound.org/people/Robinhood76/sounds/96974/",
+        "name": "01691 child laughter.wav",
+        "tags": [
+            "baby",
+            "child",
+            "enjoy",
+            "kid",
+            "laugh",
+            "laughter"
+        ],
+        "description": "Small girl laughs rec by Shure BG 5.1",
+        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "duration": 2.77361,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/96/96974_321967-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/96/96974_321967-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/96/96974_321967-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/96/96974_321967-lq.ogg"
+        }
+    },
+    {
+        "id": 558245,
+        "url": "https://freesound.org/people/Gerent/sounds/558245/",
+        "name": "laughter-male_029-030 023-028.ogg",
+        "tags": [
+            "male",
+            "laugh",
+            "laughing",
+            "human",
+            "voice",
+            "laughter",
+            "masculine",
+            "man"
+        ],
+        "description": "Male voice, laughing. Noise reduction applied.",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 2.54756,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/558/558245_556505-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/558/558245_556505-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/558/558245_556505-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/558/558245_556505-lq.ogg"
         }
     },
     {
@@ -8915,25 +8915,6 @@
         }
     },
     {
-        "id": 769015,
-        "url": "https://freesound.org/people/sjpuett/sounds/769015/",
-        "name": "Laughing",
-        "tags": [
-            "LAUGHING",
-            "LAUGH",
-            "LAUGHTER"
-        ],
-        "description": "Natural Laughter",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 21.2778,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/769/769015_16587357-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/769/769015_16587357-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/769/769015_16587357-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/769/769015_16587357-lq.ogg"
-        }
-    },
-    {
         "id": 655787,
         "url": "https://freesound.org/people/Elsje_/sounds/655787/",
         "name": "Tenpin Bowling Ambience.mp3",
@@ -9115,31 +9096,6 @@
         }
     },
     {
-        "id": 388252,
-        "url": "https://freesound.org/people/ANARKYA/sounds/388252/",
-        "name": "Laugh 01.wav",
-        "tags": [
-            "lol",
-            "Voices",
-            "Laughing",
-            "Laugh",
-            "Smile",
-            "Girl",
-            "Laughter",
-            "Children",
-            "Women"
-        ],
-        "description": "Family laughter at home.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 1.79125,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/388/388252_4448255-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/388/388252_4448255-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/388/388252_4448255-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/388/388252_4448255-lq.ogg"
-        }
-    },
-    {
         "id": 609196,
         "url": "https://freesound.org/people/Victor_Natas/sounds/609196/",
         "name": "The witch",
@@ -9225,44 +9181,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/547/547675_12172648-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/547/547675_12172648-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/547/547675_12172648-lq.ogg"
-        }
-    },
-    {
-        "id": 756285,
-        "url": "https://freesound.org/people/newlocknew/sounds/756285/",
-        "name": "AMBUrbn_Residential Area.Children Play.Talk And Shout.Cars Passing By.Passersby.Traffic Noise 1_EM",
-        "tags": [
-            "playing",
-            "atmosphere",
-            "children-play",
-            "ambience",
-            "atmos",
-            "environment",
-            "human",
-            "shouting",
-            "children",
-            "laughter",
-            "children-in-the-yard",
-            "screaming",
-            "general-noise",
-            "background",
-            "activity",
-            "kids",
-            "atmo",
-            "playground",
-            "backyard",
-            "ambiance",
-            "yelling",
-            "background-sound"
-        ],
-        "description": "A warm autumn day in an urban residential area. Children run and play around a tall residential complex, the building of which gives very noticeable reflections of sounds. People pass by (sometimes very close) and cars pull into the parking lot. There are conversations, laughter, and children's screams. The noise of urban traffic can be heard in the background.\nRecorded September 09, 2024 on Tascam DR-05x with post processing.\nLocation: Russia, Ekaterinburg.\nI ask you, if possible, to help this wonderful site (not me) stay afloat and develop further. Make a donation <a href=\"https://freesound.org/donations/donate/\" rel=\"nofollow\">https://freesound.org/donations/donate/</a> if my sounds helped or liked you. Freesound remains free of advertising, let's appreciate it together.\nEnjoy it! I hope that my sounds and phonograms will be useful in your creativity. Feel free to leave your comments with ratings, even if they are critical.\nNote: audio quality is always better when downloaded.\nAs for attribution, you should credit me in your work. How to do this, see <a href=\"https://freesound.org/people/newlocknew/\" rel=\"nofollow\">here</a> . This sound CANNOT be used in stock (royalty free) materials. Do not post, publish or redistribute my RAW sounds/files on YouTube or any other sites, platforms or services. My sounds can be used within your projects (including commercial ones, if the license assigned to this sound allows it), as part of an artistic form or design. Otherwise, please adhere to the license rules, which can be found <a href=\"https://freesound.org/forum/legal-help-and-attribution-questions/38292/\" rel=\"nofollow\">here</a> . I would be glad if you post a link to your finished product on <a href=\"http://Freesound.org\" rel=\"nofollow\">Freesound.org</a>, or a video review of it (in the comments to one or more of my sounds) with a short text stating that this sound was used in this project. This will be a kind of small gratitude for my work. And, of course, it's always interesting to see the live context in which my sounds are used. Thank you.",
-        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-        "duration": 243.002,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/756/756285_5828667-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/756/756285_5828667-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/756/756285_5828667-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/756/756285_5828667-lq.ogg"
         }
     },
     {
@@ -9967,33 +9885,6 @@
         }
     },
     {
-        "id": 524775,
-        "url": "https://freesound.org/people/Evil_Ear_Recordings/sounds/524775/",
-        "name": "Comedy FX",
-        "tags": [
-            "funny",
-            "humor",
-            "giggle",
-            "audience",
-            "canned",
-            "comedian",
-            "laughing",
-            "laugh",
-            "standup",
-            "comedy",
-            "laughter"
-        ],
-        "description": "Some laughter recorded from two venues in Edinburgh\n\nUsed here originally: <a href=\"https://soundcloud.com/evil-ear/great-britain\" rel=\"nofollow\">https://soundcloud.com/evil-ear/great-britain</a>\n\nEnjoy.\n\nEvil Ear",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 31.9565,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/524/524775_2515377-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/524/524775_2515377-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/524/524775_2515377-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/524/524775_2515377-lq.ogg"
-        }
-    },
-    {
         "id": 118486,
         "url": "https://freesound.org/people/morningfrost/sounds/118486/",
         "name": "CoupleLaughing.wav",
@@ -10175,38 +10066,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/382/382998_6769439-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/382/382998_6769439-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/382/382998_6769439-lq.ogg"
-        }
-    },
-    {
-        "id": 530367,
-        "url": "https://freesound.org/people/trashbagins/sounds/530367/",
-        "name": "kids playing on the street.mp3",
-        "tags": [
-            "kids",
-            "playing",
-            "street",
-            "playground",
-            "field",
-            "sounds",
-            "chatter",
-            "ambient",
-            "laughter",
-            "happy",
-            "natural",
-            "childrens",
-            "recording",
-            "outdoor",
-            "playful",
-            "joyful"
-        ],
-        "description": "While taking a walk down the street, I overheard the joyful sounds of children playing on the playground. Their laughter and playful chatter caught my attention, and I couldn't resist capturing the unique energy of their voices.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 37.8656,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/530/530367_3329019-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/530/530367_3329019-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/530/530367_3329019-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/530/530367_3329019-lq.ogg"
         }
     },
     {
@@ -10599,33 +10458,6 @@
         }
     },
     {
-        "id": 252785,
-        "url": "https://freesound.org/people/xtrgamr/sounds/252785/",
-        "name": "EVIL LAUGH.wav",
-        "tags": [
-            "funny",
-            "scary",
-            "creepy",
-            "ha-ha-ha",
-            "evil",
-            "laugh",
-            "hahaha",
-            "fun",
-            "voice",
-            "laughter",
-            "laughing"
-        ],
-        "description": "I was laughing at a funny video, so I recorded this while watching the video with a CA desktop microphone. I added some reverb, made it echo, and lowered the pitch, all in Audacity. So my high-pitched laughter, to change in to a villian's evil laughter. Perfect for movies or games.",
-        "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 4.38846,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/252/252785_4157918-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/252/252785_4157918-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/252/252785_4157918-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/252/252785_4157918-lq.ogg"
-        }
-    },
-    {
         "id": 765340,
         "url": "https://freesound.org/people/DonnyDB/sounds/765340/",
         "name": "Inside Fireplace Ambiance with Outside Party Noise",
@@ -10667,28 +10499,47 @@
         }
     },
     {
-        "id": 616088,
-        "url": "https://freesound.org/people/medyk3D/sounds/616088/",
-        "name": "Child's laugh 1 - medyk3D.wav",
+        "id": 36164,
+        "url": "https://freesound.org/people/sagetyrtle/sounds/36164/",
+        "name": "laughs2.wav",
         "tags": [
+            "chuckle",
+            "chuckling",
+            "female",
+            "foley",
             "giggle",
             "giggling",
-            "kids",
-            "laughing",
             "laugh",
-            "child",
             "laughter",
-            "children",
-            "Kid"
+            "woman"
         ],
-        "description": "Child's laughter.\nI was recording my kids and they couldn't stay serious for longer than a minute without bursting with laughter.",
+        "description": "Several laughs, chuckles and giggles. For the curious: recorded while having great fun voice-chatting with friends, i.e. the laughter's sincere.",
         "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 2.63596,
+        "duration": 206.194,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/616/616088_11433369-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/616/616088_11433369-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/616/616088_11433369-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/616/616088_11433369-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/36/36164_43834-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/36/36164_43834-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/36/36164_43834-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/36/36164_43834-lq.ogg"
+        }
+    },
+    {
+        "id": 769015,
+        "url": "https://freesound.org/people/sjpuett/sounds/769015/",
+        "name": "Laughing",
+        "tags": [
+            "LAUGHING",
+            "LAUGH",
+            "LAUGHTER"
+        ],
+        "description": "Natural Laughter",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 21.2778,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/769/769015_16587357-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/769/769015_16587357-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/769/769015_16587357-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/769/769015_16587357-lq.ogg"
         }
     },
     {
@@ -10942,45 +10793,6 @@
         }
     },
     {
-        "id": 652992,
-        "url": "https://freesound.org/people/IENBA/sounds/652992/",
-        "name": "Creepy Girl Laugh",
-        "tags": [
-            "ghost",
-            "scary",
-            "phantom",
-            "giggle",
-            "spooky",
-            "horror",
-            "creepy",
-            "teen",
-            "spectry",
-            "laugh",
-            "child",
-            "terror",
-            "girl",
-            "laughter",
-            "chuckle",
-            "echo",
-            "fear",
-            "nightmare",
-            "delay",
-            "haunted",
-            "hall",
-            "spectre",
-            "reverb"
-        ],
-        "description": "Recording of a shy laughter performed by a student from the National School of Arts, Uruguay, Playa Hermosa.\n\nGEAR:\nFocusrite Scarlett 2i2 3rdGen\nSennheiser MKH50",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 21.3845,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/652/652992_9616576-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/652/652992_9616576-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/652/652992_9616576-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/652/652992_9616576-lq.ogg"
-        }
-    },
-    {
         "id": 240345,
         "url": "https://freesound.org/people/sergeeo/sounds/240345/",
         "name": "Bruja / Witch",
@@ -11010,31 +10822,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/240/240345_2042115-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/240/240345_2042115-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/240/240345_2042115-lq.ogg"
-        }
-    },
-    {
-        "id": 616087,
-        "url": "https://freesound.org/people/medyk3D/sounds/616087/",
-        "name": "Child's laugh 2 - medyk3D.wav",
-        "tags": [
-            "giggle",
-            "giggling",
-            "kids",
-            "laughing",
-            "laugh",
-            "child",
-            "laughter",
-            "children",
-            "Kid"
-        ],
-        "description": "Child's laughter.\nI was recording my kids and they couldn't stay serious for longer than a minute without bursting with laughter.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 3.26994,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/616/616087_11433369-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/616/616087_11433369-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/616/616087_11433369-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/616/616087_11433369-lq.ogg"
         }
     },
     {
@@ -11073,31 +10860,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/270/270470_5123851-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/270/270470_5123851-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/270/270470_5123851-lq.ogg"
-        }
-    },
-    {
-        "id": 616086,
-        "url": "https://freesound.org/people/medyk3D/sounds/616086/",
-        "name": "Child's laugh 3 - medyk3D.wav",
-        "tags": [
-            "giggle",
-            "giggling",
-            "kids",
-            "laughing",
-            "laugh",
-            "child",
-            "laughter",
-            "children",
-            "Kid"
-        ],
-        "description": "Child's laughter.\nI was recording my kids and they couldn't stay serious for longer than a minute without bursting with laughter.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 3.37002,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/616/616086_11433369-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/616/616086_11433369-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/616/616086_11433369-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/616/616086_11433369-lq.ogg"
         }
     },
     {
@@ -11222,6 +10984,38 @@
         }
     },
     {
+        "id": 530367,
+        "url": "https://freesound.org/people/trashbagins/sounds/530367/",
+        "name": "kids playing on the street.mp3",
+        "tags": [
+            "kids",
+            "playing",
+            "street",
+            "playground",
+            "field",
+            "sounds",
+            "chatter",
+            "ambient",
+            "laughter",
+            "happy",
+            "natural",
+            "childrens",
+            "recording",
+            "outdoor",
+            "playful",
+            "joyful"
+        ],
+        "description": "While taking a walk down the street, I overheard the joyful sounds of children playing on the playground. Their laughter and playful chatter caught my attention, and I couldn't resist capturing the unique energy of their voices.",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 37.8656,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/530/530367_3329019-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/530/530367_3329019-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/530/530367_3329019-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/530/530367_3329019-lq.ogg"
+        }
+    },
+    {
         "id": 616085,
         "url": "https://freesound.org/people/medyk3D/sounds/616085/",
         "name": "Child's laugh 4 - medyk3D.wav",
@@ -11244,6 +11038,185 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/616/616085_11433369-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/616/616085_11433369-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/616/616085_11433369-lq.ogg"
+        }
+    },
+    {
+        "id": 616086,
+        "url": "https://freesound.org/people/medyk3D/sounds/616086/",
+        "name": "Child's laugh 3 - medyk3D.wav",
+        "tags": [
+            "giggle",
+            "giggling",
+            "kids",
+            "laughing",
+            "laugh",
+            "child",
+            "laughter",
+            "children",
+            "Kid"
+        ],
+        "description": "Child's laughter.\nI was recording my kids and they couldn't stay serious for longer than a minute without bursting with laughter.",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 3.37002,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/616/616086_11433369-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/616/616086_11433369-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/616/616086_11433369-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/616/616086_11433369-lq.ogg"
+        }
+    },
+    {
+        "id": 616087,
+        "url": "https://freesound.org/people/medyk3D/sounds/616087/",
+        "name": "Child's laugh 2 - medyk3D.wav",
+        "tags": [
+            "giggle",
+            "giggling",
+            "kids",
+            "laughing",
+            "laugh",
+            "child",
+            "laughter",
+            "children",
+            "Kid"
+        ],
+        "description": "Child's laughter.\nI was recording my kids and they couldn't stay serious for longer than a minute without bursting with laughter.",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 3.26994,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/616/616087_11433369-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/616/616087_11433369-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/616/616087_11433369-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/616/616087_11433369-lq.ogg"
+        }
+    },
+    {
+        "id": 616088,
+        "url": "https://freesound.org/people/medyk3D/sounds/616088/",
+        "name": "Child's laugh 1 - medyk3D.wav",
+        "tags": [
+            "giggle",
+            "giggling",
+            "kids",
+            "laughing",
+            "laugh",
+            "child",
+            "laughter",
+            "children",
+            "Kid"
+        ],
+        "description": "Child's laughter.\nI was recording my kids and they couldn't stay serious for longer than a minute without bursting with laughter.",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 2.63596,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/616/616088_11433369-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/616/616088_11433369-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/616/616088_11433369-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/616/616088_11433369-lq.ogg"
+        }
+    },
+    {
+        "id": 652992,
+        "url": "https://freesound.org/people/IENBA/sounds/652992/",
+        "name": "Creepy Girl Laugh",
+        "tags": [
+            "ghost",
+            "scary",
+            "phantom",
+            "giggle",
+            "spooky",
+            "horror",
+            "creepy",
+            "teen",
+            "spectry",
+            "laugh",
+            "child",
+            "terror",
+            "girl",
+            "laughter",
+            "chuckle",
+            "echo",
+            "fear",
+            "nightmare",
+            "delay",
+            "haunted",
+            "hall",
+            "spectre",
+            "reverb"
+        ],
+        "description": "Recording of a shy laughter performed by a student from the National School of Arts, Uruguay, Playa Hermosa.\n\nGEAR:\nFocusrite Scarlett 2i2 3rdGen\nSennheiser MKH50",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 21.3845,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/652/652992_9616576-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/652/652992_9616576-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/652/652992_9616576-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/652/652992_9616576-lq.ogg"
+        }
+    },
+    {
+        "id": 252785,
+        "url": "https://freesound.org/people/xtrgamr/sounds/252785/",
+        "name": "EVIL LAUGH.wav",
+        "tags": [
+            "funny",
+            "scary",
+            "creepy",
+            "ha-ha-ha",
+            "evil",
+            "laugh",
+            "hahaha",
+            "fun",
+            "voice",
+            "laughter",
+            "laughing"
+        ],
+        "description": "I was laughing at a funny video, so I recorded this while watching the video with a CA desktop microphone. I added some reverb, made it echo, and lowered the pitch, all in Audacity. So my high-pitched laughter, to change in to a villian's evil laughter. Perfect for movies or games.",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "duration": 4.38846,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/252/252785_4157918-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/252/252785_4157918-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/252/252785_4157918-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/252/252785_4157918-lq.ogg"
+        }
+    },
+    {
+        "id": 756285,
+        "url": "https://freesound.org/people/newlocknew/sounds/756285/",
+        "name": "AMBUrbn_Residential Area.Children Play.Talk And Shout.Cars Passing By.Passersby.Traffic Noise 1_EM",
+        "tags": [
+            "playing",
+            "atmosphere",
+            "children-play",
+            "ambience",
+            "atmos",
+            "environment",
+            "human",
+            "shouting",
+            "children",
+            "laughter",
+            "children-in-the-yard",
+            "screaming",
+            "general-noise",
+            "background",
+            "activity",
+            "kids",
+            "atmo",
+            "playground",
+            "backyard",
+            "ambiance",
+            "yelling",
+            "background-sound"
+        ],
+        "description": "A warm autumn day in an urban residential area. Children run and play around a tall residential complex, the building of which gives very noticeable reflections of sounds. People pass by (sometimes very close) and cars pull into the parking lot. There are conversations, laughter, and children's screams. The noise of urban traffic can be heard in the background.\nRecorded September 09, 2024 on Tascam DR-05x with post processing.\nLocation: Russia, Ekaterinburg.\nI ask you, if possible, to help this wonderful site (not me) stay afloat and develop further. Make a donation <a href=\"https://freesound.org/donations/donate/\" rel=\"nofollow\">https://freesound.org/donations/donate/</a> if my sounds helped or liked you. Freesound remains free of advertising, let's appreciate it together.\nEnjoy it! I hope that my sounds and phonograms will be useful in your creativity. Feel free to leave your comments with ratings, even if they are critical.\nNote: audio quality is always better when downloaded.\nAs for attribution, you should credit me in your work. How to do this, see <a href=\"https://freesound.org/people/newlocknew/\" rel=\"nofollow\">here</a> . This sound CANNOT be used in stock (royalty free) materials. Do not post, publish or redistribute my RAW sounds/files on YouTube or any other sites, platforms or services. My sounds can be used within your projects (including commercial ones, if the license assigned to this sound allows it), as part of an artistic form or design. Otherwise, please adhere to the license rules, which can be found <a href=\"https://freesound.org/forum/legal-help-and-attribution-questions/38292/\" rel=\"nofollow\">here</a> . I would be glad if you post a link to your finished product on <a href=\"http://Freesound.org\" rel=\"nofollow\">Freesound.org</a>, or a video review of it (in the comments to one or more of my sounds) with a short text stating that this sound was used in this project. This will be a kind of small gratitude for my work. And, of course, it's always interesting to see the live context in which my sounds are used. Thank you.",
+        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "duration": 243.002,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/756/756285_5828667-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/756/756285_5828667-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/756/756285_5828667-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/756/756285_5828667-lq.ogg"
         }
     },
     {
@@ -11303,28 +11276,55 @@
         }
     },
     {
-        "id": 36164,
-        "url": "https://freesound.org/people/sagetyrtle/sounds/36164/",
-        "name": "laughs2.wav",
+        "id": 388252,
+        "url": "https://freesound.org/people/ANARKYA/sounds/388252/",
+        "name": "Laugh 01.wav",
         "tags": [
-            "chuckle",
-            "chuckling",
-            "female",
-            "foley",
-            "giggle",
-            "giggling",
-            "laugh",
-            "laughter",
-            "woman"
+            "lol",
+            "Voices",
+            "Laughing",
+            "Laugh",
+            "Smile",
+            "Girl",
+            "Laughter",
+            "Children",
+            "Women"
         ],
-        "description": "Several laughs, chuckles and giggles. For the curious: recorded while having great fun voice-chatting with friends, i.e. the laughter's sincere.",
+        "description": "Family laughter at home.",
         "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 206.194,
+        "duration": 1.79125,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/36/36164_43834-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/36/36164_43834-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/36/36164_43834-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/36/36164_43834-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/388/388252_4448255-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/388/388252_4448255-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/388/388252_4448255-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/388/388252_4448255-lq.ogg"
+        }
+    },
+    {
+        "id": 524775,
+        "url": "https://freesound.org/people/Evil_Ear_Recordings/sounds/524775/",
+        "name": "Comedy FX",
+        "tags": [
+            "funny",
+            "humor",
+            "giggle",
+            "audience",
+            "canned",
+            "comedian",
+            "laughing",
+            "laugh",
+            "standup",
+            "comedy",
+            "laughter"
+        ],
+        "description": "Some laughter recorded from two venues in Edinburgh\n\nUsed here originally: <a href=\"https://soundcloud.com/evil-ear/great-britain\" rel=\"nofollow\">https://soundcloud.com/evil-ear/great-britain</a>\n\nEnjoy.\n\nEvil Ear",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 31.9565,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/524/524775_2515377-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/524/524775_2515377-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/524/524775_2515377-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/524/524775_2515377-lq.ogg"
         }
     },
     {
@@ -11835,30 +11835,6 @@
         }
     },
     {
-        "id": 440105,
-        "url": "https://freesound.org/people/Processaurus/sounds/440105/",
-        "name": "M Short Laughter - staggered alt.wav",
-        "tags": [
-            "group",
-            "adults",
-            "crowd",
-            "audience",
-            "laughing",
-            "laugh",
-            "laughter",
-            "auditorium"
-        ],
-        "description": "These are canned crowd sounds, recorded for a theatrical production.  These were recorded in quad, with the design to be played out of four speakers, one near each corner of the room.  We made them with a small group of people, and recorded 20 layers or so of each reaction, moving the group around the room.  There are some alternative arrangements of the layers, scooted around in time, to make some variation, which would help realism, if the sounds needed to be played back to back, like 3 rounds of applause in a row.  These are the \u201cstaggered\u201d files.\n\nThese were recorded in a medium size hall, with AKG C414\u2019s for the front left and right channels, and Neumann KM184\u2019s for the rear left and right channels.",
-        "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 8.91646,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/440/440105_2000259-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/440/440105_2000259-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/440/440105_2000259-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/440/440105_2000259-lq.ogg"
-        }
-    },
-    {
         "id": 440112,
         "url": "https://freesound.org/people/Processaurus/sounds/440112/",
         "name": "S Short Laughter - alt staggered.wav",
@@ -11995,34 +11971,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/475/475524_531690-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/475/475524_531690-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/475/475524_531690-lq.ogg"
-        }
-    },
-    {
-        "id": 475527,
-        "url": "https://freesound.org/people/theafterdinnerdialogues/sounds/475527/",
-        "name": "Playing Kids, Music, Laughter and Neighborhood Noises.wav",
-        "tags": [
-            "Kids",
-            "Playing-Kids",
-            "Nature",
-            "Outside",
-            "Radio",
-            "Laughing",
-            "Background",
-            "Ambient",
-            "Ambience",
-            "Natural",
-            "Laughter",
-            "Playing"
-        ],
-        "description": "Cozy sounds of children playing and laughing. Grimbergen, Belgium.",
-        "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 100.5,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/475/475527_531690-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/475/475527_531690-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/475/475527_531690-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/475/475527_531690-lq.ogg"
         }
     },
     {
@@ -13054,28 +13002,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/703/703061_14601869-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/703/703061_14601869-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/703/703061_14601869-lq.ogg"
-        }
-    },
-    {
-        "id": 767894,
-        "url": "https://freesound.org/people/Valerie-Vivegnis/sounds/767894/",
-        "name": "Laughter- parrot",
-        "tags": [
-            "parrot",
-            "cackle",
-            "bird",
-            "insane",
-            "laughter",
-            "laugh"
-        ],
-        "description": "Parrot laughing",
-        "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 3.05633,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/767/767894_15375955-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/767/767894_15375955-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/767/767894_15375955-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/767/767894_15375955-lq.ogg"
         }
     },
     {
@@ -14129,27 +14055,6 @@
         }
     },
     {
-        "id": 62864,
-        "url": "https://freesound.org/people/Robinhood76/sounds/62864/",
-        "name": "00545 man laugh 4 bad.wav",
-        "tags": [
-            "bad",
-            "evil",
-            "laugh",
-            "laughter",
-            "man"
-        ],
-        "description": "Man laughs it sounds like evil, bad cartoon hero :) Rec by neumann TLM 103",
-        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-        "duration": 1.73628,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/62/62864_321967-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/62/62864_321967-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/62/62864_321967-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/62/62864_321967-lq.ogg"
-        }
-    },
-    {
         "id": 678730,
         "url": "https://freesound.org/people/AlesiaDavina/sounds/678730/",
         "name": "Halloween Horror Voice: Spiteful Laughter (Vol 003)",
@@ -14399,32 +14304,6 @@
         }
     },
     {
-        "id": 72844,
-        "url": "https://freesound.org/people/lonemonk/sounds/72844/",
-        "name": "Approx 800 Laughter and Clapter 1.wav",
-        "tags": [
-            "audience",
-            "cheer",
-            "clapping",
-            "crowd",
-            "enthusiastic",
-            "field-recording",
-            "large-crowd",
-            "laughing",
-            "laughter",
-            "people"
-        ],
-        "description": "January, 24 2009 - Robbie Burns Supper. Gear: Edirol R-4, R0DE NT-4 stereo. Greater Victoria Police Pipe Band. The hall is large and mostly made of local cedar; Crowd is approximately 800-850. This is just one of the crowds reaction to a previous piece of music or speech from the MC. Please see my Sample Pack of \"Audience Reactions\"",
-        "license": "http://creativecommons.org/licenses/by/3.0/",
-        "duration": 9.90331,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/72/72844_230160-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/72/72844_230160-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/72/72844_230160-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/72/72844_230160-lq.ogg"
-        }
-    },
-    {
         "id": 328017,
         "url": "https://freesound.org/people/ACinJC/sounds/328017/",
         "name": "laughter_quiet.wav",
@@ -14544,6 +14423,92 @@
         }
     },
     {
+        "id": 242933,
+        "url": "https://freesound.org/people/OBXJohn/sounds/242933/",
+        "name": "Child Laughing (mp3 file)",
+        "tags": [
+            "giggle",
+            "giggling",
+            "short",
+            "love",
+            "funny",
+            "joy",
+            "tickle",
+            "playful",
+            "baby",
+            "laughing",
+            "laugh",
+            "child",
+            "fun",
+            "smile",
+            "voice",
+            "laughter",
+            "playing",
+            "happy"
+        ],
+        "description": "\r\nLonger sample (about 14 seconds) of a 4 year old child (my son actually) laughing. Good for any number of possible uses. ",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "duration": 13.3506,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/242/242933_3719168-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/242/242933_3719168-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/242/242933_3719168-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/242/242933_3719168-lq.ogg"
+        }
+    },
+    {
+        "id": 124026,
+        "url": "https://freesound.org/people/Kyster/sounds/124026/",
+        "name": "big crowd a little laughter.wav",
+        "tags": [
+            "crowd",
+            "gathering",
+            "laugh",
+            "laughing",
+            "laughter",
+            "outdoor",
+            "people"
+        ],
+        "description": "A big crowd of people laughing. Recorded with Sony HI-MD walkman MZ-NH1 minidisc recorder and a pair of binaural microphones.",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "duration": 5.79338,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/124/124026_646701-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/124/124026_646701-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/124/124026_646701-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/124/124026_646701-lq.ogg"
+        }
+    },
+    {
+        "id": 346688,
+        "url": "https://freesound.org/people/deleted_user_2104797/sounds/346688/",
+        "name": "Crowd laughters & clap.wav",
+        "tags": [
+            "applause",
+            "crowd",
+            "people",
+            "applaud",
+            "clapping",
+            "applauding",
+            "audience",
+            "cheering",
+            "cheer",
+            "laughing",
+            "laugh",
+            "laughter",
+            "clap"
+        ],
+        "description": "A selection of crowd reactions, in a bar.",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 38.0458,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/346/346688_2104797-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/346/346688_2104797-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/346/346688_2104797-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/346/346688_2104797-lq.ogg"
+        }
+    },
+    {
         "id": 697839,
         "url": "https://freesound.org/people/DanJFilms/sounds/697839/",
         "name": "Weird Creepy Phased Laughter",
@@ -14575,51 +14540,6 @@
         }
     },
     {
-        "id": 731371,
-        "url": "https://freesound.org/people/magicalmysticva/sounds/731371/",
-        "name": "Female Sexy NSFW Moan With Laughter Sound Effect For Porn/Hentai Content Creators~! (MagicalMysticVA)",
-        "tags": [
-            "Hentai",
-            "Female-Moan-Sound-Effect",
-            "NSFW-Sound-Effect",
-            "Voice-Actress",
-            "Sexy",
-            "Moan-Sound-Effect",
-            "Lewd-Giggle",
-            "Sexy-Voice",
-            "Female-Giggle",
-            "Mystic",
-            "Hentai-Moan",
-            "Moan",
-            "Cute-Female-Moan",
-            "Lewd-Sound-Effect",
-            "Lewd",
-            "Laughter",
-            "Porn",
-            "Female-Moan",
-            "Giggling-Moan",
-            "Hentai-Sound-Effect",
-            "Giggle",
-            "Giggling",
-            "Female-Laughing",
-            "Girl-Moaning",
-            "NSFW-Giggle",
-            "Sexy-Sound-Effect",
-            "Giggle-Moan",
-            "Cute-Moan",
-            "NSFW"
-        ],
-        "description": "I'm going to be generous and give away some free audio. If you want more of my lewd sound effects~! Support me~! Or commission me a custom audio request: <a href=\"https://allmylinks.com/magicalmysticva\" rel=\"nofollow\">https://allmylinks.com/magicalmysticva</a>\n\nPreferably credit me, if you use my voice. I'll share it, if I see it~!\n\n(Do not use my voice for unauthorized Ai training)\n\nSupport &amp; Access to more sound effects\n<a href=\"https://www.patreon.com/MagicalMysticVA\" rel=\"nofollow\">https://www.patreon.com/MagicalMysticVA</a>\n<a href=\"https://magicalmysticva.gumroad.com\" rel=\"nofollow\">https://magicalmysticva.gumroad.com</a>\n<a href=\"https://magicalmysticva.bandcamp.com\" rel=\"nofollow\">https://magicalmysticva.bandcamp.com</a>",
-        "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 30.4443,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/731/731371_12068263-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/731/731371_12068263-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/731/731371_12068263-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/731/731371_12068263-lq.ogg"
-        }
-    },
-    {
         "id": 94104,
         "url": "https://freesound.org/people/kukla/sounds/94104/",
         "name": "audience laughter.wav",
@@ -14638,34 +14558,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/94/94104_512378-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/94/94104_512378-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/94/94104_512378-lq.ogg"
-        }
-    },
-    {
-        "id": 326313,
-        "url": "https://freesound.org/people/ivolipa/sounds/326313/",
-        "name": "Tavern_Ambience_Inside_Laughter.WAV",
-        "tags": [
-            "Atmosphere",
-            "Noise",
-            "Eating",
-            "Restaurant",
-            "Tavern",
-            "Dinner",
-            "Talking",
-            "Inn",
-            "Chat",
-            "Ambience",
-            "Laughter",
-            "Public"
-        ],
-        "description": "Ambience sound recorded in tavern at dinner time.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 37.4857,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/326/326313_3474310-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/326/326313_3474310-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/326/326313_3474310-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/326/326313_3474310-lq.ogg"
         }
     },
     {
@@ -15092,40 +14984,6 @@
         }
     },
     {
-        "id": 242932,
-        "url": "https://freesound.org/people/OBXJohn/sounds/242932/",
-        "name": "Child Laughing (wav file)",
-        "tags": [
-            "giggle",
-            "giggling",
-            "short",
-            "love",
-            "funny",
-            "joy",
-            "tickle",
-            "playful",
-            "baby",
-            "laughing",
-            "laugh",
-            "child",
-            "fun",
-            "smile",
-            "voice",
-            "laughter",
-            "playing",
-            "happy"
-        ],
-        "description": "\r\nLonger sample (about 14 seconds) of a 4 year old child (my son actually) laughing. Good for any number of possible uses. ",
-        "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 13.3506,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/242/242932_3719168-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/242/242932_3719168-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/242/242932_3719168-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/242/242932_3719168-lq.ogg"
-        }
-    },
-    {
         "id": 72843,
         "url": "https://freesound.org/people/lonemonk/sounds/72843/",
         "name": "Approx 800 Laughter Only 1.wav",
@@ -15174,26 +15032,184 @@
         }
     },
     {
-        "id": 124026,
-        "url": "https://freesound.org/people/Kyster/sounds/124026/",
-        "name": "big crowd a little laughter.wav",
+        "id": 731371,
+        "url": "https://freesound.org/people/magicalmysticva/sounds/731371/",
+        "name": "Female Sexy NSFW Moan With Laughter Sound Effect For Porn/Hentai Content Creators~! (MagicalMysticVA)",
         "tags": [
-            "crowd",
-            "gathering",
-            "laugh",
-            "laughing",
-            "laughter",
-            "outdoor",
-            "people"
+            "Hentai",
+            "Female-Moan-Sound-Effect",
+            "NSFW-Sound-Effect",
+            "Voice-Actress",
+            "Sexy",
+            "Moan-Sound-Effect",
+            "Lewd-Giggle",
+            "Sexy-Voice",
+            "Female-Giggle",
+            "Mystic",
+            "Hentai-Moan",
+            "Moan",
+            "Cute-Female-Moan",
+            "Lewd-Sound-Effect",
+            "Lewd",
+            "Laughter",
+            "Porn",
+            "Female-Moan",
+            "Giggling-Moan",
+            "Hentai-Sound-Effect",
+            "Giggle",
+            "Giggling",
+            "Female-Laughing",
+            "Girl-Moaning",
+            "NSFW-Giggle",
+            "Sexy-Sound-Effect",
+            "Giggle-Moan",
+            "Cute-Moan",
+            "NSFW"
         ],
-        "description": "A big crowd of people laughing. Recorded with Sony HI-MD walkman MZ-NH1 minidisc recorder and a pair of binaural microphones.",
+        "description": "I'm going to be generous and give away some free audio. If you want more of my lewd sound effects~! Support me~! Or commission me a custom audio request: <a href=\"https://allmylinks.com/magicalmysticva\" rel=\"nofollow\">https://allmylinks.com/magicalmysticva</a>\n\nPreferably credit me, if you use my voice. I'll share it, if I see it~!\n\n(Do not use my voice for unauthorized Ai training)\n\nSupport &amp; Access to more sound effects\n<a href=\"https://www.patreon.com/MagicalMysticVA\" rel=\"nofollow\">https://www.patreon.com/MagicalMysticVA</a>\n<a href=\"https://magicalmysticva.gumroad.com\" rel=\"nofollow\">https://magicalmysticva.gumroad.com</a>\n<a href=\"https://magicalmysticva.bandcamp.com\" rel=\"nofollow\">https://magicalmysticva.bandcamp.com</a>",
         "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 5.79338,
+        "duration": 30.4443,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/124/124026_646701-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/124/124026_646701-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/124/124026_646701-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/124/124026_646701-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/731/731371_12068263-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/731/731371_12068263-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/731/731371_12068263-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/731/731371_12068263-lq.ogg"
+        }
+    },
+    {
+        "id": 440105,
+        "url": "https://freesound.org/people/Processaurus/sounds/440105/",
+        "name": "M Short Laughter - staggered alt.wav",
+        "tags": [
+            "group",
+            "adults",
+            "crowd",
+            "audience",
+            "laughing",
+            "laugh",
+            "laughter",
+            "auditorium"
+        ],
+        "description": "These are canned crowd sounds, recorded for a theatrical production.  These were recorded in quad, with the design to be played out of four speakers, one near each corner of the room.  We made them with a small group of people, and recorded 20 layers or so of each reaction, moving the group around the room.  There are some alternative arrangements of the layers, scooted around in time, to make some variation, which would help realism, if the sounds needed to be played back to back, like 3 rounds of applause in a row.  These are the \u201cstaggered\u201d files.\n\nThese were recorded in a medium size hall, with AKG C414\u2019s for the front left and right channels, and Neumann KM184\u2019s for the rear left and right channels.",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "duration": 8.91646,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/440/440105_2000259-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/440/440105_2000259-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/440/440105_2000259-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/440/440105_2000259-lq.ogg"
+        }
+    },
+    {
+        "id": 242932,
+        "url": "https://freesound.org/people/OBXJohn/sounds/242932/",
+        "name": "Child Laughing (wav file)",
+        "tags": [
+            "giggle",
+            "giggling",
+            "short",
+            "love",
+            "funny",
+            "joy",
+            "tickle",
+            "playful",
+            "baby",
+            "laughing",
+            "laugh",
+            "child",
+            "fun",
+            "smile",
+            "voice",
+            "laughter",
+            "playing",
+            "happy"
+        ],
+        "description": "\r\nLonger sample (about 14 seconds) of a 4 year old child (my son actually) laughing. Good for any number of possible uses. ",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "duration": 13.3506,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/242/242932_3719168-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/242/242932_3719168-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/242/242932_3719168-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/242/242932_3719168-lq.ogg"
+        }
+    },
+    {
+        "id": 475527,
+        "url": "https://freesound.org/people/theafterdinnerdialogues/sounds/475527/",
+        "name": "Playing Kids, Music, Laughter and Neighborhood Noises.wav",
+        "tags": [
+            "Kids",
+            "Playing-Kids",
+            "Nature",
+            "Outside",
+            "Radio",
+            "Laughing",
+            "Background",
+            "Ambient",
+            "Ambience",
+            "Natural",
+            "Laughter",
+            "Playing"
+        ],
+        "description": "Cozy sounds of children playing and laughing. Grimbergen, Belgium.",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "duration": 100.5,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/475/475527_531690-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/475/475527_531690-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/475/475527_531690-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/475/475527_531690-lq.ogg"
+        }
+    },
+    {
+        "id": 326313,
+        "url": "https://freesound.org/people/ivolipa/sounds/326313/",
+        "name": "Tavern_Ambience_Inside_Laughter.WAV",
+        "tags": [
+            "Atmosphere",
+            "Noise",
+            "Eating",
+            "Restaurant",
+            "Tavern",
+            "Dinner",
+            "Talking",
+            "Inn",
+            "Chat",
+            "Ambience",
+            "Laughter",
+            "Public"
+        ],
+        "description": "Ambience sound recorded in tavern at dinner time.",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 37.4857,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/326/326313_3474310-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/326/326313_3474310-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/326/326313_3474310-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/326/326313_3474310-lq.ogg"
+        }
+    },
+    {
+        "id": 767894,
+        "url": "https://freesound.org/people/Valerie-Vivegnis/sounds/767894/",
+        "name": "Laughter- parrot",
+        "tags": [
+            "parrot",
+            "cackle",
+            "bird",
+            "insane",
+            "laughter",
+            "laugh"
+        ],
+        "description": "Parrot laughing",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "duration": 3.05633,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/767/767894_15375955-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/767/767894_15375955-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/767/767894_15375955-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/767/767894_15375955-lq.ogg"
         }
     },
     {
@@ -15221,37 +15237,29 @@
         }
     },
     {
-        "id": 242933,
-        "url": "https://freesound.org/people/OBXJohn/sounds/242933/",
-        "name": "Child Laughing (mp3 file)",
+        "id": 72844,
+        "url": "https://freesound.org/people/lonemonk/sounds/72844/",
+        "name": "Approx 800 Laughter and Clapter 1.wav",
         "tags": [
-            "giggle",
-            "giggling",
-            "short",
-            "love",
-            "funny",
-            "joy",
-            "tickle",
-            "playful",
-            "baby",
+            "audience",
+            "cheer",
+            "clapping",
+            "crowd",
+            "enthusiastic",
+            "field-recording",
+            "large-crowd",
             "laughing",
-            "laugh",
-            "child",
-            "fun",
-            "smile",
-            "voice",
             "laughter",
-            "playing",
-            "happy"
+            "people"
         ],
-        "description": "\r\nLonger sample (about 14 seconds) of a 4 year old child (my son actually) laughing. Good for any number of possible uses. ",
-        "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 13.3506,
+        "description": "January, 24 2009 - Robbie Burns Supper. Gear: Edirol R-4, R0DE NT-4 stereo. Greater Victoria Police Pipe Band. The hall is large and mostly made of local cedar; Crowd is approximately 800-850. This is just one of the crowds reaction to a previous piece of music or speech from the MC. Please see my Sample Pack of \"Audience Reactions\"",
+        "license": "http://creativecommons.org/licenses/by/3.0/",
+        "duration": 9.90331,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/242/242933_3719168-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/242/242933_3719168-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/242/242933_3719168-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/242/242933_3719168-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/72/72844_230160-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/72/72844_230160-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/72/72844_230160-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/72/72844_230160-lq.ogg"
         }
     },
     {
@@ -15333,38 +15341,6 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/104/104110_1015240-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/104/104110_1015240-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/104/104110_1015240-lq.ogg"
-        }
-    },
-    {
-        "id": 162425,
-        "url": "https://freesound.org/people/Timbre/sounds/162425/",
-        "name": "remix-#2-of-103987-bulbastre-evil-laughter-joker-deeper-stereo.flac",
-        "tags": [
-            "villian",
-            "devil",
-            "baddie",
-            "demon",
-            "deep",
-            "joker",
-            "bad",
-            "fat",
-            "laugh",
-            "cartoony",
-            "laughter",
-            "cartoon",
-            "man",
-            "103987",
-            "evil",
-            "104110"
-        ],
-        "description": "remix of 104110 with quicker chuckles",
-        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-        "duration": 12.6488,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/162/162425_1015240-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/162/162425_1015240-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/162/162425_1015240-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/162/162425_1015240-lq.ogg"
         }
     },
     {
@@ -15505,32 +15481,56 @@
         }
     },
     {
-        "id": 346688,
-        "url": "https://freesound.org/people/deleted_user_2104797/sounds/346688/",
-        "name": "Crowd laughters & clap.wav",
+        "id": 162425,
+        "url": "https://freesound.org/people/Timbre/sounds/162425/",
+        "name": "remix-#2-of-103987-bulbastre-evil-laughter-joker-deeper-stereo.flac",
         "tags": [
-            "applause",
-            "crowd",
-            "people",
-            "applaud",
-            "clapping",
-            "applauding",
-            "audience",
-            "cheering",
-            "cheer",
-            "laughing",
+            "villian",
+            "devil",
+            "baddie",
+            "demon",
+            "deep",
+            "joker",
+            "bad",
+            "fat",
+            "laugh",
+            "cartoony",
+            "laughter",
+            "cartoon",
+            "man",
+            "103987",
+            "evil",
+            "104110"
+        ],
+        "description": "remix of 104110 with quicker chuckles",
+        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "duration": 12.6488,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/162/162425_1015240-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/162/162425_1015240-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/162/162425_1015240-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/162/162425_1015240-lq.ogg"
+        }
+    },
+    {
+        "id": 62864,
+        "url": "https://freesound.org/people/Robinhood76/sounds/62864/",
+        "name": "00545 man laugh 4 bad.wav",
+        "tags": [
+            "bad",
+            "evil",
             "laugh",
             "laughter",
-            "clap"
+            "man"
         ],
-        "description": "A selection of crowd reactions, in a bar.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 38.0458,
+        "description": "Man laughs it sounds like evil, bad cartoon hero :) Rec by neumann TLM 103",
+        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "duration": 1.73628,
         "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/346/346688_2104797-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/346/346688_2104797-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/346/346688_2104797-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/346/346688_2104797-lq.ogg"
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/62/62864_321967-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/62/62864_321967-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/62/62864_321967-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/62/62864_321967-lq.ogg"
         }
     },
     {
@@ -17934,27 +17934,6 @@
         }
     },
     {
-        "id": 21929,
-        "url": "https://freesound.org/people/dobroide/sounds/21929/",
-        "name": "20060812.pub.flac",
-        "tags": [
-            "ambiance",
-            "field-recording",
-            "laughter",
-            "pub",
-            "voices"
-        ],
-        "description": "ambiance inside a Scottish pub (at 11 am), with voices of several people. A group of old ladies having gin and tonic stand out clearly. Soundman OKM  &gt; Sony MD &gt; iRiver H120",
-        "license": "https://creativecommons.org/licenses/by/4.0/",
-        "duration": 15.5274,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/21/21929_8043-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/21/21929_8043-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/21/21929_8043-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/21/21929_8043-lq.ogg"
-        }
-    },
-    {
         "id": 27912,
         "url": "https://freesound.org/people/stereobanana/sounds/27912/",
         "name": "2006.12.30HomersKeyboardGuitarLonger.flac",
@@ -19927,26 +19906,6 @@
         }
     },
     {
-        "id": 480783,
-        "url": "https://freesound.org/people/craigsmith/sounds/480783/",
-        "name": "R07-31-Two Men Laughing.wav",
-        "tags": [
-            "Laughter",
-            "Optical",
-            "Crowds",
-            "Vintage"
-        ],
-        "description": "Two men laughing boisterously. Up close. Good, strong laughs.",
-        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
-        "duration": 7.24488,
-        "previews": {
-            "preview-hq-mp3": "https://cdn.freesound.org/previews/480/480783_2524442-hq.mp3",
-            "preview-hq-ogg": "https://cdn.freesound.org/previews/480/480783_2524442-hq.ogg",
-            "preview-lq-mp3": "https://cdn.freesound.org/previews/480/480783_2524442-lq.mp3",
-            "preview-lq-ogg": "https://cdn.freesound.org/previews/480/480783_2524442-lq.ogg"
-        }
-    },
-    {
         "id": 480799,
         "url": "https://freesound.org/people/craigsmith/sounds/480799/",
         "name": "R08-51-Medium Sized Group of Men Talking.wav",
@@ -20419,6 +20378,51 @@
             "preview-hq-ogg": "https://cdn.freesound.org/previews/361/361593_6366356-hq.ogg",
             "preview-lq-mp3": "https://cdn.freesound.org/previews/361/361593_6366356-lq.mp3",
             "preview-lq-ogg": "https://cdn.freesound.org/previews/361/361593_6366356-lq.ogg"
+        }
+    },
+    {
+        "id": 341282,
+        "url": "https://freesound.org/people/tababich/sounds/341282/",
+        "name": "laugh 1 no bounce noise.wav",
+        "tags": [
+            "voice",
+            "happy",
+            "laughter",
+            "laugh",
+            "child"
+        ],
+        "description": "a giggly laugh transposed 6 times depending on how hi pitch or childish you need",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 5.07694,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/341/341282_6093124-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/341/341282_6093124-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/341/341282_6093124-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/341/341282_6093124-lq.ogg"
+        }
+    },
+    {
+        "id": 333861,
+        "url": "https://freesound.org/people/mitsumangas/sounds/333861/",
+        "name": "girl insane laugh.wav",
+        "tags": [
+            "insane",
+            "crazy",
+            "woman",
+            "female",
+            "laugh",
+            "girl",
+            "voice",
+            "laughter"
+        ],
+        "description": "I enjoyed myself haha! No, I mean, mouahahahah! I am French! :3",
+        "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "duration": 5.93086,
+        "previews": {
+            "preview-hq-mp3": "https://cdn.freesound.org/previews/333/333861_5627545-hq.mp3",
+            "preview-hq-ogg": "https://cdn.freesound.org/previews/333/333861_5627545-hq.ogg",
+            "preview-lq-mp3": "https://cdn.freesound.org/previews/333/333861_5627545-lq.mp3",
+            "preview-lq-ogg": "https://cdn.freesound.org/previews/333/333861_5627545-lq.ogg"
         }
     }
 ]
