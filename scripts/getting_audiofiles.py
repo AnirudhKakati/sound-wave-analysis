@@ -10,12 +10,13 @@ def download_audio(category):
     This function:
     - Reads the metadata JSON file for the given `category`.
     - Extracts the preview URLs for audio files.
-    - Downloads the audio files in parallel using a thread pool with up to 10 workers.
+    - Downloads the audio files in parallel using a thread pool with up to 16 workers.
     - Skips files that have already been downloaded.
 
     Parameters:
     - category (str): The name of the category (e.g., "rain_sounds") whose audio files are to be downloaded.
     """
+
     os.makedirs(f"../audiofiles/{category}",exist_ok=True) #if audiofiles folder doesn't already exist then create it
     filename=f"{category}_metadata.json"
 
@@ -23,7 +24,7 @@ def download_audio(category):
         data=json.load(f)
         tasks=[]
 
-        with ThreadPoolExecutor(max_workers=16) as executor: #execute downloads in parallel with 10 threads
+        with ThreadPoolExecutor(max_workers=16) as executor: #execute downloads in parallel with 16 threads
             for i in range(len(data)):
                 url=data[i]["previews"]["preview-lq-mp3"]
                 filepath=f"../audiofiles/{category}/{category}_{i+1}.mp3"
@@ -44,6 +45,7 @@ def download_file_helper(url,filepath):
     - url (str): The URL of the audio file to be downloaded.
     - filepath (str): The path where the downloaded file should be saved.
     """
+
     try:
         urllib.request.urlretrieve(url, filepath)
     except Exception as e:
