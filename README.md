@@ -1,4 +1,4 @@
-### Sound Wave Analysis
+# Sound Wave Analysis
 
 #### Data Collection Phase
 - Metadata: Stored in the `data` folder, containing JSON files for 20 categories.
