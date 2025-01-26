@@ -2,4 +2,8 @@ audiofiles/
 *.mp3
 *.wav
 *.log
+
+audiofiles_converted/
+*.wav
+
 .env
