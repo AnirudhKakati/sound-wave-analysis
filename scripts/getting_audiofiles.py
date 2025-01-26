@@ -7,7 +7,6 @@ def download_audio(category):
     """
     Function to download the audiofiles in parallel from the preview urls in the stored JSON files
     """
-    category=category.replace(" ","_")
     os.makedirs(f"../audiofiles/{category}",exist_ok=True) #if audiofiles folder doesn't already exist then create it
     filename=f"{category}_metadata.json"
 

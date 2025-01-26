@@ -40,7 +40,7 @@ def save_metadata(data,category):
     """
 
     os.makedirs("../data",exist_ok=True) #if data folder doesn't already exist then create it
-    filename=f"../data/{category.replace(" ","_")}_metadata.json"
+    filename=f"../data/{category}_metadata.json"
     with open(filename,"w") as f:
         json.dump(data,f,indent=4)
     print(f"Metadata saved for category: {category}")
