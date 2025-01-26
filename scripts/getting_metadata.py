@@ -7,7 +7,7 @@ import os
 # the contents API_KEY = <YOUR-API-KEY>. Replace "<YOUR-API-KEY>" with the actual generated API key
 from dotenv import load_dotenv
 load_dotenv() 
-API_KEY=os.getenv("API_KEY") #replace with the generated API key
+API_KEY=os.getenv("API_KEY") # or replace this with the generated API key and skip this process
 
 BASE_URL="https://freesound.org/apiv2"
 
