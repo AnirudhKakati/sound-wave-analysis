@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 def convert_audios(category):
     """
-    Converts all `.mp3` audio files in the specified category to `.wav` format with 
+    Function to convert all `.mp3` audio files in the specified category to `.wav` format with 
     - Sample rate set to 16,000 Hz
     - Mono audio channel
 
@@ -18,6 +18,7 @@ def convert_audios(category):
     Parameters:
     - category (str): The name of the category (e.g., "rain_sounds") whose files are to be converted.
     """
+    
     input_dir=f"../audiofiles/{category}/"
     output_dir=f"../audiofiles_converted/{category}/"
     os.makedirs(output_dir,exist_ok=True)
