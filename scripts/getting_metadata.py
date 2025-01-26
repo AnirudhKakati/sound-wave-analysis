@@ -13,7 +13,23 @@ BASE_URL="https://freesound.org/apiv2"
 
 def search_sounds(query,max_results=150, page=1):
     """
-    Function to search and fetch with pagination the metadata of specific sounds from Freesound API
+    Function to search for sounds using the Freesound API and retrieves metadata for a specific query.
+
+    This function:
+    - Sends a GET request to the Freesound API's search endpoint.
+    - Retrieves metadata for sounds based on the provided `query`.
+    - Handles pagination to fetch results for the specified page.
+    - Returns the results and the link to the next page (if available).
+
+    Parameters:
+    - query (str): The search term to query the Freesound API.
+    - max_results (int, optional): Maximum number of results per page (default is 150, the API's maximum limit).
+    - page (int, optional): The page number to fetch (default is 1).
+    
+    Returns:
+    - tuple: A tuple containing:
+        - results (list): A list of sound metadata dictionaries.
+        - next_page (str or None): The URL for the next page of results, or None if there are no more pages.
     """
 
     url=f"{BASE_URL}/search/text/"
@@ -36,7 +52,15 @@ def search_sounds(query,max_results=150, page=1):
 
 def save_metadata(data,category):
     """
-    Function to save the fetched metadata of sounds into a JSON file
+    Function to saves the metadata of sounds into a JSON file for the specified category.
+
+    This function:
+    - Creates a `../data` directory if it doesn’t already exist.
+    - Writes the provided metadata to a JSON file named `{category}_metadata.json`.
+
+    Parameters:
+    - data (list): A list of sound metadata dictionaries to save.
+    - category (str): The name of the category (e.g., "rain_sounds") to which the metadata belongs.
     """
 
     os.makedirs("../data",exist_ok=True) #if data folder doesn't already exist then create it
@@ -47,8 +71,16 @@ def save_metadata(data,category):
 
 def get_category_data(category,total_results=750):
     """
-    Function to get and save the metadata of 750 sounds of a specific category from Freesound API. 
-    Calls search_sounds function to fetch the sounds and save_metadata function to save them.
+    Function to fetch and save metadata for a specified number of sounds in a given category from the Freesound API.
+
+    This function:
+    - Calls `search_sounds` to fetch sound metadata in batches (paginated).
+    - Aggregates the metadata until the desired number of results (`total_results`) is collected.
+    - Calls `save_metadata` to save the metadata to a JSON file for the specified category.
+
+    Parameters:
+    - category (str): The name of the category (e.g., "rain_sounds") whose data is to be fetched.
+    - total_results (int, optional): The total number of results to fetch (default is 750).
     """
 
     all_data=[]
