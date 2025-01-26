@@ -2,8 +2,9 @@ import requests
 import json
 import os
 
-# the next 3 lines can be skipped by replacing API_key value with the generated API key from Freesound API
-# here the API key was stored in a .env file and retrieved
+# The next 3 lines can be skipped by replacing API_key value with the generated API key from Freesound API
+# Here the API key was stored in a .env file and retrieved. To follow this structure, create a .env file in the main project folder with
+# the contents API_KEY = <YOUR-API-KEY>. Replace "<YOUR-API-KEY>" with the actual generated API key
 from dotenv import load_dotenv
 load_dotenv() 
 API_KEY=os.getenv("API_KEY") #replace with the generated API key
