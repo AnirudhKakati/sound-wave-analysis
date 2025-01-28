@@ -32,6 +32,7 @@ def download_audio(category):
                     continue
                 print(f"Downloading file {i+1} of {len(data)} with url: {url} from category: {category}")
                 tasks.append(executor.submit(download_file_helper,url,filepath)) #each executor calls download_file_helper
+    print(f"Successfully downloaded all audiofiles of category: {category}")
 
 def download_file_helper(url,filepath):
     """

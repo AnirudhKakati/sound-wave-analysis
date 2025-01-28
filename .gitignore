@@ -6,4 +6,7 @@ audiofiles/
 audiofiles_converted/
 *.wav
 
+audiofiles_processed/
+*.wav
+
 .env
