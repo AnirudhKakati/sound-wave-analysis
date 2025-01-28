@@ -3,9 +3,6 @@ audiofiles/
 *.wav
 *.log
 
-audiofiles_converted/
-*.wav
-
 audiofiles_processed/
 *.wav
 
