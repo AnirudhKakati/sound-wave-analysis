@@ -24,7 +24,7 @@ def download_audio(category):
         data=json.load(f)
         tasks=[]
 
-        with ThreadPoolExecutor(max_workers=16) as executor: #execute downloads in parallel with 16 threads
+        with ThreadPoolExecutor(max_workers=16) as executor: #execute downloads in parallel with 16 threads, adjust number as needed (based on CPU)
             for i in range(len(data)):
                 url=data[i]["previews"]["preview-lq-mp3"]
                 filepath=f"../audiofiles/{category}/{category}_{i+1}.mp3"
