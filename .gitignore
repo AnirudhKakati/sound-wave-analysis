@@ -7,3 +7,6 @@ audiofiles_processed/
 *.wav
 
 .env
+
+website/
+*

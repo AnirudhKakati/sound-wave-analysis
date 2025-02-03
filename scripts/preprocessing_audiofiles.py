@@ -83,7 +83,7 @@ def preprocess_audio_helper(file_name,input_path,output_path,target_length,sampl
 
 def trim_or_pad_audio(audio, max_length, trim_location):
     """
-    Trims or pads an audio signal to a fixed length.
+    Function that trims or pads an audio signal to a fixed length.
 
     This function:
     - Trims the audio from the beginning, middle, or end if it exceeds the target length.
@@ -119,10 +119,74 @@ def trim_or_pad_audio(audio, max_length, trim_location):
 
     return audio
 
+def check_audiofiles(category,expected_dr=5,expected_sr=16000):
+    """
+    Function to check if all processed files are working correctly
+
+    This function checks all processed files for:
+    - Readability (i.e., no corrupted files)
+    - Correct sample rate (16kHz)
+    - Correct duration (5 seconds)
+
+    Parameters:
+    - category (str): The name of the category (e.g., "rain_sounds") whose files are to be checked.
+    - expected_dr (int): The expected audiofile duration (5 seconds in our case)
+    - expected_sr (int): The expected audiofile sample rate (16000 in our case)
+    """
+
+    problem_files=[] #list to store the problem files
+    print(f"Checking audiofiles of category: {category}")
+    base_path=f"../audiofiles_processed/{category}/"
+    
+    tasks=[]
+    with ThreadPoolExecutor(max_workers=16) as executor: #execute the checks in parallel with 16 threads, adjust number as needed (based on CPU)
+        for filename in os.listdir(base_path):
+            if filename.endswith(".wav"):
+                filepath=os.path.join(base_path, filename)
+                tasks.append(executor.submit(check_audiofiles_helper,problem_files,filepath,expected_dr,expected_sr))
+    
+
+    for task in tasks: #wait for all threads to finish
+        task.result()
+         
+    if problem_files: #if any problem file found, log them
+        print("Problematic Files Found! :")
+        for file, issue in problem_files: 
+            print(f"{file} - {issue}")
+    else:
+        print(f"All {category} audiofiles are okay!")
+
+def check_audiofiles_helper(problem_files,filepath,expected_dr,expected_sr):
+    """
+    Helper function to verify a single audiofile
+
+    Parameters:
+    - problem_files (list): A shared list to store problematic files and their issues.
+    - filepath (str): Path of the audio file to check.
+    - expected_dr (int): Expected duration of the audio file in seconds.
+    - expected_sr (int): Expected sample rate of the audio file in Hz.
+    """
+    
+    try:
+       
+        audio,sr=librosa.load(filepath, sr=None) #load the files
+        duration=librosa.get_duration(y=audio, sr=sr)
+
+        #if any mismatch in either of the parameters, then add it to problem_files
+        if sr!=expected_sr:
+            problem_files.append((filepath, f"Incorrect Sample Rate: {sr}"))
+        if duration!=expected_dr:
+            problem_files.append((filepath, f"Incorrect Duration: {duration:.2f}s"))
+
+    except Exception as e:
+        problem_files.append((filepath, f"Corrupted File: {e}"))
 
 if __name__=="__main__":
     with open("categories.txt","r") as f:
         categories=f.read().split()
     
-    for category in categories:
+    for category in categories: #first process all files
         preprocess_and_convert_audios(category)
+
+    for category in categories: #then check all processed files
+        check_audiofiles(category)

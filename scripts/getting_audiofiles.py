@@ -20,7 +20,7 @@ def download_audio(category):
     os.makedirs(f"../audiofiles/{category}",exist_ok=True) #if audiofiles folder doesn't already exist then create it
     filename=f"{category}_metadata.json"
 
-    with open(f"../data/{filename}","r") as f:
+    with open(f"../audiofiles_metadata/json_files/{filename}","r") as f:
         data=json.load(f)
         tasks=[]
 

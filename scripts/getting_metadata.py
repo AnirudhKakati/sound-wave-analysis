@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+import pandas as pd
 
 # The next 3 lines can be skipped by replacing API_key value with the generated API key from Freesound API
 # Here the API key was stored in a .env file and retrieved. To follow this structure, create a .env file in the main project folder with
@@ -63,8 +64,8 @@ def save_metadata(data,category):
     - category (str): The name of the category (e.g., "rain_sounds") to which the metadata belongs.
     """
 
-    os.makedirs("../data",exist_ok=True) #if data folder doesn't already exist then create it
-    filename=f"../data/{category}_metadata.json"
+    os.makedirs("../audiofiles_metadata/json_files",exist_ok=True) #if data folder doesn't already exist then create it
+    filename=f"../audiofiles_metadata/json_files/{category}_metadata.json"
     with open(filename,"w") as f:
         json.dump(data,f,indent=4)
     print(f"Metadata saved for category: {category}")
@@ -83,6 +84,12 @@ def get_category_data(category,total_results=750):
     - total_results (int, optional): The total number of results to fetch (default is 750).
     """
 
+    # define the output filename and check if that metadata file already exists. If it does then we skip it and return from the function.
+    json_filename=f"../audiofiles_metadata/json_files/{category}_metadata.json"
+    if os.path.exists(json_filename):
+        print(f"Metadata JSON already exists for category: {category}, skipping API call.")
+        return
+
     all_data=[]
     page=1 #to keep track of the current page to fetch
     while len(all_data)<total_results: #keep fetching till we have atleast total_results (750 in our case) sounds 
@@ -97,6 +104,63 @@ def get_category_data(category,total_results=750):
 
     save_metadata(all_data[:total_results],category) #save the first total_results (750 in our case) results
 
+def convert_metadata_to_csv(category):
+    """
+    Function to convert a metadata JSON file into a structured CSV format.
+
+    This function:
+    - Reads metadata from a JSON file for a specified `category`.
+    - Converts the metadata into a Pandas DataFrame.
+    - Saves the structured data as a CSV file.
+    - Skips conversion if the CSV already exists.
+    - Calls `clean_metadata_csv` to clean the generated CSV file.
+
+    Parameters:
+    - category (str): The name of the category (e.g., "rain_sounds") whose metadata is to be converted.
+    """
+
+    json_path=f"../audiofiles_metadata/json_files/{category}_metadata.json" #input json file path
+    os.makedirs("../audiofiles_metadata/csv_converted_files",exist_ok=True) #make the output directory if it doesn't already exist
+    csv_path=f"../audiofiles_metadata/csv_converted_files/{category}_metadata.csv"
+
+    if os.path.exists(csv_path): #if the output csv file exists already then skip it and return
+        print(f"Metadata CSV already exists for category: {category}, skipping conversion.")
+        return
+    
+    if not os.path.exists(json_path): #if the json file to convert from doesnt exist then log it and return
+        print(f"JSON metadata file not found for category: {category}")
+        return
+
+    with open(json_path, "r") as f:
+        data = json.load(f)
+    
+    df = pd.DataFrame(data)
+    df.to_csv(csv_path, index=False)
+    print(f"Metadata converted to CSV for category: {category}")
+    clean_metadata_csv(csv_path)
+
+def clean_metadata_csv(csv_path):
+    """
+    Function to clean a metadata CSV file by removing duplicates and ensuring necessary fields are present.
+
+    This function:
+    - Removes duplicate entries based on the `id` column.
+    - Drops rows where essential fields are missing.
+    - Saves the cleaned dataset back to the same CSV file.
+
+    Parameters:
+    - csv_path (str): The file path of the metadata CSV file to be cleaned.
+    """
+
+    df=pd.read_csv(csv_path)
+    # Drop duplicates based on 'id'
+    df.drop_duplicates(subset=['id'], inplace=True)
+    # Remove rows where essential columns are missing
+    essential_columns = ["id", "name", "tags", "duration", "previews", "license", "url"]
+    df.dropna(subset=essential_columns, inplace=True)
+    df.to_csv(csv_path, index=False)
+    print(f"Cleaned metadata CSV saved for category: {category}")
+
 if __name__=="__main__":
     with open("categories.txt","r") as f: #the categories are mentioned in categories.txt file
         categories = f.read().split()
@@ -104,3 +168,6 @@ if __name__=="__main__":
     for category in categories:
         print(f"Fetching data for category: {category}")
         get_category_data(category)
+
+        print(f"Converting fetched metadata to csv for category: {category}")
+        convert_metadata_to_csv(category)
