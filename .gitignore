@@ -1,11 +1,7 @@
-# Ignore entire raw and processed audio folders
 /audiofiles/
 /audiofiles_processed/
 
 # Allow .mp3 files everywhere EXCEPT in ignored folders
 !.mp3
 
-# Ignore environment variables
 .env
-
-/website/
