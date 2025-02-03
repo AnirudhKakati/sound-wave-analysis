@@ -1,9 +1,9 @@
-audiofiles/
-*.mp3
-*.wav
-*.log
+# Ignore entire raw and processed audio folders
+/audiofiles/
+/audiofiles_processed/
 
-audiofiles_processed/
-*.wav
+# Allow .mp3 files everywhere EXCEPT in ignored folders
+!.mp3
 
+# Ignore environment variables
 .env
