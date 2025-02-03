@@ -7,3 +7,5 @@
 
 # Ignore environment variables
 .env
+
+/website/
