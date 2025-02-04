@@ -13,14 +13,13 @@
         <h1 class="gradient-text">Are you ready?</h1>
         <button class="start-button" onclick="startExperience()">YES!</button>
     </div>
-
-    <!-- Main Content -->
-    <div class="main-content" id="mainContent">
+    
+    <div class="main-content" id="mainContent" style="opacity: 1;">
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#intro">Introduction</a></li>
-                <li><a href="#data">Data Exploration</a></li>
+                <li><a href="#data">Data Preparation & Exploration</a></li>
                 <li><a href="#unsupervised">Unsupervised Learning</a></li>
                 <li><a href="#supervised">Supervised Learning</a></li>
                 <li><a href="#conclusion">Conclusion</a></li>
@@ -49,9 +48,9 @@
 
         <section id="data">
             <div data-aos="fade-left" data-aos-duration="1000">
-                <h2>Data Exploration</h2>
+                <h2>Data Preparation & Exploration</h2>
                 <div class="card" onclick="location.href='data-exploration.html'">
-                    <p>Discover how we gathered and processed our dataset for this awesome project.</p>
+                    <p>Discover how the dataset was gathered and processed for this awesome project.</p>
                     <button class="explore-button">Explore More</button>
                 </div>
             </div>
@@ -97,12 +96,12 @@
             </div>
         </section>
 
-        <div class="music-player">
+        <!-- <div class="music-player">
             <audio id="bgMusic" loop>
                 <source src="bgmusic1.mp3" type="audio/mpeg">
             </audio>
             <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🎵</button>
-        </div>
+        </div> -->
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

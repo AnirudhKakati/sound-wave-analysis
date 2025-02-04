@@ -1,43 +1,36 @@
 // Initialize AOS
 AOS.init();
 
-let isPlaying = false;
-const music = document.getElementById('bgMusic');
-
-// Check localStorage for music state on page load
+// Check page state on load
 document.addEventListener('DOMContentLoaded', function() {
-    isPlaying = localStorage.getItem('musicPlaying') === 'true';
-    const button = document.getElementById('musicToggle');
+    const hasSeenPrompt = sessionStorage.getItem('hasSeenPrompt');
+    const splashScreen = document.getElementById('splashScreen');
+    const mainContent = document.getElementById('mainContent');
     
-    if (!isPlaying) {
-        button.classList.add('off');
-        music.pause();
+    if (hasSeenPrompt) {
+        // Hide splash screen and show main content immediately
+        splashScreen.style.display = 'none';
+        mainContent.style.opacity = '1';
+    } else {
+        // First visit - show splash screen
+        mainContent.style.opacity = '0';
     }
 });
 
 function startExperience() {
-    document.getElementById('splashScreen').style.opacity = '0';
-    document.getElementById('mainContent').style.opacity = '1';
-    setTimeout(() => {
-        document.getElementById('splashScreen').style.display = 'none';
-        music.play();
-        isPlaying = true;
-        localStorage.setItem('musicPlaying', true);
-    }, 500);
-}
-
-function toggleMusic() {
-    const button = document.getElementById('musicToggle');
+    // Mark that user has seen the prompt
+    sessionStorage.setItem('hasSeenPrompt', 'true');
     
-    if (isPlaying) {
-        music.pause();
-        button.classList.add('off');
-    } else {
-        music.play();
-        button.classList.remove('off');
-    }
-    isPlaying = !isPlaying;
-    localStorage.setItem('musicPlaying', isPlaying);
+    // Hide splash screen and show main content
+    const splashScreen = document.getElementById('splashScreen');
+    const mainContent = document.getElementById('mainContent');
+    
+    splashScreen.style.opacity = '0';
+    mainContent.style.opacity = '1';
+    
+    setTimeout(() => {
+        splashScreen.style.display = 'none';
+    }, 500);
 }
 
 // Smooth scrolling for navigation

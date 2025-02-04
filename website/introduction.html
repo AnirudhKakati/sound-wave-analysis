@@ -7,15 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <style>
-        /* Additional styles specific to content pages */
-        .content-container {
-            padding-top: 8rem;
-            width: 90%;
-            max-width: 1400px;
-            margin: 0 auto;
-            min-height: 100vh;
-        }
-
+        /* Additional styles specific to introduction page */
         .content-section {
             background: rgba(255, 255, 255, 0.05);
             padding: 3rem;
@@ -25,55 +17,80 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .navigation-buttons {
-            display: flex;
-            justify-content: space-between;
+        .paragraph-section {
             margin: 3rem 0;
-            width: 100%;
+            text-align: left;
         }
 
         .image-container {
-            margin: 2rem 0;
-            border-radius: 1rem;
-            overflow: hidden;
             width: 100%;
             max-height: 500px;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
         }
 
         .image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
         }
 
-        .image-container:hover img {
-            transform: scale(1.05);
-        }
-
-        .key-points {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .point-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 2rem;
+        .questions-section {
+            background: rgba(122, 4, 235, 0.1);
+            padding: 3rem;
             border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(122, 4, 235, 0.2);
+        }
+
+        .question-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: question-counter;
+        }
+
+        .question-list li {
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            padding-left: 3rem;
+            position: relative;
             transition: transform 0.3s ease;
         }
 
-        .point-card:hover {
-            transform: translateY(-5px);
+        .question-list li:hover {
+            transform: translateX(10px);
         }
 
-        h3 {
-            color: var(--secondary);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+        .question-list li::before {
+            counter-increment: question-counter;
+            content: counter(question-counter);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
         }
 
         .nav-button {
@@ -90,6 +107,13 @@
         .nav-button:hover {
             transform: scale(1.1);
         }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            margin-top: 1rem;
+            color: var(--secondary);
+        }
     </style>
 </head>
 <body>
@@ -97,7 +121,7 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="introduction.html" class="active">Introduction</a></li>
-            <li><a href="data-exploration.html">Data Exploration</a></li>
+            <li><a href="data-exploration.html">Data Preparation & Exploration</a></li>
             <li><a href="unsupervised.html">Unsupervised Learning</a></li>
             <li><a href="supervised.html">Supervised Learning</a></li>
             <li><a href="conclusion.html">Conclusion</a></li>
@@ -108,58 +132,55 @@
     <div class="content-container">
         <div class="content-section" data-aos="fade-up">
             <h1>Introduction</h1>
-            <p>Welcome to my machine learning journey! This project explores the fascinating intersection of data science, artificial intelligence, and real-world applications.</p>
             
+            <!-- First Paragraph -->
+            <div class="paragraph-section" data-aos="fade-up">
+                <p>Your first paragraph here (10 sentences about the topic...)</p>
+            </div>
+
+            <!-- First Image -->
             <div class="image-container" data-aos="fade-up">
-                <img src="/api/placeholder/1200/500" alt="Project Overview">
+                <img src="/api/placeholder/1200/500" alt="Topic Visual">
+                <p class="image-caption">Caption explaining the image and its relevance</p>
             </div>
-        </div>
 
-        <div class="content-section" data-aos="fade-up">
-            <h2>Project Overview</h2>
-            <p>This project aims to demonstrate the power of machine learning through practical applications and intuitive visualizations.</p>
-            
-            <div class="key-points">
-                <div class="point-card" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Motivation</h3>
-                    <p>Understanding the driving forces behind this exploration and its potential impact.</p>
-                </div>
-                
-                <div class="point-card" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Objectives</h3>
-                    <p>Clear goals and milestones that guide this machine learning journey.</p>
-                </div>
-                
-                <div class="point-card" data-aos="fade-up" data-aos-delay="300">
-                    <h3>Approach</h3>
-                    <p>Methodology and techniques used to tackle the challenges.</p>
-                </div>
+            <!-- Second Paragraph -->
+            <div class="paragraph-section" data-aos="fade-up">
+                <p>Your second paragraph here (10 sentences about the topic...)</p>
             </div>
-        </div>
 
-        <div class="content-section" data-aos="fade-up">
-            <h2>Key Technologies</h2>
-            <p>This project leverages state-of-the-art tools and frameworks:</p>
+            <!-- Second Image -->
             <div class="image-container" data-aos="fade-up">
-                <img src="/api/placeholder/1200/400" alt="Technologies Used">
+                <img src="/api/placeholder/1200/500" alt="Topic Visual">
+                <p class="image-caption">Caption explaining the image and its relevance</p>
+            </div>
+
+            <!-- Space for More Paragraphs -->
+            <div class="paragraph-section" data-aos="fade-up">
+                <p>Additional paragraphs can be added here...</p>
             </div>
         </div>
 
+        <!-- Questions Section -->
+        <div class="questions-section" data-aos="fade-up">
+            <h2>Research Questions</h2>
+            <ul class="question-list">
+                <li>Your first research question about the topic?</li>
+                <li>Your second research question about the topic?</li>
+                <li>Your third research question about the topic?</li>
+                <!-- Add more questions up to 10 -->
+            </ul>
+        </div>
+
+        <!-- Navigation Buttons -->
         <div class="navigation-buttons">
             <button class="nav-button" onclick="location.href='index.html'">
                 ← Back to Home
             </button>
             <button class="nav-button" onclick="location.href='data-exploration.html'">
-                Next: Data Exploration →
+                Next: Data Preparation & Exploration →
             </button>
         </div>
-    </div>
-
-    <div class="music-player">
-        <audio id="bgMusic" loop>
-            <source src="bgmusic1.mp3" type="audio/mpeg">
-        </audio>
-        <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🎵</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Preparation & Exploration - ML Project</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        .content-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .raw-data, .clean-data {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .visualization-section {
+            margin: 4rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .select-container {
+            margin: 2rem 0;
+        }
+
+        select {
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        select:hover {
+            transform: scale(1.05);
+        }
+
+        .plot-container {
+            width: 70%;  /* Reduced from 100% */
+            max-width: 800px;  /* Added max-width */
+            margin: 2rem auto;  /* Changed to auto margin for centering */
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+        }
+
+        .plot-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0.5rem;
+        }
+
+        .plot-description {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .code-link {
+            display: inline-block;
+            margin: 1rem 0;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .code-link:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: var(--secondary);
+            margin: 3rem 0 1.5rem 0;
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            color: var(--primary);
+            margin: 2rem 0 1rem 0;
+            font-size: 2rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+        }
+
+        .nav-button {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            border: none;
+            border-radius: 1rem;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="data-exploration.html" class="active">Data Preparation & Exploration</a></li>
+            <li><a href="unsupervised.html">Unsupervised Learning</a></li>
+            <li><a href="supervised.html">Supervised Learning</a></li>
+            <li><a href="conclusion.html">Conclusion</a></li>
+            <li><a href="about.html">About Me</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        <!-- Data Collection and Preparation -->
+        <div class="content-section" data-aos="fade-up">
+            <h1>Data Preparation & Exploration</h1>
+            
+            <h2>Data Collection</h2>
+            <p>Description of how, where, and why you gathered your data...</p>
+            <a href="#" class="code-link">View Raw Data</a>
+            
+            <div class="data-container">
+                <div class="raw-data">
+                    <h3>Raw Data Sample</h3>
+                    <img src="/api/placeholder/400/300" alt="Raw Data Sample">
+                </div>
+                <div class="clean-data">
+                    <h3>Cleaned Data Sample</h3>
+                    <img src="/api/placeholder/400/300" alt="Cleaned Data Sample">
+                </div>
+            </div>
+
+            <h2>Data Cleaning Process</h2>
+            <p>Description of your data cleaning process...</p>
+        </div>
+
+        <!-- Data Exploration Visualizations -->
+        <div class="content-section" data-aos="fade-up">
+            <h2>Data Exploration</h2>
+
+            <!-- MFCC Radial Plots -->
+            <div class="visualization-section">
+                <h3>MFCC Radial Plots</h3>
+                <div class="select-container">
+                    <select id="mfccCategory" onchange="updatePlot('mfcc', this.value)">
+                        <!-- Categories will be populated via JavaScript -->
+                    </select>
+                </div>
+                <div class="plot-container">
+                    <img id="mfccPlot" src="../outputs/plots/mfcc_radial/mfcc_radial_applause.png" alt="MFCC Radial Plot">
+                </div>
+                <div class="plot-description">
+                    <p>Description of MFCC Radial Plot...</p>
+                </div>
+            </div>
+
+            <!-- 3D Spectral Feature Plot -->
+            <div class="visualization-section">
+                <h3>3D Spectral Feature Plot</h3>
+                <div class="plot-container">
+                    <img src="../outputs/plots/spectral_3d_plot/spectral_3d_plot.png" alt="3D Spectral Feature Plot">
+                </div>
+                <div class="plot-description">
+                    <p>Description of 3D Spectral Plot...</p>
+                </div>
+            </div>
+
+            <!-- Chroma Feature Heatmap -->
+            <div class="visualization-section">
+                <h3>Chroma Feature Heatmap</h3>
+                <div class="plot-container">
+                    <img src="../outputs/plots/chroma_heatmap/chroma_heatmap.png" alt="Chroma Feature Heatmap">
+                </div>
+                <div class="plot-description">
+                    <p>Description of Chroma Feature Heatmap...</p>
+                </div>
+            </div>
+
+            <!-- Average Spectrograms -->
+            <div class="visualization-section">
+                <h3>Average Spectrograms</h3>
+                <div class="select-container">
+                    <select id="spectrogramCategory" onchange="updatePlot('spectrogram', this.value)">
+                        <!-- Categories will be populated via JavaScript -->
+                    </select>
+                </div>
+                <div class="plot-container">
+                    <img id="spectrogramPlot" src="../outputs/plots/average_spectogram/spectrogram_avg_applause.png" alt="Average Spectrogram">
+                </div>
+                <div class="plot-description">
+                    <p>Description of Average Spectrograms...</p>
+                </div>
+            </div>
+
+            <!-- Time-Series Plots of RMS Energy -->
+            <div class="visualization-section">
+                <h3>Time-Series Plots of RMS Energy</h3>
+                <div class="select-container">
+                    <select id="rmsCategory" onchange="updatePlot('rms', this.value)">
+                        <!-- Categories will be populated via JavaScript -->
+                    </select>
+                </div>
+                <div class="plot-container">
+                    <img id="rmsPlot" src="../outputs/plots/time_series_rms/time_series_rms_applause.png" alt="RMS Energy Plot">
+                </div>
+                <div class="plot-description">
+                    <p>Description of RMS Energy Plots...</p>
+                </div>
+            </div>
+
+            <!-- Zero-Crossing Rate Histograms -->
+            <div class="visualization-section">
+                <h3>Zero-Crossing Rate Histograms</h3>
+                <div class="select-container">
+                    <select id="zcrCategory" onchange="updatePlot('zcr', this.value)">
+                        <!-- Categories will be populated via JavaScript -->
+                    </select>
+                </div>
+                <div class="plot-container">
+                    <img id="zcrPlot" src="../outputs/plots/zcr_histogram/zcr_histogram_applause.png" alt="Zero-Crossing Rate Histogram">
+                </div>
+                <div class="plot-description">
+                    <p>Description of Zero-Crossing Rate Histograms...</p>
+                </div>
+            </div>
+
+            <!-- Feature Variability Plots -->
+            <div class="visualization-section">
+                <h3>Feature Variability Plots</h3>
+                <div class="select-container">
+                    <select id="featureType" onchange="updatePlot('feature', this.value)">
+                        <!-- Features will be populated via JavaScript -->
+                    </select>
+                </div>
+                <div class="plot-container">
+                    <img id="featurePlot" src="../outputs/plots/feature_variability/feature_variability_spectral_bandwidth.png" alt="Feature Variability Plot">
+                </div>
+                <div class="plot-description">
+                    <p>Description of Feature Variability Plots...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <button class="nav-button" onclick="location.href='introduction.html'">
+                ← Back to Introduction
+            </button>
+            <button class="nav-button" onclick="location.href='unsupervised.html'">
+                Next: Unsupervised Learning →
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+
+        // Categories array
+        // const categories = Array.from({length: 20}, (_, i) => i + 1);
+
+        const categories = [
+            'applause',
+            'birds',
+            'car_horn',
+            'cat_meow',
+            'construction_noise',
+            'crowd_noise',
+            'dog_bark',
+            'drums',
+            'fireworks',
+            'footsteps',
+            'guitar',
+            'laughter',
+            'piano',
+            'rain_sounds',
+            'sirens',
+            'speech',
+            'thunder_sounds',
+            'traffic_sounds',
+            'train_sounds',
+            'wind_sounds'
+        ];
+        const features = ['spectral_bandwidth', 'rms_energy', 'spectral_centroid', 'zero_crossing_rate'];
+        
+        // Populate all dropdowns
+        function populateDropdowns() {
+            // Populate category dropdowns
+            const categoryDropdowns = ['mfccCategory', 'spectrogramCategory', 'rmsCategory', 'zcrCategory'];
+            categoryDropdowns.forEach(dropdownId => {
+                const select = document.getElementById(dropdownId);
+                select.innerHTML = '';
+                
+                categories.forEach(cat => {
+                    const option = document.createElement('option');
+                    option.value = cat;
+                    option.text = cat.replace(/_/g, ' ').toUpperCase();
+                    select.appendChild(option);
+                });
+            });
+
+            // Populate feature dropdown
+            const featureSelect = document.getElementById('featureType');
+            if (featureSelect) {
+                featureSelect.innerHTML = '';
+                features.forEach(feature => {
+                    const option = document.createElement('option');
+                    option.value = feature;
+                    option.text = feature.replace(/_/g, ' ').toUpperCase();
+                    featureSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Update plot based on selection
+        function updatePlot(plotType, value) {
+            const plotMapping = {
+                'mfcc': {
+                    element: 'mfccPlot',
+                    path: '../outputs/plots/mfcc_radial/mfcc_radial_'
+                },
+                'spectrogram': {
+                    element: 'spectrogramPlot',
+                    path: '../outputs/plots/average_spectogram/spectrogram_avg_'
+                },
+                'rms': {
+                    element: 'rmsPlot',
+                    path: '../outputs/plots/time_series_rms/time_series_rms_'
+                },
+                'zcr': {
+                    element: 'zcrPlot',
+                    path: '../outputs/plots/zcr_histogram/zcr_histogram_'
+                },
+                'feature': {
+                    element: 'featurePlot',
+                    path: '../outputs/plots/feature_variability/feature_variability_'
+                }
+            };
+
+            const plot = plotMapping[plotType];
+            if (plot) {
+                const img = document.getElementById(plot.element);
+                img.src = `${plot.path}${value}.png`;
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            populateDropdowns();
+            AOS.init();
+        });
+    </script>
+</body>
+</html>
