@@ -1,4 +1,5 @@
 # Sound Wave Analysis (WORK IN PROGRESS)
+Checkout the project here: https://anirudhkakati.github.io/sound-wave-analysis/index.html
 
 This project involves analyzing and classifying sound waves from various categories using machine learning techniques. The initial steps include data collection, preprocessing, and conversion to prepare the dataset for further analysis.
 
