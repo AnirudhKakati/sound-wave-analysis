@@ -190,46 +190,14 @@ html {
     transform: scale(1.1);
 }
 
-/* .music-player {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 1rem;
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-}
-
-.music-toggle {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 2rem;
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.music-toggle:hover {
-    transform: scale(1.2);
-}
-
-.music-toggle.off::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -10%;
-    width: 120%;
-    height: 3px;
-    background: var(--primary);
-    transform: rotate(-45deg);
-} */
-
 .gradient-text {
     background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.text-justified {
+    text-align: justify;
 }
 
 @keyframes pulse {

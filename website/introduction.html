@@ -22,6 +22,13 @@
             text-align: left;
         }
 
+
+        h2 {
+            color: var(--secondary);
+            margin: 3rem 0 1.5rem 0;
+            font-size: 2.5rem;
+        }
+
         .image-container {
             width: 100%;
             max-height: 500px;
@@ -108,16 +115,16 @@
             transform: scale(1.1);
         }
 
-        .image-caption {
+        /* .image-caption {
             text-align: center;
             font-style: italic;
             margin-top: 1rem;
             color: var(--secondary);
-        }
+        } */
     </style>
 </head>
 <body>
-    <nav>
+    <!-- <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="introduction.html" class="active">Introduction</a></li>
@@ -127,48 +134,104 @@
             <li><a href="conclusion.html">Conclusion</a></li>
             <li><a href="about.html">About Me</a></li>
         </ul>
+    </nav> -->
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="introduction.html" class="active">Introduction</a></li>
+            <li><a href="data-exploration.html">Data Preparation & Exploration</a></li>
+            <li><a href="unsupervised.html">PCA</a></li>
+            <li><a href="unsupervised.html">Clustering</a></li>
+            <li><a href="unsupervised.html">ARM</a></li>
+            <li><a href="supervised.html">Decision Trees</a></li>
+            <li><a href="supervised.html">Naive Bayes</a></li>
+            <li><a href="supervised.html">SVM</a></li>
+            <li><a href="supervised.html">Regression</a></li>
+            <li><a href="conclusion.html">Conclusion</a></li>
+            <li><a href="about.html">About Me</a></li>
+        </ul>
     </nav>
 
     <div class="content-container">
         <div class="content-section" data-aos="fade-up">
+            <br><br><br>
             <h1>Introduction</h1>
             
-            <!-- First Paragraph -->
             <div class="paragraph-section" data-aos="fade-up">
-                <p>Your first paragraph here (10 sentences about the topic...)</p>
+                <h2>What Are Sound Waves?</h2>
+                <p class="text-justified">
+                    Sound is an essential part of human experience, shaping communication, music, entertainment, and even our emotions. 
+                    At its most fundamental level, sound is a type of wave that travels through a medium such as air, water, or solid materials. 
+                    When an object vibrates, it disturbs nearby particles, creating alternating regions of compression and rarefaction that propagate as sound waves. 
+                    These waves move at different speeds depending on the medium—faster in solids, slower in gases—explaining why sound behaves differently underwater or in open air. 
+                    The frequency of a sound wave determines its pitch, with higher frequencies producing higher-pitched sounds, like a whistle, and lower frequencies creating deeper tones, like a drum. 
+                    Amplitude, on the other hand, determines loudness—greater amplitudes result in louder sounds, while smaller amplitudes create softer tones. 
+                    Every sound we hear is a combination of multiple frequencies, harmonics, and intensities, which together give sounds their distinct characteristics. 
+                    This is why a piano and a guitar playing the same note still sound different—a property known as timbre. 
+                    Sound waves can be classified into different types based on their characteristics, such as mechanical vs. electromagnetic waves or longitudinal vs. transverse waves, with most audible sounds being longitudinal mechanical waves. 
+                    Humans typically hear sounds within the range of 20 Hz to 20,000 Hz, but many animals, such as bats and dolphins, perceive frequencies far beyond this range. 
+                    The study of sound waves is fundamental to fields such as acoustics, audio engineering, speech processing, and music production, making it one of the most widely explored areas of science and technology.</p>
             </div>
 
-            <!-- First Image -->
             <div class="image-container" data-aos="fade-up">
-                <img src="/api/placeholder/1200/500" alt="Topic Visual">
-                <p class="image-caption">Caption explaining the image and its relevance</p>
+                <img src="images/introduction1.jpg" alt="introduction 1">
+                <!-- <p class="image-caption">Caption explaining the image and its relevance</p> -->
             </div>
 
-            <!-- Second Paragraph -->
             <div class="paragraph-section" data-aos="fade-up">
-                <p>Your second paragraph here (10 sentences about the topic...)</p>
+                <h2>Why Sound Matters</h2>
+                <p class="text-justified">
+                    Sound is much more than just a physical phenomenon—it plays a crucial role in health, communication, technology, and even mental well-being. 
+                    From the moment we wake up to the sounds of an alarm clock to the music we listen to while relaxing, sound impacts nearly every aspect of our lives. 
+                    Certain sounds can trigger emotions—upbeat music can energize us, while slow, soothing melodies can help us relax. 
+                    This emotional impact is why sound is extensively used in therapy, marketing, and entertainment industries to influence human behavior. 
+                    Beyond emotions, sound plays a vital role in health and medical research. 
+                    For instance, doctors use ultrasound waves to examine internal organs, detect anomalies, and monitor fetal development during pregnancy. 
+                    In neuroscience, researchers study how sound stimuli can help treat conditions like tinnitus (ringing in the ears), speech disorders, and even Alzheimer’s disease. 
+                    Sound also affects productivity and focus—studies have shown that background noise, such as white noise or nature sounds, can enhance concentration by masking distracting noises. 
+                    In the field of technology, sound processing is essential for speech recognition (Siri, Alexa), noise cancellation, and even biometric authentication through voice recognition. 
+                    Environmental sound monitoring is another area where sound analysis is valuable, helping researchers track deforestation, ocean noise pollution, and endangered species through their vocalizations. 
+                    Whether it's for entertainment, health, or security, sound is an incredibly powerful tool that continues to shape modern life in ways we often take for granted.</p>
             </div>
 
-            <!-- Second Image -->
             <div class="image-container" data-aos="fade-up">
-                <img src="/api/placeholder/1200/500" alt="Topic Visual">
-                <p class="image-caption">Caption explaining the image and its relevance</p>
+                <img src="images/introduction2.jpg" alt="introduction 2">
+                <!-- <p class="image-caption">Caption explaining the image and its relevance</p> -->
             </div>
 
             <!-- Space for More Paragraphs -->
             <div class="paragraph-section" data-aos="fade-up">
-                <p>Additional paragraphs can be added here...</p>
+                <h2>Who Benefits from Sound Analysis?</h2>
+                <p class="text-justified">
+                    The study and analysis of sound waves have far-reaching applications that benefit various industries, researchers, and even everyday users. 
+                    Musicians and audio engineers rely on sound analysis to enhance the quality of music production, ensuring that different frequencies blend harmoniously for the best listening experience. 
+                    Film and game developers use advanced sound processing to create immersive audio environments, where every footstep, explosion, or whisper is fine-tuned to match the scene. 
+                    In healthcare, doctors and medical researchers leverage sound analysis to diagnose conditions such as abnormal heart rhythms, respiratory issues, or even speech disorders by analyzing vocal patterns. 
+                    Speech recognition technology, used in voice assistants like Siri, Alexa, and Google Assistant, relies heavily on sound wave analysis to interpret spoken commands and convert them into text. 
+                    In environmental science, monitoring natural soundscapes helps researchers track wildlife activity, detect illegal deforestation, and even measure the health of ecosystems through bioacoustic studies. 
+                    Law enforcement and security agencies use forensic audio analysis to identify voices, detect tampered recordings, or even recognize gunshots from audio surveillance. 
+                    Manufacturing industries utilize acoustic monitoring to detect mechanical faults in machines by analyzing sound vibrations, allowing for predictive maintenance and reduced downtime. Psychologists and neuroscientists explore how sound stimuli affect human behavior, memory, and cognition, leading to advancements in music therapy and mental health treatment. 
+                    Even in space exploration, sound analysis plays a role—while sound does not travel in the vacuum of space, analyzing audio waves within spacecraft systems helps detect malfunctions before they become critical issues. 
+                    With applications spanning so many disciplines, sound analysis is a vital field that continuously evolves with new technological advancements.</p>
             </div>
         </div>
 
         <!-- Questions Section -->
         <div class="questions-section" data-aos="fade-up">
             <h2>Research Questions</h2>
+            <p>Through this project, the following research questions will be explored: <br><br></p>
             <ul class="question-list">
-                <li>Your first research question about the topic?</li>
-                <li>Your second research question about the topic?</li>
-                <li>Your third research question about the topic?</li>
-                <!-- Add more questions up to 10 -->
+                <li>Can we classify different types of sounds using machine learning based on their spectral and temporal features?</li>
+                <li>Which audio features (MFCCs, spectral contrast, chroma features, etc.) contribute the most to sound classification?</li>
+                <li>How do different sound categories compare in terms of frequency and energy distribution?</li>
+                <li>Can we distinguish between natural and artificial sounds using spectral and temporal features?</li>
+                <li>How does the zero-crossing rate vary across different sound categories?</li>
+                <li>Do certain sound types have more variation in MFCCs and spectral contrast than others?</li>
+                <li>How well do clustering techniques group sounds based on their extracted features?</li>
+                <li>Can we identify distinct frequency patterns in different categories using spectral analysis?</li>
+                <li>How do sound categories differ in their chroma features, and can this be used for classification?</li>
+                <li>What are the most distinguishing features between similar-sounding categories?</li>
             </ul>
         </div>
 
