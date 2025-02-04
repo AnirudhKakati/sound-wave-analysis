@@ -68,7 +68,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(18, 4, 88, 0.95);
+    background: rgb(13, 1, 68);
     padding: 1.5rem;
     backdrop-filter: blur(10px);
     z-index: 1000;
@@ -83,7 +83,7 @@ nav ul {
 }
 
 nav a {
-    color: var(--text);
+    color: var(--primary);
     text-decoration: none;
     font-weight: bold;
     position: relative;

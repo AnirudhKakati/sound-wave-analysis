@@ -30,6 +30,18 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* Add these rules to make images responsive */
+        .raw-data img, .clean-data img {
+            width: 100%;  /* Makes image take full width of its container */
+            height: auto; /* Maintains aspect ratio */
+            display: block; /* Removes any extra space below the image */
+            transition: transform 0.3s ease; /* This makes the zoom smooth */
+        }
+
+        .raw-data img:hover, .clean-data img:hover {
+            transform: scale(1.05); /* Increases size by 5% on hover */
+        }
+
         .visualization-section {
             margin: 4rem 0;
             padding: 2rem;
@@ -131,6 +143,22 @@
         .nav-button:hover {
             transform: scale(1.1);
         }
+
+        .text-centered{
+            text-align: center;
+        }
+
+        a{
+            color: var(--primary);
+        }
+
+        .sound-categories {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 1rem auto;
+            text-align: justify;
+        }
+
     </style>
 </head>
 <body>
@@ -169,18 +197,72 @@
             <br><br><br>
             <h1>Data Preparation & Exploration</h1>
             
-            <h2>Data Collection</h2>
-            <p>Description of how, where, and why you gathered your data...</p>
-            <a href="#" class="code-link">View Raw Data</a>
-            
+            <h2>Data Collection: Gathering Audio Data Using the Freesound API</h2>
+            <p class="text-justified">For this project, a diverse set of environmental and everyday sounds was collected using the Freesound API, a public database of user-contributed audio recordings. 
+                The API provides a structured way to search, filter, and retrieve metadata for various sound categories, making it an ideal source for curating a dataset for machine learning analysis.</p>
+            <!-- <a href="#" class="code-link">View Raw Data</a> -->
+            <h3 class="text-centered">Using the Freesound API</h3>
+            <p class="text-justified">Accessing the Freesound API requires an API key, which can be obtained by signing up on the Freesound website. 
+                The API enables users to search for sounds based on keywords and retrieve detailed metadata before downloading the corresponding audio files. 
+                The data collection process began by querying the API for relevant sound clips and extracting their metadata, which was then used to facilitate audio file downloads.
+                <a href="https://freesound.org/help/developers/" target="_blank">Get a freesound API here.</a>
+            </p>
+            <h3 class="text-centered">Selecting 20 Sound Categories</h3>
+            <p class="text-justified">
+                To ensure a balanced dataset covering a range of real-world sounds, 20 categories were carefully selected. 
+                The selection process focused on sounds commonly found in various environments, including human, animal, instrumental, and environmental sounds. 
+                Each category was chosen to provide clear, recognizable acoustic patterns that could be effectively analyzed and classified.
+                <br>
+                The final 20 categories in the dataset include:
+                <ul class="sound-categories">
+                    <li>Human-related sounds: applause, crowd_noise, laughter, speech</li>
+                    <li>Animal sounds: birds, cat_meow, dog_bark</li>
+                    <li>Instrumental sounds: drums, guitar, piano</li>    
+                    <li>Environmental and urban sounds: rain_sounds, wind_sounds, thunder_sounds, traffic_sounds, train_sounds, sirens</li>
+                    <li>Mechanical and impact sounds: car_horn, footsteps, fireworks, construction_noise</li>
+                </ul>
+            </p>
+            <p class="text-justified">
+                For consistency, the target was to collect 750 sound samples per category. 
+                However, due to data limitations, only 687 car_horn sounds were available in the Freesound database.
+            </p>
+            <h3 class="text-centered">Retrieving Metadata and Downloading Audio Files</h3>
+            <p class="text-justified">
+                Before downloading the audio files, their metadata was first collected using the Freesound API.
+                Check out the script to download audiofiles metadata using Freesound API 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/getting_metadata.py" target="_blank"> here.</a>
+                Each API query returned a JSON file containing essential details for each sound, including: 
+                <ul class="sound-categories">
+                    <li>Sound ID</li>
+                    <li>Name</li>
+                    <li>Tags</li>
+                    <li>Duration</li>
+                    <li>Preview URL (link to download a short version of the sound)</li>
+                    <li>License Information</li>
+                </ul>
+            <p class="text-justified"> The raw metadata JSON files can be found 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/tree/main/audiofiles_metadata/json_files" target="_blank">here.</a>
+            </p> 
+            </p>
+            <p class="text-justified">
+                Once the metadata JSON files were obtained, the preview URLs provided in the metadata were used to download the audio files. 
+                The downloads were executed in parallel using multi-threading to optimize efficiency and speed. 
+                Check out the script to download audio files 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/getting_audiofiles.py" target="_blank">here.</a>
+                The downloaded audio files are in .mp3 format. The downloaded raw audio files can be found  
+                <a href="https://drive.google.com/drive/folders/1Nw9VAKk4MGyr95R4O1fodtEa8DFvYOl8" target="_blank">here.</a>
+            </p>
+            <p class="text-justified">
+                The raw metadata json files and the raw audio files are shown below.
+            </p>
             <div class="data-container">
                 <div class="raw-data">
-                    <h3>Raw Data Sample</h3>
-                    <img src="/api/placeholder/400/300" alt="Raw Data Sample">
+                    <h3>Raw Metadata JSON</h3>
+                    <img src="images/dataexploration/rawjson.jpg" alt="Raw Data Sample">
                 </div>
                 <div class="clean-data">
-                    <h3>Cleaned Data Sample</h3>
-                    <img src="/api/placeholder/400/300" alt="Cleaned Data Sample">
+                    <h3>Raw .mp3 Audio files</h3>
+                    <img src="images/dataexploration/raw_audiofiles_mp3.jpg" alt="Cleaned Data Sample">
                 </div>
             </div>
 
