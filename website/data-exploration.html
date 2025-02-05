@@ -49,6 +49,14 @@
             border-radius: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
+        
+        .visualization-section img{
+            transition: transform 0.3s ease;
+        }
+
+        .visualization-section img:hover{
+            transform: scale(1.025);
+        }
 
         .select-container {
             margin: 2rem 0;
@@ -229,8 +237,6 @@
             <h3 class="text-centered">Retrieving Metadata and Downloading Audio Files</h3>
             <p class="text-justified">
                 Before downloading the audio files, their metadata was first collected using the Freesound API.
-                Check out the script to download audiofiles metadata using Freesound API 
-                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/getting_metadata.py" target="_blank"> here.</a>
                 Each API query returned a JSON file containing essential details for each sound, including: 
                 <ul class="sound-categories">
                     <li>Sound ID</li>
@@ -240,8 +246,16 @@
                     <li>Preview URL (link to download a short version of the sound)</li>
                     <li>License Information</li>
                 </ul>
-            <p class="text-justified"> The raw metadata JSON files can be found 
-                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/tree/main/audiofiles_metadata/json_files" target="_blank">here.</a>
+            </p>
+            <p class="text-justified"> 
+                After downloading the metadata JSON files, they are converted to CSV files for ease of handling. 
+                They are also checked for any missing or repeated values. No repeated or missing values were found.
+                Check out the script to download audiofiles metadata using Freesound API and convert them to CSV files 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/getting_metadata.py" target="_blank"> here.</a>
+                The raw metadata JSON files can be found 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/tree/main/audiofiles_metadata/json_files" target="_blank">here</a>
+                and the converted csv files can be found 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/tree/main/audiofiles_metadata/csv_converted_files" target="_blank">here.</a>
             </p> 
             </p>
             <p class="text-justified">
@@ -256,33 +270,92 @@
                 The raw metadata json files and the raw audio files are shown below.
             </p>
             <div class="data-container">
-                <div class="raw-data">
+                <div class="raw-data" data-aos="fade-up">
                     <h3>Raw Metadata JSON</h3>
-                    <img src="images/dataexploration/rawjson.jpg" alt="Raw Data Sample">
+                    <img src="images/dataexploration/raw_metadata_json.jpg" alt="Raw Data Sample">
                 </div>
-                <div class="clean-data">
+                <div class="raw-data" data-aos="fade-up">
                     <h3>Raw .mp3 Audio files</h3>
                     <img src="images/dataexploration/raw_audiofiles_mp3.jpg" alt="Cleaned Data Sample">
                 </div>
             </div>
+        </div>
 
-            <h2>Data Cleaning Process</h2>
-            <p>Description of your data cleaning process...</p>
+        <div class="content-section" data-aos="fade-up">
+            <h2>Data Preprocessing: Conversion and Standardization of Audio Data</h2>
+            <p class="text-justified">
+                After collecting the raw audio files, preprocessing was necessary to ensure consistency across all samples. 
+                The dataset contained files of a lossy format with varying durations, sample rates, and amplitudes, requiring standardization before feature extraction and analysis.
+                All audio processing was done using Librosa, a Python library designed for audio analysis. 
+                Under the hood, Librosa utilizes FFmpeg to handle audio file decoding and conversion, allowing seamless processing of different formats.
+            </p>
+            <h3 class="text-centered">Format Conversion</h3>
+            <p class="text-justified">
+                The downloaded audio files were originally in MP3 format, which is compressed and may lead to loss of audio quality. 
+                To ensure high-quality, lossless processing, all files were converted to WAV format. 
+                The WAV format was chosen because it preserves full spectral details, making it ideal for machine learning applications.
+            </p>
+            <h3 class="text-centered">Duration Standardization (Fixed-Length Audio)</h3>
+            <p class="text-justified">
+                Audio samples in the raw dataset varied significantly in duration, with some clips lasting only a second while others exceeded a minute. 
+                To create a uniform dataset, each audio file was trimmed or padded to exactly 5 seconds. 
+                The trimming approach was adjusted based on the audio length:
+                <ul class="sound-categories">
+                    <li>If a file was longer than 5 seconds, it was trimmed from the middle to preserve core information.</li>
+                    <li>If a file was shorter than 5 seconds, it was padded with silence equally at the beginning and end to maintain balance.</li>
+                </ul>
+            </p>
+            <h3 class="text-centered">Mono Channel Conversion</h3>
+            <p class="text-justified">
+                Additionally, all audio files were converted to mono-channel to ensure consistency, as some recordings had multiple channels (stereo). 
+                This prevented unwanted variations in feature extraction due to channel differences.
+            </p>
+            <h3 class="text-centered">Sample Rate Standardization</h3>
+            <p class="text-justified">
+                Different recordings had varying sample rates (e.g., 44.1 kHz, 22.05 kHz, 16 kHz), which could cause inconsistencies in feature extraction. 
+                To standardize all audio files, a sampling rate of 16,000 Hz was applied, ensuring compatibility across all files while keeping sufficient frequency detail for analysis.
+            </p>
+            <h3 class="text-centered">Amplitude Normalization</h3>
+            <p class="text-justified">
+                The raw audio files had varying loudness levels, which could introduce bias in classification. 
+                Some recordings were significantly louder, while others were barely audible. 
+                To address this, each audio waveform was normalized so that amplitudes fell within a consistent range, preventing any single sound from dominating due to volume differences.
+            </p>
+            <p class="text-justified">
+                After preprocessing, the script also verified that all files were functional and met the expected duration (5 seconds), sample rate (16 kHz), and mono-channel format before proceeding to feature extraction.
+                Check out the full audio files processing script
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/preprocessing_audiofiles.py" target="_blank">here.</a>
+            </p>
+            <p class="text-justified">
+                The metadata JSON files were already converted to CSV files and made clean enough by the script downloading them. 
+                The converted CSV metadata files and the processed audiofiles are shown below.
+            </p>
+            <div class="data-container">
+                <div class="clean-data" data-aos="fade-up">
+                    <h3>Converted Metadata CSV</h3>
+                    <img src="images/dataexploration/converted_metadata_csv.jpg" alt="Raw Data Sample">
+                </div>
+                <div class="clean-data" data-aos="fade-up">
+                    <h3>Processed .wav Audio files</h3>
+                    <img src="images/dataexploration/processed_audiofiles_wav.jpg" alt="Cleaned Data Sample">
+                </div>
+            </div>
+        
         </div>
 
         <!-- Data Exploration Visualizations -->
         <div class="content-section" data-aos="fade-up">
-            <h2>Data Exploration</h2>
+            <h2>Data Exploration: Visualizing the Sounds</h2>
 
             <!-- MFCC Radial Plots -->
             <div class="visualization-section">
-                <h3>MFCC Radial Plots</h3>
+                <h3 class="text-centered">MFCC Radial Plots</h3>
                 <div class="select-container">
                     <select id="mfccCategory" onchange="updatePlot('mfcc', this.value)">
                         <!-- Categories will be populated via JavaScript -->
                     </select>
                 </div>
-                <div class="plot-container">
+                <div class="plot-container" data-aos="fade-up">
                     <img id="mfccPlot" src="plots/mfcc_radial/mfcc_radial_applause.png" alt="MFCC Radial Plot">
                 </div>
                 <div class="plot-description">
@@ -292,8 +365,8 @@
 
             <!-- 3D Spectral Feature Plot -->
             <div class="visualization-section">
-                <h3>3D Spectral Feature Plot</h3>
-                <div class="plot-container">
+                <h3 class="text-centered">3D Spectral Feature Plot</h3>
+                <div class="plot-container" data-aos="fade-up">
                     <img src="plots/spectral_3d_plot/spectral_3d_plot.png" alt="3D Spectral Feature Plot">
                 </div>
                 <div class="plot-description">
@@ -303,8 +376,8 @@
 
             <!-- Chroma Feature Heatmap -->
             <div class="visualization-section">
-                <h3>Chroma Feature Heatmap</h3>
-                <div class="plot-container">
+                <h3 class="text-centered">Chroma Feature Heatmap</h3>
+                <div class="plot-container" data-aos="fade-up">
                     <img src="plots/chroma_heatmap/chroma_heatmap.png" alt="Chroma Feature Heatmap">
                 </div>
                 <div class="plot-description">
@@ -314,13 +387,13 @@
 
             <!-- Average Spectrograms -->
             <div class="visualization-section">
-                <h3>Average Spectrograms</h3>
+                <h3 class="text-centered">Average Spectrograms</h3>
                 <div class="select-container">
                     <select id="spectrogramCategory" onchange="updatePlot('spectrogram', this.value)">
                         <!-- Categories will be populated via JavaScript -->
                     </select>
                 </div>
-                <div class="plot-container">
+                <div class="plot-container" data-aos="fade-up">
                     <img id="spectrogramPlot" src="plots/average_spectogram/spectrogram_avg_applause.png" alt="Average Spectrogram">
                 </div>
                 <div class="plot-description">
@@ -330,13 +403,13 @@
 
             <!-- Time-Series Plots of RMS Energy -->
             <div class="visualization-section">
-                <h3>Time-Series Plots of RMS Energy</h3>
+                <h3 class="text-centered">Time-Series Plots of RMS Energy</h3>
                 <div class="select-container">
                     <select id="rmsCategory" onchange="updatePlot('rms', this.value)">
                         <!-- Categories will be populated via JavaScript -->
                     </select>
                 </div>
-                <div class="plot-container">
+                <div class="plot-container" data-aos="fade-up">
                     <img id="rmsPlot" src="plots/time_series_rms/time_series_rms_applause.png" alt="RMS Energy Plot">
                 </div>
                 <div class="plot-description">
@@ -346,13 +419,13 @@
 
             <!-- Zero-Crossing Rate Histograms -->
             <div class="visualization-section">
-                <h3>Zero-Crossing Rate Histograms</h3>
+                <h3 class="text-centered">Zero-Crossing Rate Histograms</h3>
                 <div class="select-container">
                     <select id="zcrCategory" onchange="updatePlot('zcr', this.value)">
                         <!-- Categories will be populated via JavaScript -->
                     </select>
                 </div>
-                <div class="plot-container">
+                <div class="plot-container" data-aos="fade-up">
                     <img id="zcrPlot" src="plots/zcr_histogram/zcr_histogram_applause.png" alt="Zero-Crossing Rate Histogram">
                 </div>
                 <div class="plot-description">
@@ -362,13 +435,13 @@
 
             <!-- Feature Variability Plots -->
             <div class="visualization-section">
-                <h3>Feature Variability Plots</h3>
+                <h3 class="text-centered">Feature Variability Plots</h3>
                 <div class="select-container">
                     <select id="featureType" onchange="updatePlot('feature', this.value)">
                         <!-- Features will be populated via JavaScript -->
                     </select>
                 </div>
-                <div class="plot-container">
+                <div class="plot-container" data-aos="fade-up">
                     <img id="featurePlot" src="plots/feature_variability/feature_variability_spectral_bandwidth.png" alt="Feature Variability Plot">
                 </div>
                 <div class="plot-description">
