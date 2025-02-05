@@ -167,6 +167,14 @@
             text-align: justify;
         }
 
+        .centered-data-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem auto; /* auto margins for horizontal centering */
+            max-width: 1000px; /* or whatever width you want */
+        }
+
     </style>
 </head>
 <body>
@@ -267,7 +275,7 @@
                 <a href="https://drive.google.com/drive/folders/1Nw9VAKk4MGyr95R4O1fodtEa8DFvYOl8" target="_blank">here.</a>
             </p>
             <p class="text-justified">
-                The raw metadata json files and the raw audio files are shown below.
+                The raw metadata JSON files and the raw audio mp3 files for any category look like the ones shown below.
             </p>
             <div class="data-container">
                 <div class="raw-data" data-aos="fade-up">
@@ -321,6 +329,7 @@
                 Some recordings were significantly louder, while others were barely audible. 
                 To address this, each audio waveform was normalized so that amplitudes fell within a consistent range, preventing any single sound from dominating due to volume differences.
             </p>
+            <br>
             <p class="text-justified">
                 After preprocessing, the script also verified that all files were functional and met the expected duration (5 seconds), sample rate (16 kHz), and mono-channel format before proceeding to feature extraction.
                 Check out the full audio files processing script
@@ -328,7 +337,7 @@
             </p>
             <p class="text-justified">
                 The metadata JSON files were already converted to CSV files and made clean enough by the script downloading them. 
-                The converted CSV metadata files and the processed audiofiles are shown below.
+                The converted CSV metadata files and the processed audiofiles for any category look like the ones shown below.
             </p>
             <div class="data-container">
                 <div class="clean-data" data-aos="fade-up">
@@ -342,6 +351,67 @@
             </div>
         
         </div>
+        
+        <div class="content-section" data-aos="fade-up">
+            <h2>Feature Extraction: Transforming Audio into Machine-Readable Data</h2>
+            <p class="text-justified">
+                After preprocessing, the next step involved extracting meaningful features from the standardized audio files. 
+                Since raw audio waveforms are not directly usable for machine learning, numerical representations of key sound properties were generated. 
+                These extracted features capture both temporal and spectral characteristics of each sound, making them suitable for classification and analysis.
+            </p>
+            <h3 class="text-centered">Extracted Features</h3>
+            <p class="text-justified">
+                The following features were extracted for each 5-second audio file:
+                <ul class="sound-categories">
+                    <li>MFCCs (Mel-Frequency Cepstral Coefficients) – Captures frequency-based characteristics related to timbre</li>
+                    <li>Chroma Features – Represents the distribution of pitch across musical notes</li>
+                    <li>Spectral Contrast – Measures the difference between peaks and valleys in the frequency spectrum</li>
+                    <li>Zero-Crossing Rate (ZCR) – Counts how often the waveform crosses the zero amplitude level</li>
+                    <li>Spectral Centroid – Indicates the "center of mass" of the frequency spectrum</li>
+                    <li>Spectral Bandwidth – Measures how spread out the spectral energy is</li>
+                    <li>RMS Energy (Root Mean Square Energy) – Represents the loudness of the sound</li>
+                </ul>
+            </p>
+            <p class="text-justified">
+                These features provide a structured way to analyze and classify different sound categories.
+            </p>
+            <h3 class="text-centered">Feature Extraction Process</h3>
+            <p class="text-justified">
+                To efficiently process thousands of audio files, Librosa was used to extract features, with parallelization implemented for speed optimization. 
+                Each audio file was loaded at a 16,000 Hz sample rate, converted to mono-channel, and analyzed to compute the listed features. 
+                The extracted values were averaged over time to create a fixed-length numerical representation for each file.
+            </p>
+            <h3 class="text-centered">Storing Extracted Features</h3>
+            <p class="text-justified">
+                The extracted features were stored in CSV files, with each row representing an audio file and columns containing the corresponding feature values. 
+                The CSV structure included:
+                <ul class="sound-categories">
+                    <li>Filename for reference</li>
+                    <li>13 MFCC coefficients</li>
+                    <li>12 Chroma features</li>
+                    <li>7 Spectral contrast values</li>
+                    <li>Zero-crossing rate</li>
+                    <li>Spectral centroid</li>
+                    <li>Spectral bandwidth</li>
+                    <li>RMS energy</li>
+                </ul>
+            </p>
+            <p class="text-justified">
+                This structured dataset allows for further analysis and classification using machine learning techniques. 
+                Check out the feature extraction script
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/extracting_audio_features.py" target="_blank">here.</a> 
+            </p>
+            <p class="text-justified">
+                The Audio Features CSV file for any category looks like the one shown below.
+            </p>
+            <div class="centered-data-container">
+                <div class="clean-data" data-aos="fade-up">
+                    <h3>Audio Features CSV</h3>
+                    <img src="images/dataexploration/audio_features_csv.jpg" alt="Audio Features">
+                </div>
+            </div>
+        </div>
+
 
         <!-- Data Exploration Visualizations -->
         <div class="content-section" data-aos="fade-up">
