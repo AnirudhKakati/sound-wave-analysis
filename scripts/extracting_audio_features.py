@@ -15,6 +15,8 @@ def get_audio_features(category):
     - Spectral Centroid
     - Spectral Bandwidth
     - RMS Energy
+    - Spectral Roll-off
+    - Tonnetz (Tonal Centroid) features
 
     Parameters:
     - category (str): The category folder containing `.wav` files.
@@ -46,8 +48,13 @@ def get_audio_features(category):
                 data.append([filepath]+list(features))
         
     #we define column names
-    columns=["filename"]+[f"mfcc_{i+1}" for i in range(13)]+[f"chroma_{i+1}" for i in range(12)]+[f"spectral_contrast_{i+1}" for i in range(7)]+["zero_crossing_rate", "spectral_centroid", "spectral_bandwidth", "rms_energy"]
-
+    columns=["filename"]+\
+          [f"mfcc_{i+1}" for i in range(13)]+\
+          [f"chroma_{i+1}" for i in range(12)]+\
+          [f"spectral_contrast_{i+1}" for i in range(7)]+\
+          ["zero_crossing_rate", "spectral_centroid", "spectral_bandwidth", "rms_energy", "spectral_rolloff"]+\
+          [f"tonnetz_{i+1}" for i in range(6)]
+    
     # save to csv files
     df=pd.DataFrame(data, columns=columns)
     df.to_csv(output_csv, index=False)
@@ -63,7 +70,16 @@ def get_audio_features_helper(filepath,sample_rate=16000):
     - sample_rate (int, optional): Sampling rate for loading the audio (default is 16,000 Hz).
     
     Returns:
-    - list: A list containing extracted features for the audio file.
+    - list: A list containing extracted features for the audio file, including:
+        - 13 MFCC coefficients
+        - 12 Chroma features
+        - 7 Spectral Contrast values
+        - Zero-Crossing Rate
+        - Spectral Centroid
+        - Spectral Bandwidth
+        - RMS Energy
+        - Spectral Roll-off
+        - 6 Tonnetz (Tonal Centroid) features
     """
 
     try:
@@ -77,9 +93,11 @@ def get_audio_features_helper(filepath,sample_rate=16000):
         spectral_centroid=np.mean(librosa.feature.spectral_centroid(y=y, sr=sr))
         spectral_bandwidth=np.mean(librosa.feature.spectral_bandwidth(y=y, sr=sr))
         rms_energy=np.mean(librosa.feature.rms(y=y))
+        spectral_rolloff = np.mean(librosa.feature.spectral_rolloff(y=y, sr=sr))
+        tonnetz = np.mean(librosa.feature.tonnetz(y=y, sr=sr), axis=1)
         
         #concatenate all features into a single vector
-        features=np.hstack([mfccs, chroma, spectral_contrast, zero_crossing_rate, spectral_centroid, spectral_bandwidth, rms_energy])    
+        features=np.hstack([mfccs, chroma, spectral_contrast, zero_crossing_rate, spectral_centroid, spectral_bandwidth, rms_energy, spectral_rolloff, tonnetz])    
         return features
     
     except Exception as e:

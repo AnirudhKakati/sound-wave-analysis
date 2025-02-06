@@ -370,6 +370,8 @@
                     <li>Spectral Centroid – Indicates the "center of mass" of the frequency spectrum</li>
                     <li>Spectral Bandwidth – Measures how spread out the spectral energy is</li>
                     <li>RMS Energy (Root Mean Square Energy) – Represents the loudness of the sound</li>
+                    <li>Spectral Roll-off – The frequency below which most spectral energy is concentrated</li>
+                    <li>Tonnetz (Tonal Centroid Features) – Captures harmonic and tonal relationships</li>
                 </ul>
             </p>
             <p class="text-justified">
@@ -394,6 +396,8 @@
                     <li>Spectral centroid</li>
                     <li>Spectral bandwidth</li>
                     <li>RMS energy</li>
+                    <li>Spectral Roll-off</li>
+                    <li>6 Tonnetz features</li>
                 </ul>
             </p>
             <p class="text-justified">
@@ -503,6 +507,44 @@
                 </div>
             </div>
 
+            <!-- Mean Spectral Contrast-->
+            <div class="visualization-section">
+                <h3 class="text-centered">Mean Spectral Contrast</h3>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/mean_spectral_contrast/mean_spectral_contrast_lollipop.png" alt="Mean Spectral Contrast">
+                </div>
+                <div class="plot-description">
+                    <p>Description of Mean Spectral Contrast...</p>
+                </div>
+            </div>
+         
+            <!-- Spectral Rolloff Violin Plot-->
+            <div class="visualization-section">
+                <h3 class="text-centered">Mean Spectral Contrast</h3>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/spectral_rolloff_violin/spectral_rolloff_violin.png" alt="Spectral Roll-off">
+                </div>
+                <div class="plot-description">
+                    <p>Description of Spectral Rolloff Plot...</p>
+                </div>
+            </div>
+
+            <!-- Tonnetz Bars -->
+            <div class="visualization-section">
+                <h3 class="text-centered">Tonnetz Bar Charts</h3>
+                <div class="select-container">
+                    <select id="tonnetzCategory" onchange="updatePlot('tonnetz', this.value)">
+                        <!-- Categories will be populated via JavaScript -->
+                    </select>
+                </div>
+                <div class="plot-container" data-aos="fade-up">
+                    <img id="tonnetzPlot" src="plots/tonnetz_bars/tonnetz_bar_applause.png" alt="Tonnetz Bar">
+                </div>
+                <div class="plot-description">
+                    <p>Description of Tonnetz Bar Charts...</p>
+                </div>
+            </div>
+
             <!-- Feature Variability Plots -->
             <div class="visualization-section">
                 <h3 class="text-centered">Feature Variability Plots</h3>
@@ -518,16 +560,7 @@
                     <p>Description of Feature Variability Plots...</p>
                 </div>
             </div>
-
-            <div class="visualization-section">
-                <h3 class="text-centered">Mean Spectral Contrast</h3>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="plots/mean_spectral_contrast/mean_spectral_contrast_lollipop.png" alt="Mean Spectral Contrast">
-                </div>
-                <div class="plot-description">
-                    <p>Description of Mean Spectral Contrast...</p>
-                </div>
-            </div>
+            
         </div>
 
         <div class="navigation-buttons">
@@ -570,12 +603,12 @@
             'train_sounds',
             'wind_sounds'
         ];
-        const features = ['spectral_bandwidth', 'rms_energy', 'spectral_centroid', 'zero_crossing_rate'];
+        const features = ['spectral_bandwidth', 'rms_energy', 'spectral_centroid', 'zero_crossing_rate', 'spectral_rolloff'];
         
         // Populate all dropdowns
         function populateDropdowns() {
             // Populate category dropdowns
-            const categoryDropdowns = ['mfccCategory', 'spectrogramCategory', 'rmsCategory', 'zcrCategory'];
+            const categoryDropdowns = ['mfccCategory', 'spectrogramCategory', 'rmsCategory', 'zcrCategory', 'tonnetzCategory'];
             categoryDropdowns.forEach(dropdownId => {
                 const select = document.getElementById(dropdownId);
                 select.innerHTML = '';
@@ -619,6 +652,10 @@
                 'zcr': {
                     element: 'zcrPlot',
                     path: 'plots/zcr_histogram/zcr_histogram_'
+                },
+                'tonnetz': {
+                    element: 'tonnetzPlot',
+                    path: 'plots/tonnetz_bars/tonnetz_bar_'
                 },
                 'feature': {
                     element: 'featurePlot',
