@@ -433,7 +433,10 @@
                     <img id="mfccPlot" src="plots/mfcc_radial/mfcc_radial_applause.png" alt="MFCC Radial Plot">
                 </div>
                 <div class="plot-description">
-                    <p>Description of MFCC Radial Plot...</p>
+                    <p class="text-justified">
+                        This plot visualizes the Mel-Frequency Cepstral Coefficients (MFCCs) in a circular (spider) plot. 
+                        MFCCs are used to characterize the spectral properties of audio signals, and the radial plot helps compare how different sound categories distribute their MFCC values.
+                    </p>
                 </div>
             </div>
 
@@ -444,7 +447,10 @@
                     <img src="plots/spectral_3d_plot/spectral_3d_plot.png" alt="3D Spectral Feature Plot">
                 </div>
                 <div class="plot-description">
-                    <p>Description of 3D Spectral Plot...</p>
+                    <p class="text-justified">
+                        A 3D scatter plot showcasing three key spectral features: Spectral Centroid, Spectral Bandwidth, and RMS Energy. 
+                        These features provide insights into the brightness, spread, and energy of different audio categories.
+                    </p>
                 </div>
             </div>
 
@@ -455,7 +461,10 @@
                     <img src="plots/chroma_heatmap/chroma_heatmap.png" alt="Chroma Feature Heatmap">
                 </div>
                 <div class="plot-description">
-                    <p>Description of Chroma Feature Heatmap...</p>
+                    <p class="text-justified">
+                        This heatmap displays the average chroma feature values for each sound category. 
+                        Chroma features capture pitch class distributions and are useful for analyzing tonal characteristics across different sounds.
+                    </p>
                 </div>
             </div>
 
@@ -471,7 +480,10 @@
                     <img id="spectrogramPlot" src="plots/average_spectogram/spectrogram_avg_applause.png" alt="Average Spectrogram">
                 </div>
                 <div class="plot-description">
-                    <p>Description of Average Spectrograms...</p>
+                    <p class="text-justified">
+                        This plot presents an averaged spectrogram for each category, illustrating how frequency content evolves over time. 
+                        It provides a visual representation of how different sounds occupy the frequency spectrum.
+                    </p>
                 </div>
             </div>
 
@@ -487,7 +499,10 @@
                     <img id="rmsPlot" src="plots/time_series_rms/time_series_rms_applause.png" alt="RMS Energy Plot">
                 </div>
                 <div class="plot-description">
-                    <p>Description of RMS Energy Plots...</p>
+                    <p class="text-justified">
+                        A time-series plot of RMS (Root Mean Square) energy values, representing the loudness variations of different sound categories over time. 
+                        A rolling average smooths fluctuations to highlight trends.
+                    </p>
                 </div>
             </div>
 
@@ -503,7 +518,10 @@
                     <img id="zcrPlot" src="plots/zcr_histogram/zcr_histogram_applause.png" alt="Zero-Crossing Rate Histogram">
                 </div>
                 <div class="plot-description">
-                    <p>Description of Zero-Crossing Rate Histograms...</p>
+                    <p class="text-justified">
+                        A histogram showing the distribution of zero-crossing rates (ZCR) across sound categories. 
+                        ZCR measures how frequently the signal crosses the zero amplitude line, making it useful for distinguishing percussive from tonal sounds.
+                    </p>
                 </div>
             </div>
 
@@ -514,7 +532,10 @@
                     <img src="plots/mean_spectral_contrast/mean_spectral_contrast_lollipop.png" alt="Mean Spectral Contrast">
                 </div>
                 <div class="plot-description">
-                    <p>Description of Mean Spectral Contrast...</p>
+                    <p class="text-justified">
+                        A lollipop chart illustrating the mean spectral contrast per category. 
+                        Spectral contrast measures the difference between peaks and valleys in a sound spectrum, helping differentiate between tonal and noisy sounds.
+                    </p>
                 </div>
             </div>
          
@@ -525,7 +546,10 @@
                     <img src="plots/spectral_rolloff_violin/spectral_rolloff_violin.png" alt="Spectral Roll-off">
                 </div>
                 <div class="plot-description">
-                    <p>Description of Spectral Rolloff Plot...</p>
+                    <p class="text-justified">
+                        A violin plot showing the distribution of spectral roll-off values for each category. 
+                        Spectral roll-off represents the frequency below which most of the spectral energy is concentrated, helping identify bright vs. muffled sounds.
+                    </p>
                 </div>
             </div>
 
@@ -541,7 +565,10 @@
                     <img id="tonnetzPlot" src="plots/tonnetz_bars/tonnetz_bar_applause.png" alt="Tonnetz Bar">
                 </div>
                 <div class="plot-description">
-                    <p>Description of Tonnetz Bar Charts...</p>
+                    <p class="text-justified">
+                        A grouped bar chart displaying the average values of Tonnetz features for each category. 
+                        Tonnetz features capture harmonic and tonal characteristics, useful for music analysis and tonal sound classification.
+                    </p>
                 </div>
             </div>
 
@@ -557,10 +584,13 @@
                     <img id="featurePlot" src="plots/feature_variability/feature_variability_spectral_bandwidth.png" alt="Feature Variability Plot">
                 </div>
                 <div class="plot-description">
-                    <p>Description of Feature Variability Plots...</p>
+                    <p class="text-justified">
+                        A boxen plot visualizing the variability of selected features (Zero Crossing Rate, Spectral Centroid, Spectral Bandwidth, Rms Energy, Spectral Rolloff) across sound categories. 
+                        It highlights the range and distribution of feature values.
+                    </p>
                 </div>
             </div>
-            
+
             <p class="text-justified">
                 Check out the full script to create the Visualizations 
                 <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/visualizations.py" target="_blank">here.</a>
