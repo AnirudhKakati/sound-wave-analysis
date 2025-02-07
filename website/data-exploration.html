@@ -30,7 +30,6 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Add these rules to make images responsive */
         .raw-data img, .clean-data img {
             width: 100%;  /* Makes image take full width of its container */
             height: auto; /* Maintains aspect ratio */
@@ -78,7 +77,7 @@
         }
 
         .plot-container {
-            width: 70%;  /* Reduced from 100% */
+            width: 70%; 
             max-width: 800px;  /* Added max-width */
             margin: 2rem auto;  /* Changed to auto margin for centering */
             border-radius: 1rem;
@@ -104,7 +103,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .code-link {
+        /* .code-link {
             display: inline-block;
             margin: 1rem 0;
             padding: 0.8rem 1.5rem;
@@ -117,7 +116,7 @@
 
         .code-link:hover {
             transform: scale(1.05);
-        }
+        } */
 
         h2 {
             color: var(--secondary);
@@ -172,7 +171,7 @@
             grid-template-columns: 1fr;
             gap: 2rem;
             margin: 2rem auto; /* auto margins for horizontal centering */
-            max-width: 1000px; /* or whatever width you want */
+            max-width: 1000px;
         }
 
     </style>
@@ -214,9 +213,11 @@
             <h1>Data Preparation & Exploration</h1>
             
             <h2>Data Collection: Gathering Audio Data Using the Freesound API</h2>
-            <p class="text-justified">For this project, a diverse set of environmental and everyday sounds was collected using the Freesound API, a public database of user-contributed audio recordings. 
-                The API provides a structured way to search, filter, and retrieve metadata for various sound categories, making it an ideal source for curating a dataset for machine learning analysis.</p>
-            <!-- <a href="#" class="code-link">View Raw Data</a> -->
+            <p class="text-justified">
+                For this project, a diverse set of environmental and everyday sounds was collected using the Freesound API, a public database of user-contributed audio recordings. 
+                The API provides a structured way to search, filter, and retrieve metadata for various sound categories, making it an ideal source for curating a dataset for machine learning analysis.
+            </p>
+
             <h3 class="text-centered">Using the Freesound API</h3>
             <p class="text-justified">Accessing the Freesound API requires an API key, which can be obtained by signing up on the Freesound website. 
                 The API enables users to search for sounds based on keywords and retrieve detailed metadata before downloading the corresponding audio files. 
@@ -332,6 +333,8 @@
             <br>
             <p class="text-justified">
                 After preprocessing, the script also verified that all files were functional and met the expected duration (5 seconds), sample rate (16 kHz), and mono-channel format before proceeding to feature extraction.
+                The processed .wav audio files can be found 
+                <a href="https://drive.google.com/drive/folders/1M4nXU0G0at0M0Lx15LT-ubIfEF-DtEmD" target="_blank">here.</a>
                 Check out the full audio files processing script
                 <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/preprocessing_audiofiles.py" target="_blank">here.</a>
             </p>
@@ -614,8 +617,6 @@
         AOS.init();
 
         // Categories array
-        // const categories = Array.from({length: 20}, (_, i) => i + 1);
-
         const categories = [
             'applause',
             'birds',
