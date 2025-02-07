@@ -93,8 +93,8 @@ def get_audio_features_helper(filepath,sample_rate=16000):
         spectral_centroid=np.mean(librosa.feature.spectral_centroid(y=y, sr=sr))
         spectral_bandwidth=np.mean(librosa.feature.spectral_bandwidth(y=y, sr=sr))
         rms_energy=np.mean(librosa.feature.rms(y=y))
-        spectral_rolloff = np.mean(librosa.feature.spectral_rolloff(y=y, sr=sr))
-        tonnetz = np.mean(librosa.feature.tonnetz(y=y, sr=sr), axis=1)
+        spectral_rolloff=np.mean(librosa.feature.spectral_rolloff(y=y, sr=sr))
+        tonnetz=np.mean(librosa.feature.tonnetz(y=y, sr=sr), axis=1)
         
         #concatenate all features into a single vector
         features=np.hstack([mfccs, chroma, spectral_contrast, zero_crossing_rate, spectral_centroid, spectral_bandwidth, rms_energy, spectral_rolloff, tonnetz])    
