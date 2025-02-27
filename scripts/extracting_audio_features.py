@@ -45,10 +45,10 @@ def get_audio_features(category):
         for filepath,task in tasks.items():
             features=task.result()
             if features is not None:
-                data.append([filepath]+list(features))
+                data.append([filepath,category]+list(features))
         
     #we define column names
-    columns=["filename"]+\
+    columns=["filename","category"]+\
           [f"mfcc_{i+1}" for i in range(13)]+\
           [f"chroma_{i+1}" for i in range(12)]+\
           [f"spectral_contrast_{i+1}" for i in range(7)]+\
