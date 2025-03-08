@@ -109,6 +109,12 @@
             padding: 1rem;
         }
 
+        .ul-list {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 1rem auto;
+            text-align: justify;
+        }
         .plot-container img {
             width: 90%;
             height: auto;
@@ -702,11 +708,11 @@
             
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/unsupervised/scaled_dataset.png" alt="PCA-Transformed Dataset">
+                    <img src="images/unsupervised/pca_3d_dataset.png" alt="PCA-Transformed Dataset">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        Preview of the PCA-transformed dataset used for clustering. Each row represents an audio sample with its three principal components and category label. This reduced representation captures approximately 45% of the variance in the original feature space while making clustering analysis computationally tractable.                    
+                        Preview of the PCA-transformed dataset used for clustering. Each row represents an audio sample with its three principal components. This reduced representation captures approximately 51% of the variance in the original feature space while making clustering analysis computationally tractable.                    
                     </p>
                 </div>
             </div>
@@ -718,7 +724,7 @@
             
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/400" alt="K-Means Silhouette Scores">
+                    <img src="plots/kmeans/kmeans_silhouette_scores.png" alt="K-Means Silhouette Scores">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
@@ -728,67 +734,61 @@
             </div>
             
             <p class="text-justified">
-                Based on our silhouette analysis, we performed K-means clustering with K=2, K=3, and K=5. For visualization clarity, we randomly selected 50 samples per sound category to create our 3D cluster plots.
-            </p>
+                Based on the silhouette analysis, K-means clustering was performed with K=2, K=3, and K=5. For visualization clarity, 50 samples per sound category were randomly selected to create the 3D cluster plots.            </p>
             
             <div class="visualization-section">
                 <h4 class="text-centered">K-Means with K=2</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="K-Means K=2 3D Visualization">
+                    <img src="plots/kmeans/kmeans_2_clusters.png" alt="K-Means K=2 3D Visualization">
                 </div>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="K-Means K=2 Category Distribution">
+                    <img src="plots/kmeans/category_distribution_k2.png" alt="K-Means K=2 Category Distribution">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        With K=2, the algorithm primarily separates tonal sounds (music, speech, animal vocalizations) from non-tonal sounds (environmental noises, mechanical sounds). The heatmap shows that Cluster 0 predominantly contains musical instruments, speech, and animal sounds, while Cluster 1 contains most environmental and mechanical sounds.
-                    </p>
+                        With K=2, the algorithm creates a clear distinction between two sound types. Cluster 0 shows high concentrations of piano (0.13), guitar (0.11), laughter (0.09), dog bark (0.09), and speech (0.11), suggesting it captures musical, vocal, and animal sounds. Cluster 1 displays more uniform distribution across categories with higher values for applause (0.07), birds (0.07), and various environmental sounds like thunder, traffic, and wind sounds, indicating it encompasses more ambient and environmental noise categories.                    </p>
                 </div>
             </div>
             
             <div class="visualization-section">
                 <h4 class="text-centered">K-Means with K=3</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="K-Means K=3 3D Visualization">
+                    <img src="plots/kmeans/kmeans_3_clusters.png" alt="K-Means K=3 3D Visualization">
                 </div>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="K-Means K=3 Category Distribution">
+                    <img src="plots/kmeans/category_distribution_k3.png" alt="K-Means K=3 Category Distribution">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        With K=3, a more nuanced separation emerges. Cluster 0 primarily contains musical instruments, Cluster 1 captures speech and animal vocalizations, and Cluster 2 encompasses environmental and mechanical sounds. This three-way division aligns with fundamental acoustic properties: harmonic tonal sounds (music), vocal sounds (speech, animals), and noise-based sounds (environmental).
-                    </p>
+                        With K=3, the separation becomes more refined. Cluster 0 maintains a balanced distribution with higher values for thunder sounds (0.10), traffic sounds (0.09), and wind sounds (0.08). Cluster 1 shows peaks for guitar (0.12) and crowd noise (0.12), while Cluster 2 is strongly dominated by piano (0.14) and applause (0.16). This suggests a division between ambient sounds (Cluster 0), mixed social/instrumental sounds (Cluster 1), and percussion-heavy sounds with applause (Cluster 2).                    </p>
                 </div>
             </div>
             
             <div class="visualization-section">
                 <h4 class="text-centered">K-Means with K=5</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="K-Means K=5 3D Visualization">
+                    <img src="plots/kmeans/kmeans_5_clusters.png" alt="K-Means K=5 3D Visualization">
                 </div>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="K-Means K=5 Category Distribution">
+                    <img src="plots/kmeans/category_distribution_k5.png" alt="K-Means K=5 Category Distribution">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        With K=5, we observe further differentiation among sound categories. Notably, musical instruments are divided between two clusters based on their acoustic properties, with percussive instruments (drums) separated from tonal instruments (piano, guitar). Similarly, environmental sounds are split based on their temporal and spectral characteristics, with continuous sounds (rain, wind) separated from intermittent sounds (thunder, construction).
-                    </p>
+                        With K=5, the algorithm produces even more specialized clusters. Cluster 2 shows the strongest specialization with very high concentrations of piano (0.29) and guitar (0.22), clearly capturing musical instruments. Cluster 4 is characterized by applause (0.18) and rain sounds (0.16). Cluster 3 shows peaks for construction noise (0.11), drums (0.11), and speech (0.18), suggesting it captures percussive and vocal sounds. Clusters 0 and 1 appear to capture remaining environmental and mechanical sounds, with Cluster 0 showing higher values for various traffic and wind sounds, and Cluster 1 having a notable peak for crowd noise (0.13).                    </p>
                 </div>
             </div>
             
             <h3 class="text-centered">Hierarchical Clustering</h3>
             <p class="text-justified">
-                Next, we applied hierarchical clustering using Ward's method, which aims to minimize the variance within clusters. This approach is particularly useful for exploring nested relationships between sound categories and for examining the clustering structure at different levels of granularity.
-            </p>
+                Next, we applied hierarchical clustering using cosine similarity as our distance metric, which measures the angle between feature vectors rather than their Euclidean distance. This approach is particularly useful for exploring nested relationships between sound categories and for examining the clustering structure at different levels of granularity. Cosine similarity focuses on the orientation of vectors rather than their magnitude, making it well-suited for audio feature data where the pattern of spectral characteristics is often more important than their absolute values.            </p>
             
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/600" alt="Hierarchical Clustering Dendrogram">
+                    <img src="plots/hierarchical_clustering/hierarchical_dendrogram.png" alt="Hierarchical Clustering Dendrogram">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This dendrogram visualizes the hierarchical relationships between clusters. The y-axis represents the distance or dissimilarity between merged clusters. By "cutting" the dendrogram at different heights, we can obtain different numbers of clusters. The dendrogram reveals natural groupings in our audio data, with clear separation between tonal sounds (music, speech) and noise-based sounds (environmental, mechanical) at the highest level.
-                    </p>
+                        This dendrogram visualizes hierarchical relationships using cosine similarity as the distance metric. The plot reveals two primary clusters (orange and green) that diverge at a distance of about 1.5. The orange cluster contains several subclusters that merge at distances between 0.2-0.7, while the green cluster shows a different internal structure. By "cutting" the dendrogram at various heights, we can obtain different numbers of clusters to suit our analysis needs, providing flexibility in how we group the audio samples.                    </p>
                 </div>
             </div>
             
@@ -799,85 +799,81 @@
             <div class="visualization-section">
                 <h4 class="text-centered">Hierarchical Clustering with 2 Clusters</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="Hierarchical 2 Clusters 3D Visualization">
+                    <img src="plots/hierarchical_clustering/hierarchical_2_clusters.png" alt="Hierarchical 2 Clusters 3D Visualization">
                 </div>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="Hierarchical 2 Clusters Category Distribution">
+                    <img src="plots/hierarchical_clustering/hierarchical_category_distribution_k=2.png" alt="Hierarchical 2 Clusters Category Distribution">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        The two-cluster hierarchical solution shows similar patterns to K-means with K=2, separating tonal from non-tonal sounds. However, hierarchical clustering provides a cleaner separation, with musical instruments and speech more concentrated in Cluster 0 and environmental sounds in Cluster 1.
-                    </p>
+                        Looking at the k=2 hierarchical clustering solution (Image 3), a clear division exists between two types of audio. Cluster 1 shows a relatively even distribution across many sound categories with moderate values (0.07-0.09) for rain_sounds, thunder_sounds, applause, birds, and fireworks. Cluster 2 shows notably high concentrations for piano (0.11), guitar (0.10), laughter (0.09), and speech (0.10), suggesting this cluster primarily captures musical and human vocal sounds. The distribution pattern indicates a separation between musical/vocal sounds and environmental/ambient sounds.                    </p>
                 </div>
             </div>
             
             <div class="visualization-section">
                 <h4 class="text-centered">Hierarchical Clustering with 3 Clusters</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="Hierarchical 3 Clusters 3D Visualization">
+                    <img src="plots/hierarchical_clustering/hierarchical_3_clusters.png" alt="Hierarchical 3 Clusters 3D Visualization">
                 </div>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="Hierarchical 3 Clusters Category Distribution">
+                    <img src="plots/hierarchical_clustering/hierarchical_category_distribution_k=3.png" alt="Hierarchical 3 Clusters Category Distribution">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        With three clusters, hierarchical clustering differentiates between music (Cluster 0), speech and animal sounds (Cluster 1), and environmental noises (Cluster 2). Compared to K-means, hierarchical clustering with Ward's linkage produces more compact clusters with clearer boundaries, particularly for musical instruments.
-                    </p>
+                        In the k=3 hierarchical clustering solution (Image 1), a more refined categorization emerges. Cluster 1 maintains relatively even distribution across categories with slightly higher values for thunder_sounds and train_sounds. Cluster 2 shows strong peaks for crowd_noise (0.16) and laughter (0.15), suggesting it captures human-generated ambient sounds. Cluster 3 has notable concentrations in laughter (0.14), guitar (0.12), and speech (0.11), indicating it primarily identifies musical and speech-related audio. This three-cluster solution provides better differentiation between natural environmental sounds, human ambient sounds, and musical/speech sounds.                    </p>
                 </div>
             </div>
             
             <div class="visualization-section">
                 <h4 class="text-centered">Hierarchical Clustering with 5 Clusters</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="Hierarchical 5 Clusters 3D Visualization">
+                    <img src="plots/hierarchical_clustering/hierarchical_5_clusters.png" alt="Hierarchical 5 Clusters 3D Visualization">
                 </div>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="Hierarchical 5 Clusters Category Distribution">
+                    <img src="plots/hierarchical_clustering/hierarchical_category_distribution_k=5.png" alt="Hierarchical 5 Clusters Category Distribution">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        The five-cluster solution reveals even more detailed acoustic groupings. Notably, percussion instruments (drums) form their own cluster, separate from tonal instruments like piano and guitar. Animal vocalizations (dog bark, cat meow) are distinguished from human speech, and environmental sounds are divided based on their spectral characteristics.
-                    </p>
+                        The k=5 hierarchical clustering solution (Image 2) offers the most granular categorization. Cluster 1 shows higher values for thunder_sounds (0.11), traffic_sounds (0.10), and train_sounds (0.09). Cluster 2 peaks at applause (0.15) and rain_sounds (0.13). Cluster 3 maintains the crowd_noise (0.16) and laughter (0.15) pattern. Cluster 4 distinctively peaks at speech (0.19), while Cluster 5 shows the highest concentration for piano (0.23) with a secondary peak at guitar (0.17). This five-cluster solution effectively separates environmental sounds (Clusters 1-2), human ambient sounds (Cluster 3), speech (Cluster 4), and musical instruments (Cluster 5), demonstrating how increasing k reveals more nuanced audio categorization patterns.                    </p>
                 </div>
             </div>
             
             <h3 class="text-centered">DBSCAN Clustering</h3>
             <p class="text-justified">
-                Finally, we applied DBSCAN, which identifies dense regions separated by sparser areas. Unlike K-means and hierarchical clustering, DBSCAN doesn't require specifying the number of clusters beforehand and can identify outliers as noise points.
+                DBSCAN was applied as the final clustering technique. This density-based algorithm identifies clusters without requiring pre-specified cluster numbers, unlike K-means and hierarchical clustering. DBSCAN automatically detects dense regions separated by sparser areas and can identify outliers as noise points, providing a different perspective on audio categorization.            </p>
+            
+            <p class="text-justified">
+                The optimal epsilon (neighborhood radius) parameter was determined using the k-distance method. This approach plots the distance to the kth nearest neighbor for each point. A suitable epsilon value is indicated by the "knee" or "elbow" in this plot. Multiple epsilon values around this point were explored, along with various min_samples values, to identify the optimal DBSCAN configuration.
             </p>
             
             <p class="text-justified">
-                To determine the optimal epsilon (neighborhood radius) parameter, we used the k-distance method, which plots the distance to the kth nearest neighbor for each point. The "knee" or "elbow" in this plot suggests a suitable epsilon value. We explored a range of epsilon values around this point and tested multiple min_samples values to find the optimal configuration.
-            </p>
-            
-            <p class="text-justified">
-                Based on our parameter exploration, we identified optimal values of epsilon (neighborhood radius) and min_samples (minimum points required to form a dense region). With these parameters, DBSCAN produced the following clustering result:
-            </p>
+                Based on parameter exploration, optimal values of epsilon (neighborhood radius) and min_samples (minimum points required to form a dense region) were identified. Using these parameters, DBSCAN produced the following clustering result:            </p>
             
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="DBSCAN Clustering Visualization">
+                    <img src="plots/dbscan/dbscan_results.png" alt="DBSCAN Clustering Visualization">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        Our DBSCAN clustering identified one major cluster containing most data points, with several points categorized as noise (shown in black). This result differs significantly from our K-means and hierarchical clustering results, suggesting that our audio data forms a continuous distribution in the PCA space rather than well-separated density-based clusters. DBSCAN detected 1 cluster with 5,263 non-noise points and 14,582 noise points, indicating that most samples don't form dense regions with the specified parameters.
-                    </p>
+                        The DBSCAN clustering identified one major cluster containing all data points, with several points categorized as noise (shown in black). This result differs significantly from the K-means and hierarchical clustering results, suggesting that the audio data forms a continuous distribution in the PCA space rather than well-separated density-based clusters.                     </p>
                 </div>
             </div>
             
             <h3 class="text-centered">Clustering Comparison and Conclusion</h3>
             <p class="text-justified">
-                Our clustering analysis reveals interesting patterns in our audio dataset:
+                The clustering analysis reveals interesting patterns in the audio dataset:
             </p>
-            <ul>
+            <ul class="ul-list">
                 <li>K-means and hierarchical clustering both identify natural groupings that align with intuitive categories of sounds: musical instruments, speech and vocalizations, and environmental noises.</li>
                 <li>Hierarchical clustering with Ward's linkage produces more compact and well-separated clusters than K-means, particularly for musical instruments.</li>
                 <li>DBSCAN suggests that our audio data forms a continuous distribution rather than clearly separated density-based clusters in the PCA space.</li>
-                <li>The optimal number of clusters appears to be between 3 and 5, significantly fewer than our 20 predefined sound categories, indicating natural acoustic similarities across different sound types.</li>
+                <li>The optimal number of clusters appears to be between 3 and 5, significantly fewer than the 20 predefined sound categories, indicating natural acoustic similarities across different sound types.</li>
             </ul>
             
             <p class="text-justified">
-                In conclusion, our clustering analysis provides valuable insights into the natural organization of sound categories based on their acoustic properties. The results could inform the development of automatic sound classification systems by highlighting which categories are inherently similar and which are acoustically distinct. For instance, a hierarchical approach to classification might first distinguish between tonal and non-tonal sounds before making finer distinctions. Additionally, clustering helps us understand why certain sound categories might be commonly confused in classification tasks, as they occupy similar regions in the acoustic feature space. These insights can guide feature engineering and model selection for supervised learning tasks in audio processing.
+                In conclusion, this clustering analysis provides valuable insights into the natural organization of sound categories based on their acoustic properties. The results could inform the development of automatic sound classification systems by highlighting which categories are inherently similar and which are acoustically distinct. For instance, a hierarchical approach to classification might first distinguish between tonal and non-tonal sounds before making finer distinctions. Additionally, clustering helps explain why certain sound categories might be commonly confused in classification tasks, as they occupy similar regions in the acoustic feature space. These insights can guide feature engineering and model selection for supervised learning tasks in audio processing.  
+                The full script to perform clustering and the corresponding visualizations can be found
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/clustering.py" target="_blank">here.</a>
             </p>
         </div>
 
