@@ -880,14 +880,14 @@
         <!-- Association Rule Mining Section -->
         <div id="arm" class="content-section" data-aos="fade-up">
             <h2>Association Rule Mining (ARM)</h2>
-            <h3 class="text-centered">Overview of Association Rule Mining</h3>
+
             <p class="text-justified">
                 Association Rule Mining (ARM) is a technique used to discover interesting relationships between variables in large datasets. Unlike clustering, which groups similar items together, ARM identifies specific patterns of co-occurrence, answering questions like "What features frequently appear together?" or "If feature A has a high value, what can we predict about feature B?"
             </p>
             
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/400" alt="ARM Concept Diagram">
+                    <img src="images/unsupervised/association_rules.png" alt="ARM Concept Diagram">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
@@ -900,7 +900,7 @@
                 ARM uses several key metrics to evaluate the quality and usefulness of discovered rules:
             </p>
 
-            <ul>
+            <ul class="ul-list">
                 <li><strong>Support:</strong> The proportion of transactions (samples) that contain both the antecedent and consequent. Support measures how frequently a rule appears in the dataset.</li>
                 <li><strong>Confidence:</strong> The likelihood that the consequent occurs when the antecedent occurs. Confidence is calculated as the support of the entire rule divided by the support of the antecedent.</li>
                 <li><strong>Lift:</strong> A measure of how much more likely the consequent is when the antecedent occurs, compared to the consequent's overall frequency. Lift values greater than 1 indicate positive association, with higher values suggesting stronger relationships.</li>
@@ -908,33 +908,52 @@
 
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/400" alt="ARM Metrics Visualization">
+                    <img src="images/unsupervised/arm_metrics.png" alt="ARM Metrics Visualization">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This visualization illustrates how support, confidence, and lift relate to each other. Support (circle size) represents rule frequency, confidence (vertical axis) shows prediction reliability, and lift (color intensity) indicates association strength. Strong rules have high values for all three metrics.
+                        This image illustrates how support, confidence, and lift relate to each other. Support represents rule frequency, confidence  shows prediction reliability, and lift indicates association strength. Strong rules have high values for all three metrics.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Apriori Algorithm</h3>
+            <p class="text-justified">
+                The Apriori algorithm is one of the most widely used methods for mining association rules. It works by first identifying frequent itemsets (sets of items that appear together frequently) and then generating rules from these itemsets. The algorithm uses a "bottom-up" approach, extending one item at a time and testing the frequency of each candidate itemset against a minimum support threshold.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/unsupervised/apriori.png" alt="Apriori">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This image depicts an example of using Apriori algorithm.The visualization shows the process of discovering frequent itemsets and identifying meaningful associations between items in a dataset.
                     </p>
                 </div>
             </div>
             
             <p class="text-justified">
-                The Apriori algorithm is one of the most widely used methods for mining association rules. It works by first identifying frequent itemsets (sets of items that appear together frequently) and then generating rules from these itemsets. The algorithm uses a "bottom-up" approach, extending one item at a time and testing the frequency of each candidate itemset against a minimum support threshold.
-            </p>
-            
-            <p class="text-justified">
-                In our audio analysis, ARM can reveal which acoustic features tend to co-occur and how they relate to sound categories. For instance, we can discover that specific combinations of spectral and temporal features strongly associate with particular sound types, providing interpretable insights into what makes different sounds acoustically distinctive.
+                In audio analysis, Association Rule Mining (ARM) can reveal which acoustic features tend to co-occur and how they relate to sound categories. For instance, ARM can discover that specific combinations of spectral and temporal features strongly associate with particular sound types, providing interpretable insights into what makes different sounds acoustically distinctive.
+                
             </p>
             
             <h3 class="text-centered">Data Preparation for Association Rule Mining</h3>
             <p class="text-justified">
-                ARM traditionally works with binary or categorical data, where items either appear in a transaction or don't. Our audio dataset, however, contains continuous numerical features. To apply ARM, we needed to transform these continuous values into categorical bins.
+                ARM traditionally works with binary or categorical data, where items either appear in a transaction or don't. The audio dataset, however, contains continuous numerical features. To apply ARM, these continuous values needed to be transformed into categorical bins.                
+                The original dataset looks like this:
             </p>
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/dataexploration/audio_features_csv.jpg" alt="Apriori">
+                </div>
+            </div>
             
             <p class="text-justified">
-                We started by taking a representative subset of our data, selecting 100 samples from each of the 20 sound categories for a total of 2,000 samples. From the original 43 features, we selected 15 key acoustic features based on their importance in our PCA analysis:
+                A representative subset of data was selected, comprising 100 samples from each of the 20 sound categories for a total of 2,000 samples. From the original 43 features, 15 key acoustic features were selected based on their importance in the PCA analysis:            
             </p>
             
-            <ul>
+            <ul class="ul-list">
                 <li>MFCC features (mfcc_1, mfcc_2, mfcc_4)</li>
                 <li>Chroma features (chroma_3, chroma_7)</li>
                 <li>Spectral contrast features (spectral_contrast_1, spectral_contrast_3)</li>
@@ -943,46 +962,45 @@
             </ul>
             
             <p class="text-justified">
-                To discretize these continuous features, we applied a simple but effective three-bin strategy:
+                To discretize these continuous features, a simple but effective three-bin strategy was applied:
             </p>
-            <ul>
+            <ul class="ul-list">
                 <li>Values below the 33rd percentile were labeled as "low"</li>
                 <li>Values between the 33rd and 67th percentiles were labeled as "medium"</li>
                 <li>Values above the 67th percentile were labeled as "high"</li>
             </ul>
             
             <p class="text-justified">
-                This transformation converted our continuous features into categorical features suitable for ARM analysis.
+                This transformation converted continuous features into categorical features suitable for ARM analysis.                
+                The transformed dataset is shown below:
             </p>
             
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/400" alt="Discretized Dataset Preview">
+                    <img src="images/unsupervised/transactions.png" alt="Discretized Dataset Preview">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        A preview of our transformed dataset after discretization. Each row represents an audio sample, and each column shows a feature's categorical value (low, medium, high) along with the sound category. This format allows us to discover meaningful associations between feature ranges and sound types.
+                        A preview of the transformed dataset after discretization. Each row represents an audio sample, and each column shows a feature's categorical value (low, medium, high) along with the sound category. This format allows for discovery of meaningful associations between feature ranges and sound types.                    
                     </p>
                 </div>
             </div>
             
             <h3 class="text-centered">Applying Apriori Algorithm</h3>
             <p class="text-justified">
-                With our discretized dataset, we applied the Apriori algorithm to discover association rules. We set a minimum support threshold of 0.1 (meaning the rule must appear in at least 10% of the samples) and a minimum confidence threshold of 0.7 (meaning the rule must be correct at least 70% of the time).
-            </p>
+                The discretized dataset was used to apply the Apriori algorithm for discovering association rules. A minimum support threshold of 0.1 was set (meaning the rule must appear in at least 10% of the samples) and a minimum confidence threshold of 0.7 (meaning the rule must be correct at least 70% of the time).            </p>
             
             <p class="text-justified">
-                After generating all rules that met these thresholds, we sorted them by support, confidence, and lift to identify the most interesting and powerful associations.
-            </p>
+                After generating all rules that met these thresholds, the results were sorted by support, confidence, and lift to identify the most interesting and powerful associations.            </p>
             
             <div class="visualization-section">
                 <h4 class="text-centered">Top 15 Rules by Support</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="Top Rules by Support">
+                    <img src="images/unsupervised/top_15_support.png" alt="Top Rules by Support">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        These rules have the highest support, meaning they appear most frequently in our dataset. High-support rules often represent common patterns but may not always provide the most distinctive insights. Notable among these are associations between spectral centroid, bandwidth, and RMS energy levels, which appear together in many sound samples regardless of category.
+                        These rules have the highest support, meaning they appear most frequently in the dataset. High-support rules often represent common patterns but may not always provide the most distinctive insights.
                     </p>
                 </div>
             </div>
@@ -990,11 +1008,11 @@
             <div class="visualization-section">
                 <h4 class="text-centered">Top 15 Rules by Confidence</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="Top Rules by Confidence">
+                    <img src="images/unsupervised/top_15_confidence.png" alt="Top Rules by Confidence">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        Rules with high confidence are highly reliable predictors. When the antecedent occurs, the consequent follows with high probability. These rules reveal that certain feature combinations can strongly predict other acoustic properties, such as how MFCC patterns reliably predict spectral characteristics in speech sounds.
+                        Rules with high confidence are highly reliable predictors. When the antecedent occurs, the consequent follows with high probability. These rules reveal that certain feature combinations can strongly predict other acoustic properties.
                     </p>
                 </div>
             </div>
@@ -1002,7 +1020,7 @@
             <div class="visualization-section">
                 <h4 class="text-centered">Top 15 Rules by Lift</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/500" alt="Top Rules by Lift">
+                    <img src="images/unsupervised/top_15_lift.png" alt="Top Rules by Lift">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
@@ -1013,75 +1031,37 @@
             
             <h3 class="text-centered">Association Network Visualization</h3>
             <p class="text-justified">
-                To better understand the relationships discovered through ARM, we created a network visualization of the strongest association rules. This network represents features and categories as nodes, with edges indicating associations between them. The thickness of each edge corresponds to the rule's lift, with thicker lines representing stronger associations.
+                The network visualization presents the strongest association rules discovered through ARM. Features and categories appear as nodes, while associations between them are displayed as edges. Edge thickness corresponds to rule lift, with thicker lines indicating stronger associations.            
             </p>
             
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="/api/placeholder/800/600" alt="Association Rule Network">
+                    <img src="plots/arm/association_network.png" alt="Association Rule Network">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This network visualization reveals clusters of associated features that characterize different sound categories. For instance, musical instruments form a distinct cluster with high chroma and tonnetz values, while environmental sounds associate with specific spectral patterns. The network provides an intuitive way to understand the complex relationships in our audio data.
+                        The network visualization reveals feature association patterns characterizing audio properties. Low spectral rolloff frequently appears with low MFCC values across multiple nodes, forming interconnected relationships. Several distinct pathways connect through RMS energy and chroma features, shown by the purple and yellow edges with varying strengths. The graph displays 11 unique itemsets derived from 15 rules, highlighting the most significant audio feature relationships in the analyzed dataset.                    
                     </p>
                 </div>
             </div>
             
-            <h3 class="text-centered">Key Discoveries from Association Rules</h3>
-            <table class="result-table">
-                <thead>
-                    <tr>
-                        <th>Sound Category</th>
-                        <th>Feature Associations</th>
-                        <th>Lift</th>
-                        <th>Confidence</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Speech</td>
-                        <td>High MFCC variability + Medium spectral contrast → Speech</td>
-                        <td>4.82</td>
-                        <td>0.78</td>
-                    </tr>
-                    <tr>
-                        <td>Birds</td>
-                        <td>High zero-crossing rate + High spectral centroid → Birds</td>
-                        <td>3.95</td>
-                        <td>0.72</td>
-                    </tr>
-                    <tr>
-                        <td>Thunder</td>
-                        <td>Low spectral centroid + High RMS energy → Thunder sounds</td>
-                        <td>5.21</td>
-                        <td>0.81</td>
-                    </tr>
-                    <tr>
-                        <td>Guitar</td>
-                        <td>High chroma feature variance + Medium spectral rolloff → Guitar</td>
-                        <td>4.47</td>
-                        <td>0.75</td>
-                    </tr>
-                    <tr>
-                        <td>Traffic</td>
-                        <td>Medium bandwidth + Low ZCR + Medium RMS → Traffic sounds</td>
-                        <td>3.12</td>
-                        <td>0.68</td>
-                    </tr>
-                </tbody>
-            </table>
-            
+
             <h3 class="text-centered">Conclusion</h3>
             <p class="text-justified">
-                Association Rule Mining has provided valuable insights into the acoustic characteristics that define different sound categories. The discovered rules reveal the distinctive feature combinations that characterize various sounds in our everyday environment. For example, bird sounds are characterized by high-frequency content (high spectral centroid) and rapid signal changes (high zero-crossing rate), while thunder sounds combine low-frequency content with high energy levels.
+                Association Rule Mining provided valuable insights into acoustic feature relationships. The discovered rules reveal strong connections between spectral features across different audio characteristics. For example, the top rules show that spectral_rolloff_Low strongly correlates with spectral_centroid_Low (support: 0.3085, confidence: 0.934848, lift: 2.832874), and similarly for their High value counterparts.            </p>
+            <p class="text-justified">
+                The more complex rules in the second and third tables demonstrate how combinations of low spectral features frequently appear together. Rules with perfect confidence (1.0) indicate that certain feature combinations invariably predict others, such as when multiple low spectral features (spectral_rolloff_Low, chroma_3_Low, etc.) consistently predict spectral_centroid_Low or mfcc_1_Low.
+            </p>
+            <p class="text-justified">
+                The highest lift values appear in the third table (approximately 7.23), indicating particularly strong associations between combinations of low spectral and chroma features. These patterns represent distinctive acoustic signatures that could characterize specific sound categories.            
             </p>
             
             <p class="text-justified">
-                These association rules give us an interpretable understanding of what makes different sounds unique, complementing the holistic groupings provided by clustering. While clustering showed us which sounds are similar overall, ARM reveals exactly which feature combinations make them distinctive. This knowledge has practical applications in sound recognition, audio synthesis, and acoustic monitoring systems.
+                These association rules provide an interpretable understanding of acoustic feature relationships, complementing other analytical approaches. The knowledge gained has practical applications in sound recognition, audio classification, and can inform feature selection for supervised learning models by highlighting which acoustic properties show the strongest associations.            
             </p>
-            
             <p class="text-justified">
-                Moreover, the rules discovered through ARM can inform feature selection for supervised learning models, highlighting which acoustic properties are most informative for distinguishing between sound categories. By focusing on the most distinctive feature combinations identified through ARM, we can build more efficient and accurate sound classification systems.
+                The full script to perform ARM and its corresponding visualizations can be found 
+                    <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/arm.py" target="_blank">here.</a>   
             </p>
         </div>
 
