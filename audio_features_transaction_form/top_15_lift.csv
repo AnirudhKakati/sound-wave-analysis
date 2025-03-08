@@ -1,0 +1,16 @@
+antecedents,consequents,support,confidence,lift,leverage
+"chroma_3_Low, spectral_bandwidth_Low, rms_energy_Low, chroma_7_Low, spectral_centroid_Low","spectral_rolloff_Low, mfcc_2_Low",0.102,0.8395061728395061,7.237122179650915,0.087906
+"chroma_3_Low, mfcc_1_Low, spectral_bandwidth_Low, rms_energy_Low, chroma_7_Low, spectral_centroid_Low","spectral_rolloff_Low, mfcc_2_Low",0.102,0.8395061728395061,7.237122179650915,0.087906
+"chroma_3_Low, spectral_bandwidth_Low, rms_energy_Low, chroma_7_Low, spectral_centroid_Low","spectral_rolloff_Low, mfcc_1_Low, mfcc_2_Low",0.102,0.8395061728395061,7.237122179650915,0.087906
+"spectral_rolloff_Low, mfcc_1_Low, mfcc_2_Low","chroma_3_Low, spectral_bandwidth_Low, rms_energy_Low, chroma_7_Low, spectral_centroid_Low",0.102,0.8793103448275861,7.237122179650914,0.087906
+"spectral_rolloff_Low, mfcc_2_Low","chroma_3_Low, mfcc_1_Low, spectral_bandwidth_Low, rms_energy_Low, chroma_7_Low, spectral_centroid_Low",0.102,0.8793103448275861,7.237122179650914,0.087906
+"spectral_rolloff_Low, mfcc_2_Low","chroma_3_Low, spectral_bandwidth_Low, rms_energy_Low, chroma_7_Low, spectral_centroid_Low",0.102,0.8793103448275861,7.237122179650914,0.087906
+"spectral_rolloff_Low, mfcc_2_Low, chroma_3_Low","rms_energy_Low, chroma_7_Low, spectral_centroid_Low, spectral_bandwidth_Low",0.102,0.9147982062780269,7.231606373739343,0.08789525
+"spectral_rolloff_Low, mfcc_2_Low, chroma_3_Low","mfcc_1_Low, spectral_bandwidth_Low, rms_energy_Low, chroma_7_Low, spectral_centroid_Low",0.102,0.9147982062780269,7.231606373739343,0.08789525
+"spectral_rolloff_Low, mfcc_1_Low, chroma_3_Low, mfcc_2_Low","rms_energy_Low, chroma_7_Low, spectral_centroid_Low, spectral_bandwidth_Low",0.102,0.9147982062780269,7.231606373739343,0.08789525
+"mfcc_1_Low, spectral_bandwidth_Low, rms_energy_Low, chroma_7_Low, spectral_centroid_Low","spectral_rolloff_Low, mfcc_2_Low, chroma_3_Low",0.102,0.8063241106719367,7.231606373739342,0.08789525
+"rms_energy_Low, chroma_7_Low, spectral_centroid_Low, spectral_bandwidth_Low","spectral_rolloff_Low, mfcc_1_Low, chroma_3_Low, mfcc_2_Low",0.102,0.8063241106719367,7.231606373739342,0.08789525
+"rms_energy_Low, chroma_7_Low, spectral_centroid_Low, spectral_bandwidth_Low","spectral_rolloff_Low, mfcc_2_Low, chroma_3_Low",0.102,0.8063241106719367,7.231606373739342,0.08789525
+"spectral_rolloff_Low, mfcc_2_Low","rms_energy_Low, chroma_7_Low, spectral_centroid_Low, chroma_3_Low",0.102,0.8793103448275861,7.207461842849066,0.087848
+"rms_energy_Low, chroma_7_Low, spectral_centroid_Low, chroma_3_Low","spectral_rolloff_Low, mfcc_1_Low, mfcc_2_Low, spectral_bandwidth_Low",0.102,0.8360655737704917,7.207461842849066,0.087848
+"rms_energy_Low, chroma_7_Low, spectral_centroid_Low, chroma_3_Low","spectral_rolloff_Low, mfcc_2_Low, spectral_bandwidth_Low",0.102,0.8360655737704917,7.207461842849066,0.087848

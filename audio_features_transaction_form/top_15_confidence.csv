@@ -1,0 +1,16 @@
+antecedents,consequents,support,confidence,lift,leverage
+"spectral_rolloff_Low, chroma_3_Low, zero_crossing_rate_Low, spectral_bandwidth_Low, rms_energy_Low, chroma_7_Low","spectral_centroid_Low, mfcc_1_Low",0.102,1.0,4.49438202247191,0.07930499999999999
+"spectral_rolloff_Low, chroma_3_Low, zero_crossing_rate_Low, spectral_bandwidth_Low, rms_energy_Low",mfcc_1_Low,0.105,1.0,3.0303030303030303,0.07035
+"spectral_rolloff_Low, rms_energy_Low, zero_crossing_rate_Low, chroma_3_Low","spectral_centroid_Low, mfcc_1_Low",0.1055,1.0,4.49438202247191,0.08202625
+"spectral_rolloff_Low, chroma_3_Low, zero_crossing_rate_Low, rms_energy_Low, spectral_centroid_Low",mfcc_1_Low,0.1055,1.0,3.0303030303030303,0.070685
+"spectral_rolloff_Low, chroma_3_Low, zero_crossing_rate_Low, mfcc_1_Low, rms_energy_Low",spectral_centroid_Low,0.1055,1.0,3.0303030303030303,0.070685
+"spectral_rolloff_Low, chroma_7_Low, mfcc_2_Low, chroma_3_Low",spectral_bandwidth_Low,0.1105,1.0,3.0303030303030303,0.07403499999999999
+"spectral_rolloff_Low, mfcc_2_Low",spectral_bandwidth_Low,0.116,1.0,3.0303030303030303,0.07772000000000001
+"spectral_rolloff_Low, mfcc_4_High",spectral_centroid_Low,0.1,1.0,3.0303030303030303,0.067
+"spectral_rolloff_Low, chroma_3_Low, zero_crossing_rate_Low, mfcc_1_Low, spectral_bandwidth_Low",spectral_centroid_Low,0.1375,1.0,3.0303030303030303,0.09212500000000001
+"spectral_rolloff_Low, chroma_3_Low, rms_energy_Low, mfcc_2_Low, chroma_7_Low, spectral_centroid_Low",spectral_bandwidth_Low,0.102,1.0,3.0303030303030303,0.06833999999999998
+"spectral_rolloff_Low, rms_energy_Low, zero_crossing_rate_Low, chroma_3_Low",spectral_centroid_Low,0.1055,1.0,3.0303030303030303,0.070685
+"spectral_rolloff_Low, chroma_7_Low, mfcc_1_Low, mfcc_4_Low",spectral_bandwidth_Low,0.101,1.0,3.0303030303030303,0.06767000000000001
+"spectral_rolloff_Low, chroma_3_Low, rms_energy_Low, mfcc_2_Low, chroma_7_Low",spectral_bandwidth_Low,0.1045,1.0,3.0303030303030303,0.070015
+"zero_crossing_rate_High, chroma_7_High, chroma_3_High, spectral_rolloff_High",spectral_centroid_High,0.1125,1.0,2.941176470588235,0.07425
+"spectral_rolloff_Low, rms_energy_Low, zero_crossing_rate_Low, chroma_7_Low",mfcc_1_Low,0.106,1.0,3.0303030303030303,0.07102

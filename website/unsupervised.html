@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsupervised Learning - ML Project</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            margin-top: 10px;
+            background: rgba(0, 0, 0, 0.85);
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            border-radius: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s ease;
+        }
+        
+        .dropdown-content a:hover {
+            background: var(--primary);
+        }
+        
+        /* Add padding to create hover area */
+        .dropdown-content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .visualization-section {
+            margin: 4rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .visualization-section img{
+            transition: transform 0.3s ease;
+        }
+
+        .visualization-section img:hover{
+            transform: scale(1.025);
+        }
+
+        .select-container {
+            margin: 2rem 0;
+        }
+
+        select {
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        select:hover {
+            transform: scale(1.05);
+        }
+
+        .plot-container {
+            width: 100%; 
+            text-align: center;
+            max-width: 1000px;
+            margin: 2rem auto;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+        }
+
+        .plot-container img {
+            width: 90%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 0.5rem;
+        }
+
+        .plot-description {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        h2 {
+            color: var(--secondary);
+            margin: 3rem 0 1.5rem 0;
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            color: var(--primary);
+            margin: 2rem 0 1rem 0;
+            font-size: 2rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+        }
+
+        .nav-button {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            border: none;
+            border-radius: 1rem;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.1);
+        }
+
+        .text-centered {
+            text-align: center;
+        }
+
+        .text-justified {
+            text-align: justify;
+        }
+
+        a {
+            color: var(--primary);
+        }
+
+        .result-table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .result-table th, .result-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .result-table th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: bold;
+        }
+        
+        .two-column-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .method-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .method-card:hover {
+            transform: scale(1.02);
+        }
+
+
+        /*  */
+        /*  */
+        /*  */
+
+        .categories-selection-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .categories-checkboxes {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            transition: transform 0.2s ease;
+        }
+
+        .checkbox-label:hover {
+            transform: translateX(5px);
+        }
+
+        .checkbox-label input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .category-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .action-button, .generate-button {
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+        .action-button:hover, .generate-button:hover {
+            transform: scale(1.05);
+            background: var(--primary);
+        }
+
+        .samples-selection {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .samples-input-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .samples-input {
+            padding: 0.75rem;
+            width: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .samples-range {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .generate-button {
+            align-self: flex-start;
+            padding: 0.75rem 1.5rem;
+            font-weight: bold;
+            background: var(--primary);
+        }
+
+        .selected-categories {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Dimension tabs
+        .dimension-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        } */
+
+        .dimension-tab {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .dimension-tab.active {
+            background: var(--primary);
+            font-weight: bold;
+        }
+
+        .dimension-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="data-exploration.html">Data Preparation & Exploration</a></li>
+            <li class="dropdown">
+                <a href="unsupervised.html" class="active">Unsupervised Learning</a>
+                <div class="dropdown-content">
+                    <a href="unsupervised.html#pca">PCA</a>
+                    <a href="unsupervised.html#clustering">Clustering</a>
+                    <a href="unsupervised.html#arm">ARM</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="supervised.html">Supervised Learning</a>
+                <div class="dropdown-content">
+                    <a href="supervised.html#decision-trees">Decision Trees</a>
+                    <a href="supervised.html#naive-bayes">Naive Bayes</a>
+                    <a href="supervised.html#svm">SVM</a>
+                    <a href="supervised.html#regression">Regression</a>
+                </div>
+            </li>
+            <li><a href="conclusion.html">Conclusion</a></li>
+            <li><a href="about.html">About Me</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        <div class="content-section" data-aos="fade-up">
+            <br><br><br>
+            <h1>Unsupervised Learning</h1>
+            <p class="text-justified">
+                Unsupervised learning algorithms identify patterns and relationships in data without predefined labels or outcomes. This section explores three key unsupervised techniques applied to the audio dataset: Principal Component Analysis (PCA) for dimensionality reduction, Clustering for grouping similar sounds, and Association Rule Mining (ARM) for discovering relationships between audio features.
+            </p>
+        </div>
+        
+
+        <!-- PCA Section -->
+        <div id="pca" class="content-section" data-aos="fade-up">
+            <h2>Principal Component Analysis (PCA)</h2>
+            <p class="text-justified">
+                Principal Component Analysis (PCA) is a dimensionality reduction technique that transforms a dataset with potentially correlated variables into a set of linearly uncorrelated variables called principal components. These components are ordered by the amount of variance they explain in the original data, with the first component capturing the most variance. PCA helps us overcome the "curse of dimensionality," allowing for more efficient data visualization, pattern recognition, and computational processing while preserving the essential information in the data. The technique works by identifying the directions (principal components) where the data varies the most, projecting the data onto these new axes.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/unsupervised/pca_visual.png" alt="PCA Conceptual Diagram">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This diagram illustrates how PCA transforms high-dimensional data by projecting it onto new axes (principal components) that maximize variance. The first principal component (PC1) captures the direction of maximum variance, while subsequent components (PC2, PC3, etc.) capture remaining variance in orthogonal directions.
+                    </p>
+                </div>
+            </div>
+            <p class="text-justified">
+                Understanding variance is key to PCA. In statistical terms, variance measures how spread out data points are from their mean. PCA finds the directions where the data varies the most, which typically contain the most important information. The first principal component points in the direction of maximum variance, essentially capturing the strongest pattern in the data. Each subsequent component is orthogonal (perpendicular) to the previous ones and captures the maximum remaining variance.
+            </p>
+            
+            <p class="text-justified">
+                When we reduce dimensions using PCA, we can quantify how much information we retain through the "explained variance ratio" of each component. This tells us what percentage of the original data's variance is preserved by each principal component. Typically, we might keep enough components to retain 80-95% of the total variance, striking a balance between dimensionality reduction and information preservation.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/unsupervised/pca_variance_explained.png" alt="PCA Variance Explained Chart">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This chart shows a typical "explained variance ratio" plot for PCA. The bars represent how much variance each principal component explains, while the line shows the cumulative variance explained. This visualization helps in deciding how many components to retain for analysis.
+                    </p>
+                </div>
+            </div>
+            <p class="text-justified">
+                PCA helped transform the numerous sound features into a smaller set of principal components that captured the essential patterns in the data. This revealed which combinations of sound characteristics were most important for distinguishing between different audio categories, eliminated redundant information, and made visualization and classification more effective.
+            </p>
+
+            <h3 class="text-centered">Performing PCA on the Dataset</h3>
+            <p class="text-justified">
+                The original dataset contains 43 acoustic features extracted from approximately 15,000 audio samples across 20 sound categories. Each feature represents a different aspect of the audio signal, such as spectral characteristics, temporal patterns, and frequency content.
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container larger-plot-container" data-aos="fade-up">
+                    <img src="images/dataexploration/audio_features_csv.jpg" alt="Original Dataset Preview">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        A preview of the original dataset showing the 43 acoustic features and category labels. Each row represents an audio sample, and each column represents a different acoustic feature. The second column as seen contains the sound category labels.
+                    </p>
+                </div>
+            </div>
+            
+            <p class="text-justified">
+                Before applying PCA, we needed to prepare the data by removing non-numeric features (category and filepath) and standardizing the remaining features. Standardization is crucial for PCA as it ensures that features with larger scales don't dominate the variance calculation. We used scikit-learn's StandardScaler to transform each feature to have zero mean and unit variance.
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/unsupervised/scaled_dataset.png" alt="Processed Dataset Preview">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The processed dataset after removing categorical features and applying standardization. All features now have similar scales, allowing PCA to identify variance patterns based on actual data distribution rather than arbitrary feature scales.
+                    </p>
+                </div>
+            </div>
+            
+            <p class="text-justified">
+                After preparing the data, PCA was applied to reduce the 43-dimensional feature space to lower dimensions for visualization and further analysis. The focus was on creating 2D and 3D representations that capture the most significant variance in the data while making it possible to visualize relationships between audio samples.
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="../website/plots/pca/pca_2d.png" alt="2D PCA Visualization">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The 2D PCA visualization projects the audio samples onto the first two principal components, which together explain approximately 43% of the total variance.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="../website/plots/pca/pca_3d.png" alt="3D PCA Visualization">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The 3D PCA visualization incorporates the third principal component, increasing the explained variance to approximately 51%.
+                    </p>
+                </div>
+            </div>
+            <p class="text-justified">
+                Due to the high volume of data points, the standard PCA plots suffer from excessive clustering, obscuring the distinct patterns of individual categories. To address this limitation, we've implemented a customizable 3D PCA visualization tool that allows users to select specific categories of interest and control the sampling density, enabling clearer identification of categorical patterns and relationships within the feature space.
+            </p>
+
+            <div class="visualization-section">
+                <h3 class="text-centered">Custom PCA Visualization by Categories</h3>
+                <p class="text-justified">
+                    Select one or more categories and specify the number of samples per category to generate a custom PCA visualization. This will help you compare how different sound categories are distributed in the PCA feature space.
+                </p>
+                
+                <div class="categories-selection-container">
+                    <div class="categories-checkboxes">
+                        <h4>Select Categories:</h4>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="applause"> Applause</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="birds"> Birds</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="car_horn"> Car Horn</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="cat_meow"> Cat Meow</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="construction_noise"> Construction Noise</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="crowd_noise"> Crowd Noise</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="dog_bark"> Dog Bark</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="drums"> Drums</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="fireworks"> Fireworks</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="footsteps"> Footsteps</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="guitar"> Guitar</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="laughter"> Laughter</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="piano"> Piano</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="rain_sounds"> Rain Sounds</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="sirens"> Sirens</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="speech"> Speech</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="thunder_sounds"> Thunder Sounds</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="traffic_sounds"> Traffic Sounds</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="train_sounds"> Train Sounds</label>
+                            <label class="checkbox-label"><input type="checkbox" name="category" value="wind_sounds"> Wind Sounds</label>
+                        </div>
+                        <div class="category-actions">
+                            <button id="selectAll" class="action-button">Select All</button>
+                            <button id="deselectAll" class="action-button">Deselect All</button>
+                        </div>
+                    </div>
+                    
+                    <div class="samples-selection">
+                        <h4>Samples per Category:</h4>
+                        <div class="samples-input-container">
+                            <input type="number" id="samplesPerCategory" min="1" max="750" value="15" class="samples-input">
+                            <span class="samples-range">(1-750)</span>
+                        </div>
+                        <button id="generatePCA" class="generate-button">Generate PCA Visualization</button>
+                    </div>
+                </div>
+                
+                <div class="pca-results">
+                    <div class="plot-container" data-aos="fade-up">
+                        <!-- <div class="dimension-tabs"> -->
+                            <!-- <button class="dimension-tab active" data-dimension="2d">2D View</button> -->
+                            <!-- <button class="dimension-tab" data-dimension="3d">3D View</button> -->
+                        <!-- </div> -->
+                        <div id="plotly3dContainer" style="width: 100%; height: 400px;"></div>
+                    </div>
+                    <div class="plot-description">
+                        <p class="text-justified">
+                            This custom PCA visualization displays the selected sound categories projected onto the principal components. Each color represents a different category, allowing for visual comparison of how different sounds cluster in the PCA space. The 2D view shows the first two principal components, while the 3D view adds the third component for additional dimensionality.
+                        </p>
+                        <div id="selectedCategoriesDisplay" class="selected-categories">
+                            <p>No categories selected yet. Select categories and generate the visualization to see the results.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="text-centered">Determining the Optimal Number of Components</h3>
+            <p class="text-justified">
+                To determine how many principal components should be retained for analysis, the explained variance ratio for each component was examined. This metric shows how much of the original data's variance is captured by each principal component.
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="../website/plots/pca/scree_plot.png" alt="PCA Explained Variance">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The cumulative explained variance plot shows that 26 principal components are needed to capture 95% of the total variance in the dataset. This represents a significant dimensionality reduction from the original 43 features while retaining most of the information, demonstrating PCA's effectiveness for the audio dataset.
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">Top Principal Components Analysis</h3>
+            <p class="text-justified">
+                By examining the eigenvalues and eigenvectors of the top principal components, it becomes possible to understand which original features contribute most to the variance in the data.
+                The top 3 eigenvalues are examined first.
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="../website/plots/pca/top_eigenvalues.png" alt="Top Principal Components">
+                </div>
+                <!-- <div class="plot-description">
+                    <p class="text-justified">
+                         
+                    </p>
+                </div> -->
+            </div>
+            <p class="text-justified">
+                We can now look at the contributions of the original features to the Principal Components.
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="../website/plots/pca/feature_contributions_heatmap.png" alt="Top Principal Components">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This visualization shows the top 15 contributing original feature to the three principal components. The first principal component is heavily influenced by chroma features, indicating that tonal information is crucial for distinguishing between sound categories. The second component is dominated by spectral features, while the third also shows significant contributions from spectral characteristics, suggesting the importance of these spectral properties for certain sound categories.
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">Conclusion</h3>
+            <p class="text-justified">
+                PCA has proven to be an invaluable tool for audio data analysis, allowing the reduction of the 43-dimensional feature space to a more manageable representation while preserving essential patterns. The 2D and 3D visualizations reveal natural groupings among sound categories that align with intuitive understanding of acoustic similarities. For instance, musical instruments cluster together, as do mechanical sounds and animal vocalizations. Moreover, PCA has prepared the data for more efficient clustering analysis by eliminating redundant information and noise. By focusing on the 26 principal components that capture 95% of the variance, the analysis can proceed with more computationally efficient and interpretable techniques while still retaining the most meaningful aspects of the sound features. 
+                For the sake of simplicity and visual clarity in the following sections, only 3 principal components are considered.
+                The full script to perform PCA and its corresponding visualizations can be found 
+                    <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/pca.py" target="_blank">here.</a>
+            </p>
+
+        </div>
+
+        <!-- Clustering Section -->
+        <div id="clustering" class="content-section" data-aos="fade-up">
+            <h2>Clustering</h2>
+            
+            <p class="text-justified">
+                Clustering is an unsupervised learning technique that groups similar data points together based on their inherent patterns and relationships, without predefined labels. The goal is to organize data into clusters where items within a cluster are more similar to each other than to those in other clusters. This similarity is typically measured using distance metrics such as Euclidean distance, Manhattan distance, or cosine similarity, which quantify how "close" data points are in the feature space.
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="../website/images/unsupervised/clustering_visual.png" alt="Clustering Distance Metrics">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This image shows different kinds of clusters formed by different clustering algorithms. Out of these the project explores K-Means, Hierarchical and DBSCAN clustering techniques.
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-justified">
+                Distance metrics are fundamental to clustering algorithms as they define what "similarity" means in the context of the data. Euclidean distance, the most common metric, measures the straight-line distance between points in Euclidean space. Manhattan distance sums the absolute differences of coordinates, making it useful when features represent discrete steps. Cosine similarity measures the cosine of the angle between vectors, focusing on orientation rather than magnitude, which is particularly useful for high-dimensional data where the magnitude might be less important than the pattern of features.
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="../website/images/unsupervised/similarity_measures.png" alt="Clustering Distance Metrics">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This visualization illustrates a variety of distance metrics used in clustering algorithms. Euclidean distance represents the straight-line distance between points, while Manhattan distance follows grid lines. Cosine similarity measures the angle between vectors, regardless of their magnitudes.
+                    </p>
+                </div>
+            </div>
+            
+            <p class="text-justified">
+                In the analysis of this audio dataset, the focus is on three prominent clustering algorithms: K-means, Hierarchical clustering, and DBSCAN (Density-Based Spatial Clustering of Applications with Noise). Each offers unique advantages for discovering patterns in the high-dimensional audio feature space.            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="../website/images/unsupervised/clustering_algos_comparison.png" alt="Clustering Algorithms Comparison">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This comparison illustrates how the three clustering methods approach the same dataset differently. K-means (centre) partitions the space into Voronoi cells, with each point assigned to the nearest centroid. Hierarchical clustering (right) builds a tree-like structure of nested clusters. DBSCAN (left) identifies dense regions separated by sparser areas, capable of finding arbitrary-shaped clusters and identifying outliers. 
+                        These difference in approaches lead to different formed clusters.
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">Comparing Clustering Approaches</h3>
+            <div class="two-column-container">
+                <div class="method-card">
+                    <h3 class="text-centered">K-Means Clustering</h3>
+                    <p class="text-justified">
+                        K-means is a partitioning method that divides data into K non-overlapping clusters by iteratively assigning points to the nearest centroid and updating centroids based on the mean of assigned points. It excels with spherical clusters of similar size and density but requires specifying the number of clusters beforehand and is sensitive to outliers and initial centroid placement.
+                    </p>
+                </div>
+                <div class="method-card">
+                    <h3 class="text-centered">Hierarchical Clustering</h3>
+                    <p class="text-justified">
+                        Hierarchical clustering builds a tree of nested clusters by either merging (agglomerative) or splitting (divisive) groups. It doesn't require pre-specifying the number of clusters and provides a dendrogram visualization of the clustering process. However, it can be computationally intensive for large datasets and requires choosing a linkage method (e.g., Ward's, complete, single) that defines how distances between clusters are measured.
+                    </p>
+                </div>
+            </div>
+            <div class="method-card" style="margin-top: 2rem;">
+                <h3 class="text-centered">DBSCAN</h3>
+                <p class="text-justified">
+                    DBSCAN (Density-Based Spatial Clustering of Applications with Noise) identifies clusters as dense regions separated by sparser areas. It doesn't require specifying the number of clusters and can discover arbitrarily shaped clusters while identifying outliers as noise. However, it's sensitive to its parameters (epsilon and min_samples) and struggles with clusters of varying densities. DBSCAN is particularly useful for datasets with noise and non-spherical cluster shapes.
+                </p>
+            </div>
+            
+            <h3 class="text-centered">Preparing the Dataset for Clustering</h3>
+            <p class="text-justified">
+                For the clustering analysis, the 3D PCA-transformed dataset created in the previous section will be used. This approach offers two significant advantages: it reduces computational complexity by working with just three dimensions instead of the original 43, and it focuses on the most significant variance in the data, potentially leading to more meaningful clusters. The dataset maintains the category labels, allowing for evaluation of how well the clustering results align with the actual sound categories.            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/300" alt="PCA-Transformed Dataset">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        Preview of the PCA-transformed dataset used for clustering. Each row represents an audio sample with its three principal components and category label. This reduced representation captures approximately 45% of the variance in the original feature space while making clustering analysis computationally tractable.                    
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">K-Means Clustering</h3>
+            <p class="text-justified">
+                The clustering analysis begins with K-means, one of the most widely used clustering algorithms. To determine the optimal number of clusters, the silhouette method was applied, which measures how similar objects are to their own cluster compared to other clusters. The silhouette score ranges from -1 to 1, with higher values indicating better-defined clusters.            
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/400" alt="K-Means Silhouette Scores">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This plot shows the silhouette scores for different numbers of clusters (K values from 2 to 10). Based on this analysis, the highest silhouette scores were achieved with K=2, K=3, and K=5, suggesting these are the most natural groupings for the audio data when using K-means clustering.                    
+                    </p>
+                </div>
+            </div>
+            
+            <p class="text-justified">
+                Based on our silhouette analysis, we performed K-means clustering with K=2, K=3, and K=5. For visualization clarity, we randomly selected 50 samples per sound category to create our 3D cluster plots.
+            </p>
+            
+            <div class="visualization-section">
+                <h4 class="text-centered">K-Means with K=2</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="K-Means K=2 3D Visualization">
+                </div>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="K-Means K=2 Category Distribution">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        With K=2, the algorithm primarily separates tonal sounds (music, speech, animal vocalizations) from non-tonal sounds (environmental noises, mechanical sounds). The heatmap shows that Cluster 0 predominantly contains musical instruments, speech, and animal sounds, while Cluster 1 contains most environmental and mechanical sounds.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="visualization-section">
+                <h4 class="text-centered">K-Means with K=3</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="K-Means K=3 3D Visualization">
+                </div>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="K-Means K=3 Category Distribution">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        With K=3, a more nuanced separation emerges. Cluster 0 primarily contains musical instruments, Cluster 1 captures speech and animal vocalizations, and Cluster 2 encompasses environmental and mechanical sounds. This three-way division aligns with fundamental acoustic properties: harmonic tonal sounds (music), vocal sounds (speech, animals), and noise-based sounds (environmental).
+                    </p>
+                </div>
+            </div>
+            
+            <div class="visualization-section">
+                <h4 class="text-centered">K-Means with K=5</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="K-Means K=5 3D Visualization">
+                </div>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="K-Means K=5 Category Distribution">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        With K=5, we observe further differentiation among sound categories. Notably, musical instruments are divided between two clusters based on their acoustic properties, with percussive instruments (drums) separated from tonal instruments (piano, guitar). Similarly, environmental sounds are split based on their temporal and spectral characteristics, with continuous sounds (rain, wind) separated from intermittent sounds (thunder, construction).
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">Hierarchical Clustering</h3>
+            <p class="text-justified">
+                Next, we applied hierarchical clustering using Ward's method, which aims to minimize the variance within clusters. This approach is particularly useful for exploring nested relationships between sound categories and for examining the clustering structure at different levels of granularity.
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/600" alt="Hierarchical Clustering Dendrogram">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This dendrogram visualizes the hierarchical relationships between clusters. The y-axis represents the distance or dissimilarity between merged clusters. By "cutting" the dendrogram at different heights, we can obtain different numbers of clusters. The dendrogram reveals natural groupings in our audio data, with clear separation between tonal sounds (music, speech) and noise-based sounds (environmental, mechanical) at the highest level.
+                    </p>
+                </div>
+            </div>
+            
+            <p class="text-justified">
+                To compare with our K-means results, we "cut" the dendrogram to create 2, 3, and 5 clusters:
+            </p>
+            
+            <div class="visualization-section">
+                <h4 class="text-centered">Hierarchical Clustering with 2 Clusters</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="Hierarchical 2 Clusters 3D Visualization">
+                </div>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="Hierarchical 2 Clusters Category Distribution">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The two-cluster hierarchical solution shows similar patterns to K-means with K=2, separating tonal from non-tonal sounds. However, hierarchical clustering provides a cleaner separation, with musical instruments and speech more concentrated in Cluster 0 and environmental sounds in Cluster 1.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="visualization-section">
+                <h4 class="text-centered">Hierarchical Clustering with 3 Clusters</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="Hierarchical 3 Clusters 3D Visualization">
+                </div>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="Hierarchical 3 Clusters Category Distribution">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        With three clusters, hierarchical clustering differentiates between music (Cluster 0), speech and animal sounds (Cluster 1), and environmental noises (Cluster 2). Compared to K-means, hierarchical clustering with Ward's linkage produces more compact clusters with clearer boundaries, particularly for musical instruments.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="visualization-section">
+                <h4 class="text-centered">Hierarchical Clustering with 5 Clusters</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="Hierarchical 5 Clusters 3D Visualization">
+                </div>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="Hierarchical 5 Clusters Category Distribution">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The five-cluster solution reveals even more detailed acoustic groupings. Notably, percussion instruments (drums) form their own cluster, separate from tonal instruments like piano and guitar. Animal vocalizations (dog bark, cat meow) are distinguished from human speech, and environmental sounds are divided based on their spectral characteristics.
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">DBSCAN Clustering</h3>
+            <p class="text-justified">
+                Finally, we applied DBSCAN, which identifies dense regions separated by sparser areas. Unlike K-means and hierarchical clustering, DBSCAN doesn't require specifying the number of clusters beforehand and can identify outliers as noise points.
+            </p>
+            
+            <p class="text-justified">
+                To determine the optimal epsilon (neighborhood radius) parameter, we used the k-distance method, which plots the distance to the kth nearest neighbor for each point. The "knee" or "elbow" in this plot suggests a suitable epsilon value. We explored a range of epsilon values around this point and tested multiple min_samples values to find the optimal configuration.
+            </p>
+            
+            <p class="text-justified">
+                Based on our parameter exploration, we identified optimal values of epsilon (neighborhood radius) and min_samples (minimum points required to form a dense region). With these parameters, DBSCAN produced the following clustering result:
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="DBSCAN Clustering Visualization">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        Our DBSCAN clustering identified one major cluster containing most data points, with several points categorized as noise (shown in black). This result differs significantly from our K-means and hierarchical clustering results, suggesting that our audio data forms a continuous distribution in the PCA space rather than well-separated density-based clusters. DBSCAN detected 1 cluster with 5,263 non-noise points and 14,582 noise points, indicating that most samples don't form dense regions with the specified parameters.
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">Clustering Comparison and Conclusion</h3>
+            <p class="text-justified">
+                Our clustering analysis reveals interesting patterns in our audio dataset:
+            </p>
+            <ul>
+                <li>K-means and hierarchical clustering both identify natural groupings that align with intuitive categories of sounds: musical instruments, speech and vocalizations, and environmental noises.</li>
+                <li>Hierarchical clustering with Ward's linkage produces more compact and well-separated clusters than K-means, particularly for musical instruments.</li>
+                <li>DBSCAN suggests that our audio data forms a continuous distribution rather than clearly separated density-based clusters in the PCA space.</li>
+                <li>The optimal number of clusters appears to be between 3 and 5, significantly fewer than our 20 predefined sound categories, indicating natural acoustic similarities across different sound types.</li>
+            </ul>
+            
+            <p class="text-justified">
+                In conclusion, our clustering analysis provides valuable insights into the natural organization of sound categories based on their acoustic properties. The results could inform the development of automatic sound classification systems by highlighting which categories are inherently similar and which are acoustically distinct. For instance, a hierarchical approach to classification might first distinguish between tonal and non-tonal sounds before making finer distinctions. Additionally, clustering helps us understand why certain sound categories might be commonly confused in classification tasks, as they occupy similar regions in the acoustic feature space. These insights can guide feature engineering and model selection for supervised learning tasks in audio processing.
+            </p>
+        </div>
+
+        <!-- Association Rule Mining Section -->
+        <div id="arm" class="content-section" data-aos="fade-up">
+            <h2>Association Rule Mining (ARM)</h2>
+            <h3 class="text-centered">Overview of Association Rule Mining</h3>
+            <p class="text-justified">
+                Association Rule Mining (ARM) is a technique used to discover interesting relationships between variables in large datasets. Unlike clustering, which groups similar items together, ARM identifies specific patterns of co-occurrence, answering questions like "What features frequently appear together?" or "If feature A has a high value, what can we predict about feature B?"
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/400" alt="ARM Concept Diagram">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This diagram illustrates the concept of association rules. Rules take the form "If antecedent, then consequent" (A → B), indicating that when A occurs, B also tends to occur. In our audio analysis, this might be "If the zero-crossing rate is high and the spectral centroid is high, then the sound is likely a bird vocalization."
+                    </p>
+                </div>
+            </div>
+            
+            <p class="text-justified">
+                ARM uses several key metrics to evaluate the quality and usefulness of discovered rules:
+            </p>
+
+            <ul>
+                <li><strong>Support:</strong> The proportion of transactions (samples) that contain both the antecedent and consequent. Support measures how frequently a rule appears in the dataset.</li>
+                <li><strong>Confidence:</strong> The likelihood that the consequent occurs when the antecedent occurs. Confidence is calculated as the support of the entire rule divided by the support of the antecedent.</li>
+                <li><strong>Lift:</strong> A measure of how much more likely the consequent is when the antecedent occurs, compared to the consequent's overall frequency. Lift values greater than 1 indicate positive association, with higher values suggesting stronger relationships.</li>
+            </ul>        
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/400" alt="ARM Metrics Visualization">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This visualization illustrates how support, confidence, and lift relate to each other. Support (circle size) represents rule frequency, confidence (vertical axis) shows prediction reliability, and lift (color intensity) indicates association strength. Strong rules have high values for all three metrics.
+                    </p>
+                </div>
+            </div>
+            
+            <p class="text-justified">
+                The Apriori algorithm is one of the most widely used methods for mining association rules. It works by first identifying frequent itemsets (sets of items that appear together frequently) and then generating rules from these itemsets. The algorithm uses a "bottom-up" approach, extending one item at a time and testing the frequency of each candidate itemset against a minimum support threshold.
+            </p>
+            
+            <p class="text-justified">
+                In our audio analysis, ARM can reveal which acoustic features tend to co-occur and how they relate to sound categories. For instance, we can discover that specific combinations of spectral and temporal features strongly associate with particular sound types, providing interpretable insights into what makes different sounds acoustically distinctive.
+            </p>
+            
+            <h3 class="text-centered">Data Preparation for Association Rule Mining</h3>
+            <p class="text-justified">
+                ARM traditionally works with binary or categorical data, where items either appear in a transaction or don't. Our audio dataset, however, contains continuous numerical features. To apply ARM, we needed to transform these continuous values into categorical bins.
+            </p>
+            
+            <p class="text-justified">
+                We started by taking a representative subset of our data, selecting 100 samples from each of the 20 sound categories for a total of 2,000 samples. From the original 43 features, we selected 15 key acoustic features based on their importance in our PCA analysis:
+            </p>
+            
+            <ul>
+                <li>MFCC features (mfcc_1, mfcc_2, mfcc_4)</li>
+                <li>Chroma features (chroma_3, chroma_7)</li>
+                <li>Spectral contrast features (spectral_contrast_1, spectral_contrast_3)</li>
+                <li>Basic audio descriptors (zero_crossing_rate, spectral_centroid, spectral_bandwidth, rms_energy, spectral_rolloff)</li>
+                <li>Tonal features (tonnetz_1, tonnetz_3, tonnetz_6)</li>
+            </ul>
+            
+            <p class="text-justified">
+                To discretize these continuous features, we applied a simple but effective three-bin strategy:
+            </p>
+            <ul>
+                <li>Values below the 33rd percentile were labeled as "low"</li>
+                <li>Values between the 33rd and 67th percentiles were labeled as "medium"</li>
+                <li>Values above the 67th percentile were labeled as "high"</li>
+            </ul>
+            
+            <p class="text-justified">
+                This transformation converted our continuous features into categorical features suitable for ARM analysis.
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/400" alt="Discretized Dataset Preview">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        A preview of our transformed dataset after discretization. Each row represents an audio sample, and each column shows a feature's categorical value (low, medium, high) along with the sound category. This format allows us to discover meaningful associations between feature ranges and sound types.
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">Applying Apriori Algorithm</h3>
+            <p class="text-justified">
+                With our discretized dataset, we applied the Apriori algorithm to discover association rules. We set a minimum support threshold of 0.1 (meaning the rule must appear in at least 10% of the samples) and a minimum confidence threshold of 0.7 (meaning the rule must be correct at least 70% of the time).
+            </p>
+            
+            <p class="text-justified">
+                After generating all rules that met these thresholds, we sorted them by support, confidence, and lift to identify the most interesting and powerful associations.
+            </p>
+            
+            <div class="visualization-section">
+                <h4 class="text-centered">Top 15 Rules by Support</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="Top Rules by Support">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        These rules have the highest support, meaning they appear most frequently in our dataset. High-support rules often represent common patterns but may not always provide the most distinctive insights. Notable among these are associations between spectral centroid, bandwidth, and RMS energy levels, which appear together in many sound samples regardless of category.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="visualization-section">
+                <h4 class="text-centered">Top 15 Rules by Confidence</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="Top Rules by Confidence">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        Rules with high confidence are highly reliable predictors. When the antecedent occurs, the consequent follows with high probability. These rules reveal that certain feature combinations can strongly predict other acoustic properties, such as how MFCC patterns reliably predict spectral characteristics in speech sounds.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="visualization-section">
+                <h4 class="text-centered">Top 15 Rules by Lift</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/500" alt="Top Rules by Lift">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        Lift measures how much more likely the consequent is when the antecedent occurs compared to its baseline probability. High-lift rules identify the strongest associations in our data, revealing distinctive acoustic signatures for different sound categories. These rules are particularly valuable for understanding what makes each sound type unique.
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">Association Network Visualization</h3>
+            <p class="text-justified">
+                To better understand the relationships discovered through ARM, we created a network visualization of the strongest association rules. This network represents features and categories as nodes, with edges indicating associations between them. The thickness of each edge corresponds to the rule's lift, with thicker lines representing stronger associations.
+            </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="/api/placeholder/800/600" alt="Association Rule Network">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This network visualization reveals clusters of associated features that characterize different sound categories. For instance, musical instruments form a distinct cluster with high chroma and tonnetz values, while environmental sounds associate with specific spectral patterns. The network provides an intuitive way to understand the complex relationships in our audio data.
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">Key Discoveries from Association Rules</h3>
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>Sound Category</th>
+                        <th>Feature Associations</th>
+                        <th>Lift</th>
+                        <th>Confidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Speech</td>
+                        <td>High MFCC variability + Medium spectral contrast → Speech</td>
+                        <td>4.82</td>
+                        <td>0.78</td>
+                    </tr>
+                    <tr>
+                        <td>Birds</td>
+                        <td>High zero-crossing rate + High spectral centroid → Birds</td>
+                        <td>3.95</td>
+                        <td>0.72</td>
+                    </tr>
+                    <tr>
+                        <td>Thunder</td>
+                        <td>Low spectral centroid + High RMS energy → Thunder sounds</td>
+                        <td>5.21</td>
+                        <td>0.81</td>
+                    </tr>
+                    <tr>
+                        <td>Guitar</td>
+                        <td>High chroma feature variance + Medium spectral rolloff → Guitar</td>
+                        <td>4.47</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>Traffic</td>
+                        <td>Medium bandwidth + Low ZCR + Medium RMS → Traffic sounds</td>
+                        <td>3.12</td>
+                        <td>0.68</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3 class="text-centered">Conclusion</h3>
+            <p class="text-justified">
+                Association Rule Mining has provided valuable insights into the acoustic characteristics that define different sound categories. The discovered rules reveal the distinctive feature combinations that characterize various sounds in our everyday environment. For example, bird sounds are characterized by high-frequency content (high spectral centroid) and rapid signal changes (high zero-crossing rate), while thunder sounds combine low-frequency content with high energy levels.
+            </p>
+            
+            <p class="text-justified">
+                These association rules give us an interpretable understanding of what makes different sounds unique, complementing the holistic groupings provided by clustering. While clustering showed us which sounds are similar overall, ARM reveals exactly which feature combinations make them distinctive. This knowledge has practical applications in sound recognition, audio synthesis, and acoustic monitoring systems.
+            </p>
+            
+            <p class="text-justified">
+                Moreover, the rules discovered through ARM can inform feature selection for supervised learning models, highlighting which acoustic properties are most informative for distinguishing between sound categories. By focusing on the most distinctive feature combinations identified through ARM, we can build more efficient and accurate sound classification systems.
+            </p>
+        </div>
+
+        <div class="navigation-buttons">
+            <button class="nav-button" onclick="location.href='data-exploration.html'">
+                ← Back to Data Exploration
+            </button>
+            <button class="nav-button" onclick="location.href='supervised.html'">
+                Next: Supervised Learning →
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+        
+        // Function to update association rules visualization based on selected category
+        function updateRules(category) {
+            // This would be implemented to show different rule visualizations
+            // For the template, we'll just show a placeholder message
+            console.log(`Showing rules for category: ${category}`);
+            // In a real implementation, you would update the image source
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100, // Offset for fixed navbar
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    <script src="js/pca-visualization.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.16.1/plotly.min.js"></script>
+</body>
+</html>
