@@ -558,10 +558,6 @@
                 
                 <div class="pca-results">
                     <div class="plot-container" data-aos="fade-up">
-                        <!-- <div class="dimension-tabs"> -->
-                            <!-- <button class="dimension-tab active" data-dimension="2d">2D View</button> -->
-                            <!-- <button class="dimension-tab" data-dimension="3d">3D View</button> -->
-                        <!-- </div> -->
                         <div id="plotly3dContainer" style="width: 100%; height: 400px;"></div>
                     </div>
                     <div class="plot-description">
@@ -704,9 +700,21 @@
             
             <h3 class="text-centered">Preparing the Dataset for Clustering</h3>
             <p class="text-justified">
-                For the clustering analysis, the 3D PCA-transformed dataset created in the previous section will be used. This approach offers two significant advantages: it reduces computational complexity by working with just three dimensions instead of the original 43, and it focuses on the most significant variance in the data, potentially leading to more meaningful clusters. The dataset maintains the category labels, allowing for evaluation of how well the clustering results align with the actual sound categories.            </p>
-            
+                For the clustering analysis, the 3D PCA-transformed dataset created in the previous section will be used. 
+                This approach offers two significant advantages: it reduces computational complexity by working with just three dimensions instead of the original 43, and it focuses on the most significant variance in the data, potentially leading to more meaningful clusters. 
+                The dataset maintains the category labels, allowing for evaluation of how well the clustering results align with the actual sound categories.
+                Both the original dataset and the 3D PCA transformed datasets are shown below.            
+            </p>
+
             <div class="visualization-section">
+                <div class="plot-container larger-plot-container" data-aos="fade-up">
+                    <img src="images/dataexploration/audio_features_csv.jpg" alt="Original Dataset Preview">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        A preview of the original dataset showing the 43 acoustic features and category labels. Each row represents an audio sample, and each column represents a different acoustic feature. The second column as seen contains the sound category labels.
+                    </p>
+                </div>
                 <div class="plot-container" data-aos="fade-up">
                     <img src="images/unsupervised/pca_3d_dataset.png" alt="PCA-Transformed Dataset">
                 </div>

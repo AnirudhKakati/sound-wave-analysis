@@ -76,7 +76,7 @@ def perform_arm():
     min_support=0.1
     min_confidence=0.7
 
-    # Run Apriori Algorithm with new thresholds
+    # Run Apriori Algorithm with thresholds
     frequent_itemsets=apriori(df_encoded, min_support=min_support, use_colnames=True)
 
     # Extract Association Rules with filtered thresholds
@@ -242,4 +242,3 @@ def plot_association_network(rules_df):
 if __name__=="__main__":
     make_transaction_data()
     perform_arm()
-
