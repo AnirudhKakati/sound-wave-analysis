@@ -19,6 +19,21 @@ with open("../scripts/categories.txt","r") as f:
     categories=f.read().split()
 
 def get_3d_pca_data():
+    """
+    Function to load and process 3D PCA-transformed data.
+
+    This function:
+    - Reads PCA-transformed data from a JSON file.
+    - Expands the data into a structured DataFrame format.
+    - Includes category labels along with PC1, PC2, and PC3 values.
+
+    Parameters:
+    - None
+
+    Returns:
+    - df_pca (DataFrame): DataFrame containing 'category', 'PC1', 'PC2', and 'PC3' columns.
+    """
+    
     with open("../website/data/pca_data.json","r") as f:
         data=json.load(f)
 
@@ -35,7 +50,25 @@ def get_3d_pca_data():
     return df_pca
 
 def perform_kmeans(samples_per_cluster=50):
-    
+    """
+    Function to perform K-Means clustering on 3D PCA-transformed data.
+
+    This function:
+    - Loads the PCA-transformed dataset.
+    - Computes silhouette scores for K values ranging from 2 to 10.
+    - Identifies the top 3 K values with the highest silhouette scores.
+    - Generates a silhouette score plot to determine the optimal K.
+    - Performs K-Means clustering using the top 3 K values.
+    - Generates 3D scatter plots of the clustered data with sampled points.
+    - Visualizes the distribution of original categories within each cluster using a heatmap.
+
+    Parameters:
+    - samples_per_cluster (int): Number of points to sample per cluster for visualization.
+
+    Returns:
+    - None
+    """
+
     #we perform kmeans on the 3D PCA dataset
     df_pca=get_3d_pca_data()
     categories_array=df_pca["category"].values # store the categories for later use
@@ -148,178 +181,47 @@ def perform_kmeans(samples_per_cluster=50):
         plt.close()
         print(f"Distribution of categories for clusters = {k} plot saved to {output_path}/{plot_filename}")
 
-# def perform_hierarchical_clustering():
-#     """
-#     Performs hierarchical clustering on the PCA-reduced dataset and creates a dendrogram visualization.
-#     """
-#     # Get the PCA data
-#     df_pca = get_3d_pca_data()
-#     categories_array = df_pca["category"].values
-#     df_features = df_pca.drop("category", axis=1)
-    
-#     # Create output directory
-#     output_path = "../website/plots/hierarchical_clustering"
-#     os.makedirs(output_path, exist_ok=True)
-    
-#     # Perform hierarchical clustering
-#     # Using Ward's method as it minimizes the variance within clusters (similar to k-means objective)
-#     Z = linkage(df_features, method='ward')
-    
-#     # Plot the dendrogram
-#     plt.figure(figsize=(16, 10))
-#     plt.title('Hierarchical Clustering Dendrogram', fontsize=16)
-#     plt.xlabel('Sample index', fontsize=12)
-#     plt.ylabel('Distance', fontsize=12)
-    
-#     # Generate dendrogram with colors for different clusters
-#     # Truncate the dendrogram to show only the most important merges
-#     dendrogram(Z, truncate_mode='lastp', p=30, leaf_font_size=10, 
-#                show_contracted=True, leaf_rotation=90)
-    
-#     plot_filename="hierarchical_dendrogram.png"
-#     plt.tight_layout()
-#     plt.savefig(f"{output_path}/{plot_filename}", dpi=300, bbox_inches="tight")
-#     plt.close()
-#     print(f"Hierarchial dendogram plot saved to {output_path}/{plot_filename}")
-    
-#     # For the top 3 k values identified in the KMeans clustering
-#     # Let's create cluster assignments and compare them with original categories
-#     df_pca = get_3d_pca_data()
-#     X_pca = df_pca.drop("category", axis=1).values
-    
-#     # Get the same top 3 k values from KMeans
-#     silhouette_scores = []
-#     K_range = range(2, 6)
-#     for k in K_range:
-#         kmeans = KMeans(n_clusters=k, n_init=10, random_state=17)
-#         labels = kmeans.fit_predict(X_pca)
-#         score = silhouette_score(X_pca, labels)
-#         silhouette_scores.append((score, k))
-    
-#     top_3_k = [k for _, k in sorted(silhouette_scores, reverse=True)[:3]]
-    
-#     # For each of the top 3 cluster numbers, create and visualize hierarchical clusters
-#     for k in top_3_k:
-#         # Cut the dendrogram to get k clusters
-#         hierarchical_clusters = fcluster(Z, k, criterion='maxclust')
-        
-#         # Create a dataframe with category and cluster assignments
-#         cluster_category_df = pd.DataFrame({
-#             'Hierarchical Cluster': hierarchical_clusters,
-#             'Category': categories_array
-#         })
-        
-#         # Plot distribution of categories in each hierarchical cluster
-#         plt.figure(figsize=(14, 10))
-#         cross_tab = pd.crosstab(
-#             cluster_category_df['Hierarchical Cluster'],
-#             cluster_category_df['Category'],
-#             normalize='index'
-#         )
-        
-#         plot_filename=f"hierarchical_category_distribution_k={k}.png"
-#         sns.heatmap(cross_tab, cmap='viridis', annot=True, fmt='.2f', linewidths=.5)
-#         plt.title(f'Distribution of Categories in Each Hierarchical Cluster (k={k})')
-#         plt.tight_layout()
-#         plt.savefig(f"{output_path}/{plot_filename}", 
-#                     dpi=300, bbox_inches="tight")
-#         plt.close()
-#         print(f"Distribution of categories for clusters = {k} plot (Hierarchial) saved to {output_path}/{plot_filename}")
-
-#         # 3D scatter plot for visualization (with limited samples for clarity)
-#         samples_per_cluster = 50
-#         sampled_indices = []
-        
-#         for cluster_id in range(1, k+1):  # Hierarchical cluster IDs start from 1
-#             cluster_indices = np.where(hierarchical_clusters == cluster_id)[0]
-#             if len(cluster_indices) > samples_per_cluster:
-#                 sampled_cluster_indices = np.random.choice(
-#                     cluster_indices, size=samples_per_cluster, replace=False
-#                 )
-#                 sampled_indices.extend(sampled_cluster_indices)
-#             else:
-#                 sampled_indices.extend(cluster_indices)
-        
-#         sampled_indices = np.array(sampled_indices)
-        
-#         # Create 3D scatter plot
-#         plt.figure(figsize=(10, 8))
-#         ax = plt.axes(projection='3d')
-        
-#         sampled_X = X_pca[sampled_indices]
-#         sampled_clusters = hierarchical_clusters[sampled_indices]
-        
-#         scatter = ax.scatter(
-#             sampled_X[:, 0], sampled_X[:, 1], sampled_X[:, 2],
-#             c=sampled_clusters, cmap='tab20', alpha=0.7, edgecolors='k', s=50
-#         )
-        
-#         # Calculate "centroids" for hierarchical clusters
-#         centroids = []
-#         for i in range(1, k+1):
-#             mask = hierarchical_clusters == i
-#             if np.any(mask):
-#                 centroids.append(np.mean(X_pca[mask], axis=0))
-        
-#         centroids = np.array(centroids)
-        
-#         # Plot centroids
-#         ax.scatter(
-#             centroids[:, 0], centroids[:, 1], centroids[:, 2],
-#             s=250, c='red', marker='X', label='Cluster Centers', edgecolors='black'
-#         )
-        
-#         # Add legend for clusters
-#         legend1 = ax.legend(*scatter.legend_elements(), title="Clusters", loc="upper right")
-#         ax.add_artist(legend1)
-        
-#         # Add a separate legend for centroids
-#         ax.legend(loc="upper left")
-        
-#         ax.set_title(f'Hierarchical Clustering (k={k})\n{samples_per_cluster} points shown per cluster', 
-#                      fontsize=12)
-#         ax.set_xlabel('PC1')
-#         ax.set_ylabel('PC2')
-#         ax.set_zlabel('PC3')
-        
-#         ax.view_init(elev=30, azim=45)
-        
-#         plot_filename=f"hierarchical_{k}_clusters.png"
-#         plt.tight_layout()
-#         plt.savefig(f"{output_path}/{plot_filename}", 
-#                     dpi=300, bbox_inches="tight")
-#         plt.close()
-#         print(f"Hierarchial Clusters = {k} Plot saved to {output_path}/{plot_filename}")
-
-
-
 def perform_hierarchical_clustering():
     """
-    Performs hierarchical clustering on the PCA-reduced dataset using cosine similarity 
-    and creates a dendrogram visualization.
+    Function to perform hierarchical clustering using cosine similarity.
+
+    This function:
+    - Loads the PCA-transformed dataset.
+    - Computes pairwise cosine distances.
+    - Performs hierarchical clustering using average linkage.
+    - Generates and saves a dendrogram visualization.
+    - Identifies top 3 K values from silhouette scores using K-Means results.
+    - Assigns hierarchical clusters using fcluster for the top 3 K values.
+    - Generates category distribution heatmaps for hierarchical clusters.
+    - Creates 3D scatter plots of hierarchical clusters with sampled points.
+
+    Parameters:
+    - None
+
+    Returns:
+    - None
     """
-    # Get the PCA data
-    df_pca = get_3d_pca_data()
+   
+    df_pca = get_3d_pca_data() # get the PCA data
     categories_array = df_pca["category"].values
     df_features = df_pca.drop("category", axis=1)
     
-    # Create output directory
+    
     output_path = "../website/plots/hierarchical_clustering"
     os.makedirs(output_path, exist_ok=True)
     
-    # Compute pairwise cosine distances (1 - cosine similarity)
-    cosine_distances = pdist(df_features, metric='cosine')
+    cosine_distances = pdist(df_features, metric='cosine') # compute pairwise cosine distances (1 - cosine similarity)
     
-    # Perform hierarchical clustering using the computed cosine distances
-    Z = linkage(cosine_distances, method='average')  # Using average linkage (UPGMA)
+    # we perform hierarchical clustering using the computed cosine distances
+    Z = linkage(cosine_distances, method='average')  # using average linkage (UPGMA)
 
-    # Plot the dendrogram
+    # dendrogram plot
     plt.figure(figsize=(16, 10))
     plt.title('Hierarchical Clustering Dendrogram (Cosine Similarity)', fontsize=16)
     plt.xlabel('Sample index', fontsize=12)
     plt.ylabel('Distance', fontsize=12)
 
-    # Generate dendrogram with colors for different clusters
+    # generate dendrogram with colors for different clusters
     dendrogram(Z, truncate_mode='lastp', p=30, leaf_font_size=10, 
                show_contracted=True, leaf_rotation=90)
 
@@ -329,7 +231,7 @@ def perform_hierarchical_clustering():
     plt.close()
     print(f"Hierarchical dendrogram plot saved to {output_path}/{plot_filename}")
     
-    # Identify the top 3 k values from KMeans clustering
+    # we get the top 3 k values from KMeans clustering
     df_pca = get_3d_pca_data()
     X_pca = df_pca.drop("category", axis=1).values
 
@@ -343,23 +245,14 @@ def perform_hierarchical_clustering():
     
     top_3_k = [k for _, k in sorted(silhouette_scores, reverse=True)[:3]]
 
-    # Create hierarchical clusters for the top 3 k values
+    # hierarchical clusters are created for the top 3 k values
     for k in top_3_k:
         hierarchical_clusters = fcluster(Z, k, criterion='maxclust')
-
-        # Create a dataframe with category and cluster assignments
-        cluster_category_df = pd.DataFrame({
-            'Hierarchical Cluster': hierarchical_clusters,
-            'Category': categories_array
-        })
-
-        # Plot distribution of categories in each hierarchical cluster
+        # create a dataframe with category and cluster assignments
+        cluster_category_df = pd.DataFrame({'Hierarchical Cluster': hierarchical_clusters,'Category': categories_array}) 
+        # plot distribution of categories in each hierarchical cluster
         plt.figure(figsize=(14, 10))
-        cross_tab = pd.crosstab(
-            cluster_category_df['Hierarchical Cluster'],
-            cluster_category_df['Category'],
-            normalize='index'
-        )
+        cross_tab = pd.crosstab(cluster_category_df['Hierarchical Cluster'], cluster_category_df['Category'], normalize='index')
 
         plot_filename = f"hierarchical_category_distribution_k={k}.png"
         sns.heatmap(cross_tab, cmap='viridis', annot=True, fmt='.2f', linewidths=.5)
@@ -385,7 +278,6 @@ def perform_hierarchical_clustering():
 
         sampled_indices = np.array(sampled_indices)
 
-        # Create 3D scatter plot
         plt.figure(figsize=(10, 8))
         ax = plt.axes(projection='3d')
 
@@ -397,7 +289,7 @@ def perform_hierarchical_clustering():
             c=sampled_clusters, cmap='tab20', alpha=0.7, edgecolors='k', s=50
         )
 
-        # Compute "centroids" for hierarchical clusters
+        # compute and plot "centroids" for hierarchical clusters
         centroids = []
         for i in range(1, k+1):
             mask = hierarchical_clusters == i
@@ -406,17 +298,15 @@ def perform_hierarchical_clustering():
 
         centroids = np.array(centroids)
 
-        # Plot centroids
         ax.scatter(
             centroids[:, 0], centroids[:, 1], centroids[:, 2],
             s=250, c='red', marker='X', label='Cluster Centers', edgecolors='black'
         )
 
-        # Add legend for clusters
-        legend1 = ax.legend(*scatter.legend_elements(), title="Clusters", loc="upper right")
+        legend1 = ax.legend(*scatter.legend_elements(), title="Clusters", loc="upper right") #legend for clusters
         ax.add_artist(legend1)
 
-        # Add a separate legend for centroids
+        # add a separate legend for centroids
         ax.legend(loc="upper left")
 
         ax.set_title(f'Hierarchical Clustering (k={k})\n{samples_per_cluster} points shown per cluster', fontsize=12)
@@ -426,6 +316,7 @@ def perform_hierarchical_clustering():
 
         ax.view_init(elev=30, azim=45)
 
+        # save plot
         plot_filename = f"hierarchical_{k}_clusters.png"
         plt.tight_layout()
         plt.savefig(f"{output_path}/{plot_filename}", dpi=300, bbox_inches="tight")
@@ -436,8 +327,22 @@ def perform_hierarchical_clustering():
 
 def perform_dbscan():
     """
-    Performs DBSCAN clustering on the PCA-reduced dataset and creates visualizations.
-    Automatically selects optimal epsilon and min_samples by scanning a range.
+    Function to perform DBSCAN clustering on 3D PCA-transformed data.
+
+    This function:
+    - Loads the PCA-transformed dataset.
+    - Determines the optimal epsilon using the k-distance method and KneeLocator.
+    - Selects multiple min_samples values dynamically.
+    - Evaluates different (epsilon, min_samples) combinations to find the best configuration.
+    - Performs DBSCAN clustering using the optimal parameters.
+    - Generates and saves a 3D scatter plot of the clustered data.
+    - Computes and visualizes the distribution of categories within DBSCAN clusters using a heatmap.
+
+    Parameters:
+    - None
+
+    Returns:
+    - None
     """
     df_pca = get_3d_pca_data()
     categories_array = df_pca["category"].values
@@ -513,13 +418,14 @@ def perform_dbscan():
     ax.set_zlabel('PC3')
     ax.view_init(elev=30, azim=45)
     
+    # save plot
     plot_filename="dbscan_results.png"
     plt.tight_layout()
     plt.savefig(f"{output_path}/{plot_filename}.png", dpi=300, bbox_inches="tight")
     print(f"DBSCAN Clustering Plot saved to {output_path}/{plot_filename}")
     plt.close()
     
-    # Generate category distribution heatmap
+    # generate category distribution heatmap
     cluster_category_df = pd.DataFrame({
         'DBSCAN Cluster': clusters,
         'Category': categories_array
@@ -535,13 +441,14 @@ def perform_dbscan():
     sns.heatmap(cross_tab, cmap='viridis', annot=True, fmt='.2f', linewidths=.5)
     plt.title(f'Distribution of Categories in DBSCAN Clusters')
     plt.tight_layout()
+
+    #save the plot
     plot_filename="dbscan_category_distribution.png"
     plt.savefig(f"{output_path}/{plot_filename}", dpi=300, bbox_inches="tight")
     plt.close()
     print(f"DBSCAN Clustering Plot saved to {output_path}/{plot_filename}")
 
 if __name__=="__main__":
-    
-    # perform_kmeans()
+    perform_kmeans()
     perform_hierarchical_clustering()
-    # perform_dbscan()
+    perform_dbscan()

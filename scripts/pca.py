@@ -97,40 +97,19 @@ def prepare_pca_for_web():
             break
     print("\nRequired no. of Principle Components to explain atleast 95% variance :",req_comp, "\nExplained variance :", cumulative_variance[req_comp-1])
     
-    # top_3_eigen_values=list(pca.explained_variance_[:3]) #get the top 3 eigen values
-    # print(f"\nTop 3 Eigen Values : {top_3_eigen_values[0]}, {top_3_eigen_values[1]}, {top_3_eigen_values[2]}")
     
-    # Create scree plot to visualize cumulative explained variance
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(10, 6)) # we create scree plot to visualize cumulative explained variance
+    plt.bar(range(1,len(pca.explained_variance_ratio_)+1), pca.explained_variance_ratio_,alpha=0.6,color='skyblue',label='Individual Explained Variance')
     
-    # Individual explained variance
-    plt.bar(range(1, len(pca.explained_variance_ratio_) + 1), 
-            pca.explained_variance_ratio_, 
-            alpha=0.6, 
-            color='skyblue', 
-            label='Individual Explained Variance')
+    plt.step(range(1,len(cumulative_variance)+1), cumulative_variance, where='mid', color='red', label='Cumulative Explained Variance')
     
-    # Cumulative explained variance
-    plt.step(range(1, len(cumulative_variance) + 1), 
-             cumulative_variance, 
-             where='mid', 
-             color='red', 
-             label='Cumulative Explained Variance')
+    plt.axhline(y=0.95, color='green', linestyle='--', alpha=0.8, label='95% Threshold') # the 95% threshold is highlighted
+    plt.axvline(x=req_comp, color='purple', linestyle='--', alpha=0.8, label=f'Components Needed: {req_comp}') # corresponding number of components is also marked
     
-    # Highlight the 95% threshold
-    plt.axhline(y=0.95, color='green', linestyle='--', alpha=0.8, label='95% Threshold')
-    
-    # Mark the required number of components
-    plt.axvline(x=req_comp, color='purple', linestyle='--', alpha=0.8, 
-                label=f'Components Needed: {req_comp}')
-    
-    # Add a text annotation for the 95% threshold point
-    plt.scatter(req_comp, cumulative_variance[req_comp-1], color='purple', s=100, zorder=5)
-    plt.annotate(f'({req_comp}, {cumulative_variance[req_comp-1]:.3f})', 
-                 xy=(req_comp, cumulative_variance[req_comp-1]),
-                 xytext=(req_comp + 1, cumulative_variance[req_comp-1] + 0.05),
-                 arrowprops=dict(facecolor='black', shrink=0.05, width=1.5),
-                 fontsize=10)
+    #text annotation for the 95% threshold point
+    plt.scatter(req_comp, cumulative_variance[req_comp-1], color='purple', s=100, zorder=5) 
+    plt.annotate(f'({req_comp}, {cumulative_variance[req_comp-1]:.3f})', xy=(req_comp, cumulative_variance[req_comp-1]),
+                 xytext=(req_comp + 1, cumulative_variance[req_comp-1] + 0.05), arrowprops=dict(facecolor='black', shrink=0.05, width=1.5), fontsize=10)
     
     plt.xlabel('Number of Principal Components')
     plt.ylabel('Explained Variance Ratio')
@@ -139,7 +118,7 @@ def prepare_pca_for_web():
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.tight_layout()
     
-    # Save the scree plot
+    # save the plot
     output_path=f"../website/plots/pca"
     os.makedirs(output_path, exist_ok=True)
     plt.savefig(f"{output_path}/scree_plot.png", dpi=300, bbox_inches="tight")
@@ -151,11 +130,10 @@ def prepare_pca_for_web():
     top_3_eigen_values=list(pca.explained_variance_[:3]) #get the top 3 eigen values
     print(f"\nTop 3 Eigen Values : {top_3_eigen_values[0]}, {top_3_eigen_values[1]}, {top_3_eigen_values[2]}")
 
-    # Create a bar chart for top 3 eigenvalues
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(8, 5)) # bar chart for top 3 eigenvalues
     bars = plt.bar(['PC1', 'PC2', 'PC3'], top_3_eigen_values, color=['#ff9999', '#66b3ff', '#99ff99'])
     
-    # Add value labels on top of bars
+    # add value labels on top of bars
     for bar in bars:
         height = bar.get_height()
         plt.text(bar.get_x() + bar.get_width()/2., height + 0.1,
@@ -166,7 +144,7 @@ def prepare_pca_for_web():
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
     
-    # Save the eigenvalues plot
+    # save the plot
     output_path=f"../website/plots/pca"
     plt.savefig(f"{output_path}/top_eigenvalues.png", dpi=300, bbox_inches="tight")
     plt.close()
@@ -185,6 +163,7 @@ def pca_visualization_2d_3d():
     - Generates a 3D scatter plot using the first three principal components.
     - Computes and displays the explained variance percentage for 3D PCA.
     - Saves the 3D PCA plot as a PNG file.
+    - Calls `visualize_feature_contributions` to generate a heatmap of feature contributions.
 
     Parameters:
     - None
@@ -242,58 +221,42 @@ def visualize_feature_contributions(pca, output_path):
     Function to visualize how original features contribute to the principal components.
     
     This function:
-    - Creates bar plots showing the loading/contribution of each original feature 
-      to the first two principal components (2D) and first three principal components (3D).
-    - Saves the visualization plots as PNG files.
-    
+    - Creates a heatmap showing the loading/contribution of each original feature to the first three principal components.
+    - Selects the top 20 features with the highest absolute contribution to PC1 for better visualization.
+    - Saves the visualization as a heatmap plot in PNG format.
+
     Parameters:
-    - pca (PCA object): Fitted PCA model.
-    - output_path (str): Path to save the output plots.
-    
+    - pca (PCA object): Fitted PCA model containing principal component loadings.
+    - output_path (str): Directory path to save the output plot.
+
     Returns:
-    - None (Outputs feature contribution plots as PNG files).
+    - None (Outputs a heatmap plot as a PNG file).
     """
+    # we gett the components and feature names
+    components=pca.components_ 
+    sample_df=pd.read_csv(f"../audiofiles_processed_features_CSVs/{categories[0]}_features.csv")
+    feature_names=sample_df.drop(["filename", "category"], axis=1).columns.tolist()
     
-    # Get the components and feature names
-    components = pca.components_
+    # features are sorted by absolute contribution to PC1 for better visualization
+    pc1_importance=np.abs(components[0])
+    sorted_indices=np.argsort(pc1_importance)[::-1]
+    top_n=min(20, len(feature_names))  # showing top 20 features or all if less
     
-    # Get feature names by extracting from the CSV file
-    sample_df = pd.read_csv(f"../audiofiles_processed_features_CSVs/{categories[0]}_features.csv")
-    feature_names = sample_df.drop(["filename", "category"], axis=1).columns.tolist()
-    
-    # Sort features by absolute contribution to PC1 for better visualization
-    pc1_importance = np.abs(components[0])
-    sorted_indices = np.argsort(pc1_importance)[::-1]
-    top_n = min(20, len(feature_names))  # Show top 20 features or all if less
-    
-    # Get top contributing features
-    top_features = [feature_names[i] for i in sorted_indices[:top_n]]
+    # get top contributing features
+    top_features=[feature_names[i] for i in sorted_indices[:top_n]]
     
     
-    # Heatmap of top feature contributions to all three PCs
+    # heatmap of top feature contributions to all three PCs
     plt.figure(figsize=(12, 10))
-    heatmap_data = pd.DataFrame(
-        components[:3, sorted_indices[:top_n]].T,
-        index=top_features,
-        columns=['PC1', 'PC2', 'PC3']
-    )
-    
-    # Create the heatmap with improved aesthetics
-    sns.heatmap(
-        heatmap_data, 
-        cmap='coolwarm', 
-        center=0, 
-        annot=True, 
-        fmt=".2f",
-        linewidths=.5,
-        cbar_kws={"shrink": 0.8, "label": "Component Loading"}
-    )
+    heatmap_data = pd.DataFrame(components[:3, sorted_indices[:top_n]].T, index=top_features, columns=['PC1', 'PC2', 'PC3'])
+    sns.heatmap(heatmap_data, cmap='coolwarm', center=0, annot=True, fmt=".2f", linewidths=.5, cbar_kws={"shrink": 0.8, "label": "Component Loading"})
     
     plt.title('Feature Contributions to Principal Components', fontsize=14, pad=20)
     plt.ylabel('Audio Features', fontsize=12)
     plt.xlabel('Principal Components', fontsize=12)
     plt.tight_layout()
     
+    #save the plot
     plot_filename = "feature_contributions_heatmap.png"
     plt.savefig(f"{output_path}/{plot_filename}", dpi=300, bbox_inches="tight")
     plt.close()
@@ -301,4 +264,4 @@ def visualize_feature_contributions(pca, output_path):
 
 if __name__ == "__main__":
     prepare_pca_for_web()
-    # pca_visualization_2d_3d()
+    pca_visualization_2d_3d()

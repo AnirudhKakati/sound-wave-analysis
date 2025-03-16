@@ -13,7 +13,21 @@ import matplotlib.cm as cm
 
 def make_transaction_data():
     """
-    Creates transaction data from audio features and saves it to a CSV file.
+    Function to create transaction data from audio features.
+
+    This function:
+    - Reads feature CSVs for different audio categories and concatenates them.
+    - Samples 100 audio instances per category for balanced representation.
+    - Selects a subset of audio features relevant for analysis.
+    - Converts numerical feature values into categorical bins (Low, Medium, High).
+    - Converts each row into a transaction (list of categorized feature values).
+    - Saves the transactions to a CSV file for association rule mining.
+
+    Parameters:
+    - None
+
+    Returns:
+    - None
     """
     with open("../scripts/categories.txt","r") as f:
         categories=f.read().split()
@@ -60,46 +74,58 @@ def make_transaction_data():
 
 def perform_arm():
     """
-    Function to Association rule mining
+    Function to perform Association Rule Mining (ARM) using the Apriori algorithm.
+
+    This function:
+    - Loads transaction data from the preprocessed CSV file.
+    - Encodes transaction data into a binary format using TransactionEncoder.
+    - Runs the Apriori algorithm to find frequent itemsets with a minimum support threshold.
+    - Extracts association rules based on confidence and lift thresholds.
+    - Formats the rules for readability and selects the top 15 rules based on support, confidence, and lift.
+    - Saves the top rules into CSV files for further analysis.
+    - Calls `plot_association_network` to visualize the top rules using a network graph.
+
+    Parameters:
+    - None
+
+    Returns:
+    - None
     """
     
+    # get the transactions data
     transactions=[]
     output_path="../audio_features_transaction_form"
     filename="transactions.csv"
     with open(f"{output_path}/{filename}", "r") as f:
         transactions=[line.strip().split(",") for line in f.readlines()]
 
+    # encode the transaction data to perform apriori
     te=TransactionEncoder()
     te_array=te.fit(transactions).transform(transactions)
     df_encoded=pd.DataFrame(te_array, columns=te.columns_)
 
-    min_support=0.1
-    min_confidence=0.7
+    min_support=0.1 #we use minimum support of 0.1 
+    min_confidence=0.7 #and minimum confidence of 0.7
 
-    # Run Apriori Algorithm with thresholds
+    # run Apriori Algorithm with the defined thresholds
     frequent_itemsets=apriori(df_encoded, min_support=min_support, use_colnames=True)
 
-    # Extract Association Rules with filtered thresholds
+    # extract Association Rules with filtered thresholds
     rules=association_rules(frequent_itemsets, metric="confidence", min_threshold=min_confidence)
+    rules=rules[rules["antecedents"] != rules["consequents"]] # remove redundant rules where antecedents == consequents
 
-    # Remove redundant rules where antecedents == consequents
-    rules=rules[rules["antecedents"] != rules["consequents"]]
-
-    # Format antecedents and consequents as readable strings
+    # format antecedents and consequents as readable strings
     rules["antecedents"]=rules["antecedents"].apply(lambda x: ", ".join(list(x)))
     rules["consequents"]=rules["consequents"].apply(lambda x: ", ".join(list(x)))
 
-    # Keep only required columns
-    rules_filtered=rules[[
-        "antecedents", "consequents", 
-        "support", "confidence", "lift", "leverage"
-    ]]
+    # we keep only required columns
+    rules_filtered=rules[["antecedents", "consequents", "support", "confidence", "lift", "leverage"]]
 
-    # Extract top 15 rules for support, confidence, and lift
+    # extract top 15 rules for support, confidence, and lift
     top_support=rules_filtered.sort_values(by="support", ascending=False).head(15)
     top_confidence=rules_filtered.sort_values(by="confidence", ascending=False).head(15)
     top_lift=rules_filtered.sort_values(by="lift", ascending=False).head(15)
-
+    # save these to CSV files
     top_support.to_csv(f"{output_path}/top_15_support.csv", index=False)
     top_confidence.to_csv(f"{output_path}/top_15_confidence.csv", index=False)
     top_lift.to_csv(f"{output_path}/top_15_lift.csv", index=False)
@@ -111,9 +137,26 @@ def perform_arm():
 
 def plot_association_network(rules_df):
     """
+    Function to visualize association rules as a directed network graph.
+
+    This function:
+    - Creates a directed graph using NetworkX, where nodes represent feature itemsets.
+    - Adds edges between antecedents and consequents, weighted by the lift value.
+    - Uses a force-directed layout for better readability.
+    - Colors nodes based on their role (antecedents, consequents, or both).
+    - Adjusts node sizes based on their degree in the graph.
+    - Draws labels with background highlighting for clarity.
+    - Adds a colorbar to indicate lift values.
+    - Saves the network visualization as an image.
+
+    Parameters:
+    - rules_df (DataFrame): DataFrame containing association rules with antecedents, consequents, and lift values.
+
+    Returns:
+    - None
     """
     
-    # Create directed graph
+    # create directed graph
     G=nx.DiGraph()
     
     rules=rules_df.copy()
@@ -129,26 +172,20 @@ def plot_association_network(rules_df):
         # add nodes if they don't exist
         if not G.has_node(antecedents):
             G.add_node(antecedents, type='antecedent')
-        
         if not G.has_node(consequents):
             G.add_node(consequents, type='consequent')
         
-        # add edge with lift as weight and width
-        G.add_edge(antecedents, consequents, weight=lift, width=lift/2)
+        G.add_edge(antecedents, consequents, weight=lift, width=lift/2) # add edge with lift as weight and width
     
     # create figure with explicit axes
-    fig, ax=plt.subplots(figsize=(16, 14))
-    
-    # use a more effective layout for this type of data
+    fig, ax=plt.subplots(figsize=(16, 14))    
     # spring layout with higher k value to spread nodes more
     pos=nx.spring_layout(G, k=1.5, seed=42)
     
-    # get edge weights for coloring
+    # get edge weights and normalize weights for coloring
     edge_weights=[G[u][v]['weight'] for u, v in G.edges()]
     min_weight=min(edge_weights)
     max_weight=max(edge_weights)
-    
-    # normalize weights for coloring
     norm=plt.Normalize(min_weight, max_weight)
     
     # set node colors based on type
