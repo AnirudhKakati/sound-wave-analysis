@@ -125,12 +125,12 @@ def perform_decision_tree_classification():
     Returns:
     - None (Prints progress and saves all evaluation plots for each model)
     """
-    
+
     X, y=get_data()
     X_train, X_test, y_train, y_test=train_test_split(X, y, test_size=0.3, random_state=18)
 
     features=list(X.columns)
-    random.seed(42)
+    random.seed(17)
     random.shuffle(features)
 
     #Tree 1: Gini (depth=3, features=10)")
