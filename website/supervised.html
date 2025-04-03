@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervised Learning - ML Project</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            margin-top: 10px;
+            background: rgba(0, 0, 0, 0.85);
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            border-radius: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s ease;
+        }
+        
+        .dropdown-content a:hover {
+            background: var(--primary);
+        }
+        
+        /* Add padding to create hover area */
+        .dropdown-content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .visualization-section {
+            margin: 4rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .visualization-section img{
+            transition: transform 0.3s ease;
+        }
+
+        .visualization-section img:hover{
+            transform: scale(1.025);
+        }
+
+        .select-container {
+            margin: 2rem 0;
+        }
+
+        select {
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        select:hover {
+            transform: scale(1.05);
+        }
+
+        .plot-container {
+            width: 100%; 
+            text-align: center;
+            max-width: 1000px;
+            margin: 2rem auto;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+        }
+
+        .ul-list {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 1rem auto;
+            text-align: justify;
+        }
+        .plot-container img {
+            width: 90%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 0.5rem;
+        }
+
+        .plot-description {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        h2 {
+            color: var(--secondary);
+            margin: 3rem 0 1.5rem 0;
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            color: var(--primary);
+            margin: 2rem 0 1rem 0;
+            font-size: 2rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+        }
+
+        .nav-button {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            border: none;
+            border-radius: 1rem;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.1);
+        }
+
+        .text-centered {
+            text-align: center;
+        }
+
+        .text-justified {
+            text-align: justify;
+        }
+
+        a {
+            color: var(--primary);
+        }
+
+        .result-table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .result-table th, .result-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .result-table th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: bold;
+        }
+        
+        .two-column-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .method-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .method-card:hover {
+            transform: scale(1.02);
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--primary);
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--secondary);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .equation {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.2rem;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="data-exploration.html">Data Preparation & Exploration</a></li>
+            <li class="dropdown">
+                <a href="unsupervised.html">Unsupervised Learning</a>
+                <div class="dropdown-content">
+                    <a href="unsupervised.html#pca">PCA</a>
+                    <a href="unsupervised.html#clustering">Clustering</a>
+                    <a href="unsupervised.html#arm">ARM</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="supervised.html" class="active">Supervised Learning</a>
+                <div class="dropdown-content">
+                    <a href="supervised.html#naive-bayes">Naive Bayes</a>
+                    <a href="supervised.html#decision-trees">Decision Trees</a>
+                    <a href="supervised.html#regression">Regression</a>
+                    <a href="supervised.html#svm">SVM</a>
+                </div>
+            </li>
+            <li><a href="conclusion.html">Conclusion</a></li>
+            <li><a href="about.html">About Me</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        <div class="content-section" data-aos="fade-up">
+            <br><br><br>
+            <h1>Supervised Learning</h1>
+            <p class="text-justified">
+                Supervised learning is a cornerstone of machine learning where models learn from labeled training data to make predictions on unseen data. This section explores four powerful supervised techniques applied to the audio dataset: Naive Bayes for probabilistic classification, Decision Trees for rule-based decisions, Regression for predicting continuous values, and Support Vector Machines (SVM) for finding optimal decision boundaries. Each method offers unique strengths for audio classification tasks.
+            </p>
+        </div>
+
+        <!-- Naive Bayes Section -->
+        <div id="naive-bayes" class="content-section" data-aos="fade-up">
+            <h2>Naive Bayes</h2>
+            
+            <h3 class="text-centered">Overview</h3>
+            <p class="text-justified">
+                Naive Bayes is a family of probabilistic classifiers based on applying Bayes' theorem with a "naive" assumption that features are conditionally independent given the class. Despite this simplifying assumption, Naive Bayes classifiers often perform surprisingly well in practice, especially for text classification, spam filtering, sentiment analysis, and recommendation systems. They require relatively small amounts of training data to estimate the necessary parameters, train quickly, and are particularly suited to high-dimensional data. Naive Bayes models calculate the probability of each class given the feature values, selecting the class with the highest probability as the prediction.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/naive_bayes.jpg" alt="Naive Bayes Concept">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This diagram illustrates the fundamental concept of Naive Bayes classification. The model calculates the probability of each class based on observed features, making the "naive" assumption that features are conditionally independent given the class. This simplification allows for efficient computation even with many features.
+                    </p>
+                </div>
+            </div>
+            <h3 class="text-centered">Smoothing in Naive Bayes</h3>
+            <p class="text-justified">
+                One challenge with Naive Bayes is handling zero probabilities when a feature value doesn't appear in the training data for a given class. This can lead to the entire probability estimate for that class becoming zero due to multiplication. To address this, smoothing techniques like Laplace smoothing are used. These methods add a small constant to observed counts, ensuring that no probability is ever exactly zero. Smoothing helps improve generalization and ensures that the model can make predictions even for previously unseen feature values.
+            </p>
+
+            <h3 class="text-centered">Different Types of Naive Bayes Classifiers</h3>
+            <p class="text-justified">
+                Naive Bayes' strength lies in its simplicity, computational efficiency, and effectiveness in many real-world scenarios. It excels when the independence assumption approximately holds or when the exact probability estimates are less important than the class rankings they produce. Different variants of Naive Bayes are suitable for different types of data:
+            </p>
+            <div class="two-column-container">
+                <div class="method-card">
+                    <h3 class="text-centered">Multinomial Naive Bayes</h3>
+                    <p class="text-justified">
+                        Suited for discrete counts, such as word frequencies in text classification. Features represent the frequencies with which certain events occur. Commonly used for document classification and spam filtering where feature vectors represent term frequencies.
+                    </p>
+                </div>
+                <div class="method-card">
+                    <h3 class="text-centered">Gaussian Naive Bayes</h3>
+                    <p class="text-justified">
+                        Appropriate for continuous data where features follow a normal distribution. Each class is modeled with a Gaussian distribution defined by mean and variance. Effective for classifying measurements like height, weight, or audio spectral features.
+                    </p>
+                </div>
+                <div class="method-card">
+                    <h3 class="text-centered">Bernoulli Naive Bayes</h3>
+                    <p class="text-justified">
+                        Designed for binary/boolean features. Models presence or absence of features rather than frequencies. Useful for text classification with binary word occurrence (present/absent) rather than counts, and in some cases of spam detection.
+                    </p>
+                </div>
+                <div class="method-card">
+                    <h3 class="text-centered">Categorical Naive Bayes</h3>
+                    <p class="text-justified">
+                        Handles categorical features directly without converting to numeric values. Each feature has its own categorical distribution per class. Particularly useful for nominal data where features have discrete, non-ordered categories.
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="method-card" style="margin-top: 2rem;">
+                <h3 class="text-centered">DBSCAN</h3>
+                <p class="text-justified">
+                    DBSCAN (Density-Based Spatial Clustering of Applications with Noise) identifies clusters as dense regions separated by sparser areas. It doesn't require specifying the number of clusters and can discover arbitrarily shaped clusters while identifying outliers as noise. However, it's sensitive to its parameters (epsilon and min_samples) and struggles with clusters of varying densities. DBSCAN is particularly useful for datasets with noise and non-spherical cluster shapes.
+                </p>
+            </div> -->
+
+            <!-- <div class="nb-types">
+                <div class="nb-type-card">
+                    <h4>Multinomial Naive Bayes</h4>
+                    <p>
+                        Suited for discrete counts, such as word frequencies in text classification. Features represent the frequencies with which certain events occur. Commonly used for document classification and spam filtering where feature vectors represent term frequencies.
+                    </p>
+                </div>
+                
+                <div class="nb-type-card">
+                    <h4>Gaussian Naive Bayes</h4>
+                    <p class="text-justified">
+                        Appropriate for continuous data where features follow a normal distribution. Each class is modeled with a Gaussian distribution defined by mean and variance. Effective for classifying measurements like height, weight, or audio spectral features.
+                    </p>
+                </div>
+                
+                <div class="nb-type-card">
+                    <h4>Bernoulli Naive Bayes</h4>
+                    <p class="text-justified">
+                        Designed for binary/boolean features. Models presence or absence of features rather than frequencies. Useful for text classification with binary word occurrence (present/absent) rather than counts, and in some cases of spam detection.
+                    </p>
+                </div>
+                
+                <div class="nb-type-card">
+                    <h4>Categorical Naive Bayes</h4>
+                    <p>
+                        Handles categorical features directly without converting to numeric values. Each feature has its own categorical distribution per class. Particularly useful for nominal data where features have discrete, non-ordered categories.
+                    </p>
+                </div>
+            </div> -->
+
+            <p class="text-justified">
+                The main differences between these variants lie in their assumptions about feature distributions. Multinomial assumes features follow a multinomial distribution suitable for count data. Gaussian works with continuous values assuming normal distributions. Bernoulli is optimal for binary features. Categorical handles nominal features without forcing numeric conversion. The appropriate variant should be selected based on your data characteristics for best performance.
+            </p>
+
+            <h3 class="text-centered">Preparing Data for Naive Bayes Classification</h3>
+            <p class="text-justified">
+                For Naive Bayes classification of audio data, the dataset needs specific formatting depending on the variant used. All supervised learning methods require splitting data into training and testing sets to evaluate model performance objectively. This ensures that models are evaluated on data they haven't seen during training, providing a reliable estimate of how well they'll perform on new, unseen data.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/train_test_split.png" alt="Train-Test Split Concept">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This visualization illustrates the train-test split process. The original dataset (left) is divided into a training set (middle, typically 70-80% of data) used to build the model, and a testing set (right, typically 20-30%) used only for evaluation. These sets must be disjoint to ensure unbiased assessment of model performance on unseen data.
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-justified">
+                For our audio classification task, we prepared three datasets suitable for different Naive Bayes variants:
+            </p>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Original Dataset</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/dataexploration/audio_features_csv.jpg" alt="Original Dataset Preview">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The original dataset contains 43 acoustic features extracted from approximately 15,000 audio samples across 20 sound categories. Each feature represents a different aspect of the audio signal, such as spectral characteristics, temporal patterns, and frequency content.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Processed Datasets for Different NB Variants</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/nb_datasets.png" alt="Processed NB Datasets">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        Three different datasets were prepared for Multinomial, Gaussian, and Bernoulli Naive Bayes. The Multinomial dataset uses discretized counts of feature values. The Gaussian dataset preserves continuous values with normalization. The Bernoulli dataset converts features to binary values based on thresholds. Each preparation method aligns with the underlying assumptions of its respective Naive Bayes variant.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Train-Test Split</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/nb_train_test.png" alt="Train-Test Split for NB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The dataset was split into 80% training and 20% testing sets using stratified sampling to maintain the same class distribution in both sets. This ensures that the model is trained on a representative sample and evaluated fairly. The image shows the distribution of classes in both training and testing sets, confirming consistent proportions.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Code Implementation</h3>
+            <p class="text-justified">
+                The Python implementation for the three Naive Bayes variants includes data preprocessing, model training, and evaluation. Below is a simplified version of the code used for each variant:
+            </p>
+
+            <div class="code-block">
+                <pre>
+# Multinomial Naive Bayes Implementation
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+# Preprocess data - convert to non-negative values and scale for Multinomial NB
+scaler = MinMaxScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Train the model
+mnb = MultinomialNB()
+mnb.fit(X_train_scaled, y_train)
+
+# Make predictions
+y_pred_mnb = mnb.predict(X_test_scaled)
+
+# Evaluate
+accuracy_mnb = accuracy_score(y_test, y_pred_mnb)
+conf_matrix_mnb = confusion_matrix(y_test, y_pred_mnb)
+</pre>
+            </div>
+
+            <div class="code-block">
+                <pre>
+# Gaussian Naive Bayes Implementation
+from sklearn.naive_bayes import GaussianNB
+from sklearn.preprocessing import StandardScaler
+
+# Preprocess data - standardize for Gaussian NB
+scaler = StandardScaler()
+X_train_std = scaler.fit_transform(X_train)
+X_test_std = scaler.transform(X_test)
+
+# Train the model
+gnb = GaussianNB()
+gnb.fit(X_train_std, y_train)
+
+# Make predictions
+y_pred_gnb = gnb.predict(X_test_std)
+
+# Evaluate
+accuracy_gnb = accuracy_score(y_test, y_pred_gnb)
+conf_matrix_gnb = confusion_matrix(y_test, y_pred_gnb)
+</pre>
+            </div>
+
+            <div class="code-block">
+                <pre>
+# Bernoulli Naive Bayes Implementation
+from sklearn.naive_bayes import BernoulliNB
+import numpy as np
+
+# Preprocess data - binarize features for Bernoulli NB
+# Convert continuous values to binary based on median threshold
+X_train_binary = (X_train > np.median(X_train, axis=0)).astype(int)
+X_test_binary = (X_test > np.median(X_test, axis=0)).astype(int)
+
+# Train the model
+bnb = BernoulliNB()
+bnb.fit(X_train_binary, y_train)
+
+# Make predictions
+y_pred_bnb = bnb.predict(X_test_binary)
+
+# Evaluate
+accuracy_bnb = accuracy_score(y_test, y_pred_bnb)
+conf_matrix_bnb = confusion_matrix(y_test, y_pred_bnb)
+</pre>
+            </div>
+
+            <p class="text-justified">
+                The complete implementation with additional metrics, visualizations, and hyperparameter tuning can be found in the 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/naive_bayes.py" target="_blank">GitHub repository</a>.
+            </p>
+
+            <h3 class="text-centered">Results</h3>
+            <p class="text-justified">
+                The three Naive Bayes variants were evaluated on the audio classification task, with each showing different strengths and weaknesses:
+            </p>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Accuracy Comparison</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/nb_accuracy_comparison.png" alt="NB Accuracy Comparison">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This chart compares the accuracy of the three Naive Bayes variants. Gaussian NB achieved the highest accuracy at 76.8%, followed by Multinomial NB at 72.3%, and Bernoulli NB at 65.1%. The Gaussian variant performed best likely because it effectively models the continuous acoustic features that follow approximately normal distributions.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Confusion Matrices</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/nb_confusion_matrices.png" alt="NB Confusion Matrices">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        These confusion matrices visualize the classification performance of each Naive Bayes variant. Darker diagonal elements indicate better classification accuracy for those categories. The Gaussian NB matrix shows stronger diagonal elements, confirming its superior performance. All models struggle with similar pairs of classes, such as confusing "traffic_sounds" with "train_sounds" and "crowd_noise" with "construction_noise".
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Per-Category Performance</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/nb_category_performance.png" alt="NB Per-Category Performance">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This chart shows F1-scores for each sound category across the three Naive Bayes variants. Gaussian NB consistently performs best across most categories. All models excel at recognizing distinctive sounds like "sirens", "dog_bark", and "guitar", while struggling with more ambiguous categories like "traffic_sounds" and "crowd_noise". Bernoulli NB performs particularly poorly on categories with nuanced spectral characteristics, as the binary feature representation loses important information.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Conclusion</h3>
+            <p class="text-justified">
+                The Naive Bayes analysis yielded several important insights for audio classification:
+            </p>
+            
+            <ul class="ul-list">
+                <li>Gaussian Naive Bayes outperformed other variants for audio classification, achieving 76.8% accuracy, suggesting that acoustic features approximately follow normal distributions.</li>
+                <li>The assumption of feature independence, while clearly violated in audio data where spectral features are correlated, still allowed for reasonably good classification performance, highlighting Naive Bayes' robustness.</li>
+                <li>Bernoulli NB's poorer performance demonstrates that binary representations of acoustic features lose critical information necessary for distinguishing between similar sounds.</li>
+                <li>All models struggled with similar sound categories, suggesting that additional feature engineering or more sophisticated models might be needed for these challenging distinctions.</li>
+                <li>Preprocessing significantly impacts performance; appropriate scaling and transformation are essential for each Naive Bayes variant.</li>
+            </ul>
+            
+            <p class="text-justified">
+                Despite its simplicity and strong assumptions, Naive Bayes provides a computationally efficient baseline for audio classification with reasonable accuracy. The model's probabilistic nature also provides interpretable results, showing which features are most discriminative for different sound categories. For production applications, Gaussian Naive Bayes would be the recommended variant for similar acoustic feature sets, potentially enhanced with feature selection to improve performance further.
+            </p>
+        </div>
+
+        <!-- Decision Trees Section -->
+        <div id="decision-trees" class="content-section" data-aos="fade-up">
+            <h2>Decision Trees</h2>
+            
+            <h3 class="text-centered">Overview</h3>
+            <p class="text-justified">
+                Decision Trees are versatile supervised learning algorithms that create a model resembling a tree-like structure of decisions. Each internal node represents a "test" on a feature, each branch represents the outcome of the test, and each leaf node represents a class label or a value prediction. Decision Trees are intuitive, easy to interpret, and can handle both classification and regression tasks, making them popular across various domains including finance, healthcare, and computer vision.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/decision_tree_concept.png" alt="Decision Tree Concept">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This visualization shows a simplified decision tree for audio classification. Starting from the root node (top), the algorithm makes decisions based on acoustic features, following different paths until reaching a leaf node that represents a sound category. Each internal node splits the data based on a feature threshold that optimally separates the classes.
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-justified">
+                Decision Trees work by recursively partitioning the feature space into regions, attempting to find the splits that create the most homogeneous groups with respect to the target variable. To determine the best splits, various impurity measures are used:
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/impurity_measures.png" alt="Gini and Entropy Comparison">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This chart compares Gini Impurity and Entropy, the two most common measures for evaluating splits in classification trees. Both measure class mixing, with lower values indicating better splits. Gini tends to be computationally simpler, while Entropy can sometimes produce more balanced trees. Both reach minimum (0) for pure nodes and maximum for equally mixed nodes.
+                    </p>
+                </div>
+            </div>
+
+            <h4 class="text-centered">Impurity Measures and Information Gain</h4>
+            <p class="text-justified">
+                The quality of a split in a Decision Tree is determined by how much it reduces impurity. This reduction is quantified using Information Gain, which measures the difference in entropy (or Gini impurity) before and after a split. Let's understand these concepts with a simple example:
+            </p>
+
+            <div class="method-card">
+                <h4 class="text-centered">Example: Using Entropy and Information Gain</h4>
+                <p class="text-justified">
+                    Consider a subset of our audio dataset with 100 samples from three categories: "dog_bark" (40 samples), "guitar" (35 samples), and "sirens" (25 samples). We want to determine whether to split the data based on the feature "spectral_centroid" with a threshold of 0.6.
+                </p>
+                
+                <p class="text-justified">
+                    First, we calculate the entropy of the parent node:
+                </p>
+                
+                <div class="equation">
+                    Entropy(parent) = -(0.4 * log₂(0.4) + 0.35 * log₂(0.35) + 0.25 * log₂(0.25)) = 1.55
+                </div>
+                
+                <p class="text-justified">
+                    After splitting on "spectral_centroid > 0.6", we get:
+                </p>
+                <ul class="ul-list">
+                    <li>Left child (spectral_centroid ≤ 0.6): 60 samples - 35 "dog_bark", 20 "guitar", 5 "sirens"</li>
+                    <li>Right child (spectral_centroid > 0.6): 40 samples - 5 "dog_bark", 15 "guitar", 20 "sirens"</li>
+                </ul>
+                
+                <p class="text-justified">
+                    Now we calculate the entropy of each child node:
+                </p>
+                
+                <div class="equation">
+                    Entropy(left) = -(35/60 * log₂(35/60) + 20/60 * log₂(20/60) + 5/60 * log₂(5/60)) = 1.29
+                </div>
+                
+                <div class="equation">
+                    Entropy(right) = -(5/40 * log₂(5/40) + 15/40 * log₂(15/40) + 20/40 * log₂(20/40)) = 1.33
+                </div>
+                
+                <p class="text-justified">
+                    The weighted average entropy after the split is:
+                </p>
+                
+                <div class="equation">
+                    Entropy(after split) = (60/100 * 1.29) + (40/100 * 1.33) = 1.31
+                </div>
+                
+                <p class="text-justified">
+                    Finally, we calculate the Information Gain:
+                </p>
+                
+                <div class="equation">
+                    Information Gain = Entropy(parent) - Entropy(after split) = 1.55 - 1.31 = 0.24
+                </div>
+                
+                <p class="text-justified">
+                    This positive Information Gain of 0.24 indicates that splitting on "spectral_centroid > 0.6" reduces impurity and is a good candidate for decision making in our tree. The tree algorithm would compare this gain with other potential feature splits and select the one with the highest information gain.
+                </p>
+            </div>
+
+            <p class="text-justified">
+                It's worth noting that an infinite number of decision trees can be created for the same dataset by varying:
+            </p>
+            <ul class="ul-list">
+                <li>The choice of features to split on</li>
+                <li>The thresholds for each split</li>
+                <li>The order of splits (which feature to use first, second, etc.)</li>
+                <li>The depth of the tree</li>
+                <li>Pruning strategies to avoid overfitting</li>
+            </ul>
+            <p class="text-justified">
+                This flexibility is both a strength and a challenge, as it allows for highly customized trees but requires careful tuning to avoid overfitting or creating unnecessarily complex models.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/decision_tree_complexity.png" alt="Decision Tree Complexity">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This visualization shows trees of varying complexity: a simple tree with few splits (left), a balanced tree with moderate complexity (middle), and an overfit tree with many splits (right). The optimal tree complexity balances model simplicity with predictive power, typically determined through pruning or setting maximum depth constraints.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Data Preparation</h3>
+            <p class="text-justified">
+                For Decision Tree classification of audio data, we use the same fundamental approach as with Naive Bayes: splitting the dataset into training and testing sets. However, Decision Trees have different preprocessing requirements, as they can work with both categorical and numerical features without assumptions about feature distributions.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/dt_dataset.png" alt="Decision Tree Dataset">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The dataset used for Decision Tree analysis includes all 43 acoustic features without transformation. Decision Trees can naturally handle continuous features by finding optimal thresholds for splits. The only preprocessing applied was standardization (mean=0, std=1) to ensure features with larger scales don't dominate those with smaller scales during the initial split evaluations.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Train-Test Split</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/dt_train_test.png" alt="Decision Tree Train-Test Split">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        As with the Naive Bayes models, the dataset was split into 80% training and 20% testing sets using stratified sampling. This train-test split is crucial for objective evaluation of model performance and remains constant across all supervised learning methods for fair comparison.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Code Implementation</h3>
+            <p class="text-justified">
+                The implementation of Decision Trees for audio classification uses scikit-learn's DecisionTreeClassifier. Three different trees were created with varying parameters to explore their impact on performance:
+            </p>
+
+            <div class="code-block">
+                <pre>
+# Decision Tree Implementation
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.preprocessing import StandardScaler
+
+# Preprocess data - standardize features
+scaler = StandardScaler()
+X_train_std = scaler.fit_transform(X_train)
+X_test_std = scaler.transform(X_test)
+
+# Tree 1: Default parameters with Gini impurity
+dt1 = DecisionTreeClassifier(random_state=42)
+dt1.fit(X_train_std, y_train)
+y_pred_dt1 = dt1.predict(X_test_std)
+
+# Tree 2: Using entropy with max_depth=10
+dt2 = DecisionTreeClassifier(criterion='entropy', max_depth=10, random_state=42)
+dt2.fit(X_train_std, y_train)
+y_pred_dt2 = dt2.predict(X_test_std)
+
+# Tree 3: Using different root node by setting max_features
+dt3 = DecisionTreeClassifier(max_features='sqrt', min_samples_split=10, random_state=42)
+dt3.fit(X_train_std, y_train)
+y_pred_dt3 = dt3.predict(X_test_std)
+
+# Evaluate all trees
+for i, (dt, y_pred) in enumerate([(dt1, y_pred_dt1), (dt2, y_pred_dt2), (dt3, y_pred_dt3)], 1):
+    accuracy = accuracy_score(y_test, y_pred)
+    conf_matrix = confusion_matrix(y_test, y_pred)
+    print(f"Tree {i} Accuracy: {accuracy:.4f}")
+    
+    # Feature importance
+    feature_importances = dt.feature_importances_
+    
+    # Visualize tree
+    plt.figure(figsize=(20, 10))
+    plot_tree(dt, feature_names=feature_names, class_names=class_names, 
+              filled=True, max_depth=3, fontsize=10)
+</pre>
+            </div>
+
+            <p class="text-justified">
+                The complete implementation with additional metrics, visualizations, and hyperparameter tuning can be found in the 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/decision_trees.py" target="_blank">GitHub repository</a>.
+            </p>
+
+            <h3 class="text-centered">Results</h3>
+            <p class="text-justified">
+                The three Decision Tree models were evaluated on the audio classification task, each revealing different aspects of tree-based learning:
+            </p>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Tree Visualizations</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/dt_visualization.png" alt="Decision Tree Visualization">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This is a visualization of the first three levels of Tree 1 (Gini impurity). Each node shows the test condition, Gini impurity, samples count, and class distribution. The root node splits on mfcc_4, followed by splits on spectral_contrast_3 and zero_crossing_rate. Leaf nodes are colored by majority class, with purer nodes having darker colors.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Accuracy Comparison</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/dt_accuracy.png" alt="Decision Tree Accuracy Comparison">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The accuracy comparison shows Tree 1 (unconstrained) at 82.3%, Tree 2 (entropy, max_depth=10) at 79.5%, and Tree 3 (sqrt features, min_samples_split=10) at 77.8%. The unconstrained tree performs best but may be overfitting, while the more constrained trees trade some accuracy for better generalization.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Confusion Matrix - Tree 1</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/dt_confusion_matrix.png" alt="Decision Tree Confusion Matrix">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrix for Tree 1 shows strong diagonal elements, indicating good classification across most sound categories. The tree performs particularly well on distinctive sounds like "sirens", "piano", and "cat_meow". Areas of confusion include "traffic_sounds" with "train_sounds" and "construction_noise" with "crowd_noise", similar to the patterns observed with Naive Bayes models.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Feature Importance</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/dt_feature_importance.png" alt="Decision Tree Feature Importance">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This chart shows the top 15 most important features across all three tree models. MFCCs, spectral contrast features, and zero-crossing rate consistently emerge as the most discriminative for audio classification. These features capture key tonal and temporal characteristics that distinguish different sound categories.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Conclusion</h3>
+            <p class="text-justified">
+                The Decision Tree analysis provided several valuable insights for audio classification:
+            </p>
+            
+            <ul class="ul-list">
+                <li>Decision Trees outperformed Naive Bayes models, achieving up to 82.3% accuracy compared to Gaussian NB's 76.8%, suggesting that the hierarchical, non-linear decision boundaries of trees better capture the complex relationships in audio data.</li>
+                <li>Tree-based models naturally identified the most discriminative acoustic features, with MFCCs and spectral contrast features consistently appearing in the top nodes, aligning with audio processing domain knowledge.</li>
+                <li>Constraining tree complexity through max_depth and min_samples_split hyperparameters reduced performance slightly but created more interpretable models less prone to overfitting.</li>
+                <li>Different impurity measures (Gini vs. Entropy) produced trees with similar overall accuracy but different structures, offering flexibility in model design based on interpretability needs.</li>
+                <li>Decision Trees provide transparent decision paths that allow us to understand exactly which acoustic thresholds separate different sound categories, making them valuable for both classification and knowledge discovery.</li>
+            </ul>
+            
+            <p class="text-justified">
+                While Decision Trees perform well as individual models, they could potentially be improved further using ensemble methods like Random Forests or Gradient Boosting, which combine multiple trees to reduce variance and improve overall prediction accuracy. The interpretability of individual trees, however, makes them a valuable tool for understanding the acoustic features that define different sound categories, providing insights that more complex models might obscure.
+            </p>
+        </div>
+
+        <!-- Regression Section -->
+        <div id="regression" class="content-section" data-aos="fade-up">
+            <h2>Regression</h2>
+            
+            <h3 class="text-centered">Understanding Regression Models</h3>
+            
+            <h4 class="text-centered">Linear Regression</h4>
+            <p class="text-justified">
+                Linear regression is a supervised learning algorithm that models the relationship between a dependent variable and one or more independent variables by fitting a linear equation to the observed data. The model assumes a linear relationship where the output is a weighted sum of the input features plus a bias term. Linear regression is primarily used for predicting continuous values and estimating the strength of relationships between variables. Its simplicity, interpretability, and computational efficiency make it a foundational technique in statistics and machine learning.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/linear_regression.png" alt="Linear Regression Visualization">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This visualization shows a simple linear regression with one input feature. The blue points represent data samples, and the red line represents the linear model that minimizes the sum of squared differences between predicted and actual values. The equation of the line is typically expressed as y = β₀ + β₁x, where β₀ is the intercept and β₁ is the slope.
+                    </p>
+                </div>
+            </div>
+
+            <h4 class="text-centered">Logistic Regression</h4>
+            <p class="text-justified">
+                Logistic regression is a supervised learning algorithm used for binary classification problems. Despite its name, it's a classification algorithm rather than a regression technique. Logistic regression models the probability that an instance belongs to a particular class using the logistic function (sigmoid) to transform a linear combination of features into a value between 0 and 1. This probability can then be thresholded to make binary predictions. Logistic regression is widely used in fields like medicine, marketing, and risk assessment for its interpretable results and probability estimates.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/logistic_regression.png" alt="Logistic Regression Visualization">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This visualization illustrates logistic regression for binary classification. The colored points represent data from two classes, and the curved line represents the decision boundary where the predicted probability equals 0.5. The S-shaped curve shows how the linear model is transformed by the sigmoid function to produce probabilities between 0 and 1.
+                    </p>
+                </div>
+            </div>
+
+            <h4 class="text-centered">Similarities and Differences</h4>
+            <p class="text-justified">
+                Linear and logistic regression share several similarities but serve fundamentally different purposes:
+            </p>
+
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Linear Regression</th>
+                        <th>Logistic Regression</th>
+                    </tr>
+                    <tr>
+                        <td>Purpose</td>
+                        <td>Predicts continuous numerical values</td>
+                        <td>Predicts probabilities for classification</td>
+                    </tr>
+                    <tr>
+                        <td>Output Range</td>
+                        <td>Unbounded (any real number)</td>
+                        <td>Bounded between 0 and 1</td>
+                    </tr>
+                    <tr>
+                        <td>Transformation Function</td>
+                        <td>None (linear combination of inputs)</td>
+                        <td>Sigmoid function</td>
+                    </tr>
+                    <tr>
+                        <td>Loss Function</td>
+                        <td>Mean Squared Error</td>
+                        <td>Cross-Entropy Loss</td>
+                    </tr>
+                    <tr>
+                        <td>Optimization Method</td>
+                        <td>Closed-form solution or gradient descent</td>
+                        <td>Typically gradient descent</td>
+                    </tr>
+                    <tr>
+                        <td>Interpretability</td>
+                        <td>Coefficients represent change in output per unit change in input</td>
+                        <td>Coefficients represent log-odds ratios</td>
+                    </tr>
+                </table>
+            </div>
+
+            <p class="text-justified">
+                Both models are linear in their parameters, making them interpretable and efficient to train. However, they differ significantly in their applications, with linear regression focusing on value prediction and logistic regression on class probability estimation. Their different output ranges and loss functions reflect these distinct purposes.
+            </p>
+
+            <h4 class="text-centered">The Sigmoid Function in Logistic Regression</h4>
+            <p class="text-justified">
+                Yes, logistic regression uses the sigmoid function (also called the logistic function) as its key component. The sigmoid function transforms the linear combination of input features into a probability value between 0 and 1. It has an S-shaped curve defined by the equation σ(z) = 1/(1+e^(-z)), where z is the linear combination of features. The sigmoid function solves a fundamental problem: while linear regression outputs can range from negative infinity to positive infinity, probabilities must be bounded between 0 and 1. The function's shape also creates a natural decision boundary at 0.5 probability.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/sigmoid_function.png" alt="Sigmoid Function">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This graph shows the sigmoid function σ(z) = 1/(1+e^(-z)). The function approaches 0 as z goes to negative infinity and approaches 1 as z goes to positive infinity. At z=0, the function outputs exactly 0.5. This property creates a natural classification threshold where values above 0 are classified as the positive class and values below 0 as the negative class.
+                    </p>
+                </div>
+            </div>
+
+            <h4 class="text-centered">Maximum Likelihood and Logistic Regression</h4>
+            <p class="text-justified">
+                Maximum likelihood estimation (MLE) is the statistical principle underlying logistic regression training. While linear regression minimizes the sum of squared errors, logistic regression maximizes the likelihood of observing the given data under the model's probability distributions. The likelihood function measures how probable the observed data is given the current model parameters. For each data point, logistic regression computes the probability of the observed class, and the goal is to find parameter values that maximize the product of these probabilities (or, equivalently, the sum of log probabilities). This approach naturally leads to the cross-entropy loss function used in logistic regression and provides not just class predictions but well-calibrated probability estimates.
+            </p>
+
+            <h3 class="text-centered">Implementing Logistic Regression for Audio Classification</h3>
+            <p class="text-justified">
+                For our audio classification task, we implemented multinomial logistic regression (also known as softmax regression for multi-class problems) and compared it with Multinomial Naive Bayes. To create a binary classification problem as required, we selected two distinct sound categories: "dog_bark" and "sirens".
+            </p>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Binary Dataset</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/binary_dataset.png" alt="Binary Classification Dataset">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The binary classification dataset contains samples from only two sound categories: "dog_bark" and "sirens". These categories were chosen because they represent distinctly different acoustic patterns—animal vocalizations versus mechanical warning sounds. All 43 acoustic features were retained for the classification task.
+                    </p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <pre>
+# Logistic Regression vs. Naive Bayes for Binary Classification
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+from sklearn.model_selection import train_test_split
+
+# Filter dataset for binary classification
+binary_data = data[data['category'].isin(['dog_bark', 'sirens'])]
+X_binary = binary_data.drop(['category', 'filepath'], axis=1)
+y_binary = binary_data['category']
+
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X_binary, y_binary, test_size=0.2, random_state=42, stratify=y_binary
+)
+
+# Standardize features for Logistic Regression
+scaler_lr = StandardScaler()
+X_train_std = scaler_lr.fit_transform(X_train)
+X_test_std = scaler_lr.transform(X_test)
+
+# Scale features to non-negative values for Multinomial NB
+scaler_nb = MinMaxScaler()
+X_train_mm = scaler_nb.fit_transform(X_train)
+X_test_mm = scaler_nb.transform(X_test)
+
+# Train Logistic Regression
+lr = LogisticRegression(max_iter=1000, random_state=42)
+lr.fit(X_train_std, y_train)
+y_pred_lr = lr.predict(X_test_std)
+y_prob_lr = lr.predict_proba(X_test_std)
+
+# Train Multinomial Naive Bayes
+mnb = MultinomialNB()
+mnb.fit(X_train_mm, y_train)
+y_pred_nb = mnb.predict(X_test_mm)
+y_prob_nb = mnb.predict_proba(X_test_mm)
+
+# Evaluate both models
+for name, y_pred, y_prob in [('Logistic Regression', y_pred_lr, y_prob_lr), 
+                             ('Multinomial Naive Bayes', y_pred_nb, y_prob_nb)]:
+    accuracy = accuracy_score(y_test, y_pred)
+    conf_matrix = confusion_matrix(y_test, y_pred)
+    report = classification_report(y_test, y_pred)
+    
+    print(f"{name} Accuracy: {accuracy:.4f}")
+    print(f"Confusion Matrix:\n{conf_matrix}")
+    print(f"Classification Report:\n{report}")
+</pre>
+            </div>
+
+            <h3 class="text-centered">Results Comparison</h3>
+            <p class="text-justified">
+                Both logistic regression and Multinomial Naive Bayes were evaluated on the binary classification task:
+            </p>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Performance Metrics</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/lr_nb_comparison.png" alt="Logistic Regression vs. Naive Bayes">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This comparison shows that Logistic Regression achieved 94.2% accuracy, outperforming Multinomial Naive Bayes at 89.7%. Logistic Regression also showed higher precision, recall, and F1-score for both classes. The superiority of Logistic Regression can be attributed to its ability to model feature interactions implicitly through the weight optimization process, while Naive Bayes's independence assumption limits its capacity to capture complex feature relationships.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Confusion Matrices</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/lr_nb_confusion.png" alt="Confusion Matrices Comparison">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrices reveal that Logistic Regression (left) has fewer misclassifications than Multinomial Naive Bayes (right). Logistic Regression particularly excels at correctly identifying "dog_bark" samples, while Naive Bayes shows more balanced errors between the two classes. These differences reflect the distinct mathematical foundations of the two algorithms.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Probability Calibration</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/probability_calibration.png" alt="Probability Calibration">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This chart shows the probability distributions produced by both models for the test samples. Logistic Regression (blue) tends to produce more confident probability estimates, with most predictions clustered near 0 or 1. Naive Bayes (orange) generally produces more moderate probabilities, reflecting its different approach to probability estimation. Well-calibrated probabilities are important in applications where risk assessment is more important than just binary decisions.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Conclusion</h3>
+            <p class="text-justified">
+                Our comparison of logistic regression and Multinomial Naive Bayes for binary audio classification yields several insights:
+            </p>
+            
+            <ul class="ul-list">
+                <li>Logistic regression significantly outperformed Naive Bayes (94.2% vs. 89.7% accuracy) for distinguishing between "dog_bark" and "sirens" sounds, demonstrating its effectiveness for audio classification tasks.</li>
+                <li>The performance advantage of logistic regression likely stems from its ability to model conditional dependencies between features, which is particularly relevant for audio data where spectral and temporal features are inherently related.</li>
+                <li>Logistic regression produces more confident probability estimates, which can be beneficial in applications requiring decisive classifications but may need calibration for risk assessment scenarios.</li>
+                <li>Both models provided interpretable coefficients that highlight which acoustic features are most discriminative between animal vocalizations and mechanical warning sounds.</li>
+                <li>Preprocessing played a crucial role in both models' performance, with standardization being essential for logistic regression and non-negative scaling for Multinomial Naive Bayes.</li>
+            </ul>
+            
+            <p class="text-justified">
+                While our binary classification task was simplified compared to the full 20-class problem, it demonstrated the fundamental differences between generative (Naive Bayes) and discriminative (logistic regression) approaches to classification. Logistic regression's strong performance suggests it could be a valuable component in ensemble methods or as a benchmark for more complex models in audio classification tasks.
+            </p>
+        </div>
+
+        <!-- Support Vector Machines Section -->
+        <div id="svm" class="content-section" data-aos="fade-up">
+            <h2>Support Vector Machines</h2>
+            
+            <h3 class="text-centered">Overview</h3>
+            <p class="text-justified">
+                Support Vector Machines (SVMs) are powerful supervised learning algorithms used for classification, regression, and outlier detection. SVMs are particularly effective in high-dimensional spaces and cases where the number of dimensions exceeds the number of samples. The core idea behind SVMs is to find the optimal hyperplane that maximizes the margin between different classes in the feature space. This margin maximization gives SVMs strong generalization properties, making them less prone to overfitting compared to many other classifiers.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/svm_concept.png" alt="SVM Concept">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This illustration shows the fundamental concept of SVMs. The algorithm finds the hyperplane (solid line) that maximizes the margin between classes. The margin is the distance between the hyperplane and the closest data points from each class, known as support vectors (circled). These support vectors are the only data points that determine the hyperplane's position, making SVMs robust to outliers far from the decision boundary.
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-justified">
+                One of SVM's most powerful features is the kernel trick, which allows the algorithm to operate in an implicit higher-dimensional feature space without ever computing the coordinates of the data in that space. This enables SVMs to find nonlinear decision boundaries in the original feature space by mapping the data into a higher-dimensional space where a linear boundary can separate the classes.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/kernel_trick.png" alt="Kernel Trick Visualization">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This visualization demonstrates the kernel trick. The left side shows data that's not linearly separable in 2D space. The middle shows how these points can be mapped to a higher-dimensional space (3D in this example) where they become linearly separable. The right side shows the resulting nonlinear decision boundary when projected back to the original 2D space. Common kernels include linear, polynomial, radial basis function (RBF), and sigmoid.
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">Data Preparation</h3>
+            <p class="text-justified">
+                SVMs are sensitive to feature scaling, so proper preprocessing is essential. For our audio classification task, we standardized all features to have zero mean and unit variance, which helps prevent features with larger scales from dominating the model. We maintained the same train-test split used for previous models to ensure fair comparison.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/svm_data_prep.png" alt="SVM Data Preparation">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This image shows the effect of standardization on the feature distributions. The left side shows the original feature distributions with varying scales and centers. The right side shows the standardized features, all centered at zero with similar scales. This preprocessing is crucial for SVM performance, as the algorithm's distance calculations are directly affected by feature magnitudes.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">SVM Implementation</h3>
+            <p class="text-justified">
+                We implemented SVM classification for our audio dataset using scikit-learn's SVC (Support Vector Classification) with different kernel functions. Due to the computational intensity of training SVMs on large datasets, we used a stratified subset of the data with 500 samples per class.
+            </p>
+            
+            <div class="code-block">
+                <pre>
+# SVM Implementation with different kernels
+from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.model_selection import GridSearchCV
+
+# Preprocess data - standardize features
+scaler = StandardScaler()
+X_train_std = scaler.fit_transform(X_train)
+X_test_std = scaler.transform(X_test)
+
+# Linear SVM
+linear_svm = SVC(kernel='linear', C=1.0, random_state=42)
+linear_svm.fit(X_train_std, y_train)
+y_pred_linear = linear_svm.predict(X_test_std)
+
+# RBF Kernel SVM
+rbf_svm = SVC(kernel='rbf', gamma='scale', C=10.0, random_state=42)
+rbf_svm.fit(X_train_std, y_train)
+y_pred_rbf = rbf_svm.predict(X_test_std)
+
+# Polynomial Kernel SVM
+poly_svm = SVC(kernel='poly', degree=3, C=1.0, random_state=42)
+poly_svm.fit(X_train_std, y_train)
+y_pred_poly = poly_svm.predict(X_test_std)
+
+# Evaluate all models
+for name, y_pred in [('Linear SVM', y_pred_linear), 
+                      ('RBF SVM', y_pred_rbf), 
+                      ('Polynomial SVM', y_pred_poly)]:
+    accuracy = accuracy_score(y_test, y_pred)
+    conf_matrix = confusion_matrix(y_test, y_pred)
+    print(f"{name} Accuracy: {accuracy:.4f}")
+
+# Hyperparameter tuning with Grid Search
+param_grid = {
+    'C': [0.1, 1, 10, 100],
+    'gamma': ['scale', 'auto', 0.1, 0.01]
+}
+
+grid_search = GridSearchCV(
+    SVC(kernel='rbf', random_state=42),
+    param_grid,
+    cv=5,
+    scoring='accuracy',
+    n_jobs=-1
+)
+
+grid_search.fit(X_train_std, y_train)
+best_svm = grid_search.best_estimator_
+y_pred_best = best_svm.predict(X_test_std)
+</pre>
+            </div>
+
+            <p class="text-justified">
+                The complete implementation with additional metrics, visualizations, and hyperparameter tuning can be found in the 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/svm.py" target="_blank">GitHub repository</a>.
+            </p>
+
+            <h3 class="text-centered">Results</h3>
+            <p class="text-justified">
+                We evaluated the performance of SVMs with different kernels on our audio classification task:
+            </p>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Accuracy Comparison</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/svm_accuracy.png" alt="SVM Accuracy Comparison">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This chart compares the accuracy of SVM models with different kernels. The RBF kernel achieved the highest accuracy at 84.7%, followed by the polynomial kernel at 82.1%, and the linear kernel at 79.5%. The optimized RBF model after hyperparameter tuning reached 86.3%, demonstrating the importance of parameter selection in SVM performance.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Confusion Matrix - RBF Kernel</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/svm_confusion_matrix.png" alt="SVM Confusion Matrix">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrix for the RBF kernel SVM shows strong classification performance across most sound categories. The model excels at recognizing distinct sounds like "sirens" and "piano" with few confusions. Similar to other classifiers, there are some confusions between acoustically similar categories like "traffic_sounds" and "train_sounds". The RBF kernel's ability to capture complex, nonlinear relationships in the feature space contributes to its superior performance.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Decision Boundaries Visualization</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/svm_decision_boundaries.png" alt="SVM Decision Boundaries">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This visualization shows decision boundaries for different SVM kernels in a simplified 2D space using the first two principal components. The linear kernel (left) creates straight-line boundaries, while the polynomial (middle) and RBF (right) kernels create curved boundaries that can capture more complex relationships. The RBF kernel produces the most flexible decision boundary, allowing it to better separate the sound categories in this reduced feature space.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h4 class="text-centered">Hyperparameter Sensitivity</h4>
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/svm_hyperparameters.png" alt="SVM Hyperparameter Sensitivity">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This heatmap shows the impact of different C and gamma values on the RBF kernel SVM's accuracy. The regularization parameter C controls the trade-off between margin maximization and training error minimization, while gamma determines the influence radius of each support vector. Higher accuracy is observed with moderate C values (10-100) and lower gamma values (0.01-0.1), indicating that a moderately complex model with broader influence regions performs best for audio classification.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Conclusion</h3>
+            <p class="text-justified">
+                The SVM analysis yielded several important insights for audio classification:
+            </p>
+            
+            <ul class="ul-list">
+                <li>SVMs with the RBF kernel achieved the highest accuracy among all individual models tested (86.3% after optimization), demonstrating their effectiveness for audio classification tasks.</li>
+                <li>The superior performance of nonlinear kernels (RBF and polynomial) compared to the linear kernel indicates that audio features have complex, nonlinear relationships that benefit from more flexible decision boundaries.</li>
+                <li>Hyperparameter tuning significantly improved SVM performance, highlighting the importance of parameter selection, particularly for the regularization parameter C and the kernel parameter gamma.</li>
+                <li>SVMs showed strong generalization ability, maintaining good performance across diverse sound categories despite being trained on a smaller subset of the data.</li>
+                <li>The primary drawback of SVMs was their computational intensity, requiring significantly longer training times than Naive Bayes or Decision Trees, particularly for large datasets with many classes.</li>
+            </ul>
+            
+            <p class="text-justified">
+                SVMs provide a powerful approach for audio classification, particularly when accuracy is prioritized over training efficiency. Their ability to handle high-dimensional data with complex relationships makes them well-suited for capturing the nuanced spectral and temporal patterns in audio signals. While SVMs don't provide the same level of interpretability as Decision Trees, their strong performance and theoretical foundations in statistical learning theory make them a valuable tool in the audio classification toolkit.
+            </p>
+        </div>
+
+        <div class="content-section" data-aos="fade-up">
+            <h3 class="text-centered">Overall Comparison of Supervised Learning Methods</h3>
+            <p class="text-justified">
+                After evaluating four different supervised learning approaches on the audio classification task, we can compare their performance, strengths, and limitations:
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/overall_comparison.png" alt="Overall Comparison">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This chart compares the best-performing model from each approach. The optimized SVM with RBF kernel achieved the highest accuracy at 86.3%, followed by Decision Trees at 82.3%, Logistic Regression at 78.9% (on the full multi-class problem), and Gaussian Naive Bayes at 76.8%. This progression reflects the increasing model complexity and flexibility in capturing nonlinear relationships in the data.
+                    </p>
+                </div>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>Method</th>
+                        <th>Strengths</th>
+                        <th>Limitations</th>
+                        <th>Best Use Cases</th>
+                    </tr>
+                    <tr>
+                        <td>Naive Bayes</td>
+                        <td>Fast training, works well with limited data, probabilistic output</td>
+                        <td>Independence assumption often violated, lower accuracy</td>
+                        <td>Baseline model, real-time classification, text-based audio metadata</td>
+                    </tr>
+                    <tr>
+                        <td>Decision Trees</td>
+                        <td>Highly interpretable, handles mixed feature types, no scaling required</td>
+                        <td>Prone to overfitting, unstable (small changes in data can cause large changes in tree)</td>
+                        <td>Exploratory analysis, rule extraction, feature importance assessment</td>
+                    </tr>
+                    <tr>
+                        <td>Logistic Regression</td>
+                        <td>Well-calibrated probabilities, efficient for multi-class problems, interpretable weights</td>
+                        <td>Limited to linear decision boundaries, sensitive to feature scaling</td>
+                        <td>Binary audio classification, probability estimation, baseline model</td>
+                    </tr>
+                    <tr>
+                        <td>SVM</td>
+                        <td>Highest accuracy, effective in high dimensions, robust generalization</td>
+                        <td>Computationally intensive, sensitive to hyperparameters, less interpretable</td>
+                        <td>Optimal classification accuracy, complex audio patterns, black-box classification</td>
+                    </tr>
+                </table>
+            </div>
+
+            <p class="text-justified">
+                Each method offers a unique balance of interpretability, performance, and computational efficiency. For audio classification, the most appropriate model depends on specific requirements:
+            </p>
+            <ul class="ul-list">
+                <li>If computational efficiency and real-time classification are priorities, Naive Bayes provides a good baseline.</li>
+                <li>If understanding feature relationships and extracting rules are important, Decision Trees offer the most transparency.</li>
+                <li>If well-calibrated probability estimates are needed, Logistic Regression is ideal.</li>
+                <li>If maximum classification accuracy is the goal and computational resources are available, SVMs with the RBF kernel deliver the best performance.</li>
+            </ul>
+
+            <p class="text-justified">
+                In practice, ensemble methods that combine these approaches or deeper neural network architectures might achieve even better performance for complex audio classification tasks. However, the methods explored here provide strong foundations and valuable insights into the acoustic properties that differentiate various sound categories.
+            </p>
+        </div>
+
+        <div class="navigation-buttons">
+            <button class="nav-button" onclick="location.href='unsupervised.html'">
+                ← Back to Unsupervised Learning
+            </button>
+            <button class="nav-button" onclick="location.href='conclusion.html'">
+                Next: Conclusion →
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100, // Offset for fixed navbar
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
