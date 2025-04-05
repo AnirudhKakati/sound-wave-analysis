@@ -280,7 +280,7 @@
                     <a href="supervised.html#naive-bayes">Naive Bayes</a>
                     <a href="supervised.html#decision-trees">Decision Trees</a>
                     <a href="supervised.html#regression">Regression</a>
-                    <a href="supervised.html#svm">SVM</a>
+                    <!-- <a href="supervised.html#svm">SVM</a> -->
                 </div>
             </li>
             <li><a href="conclusion.html">Conclusion</a></li>
@@ -302,8 +302,15 @@
             <h2>Naive Bayes</h2>
             
             <h3 class="text-centered">Overview</h3>
+            <!-- <p class="text-justified">
+                Naive Bayes is a family of probabilistic classifiers based on applying Bayes' theorem with a "naive" assumption that features are conditionally independent given the class. Despite this simplifying assumption, Naive Bayes classifiers often perform surprisingly well in practice, especially for text classification, spam filtering, sentiment analysis, and recommendation systems. They require relatively small amounts of training data to estimate the necessary parameters, train quickly, and are particularly suited to high-dimensional data. Naive Bayes models calculate the probability of each class given the feature values, selecting the class with the highest probability as the prediction.
+            </p> -->
+
             <p class="text-justified">
                 Naive Bayes is a family of probabilistic classifiers based on applying Bayes' theorem with a "naive" assumption that features are conditionally independent given the class. Despite this simplifying assumption, Naive Bayes classifiers often perform surprisingly well in practice, especially for text classification, spam filtering, sentiment analysis, and recommendation systems. They require relatively small amounts of training data to estimate the necessary parameters, train quickly, and are particularly suited to high-dimensional data. Naive Bayes models calculate the probability of each class given the feature values, selecting the class with the highest probability as the prediction.
+            </p>
+            <p class="text-justified">
+                The core idea is to flip the problem using Bayes' Theorem: instead of modeling the probability of features given a class being true (which can be hard), Naive Bayes models the likelihood of a class given the features. This makes it incredibly efficient, especially when combined with vectorized feature representations. Even when the independence assumption doesn't strictly hold, the model still tends to perform well in practice — a phenomenon sometimes called the "Naive Bayes miracle".
             </p>
 
             <div class="visualization-section">
@@ -317,8 +324,14 @@
                 </div>
             </div>
             <h3 class="text-centered">Smoothing in Naive Bayes</h3>
+            <!-- <p class="text-justified">
+                One challenge with Naive Bayes is handling zero probabilities when a feature value doesn't appear in the training data for a given class. This can lead to the entire probability estimate for that class becoming zero due to multiplication. To address this, smoothing techniques like Laplace smoothing are used. These methods add a small constant to observed counts, ensuring that no probability is ever exactly zero. Smoothing helps improve generalization and ensures that the model can make predictions even for previously unseen feature values.
+            </p> -->
             <p class="text-justified">
                 One challenge with Naive Bayes is handling zero probabilities when a feature value doesn't appear in the training data for a given class. This can lead to the entire probability estimate for that class becoming zero due to multiplication. To address this, smoothing techniques like Laplace smoothing are used. These methods add a small constant to observed counts, ensuring that no probability is ever exactly zero. Smoothing helps improve generalization and ensures that the model can make predictions even for previously unseen feature values.
+            </p>
+            <p class="text-justified">
+                Without smoothing, even a single missing word or unseen feature could dominate the entire prediction, which can be disastrous in real-world applications. Laplace (add-one) smoothing or Lidstone (add-α) smoothing are common techniques that mitigate this, especially in domains like text classification where many features are sparse.
             </p>
 
             <h3 class="text-centered">Different Types of Naive Bayes Classifiers</h3>
@@ -351,244 +364,339 @@
                     </p>
                 </div>
             </div>
-            <!-- <div class="method-card" style="margin-top: 2rem;">
-                <h3 class="text-centered">DBSCAN</h3>
-                <p class="text-justified">
-                    DBSCAN (Density-Based Spatial Clustering of Applications with Noise) identifies clusters as dense regions separated by sparser areas. It doesn't require specifying the number of clusters and can discover arbitrarily shaped clusters while identifying outliers as noise. However, it's sensitive to its parameters (epsilon and min_samples) and struggles with clusters of varying densities. DBSCAN is particularly useful for datasets with noise and non-spherical cluster shapes.
-                </p>
-            </div> -->
-
-            <!-- <div class="nb-types">
-                <div class="nb-type-card">
-                    <h4>Multinomial Naive Bayes</h4>
-                    <p>
-                        Suited for discrete counts, such as word frequencies in text classification. Features represent the frequencies with which certain events occur. Commonly used for document classification and spam filtering where feature vectors represent term frequencies.
-                    </p>
-                </div>
-                
-                <div class="nb-type-card">
-                    <h4>Gaussian Naive Bayes</h4>
-                    <p class="text-justified">
-                        Appropriate for continuous data where features follow a normal distribution. Each class is modeled with a Gaussian distribution defined by mean and variance. Effective for classifying measurements like height, weight, or audio spectral features.
-                    </p>
-                </div>
-                
-                <div class="nb-type-card">
-                    <h4>Bernoulli Naive Bayes</h4>
-                    <p class="text-justified">
-                        Designed for binary/boolean features. Models presence or absence of features rather than frequencies. Useful for text classification with binary word occurrence (present/absent) rather than counts, and in some cases of spam detection.
-                    </p>
-                </div>
-                
-                <div class="nb-type-card">
-                    <h4>Categorical Naive Bayes</h4>
-                    <p>
-                        Handles categorical features directly without converting to numeric values. Each feature has its own categorical distribution per class. Particularly useful for nominal data where features have discrete, non-ordered categories.
-                    </p>
-                </div>
-            </div> -->
 
             <p class="text-justified">
                 The main differences between these variants lie in their assumptions about feature distributions. Multinomial assumes features follow a multinomial distribution suitable for count data. Gaussian works with continuous values assuming normal distributions. Bernoulli is optimal for binary features. Categorical handles nominal features without forcing numeric conversion. The appropriate variant should be selected based on your data characteristics for best performance.
             </p>
 
-            <h3 class="text-centered">Preparing Data for Naive Bayes Classification</h3>
+            <h3 class="text-centered">Naive Bayes Classification of Audio Data</h2>
+
             <p class="text-justified">
-                For Naive Bayes classification of audio data, the dataset needs specific formatting depending on the variant used. All supervised learning methods require splitting data into training and testing sets to evaluate model performance objectively. This ensures that models are evaluated on data they haven't seen during training, providing a reliable estimate of how well they'll perform on new, unseen data.
+                To apply Naive Bayes classification to audio data, a dataset consisting of extracted features from six sound categories: piano, guitar, drums, thunder sounds, rain sounds, and wind sounds, is selected. 
             </p>
 
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/train_test_split.png" alt="Train-Test Split Concept">
+                    <img src="images/supervised/data_for_naive_bayes_raw.png" alt="Raw Dataset View">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This visualization illustrates the train-test split process. The original dataset (left) is divided into a training set (middle, typically 70-80% of data) used to build the model, and a testing set (right, typically 20-30%) used only for evaluation. These sets must be disjoint to ensure unbiased assessment of model performance on unseen data.
+                        The dataset contains all the numeric audio features such as MFCCs, chroma, spectral contrast, tonnetz, and others, extracted for each audio file.
                     </p>
                 </div>
             </div>
 
             <p class="text-justified">
-                For our audio classification task, we prepared three datasets suitable for different Naive Bayes variants:
+                The raw data is grouped into two classes: <strong>music</strong> for records of categories piano, guitar, drums and <strong>outdoor</strong> for records of categories thunder, rain, wind.
+                This transformation helps in converting a multi-class problem into a binary classification task, simplifying model training and evaluation.
+                The categorized dataset is shown below.
             </p>
-
+                
             <div class="visualization-section">
-                <h4 class="text-centered">Original Dataset</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/dataexploration/audio_features_csv.jpg" alt="Original Dataset Preview">
+                    <img src="images/supervised/data_for_naive_bayes_categorized.png" alt="Categorization into Music and Outdoor">
                 </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        The original dataset contains 43 acoustic features extracted from approximately 15,000 audio samples across 20 sound categories. Each feature represents a different aspect of the audio signal, such as spectral characteristics, temporal patterns, and frequency content.
-                    </p>
-                </div>
-            </div>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Processed Datasets for Different NB Variants</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/nb_datasets.png" alt="Processed NB Datasets">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        Three different datasets were prepared for Multinomial, Gaussian, and Bernoulli Naive Bayes. The Multinomial dataset uses discretized counts of feature values. The Gaussian dataset preserves continuous values with normalization. The Bernoulli dataset converts features to binary values based on thresholds. Each preparation method aligns with the underlying assumptions of its respective Naive Bayes variant.
-                    </p>
-                </div>
-            </div>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Train-Test Split</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/nb_train_test.png" alt="Train-Test Split for NB">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        The dataset was split into 80% training and 20% testing sets using stratified sampling to maintain the same class distribution in both sets. This ensures that the model is trained on a representative sample and evaluated fairly. The image shows the distribution of classes in both training and testing sets, confirming consistent proportions.
-                    </p>
-                </div>
-            </div>
-
-            <h3 class="text-centered">Code Implementation</h3>
-            <p class="text-justified">
-                The Python implementation for the three Naive Bayes variants includes data preprocessing, model training, and evaluation. Below is a simplified version of the code used for each variant:
-            </p>
-
-            <div class="code-block">
-                <pre>
-# Multinomial Naive Bayes Implementation
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import accuracy_score, confusion_matrix
-
-# Preprocess data - convert to non-negative values and scale for Multinomial NB
-scaler = MinMaxScaler()
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-
-# Train the model
-mnb = MultinomialNB()
-mnb.fit(X_train_scaled, y_train)
-
-# Make predictions
-y_pred_mnb = mnb.predict(X_test_scaled)
-
-# Evaluate
-accuracy_mnb = accuracy_score(y_test, y_pred_mnb)
-conf_matrix_mnb = confusion_matrix(y_test, y_pred_mnb)
-</pre>
-            </div>
-
-            <div class="code-block">
-                <pre>
-# Gaussian Naive Bayes Implementation
-from sklearn.naive_bayes import GaussianNB
-from sklearn.preprocessing import StandardScaler
-
-# Preprocess data - standardize for Gaussian NB
-scaler = StandardScaler()
-X_train_std = scaler.fit_transform(X_train)
-X_test_std = scaler.transform(X_test)
-
-# Train the model
-gnb = GaussianNB()
-gnb.fit(X_train_std, y_train)
-
-# Make predictions
-y_pred_gnb = gnb.predict(X_test_std)
-
-# Evaluate
-accuracy_gnb = accuracy_score(y_test, y_pred_gnb)
-conf_matrix_gnb = confusion_matrix(y_test, y_pred_gnb)
-</pre>
-            </div>
-
-            <div class="code-block">
-                <pre>
-# Bernoulli Naive Bayes Implementation
-from sklearn.naive_bayes import BernoulliNB
-import numpy as np
-
-# Preprocess data - binarize features for Bernoulli NB
-# Convert continuous values to binary based on median threshold
-X_train_binary = (X_train > np.median(X_train, axis=0)).astype(int)
-X_test_binary = (X_test > np.median(X_test, axis=0)).astype(int)
-
-# Train the model
-bnb = BernoulliNB()
-bnb.fit(X_train_binary, y_train)
-
-# Make predictions
-y_pred_bnb = bnb.predict(X_test_binary)
-
-# Evaluate
-accuracy_bnb = accuracy_score(y_test, y_pred_bnb)
-conf_matrix_bnb = confusion_matrix(y_test, y_pred_bnb)
-</pre>
             </div>
 
             <p class="text-justified">
-                The complete implementation with additional metrics, visualizations, and hyperparameter tuning can be found in the 
-                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/naive_bayes.py" target="_blank">GitHub repository</a>.
+                After categorization, the label column is encoded into binary form: music = 1 and outdoor = 0. This becomes the target variable for all the naive bayes classification models.
+                The dataset after this transformation is shown below.
             </p>
+            
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/data_for_naive_bayes_categorized_encoded.png" alt="Binary Encoding of Labels">
+                </div>
+            </div>
 
-            <h3 class="text-centered">Results</h3>
             <p class="text-justified">
-                The three Naive Bayes variants were evaluated on the audio classification task, with each showing different strengths and weaknesses:
+                All supervised learning methods require splitting data into training and testing sets to evaluate model performance objectively. This ensures that models are evaluated on data they haven't seen during training, providing a reliable estimate of how well they'll perform on new, unseen data.
+                The dataset is split into training and testing sets in a 7:3 ratio. This means 70% of the dataset is used for training the models, and 30% is used for testing them.
             </p>
 
             <div class="visualization-section">
-                <h4 class="text-centered">Accuracy Comparison</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/nb_accuracy_comparison.png" alt="NB Accuracy Comparison">
+                    <img src="images/supervised/gaussian_nb_train_data.png" alt="Train data">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This chart compares the accuracy of the three Naive Bayes variants. Gaussian NB achieved the highest accuracy at 76.8%, followed by Multinomial NB at 72.3%, and Bernoulli NB at 65.1%. The Gaussian variant performed best likely because it effectively models the continuous acoustic features that follow approximately normal distributions.
+                        This images depicts the training data, which is split from the original dataset, used for training the model. 
+                        It contains 70% of the original dataset.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/gaussian_nb_test_data.png" alt="Test data">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This images depicts the testing data on which the model is tested. It contains 30% of the original dataset.
                     </p>
                 </div>
             </div>
+
+            <p class="text-justified">
+                Three variants of Naive Bayes classifiers are used: <strong>MultinomialNB</strong>, <strong>GaussianNB</strong>, and <strong>BernoulliNB</strong>. Each model has different feature format requirements. The training and testing datasets are transformed according to the models.
+            </p>
+
+            <h3 class="text-centered">Performing Multinomial Naive Bayes Classification</h3>
+
+            <p class="text-justified">
+                Multinomial Naive Bayes expects discrete feature values. To prepare the data, MinMaxScaler is first applied to scale features between 0 and 1. The scaled values are then multiplied by 100 and rounded to integers.
+            </p>
 
             <div class="visualization-section">
-                <h4 class="text-centered">Confusion Matrices</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/nb_confusion_matrices.png" alt="NB Confusion Matrices">
+                    <img src="images/supervised/multinomial_nb_train_data_scaled.png" alt="Scaled Training Data - Multinomial">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        These confusion matrices visualize the classification performance of each Naive Bayes variant. Darker diagonal elements indicate better classification accuracy for those categories. The Gaussian NB matrix shows stronger diagonal elements, confirming its superior performance. All models struggle with similar pairs of classes, such as confusing "traffic_sounds" with "train_sounds" and "crowd_noise" with "construction_noise".
+                        This images depicts the scaled training data. The features are scaled between 0 and 1 using MinMaxScaler.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/multinomial_nb_test_data_scaled.png" alt="Scaled Testing Data - Multinomial">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This images depicts the scaled testing data. The features are scaled between 0 and 1 using the parameters calculated on the training data.
                     </p>
                 </div>
             </div>
+
+            <p class="text-justified">
+                To make the features discrete numbers, the scaled values are then multiplied by 100 and converted to integers by rounding them off.
+            </p>
 
             <div class="visualization-section">
-                <h4 class="text-centered">Per-Category Performance</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/nb_category_performance.png" alt="NB Per-Category Performance">
+                    <img src="images/supervised/multinomial_nb_train_data_discretized.png" alt="Discretized Training Data - Multinomial">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This chart shows F1-scores for each sound category across the three Naive Bayes variants. Gaussian NB consistently performs best across most categories. All models excel at recognizing distinctive sounds like "sirens", "dog_bark", and "guitar", while struggling with more ambiguous categories like "traffic_sounds" and "crowd_noise". Bernoulli NB performs particularly poorly on categories with nuanced spectral characteristics, as the binary feature representation loses important information.
+                        This images depicts the discretized training data. The scaled feature values are now integers between 0 and 100.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/multinomial_nb_test_data_discretized.png" alt="Discretized Testing Data - Multinomial">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This images depicts the discretized testing data. The scaled feature values are now integers between 0 and 100.
                     </p>
                 </div>
             </div>
 
+            <h3 class="text-centered">Multinomial Naive Bayes Classification Results</h3>
+
+            <p class="text-justified">
+                The trained multinomial Naive Bayes model's predictions are tested against the testing data. 
+                The performance of the model is evaluated using confusion matrix, classification heatmap, and ROC curve.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/naive_bayes/multinomial_nb_classification_report_heatmap.png" alt="Classification Report - Multinomial NB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The heatmap shows how well the model performs on both classes: outdoor and music. 
+                        For class 0 (outdoor), the model achieved a precision of 0.837, recall of 0.888, and F1-score of 0.862. 
+                        For class 1 (music), the precision was 0.876, recall was 0.820, and F1-score was 0.847. 
+                        The overall accuracy of the model is 85.5%, and the macro averages for precision, recall, and F1-score are all around 0.85, suggesting that the performance is fairly balanced across both classes.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/naive_bayes/multinomial_nb_confusion_matrix.png" alt="Confusion Matrix - Multinomial NB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrix provides the raw breakdown of predictions. 
+                        The model correctly predicted 611 outdoor sounds and 543 music sounds. 
+                        However, it also misclassified 77 outdoor sounds as music and 119 music sounds as outdoor. 
+                        While the correct predictions outweigh the errors, the misclassification count—especially for music—shows that there’s still room for improvement. 
+                        The total number of predictions is 1,350, out of which 1,154 were correct.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/naive_bayes/multinomial_nb_roc_curve.png" alt="ROC Curve - Multinomial NB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The ROC curve visualizes how well the model can distinguish between the two classes across different thresholds.
+                        The curve leans toward the top-left corner, and the Area Under the Curve (AUC) is 0.91, which is quite good. 
+                        It shows that the model has a strong ability to separate outdoor and music sounds, even if it isn’t perfect. 
+                        AUC above 0.9 is generally considered very solid for a classifier like this.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Performing Gaussian Naive Bayes Classification</h3>
+
+            <p class="text-justified">
+                Gaussian Naive Bayes assumes normally distributed features. 
+                Therefore, features are standardized using StandardScaler to have zero mean and unit variance.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/gaussian_nb_train_data_scaled.png" alt="Scaled Training Data - Gaussian">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This images depicts the scaled training data. The features are scaled to a standard normal distribution with mean=0 and variance=1.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/gaussian_nb_test_data_scaled.png" alt="Scaled Testing Data - Gaussian">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This images depicts the scaled testing data. The features are scaled to a standard normal distribution using parameters calculated on the training data.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Gaussian Naive Bayes Classification Results</h3>
+
+            <p class="text-justified">
+                The trained Gaussian Naive Bayes model's predictions are tested against the testing data. 
+                The performance is evaluated using confusion matrix, classification heatmap, and ROC curve.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/naive_bayes/gaussian_nb_classification_report_heatmap.png" alt="Classification Report - Gaussian NB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The heatmap highlights the precision, recall, and F1-scores for both outdoor and music classes.
+                        For class 0 (outdoor), the precision is 0.832, recall is 0.890, and F1-score is 0.860.
+                        For class 1 (music), the precision is 0.876, recall is 0.813, and F1-score is 0.843.
+                        These scores indicate the model is relatively balanced in how it handles both classes.
+                        The overall accuracy stands at 85.2%, and the macro averages for precision, recall, and F1-score are all close to 0.85, showing consistently decent performance across the board.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/naive_bayes/gaussian_nb_confusion_matrix.png" alt="Confusion Matrix - Gaussian NB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrix shows that the model correctly predicted 612 outdoor sounds and 538 music sounds.
+                        There were 76 outdoor sounds misclassified as music, and 124 music sounds predicted as outdoor.
+                        Out of 1,350 total predictions, 1,150 were accurate.
+                        The diagonal dominance in the matrix confirms the model is doing a good job, but there’s still a moderate level of confusion between the two classes.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/naive_bayes/gaussian_nb_roc_curve.png" alt="ROC Curve - Gaussian NB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The ROC curve shows the trade-off between true positive rate and false positive rate.
+                        The curve for this model rises sharply and stays close to the top-left corner, indicating strong classification ability.
+                        The Area Under the Curve (AUC) is 0.922, which means the Gaussian Naive Bayes model is quite effective at separating the two classes overall.
+                    </p>
+                </div>
+            </div>
+
+
+            <h3 class="text-centered">Bernoulli Gaussian Naive Bayes Classification</h3>
+
+            <p class="text-justified">
+                Bernoulli Naive Bayes requires binary features. 
+                Each feature value is binarized: if greater than the mean of that feature, it is set to 1; otherwise, it is set to 0.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/bernoulli_nb_train_data.png" alt="Binary Training Data - Bernoulli">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This images depicts the binarized training data. The features are encoded to have values of either 1 or 0.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/bernoulli_nb_test_data.png" alt="Binary Testing Data - Bernoulli">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This images depicts the binarized testing data. The features are encoded to have values of either 1 or 0.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Bernoulli Naive Bayes Classification Results</h3>
+
+            <p class="text-justified">
+                The trained Bernoulli Naive Bayes model's predictions are tested against the testing data. 
+                The performance is evaluated using confusion matrix, classification heatmap, and ROC curve.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/naive_bayes/bernoulli_nb_classification_report_heatmap.png" alt="Classification Report - Bernoulli NB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The heatmap shows the model’s classification metrics for both outdoor and music classes.
+                        For class 0 (outdoor), the precision is 0.869, recall is 0.850, and F1-score is 0.860.
+                        For class 1 (music), the precision is 0.848, recall is 0.867, and F1-score is 0.857.
+                        The overall accuracy of the model is 85.9%, and the macro average precision, recall, and F1-scores are all close to 0.86.
+                        These values suggest a well-balanced performance, with both classes being handled nearly equally well.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/naive_bayes/bernoulli_nb_confusion_matrix.png" alt="Confusion Matrix - Bernoulli NB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrix reveals that the model correctly predicted 585 outdoor sounds and 574 music sounds.
+                        It misclassified 103 outdoor samples as music and 88 music samples as outdoor.
+                        This totals 1,159 correct predictions out of 1,350.
+                        The error rate is fairly low, and the matrix shows the model is reliable for both categories.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/naive_bayes/bernoulli_nb_roc_curve.png" alt="ROC Curve - Bernoulli NB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The ROC curve illustrates the model’s ability to distinguish between classes across thresholds.
+                        The curve is steep and hugs the top-left corner, indicating excellent separation performance.
+                        The Area Under the Curve (AUC) is 0.937, showing that the Bernoulli Naive Bayes model is highly effective at classifying between outdoor and music sounds.
+                    </p>
+                </div>
+            </div>
+            
             <h3 class="text-centered">Conclusion</h3>
+
             <p class="text-justified">
-                The Naive Bayes analysis yielded several important insights for audio classification:
+                Naive Bayes classifiers performed consistently well in distinguishing between outdoor and music sounds using audio features. 
+                All three variants: Multinomial, Gaussian, and Bernoulli, achieved accuracy around 85%, with Bernoulli Naive Bayes performing the best overall. It had the highest F1-score balance between classes and the highest AUC of 0.937, indicating strong classification confidence.
             </p>
-            
-            <ul class="ul-list">
-                <li>Gaussian Naive Bayes outperformed other variants for audio classification, achieving 76.8% accuracy, suggesting that acoustic features approximately follow normal distributions.</li>
-                <li>The assumption of feature independence, while clearly violated in audio data where spectral features are correlated, still allowed for reasonably good classification performance, highlighting Naive Bayes' robustness.</li>
-                <li>Bernoulli NB's poorer performance demonstrates that binary representations of acoustic features lose critical information necessary for distinguishing between similar sounds.</li>
-                <li>All models struggled with similar sound categories, suggesting that additional feature engineering or more sophisticated models might be needed for these challenging distinctions.</li>
-                <li>Preprocessing significantly impacts performance; appropriate scaling and transformation are essential for each Naive Bayes variant.</li>
-            </ul>
-            
             <p class="text-justified">
-                Despite its simplicity and strong assumptions, Naive Bayes provides a computationally efficient baseline for audio classification with reasonable accuracy. The model's probabilistic nature also provides interpretable results, showing which features are most discriminative for different sound categories. For production applications, Gaussian Naive Bayes would be the recommended variant for similar acoustic feature sets, potentially enhanced with feature selection to improve performance further.
+                These results suggest that even simple probabilistic models like Naive Bayes can handle audio feature-based classification tasks effectively when features are preprocessed appropriately. The project revealed that audio categories like music and outdoor sounds have distinguishable statistical patterns, which Naive Bayes models are able to capture despite their assumptions of feature independence.
             </p>
+            <p class="text-justified">
+                The full script to perform Naive Bayes Classification with its corresponding preprocessing and visualizations can be found 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/naive_bayes.py" target="_blank">here.</a>
+            </p>
+
+
         </div>
+        <!-- End of Naive Bayes Section -->
 
         <!-- Decision Trees Section -->
         <div id="decision-trees" class="content-section" data-aos="fade-up">
@@ -596,16 +704,17 @@ conf_matrix_bnb = confusion_matrix(y_test, y_pred_bnb)
             
             <h3 class="text-centered">Overview</h3>
             <p class="text-justified">
-                Decision Trees are versatile supervised learning algorithms that create a model resembling a tree-like structure of decisions. Each internal node represents a "test" on a feature, each branch represents the outcome of the test, and each leaf node represents a class label or a value prediction. Decision Trees are intuitive, easy to interpret, and can handle both classification and regression tasks, making them popular across various domains including finance, healthcare, and computer vision.
+                Decision Trees are versatile supervised learning algorithms that create a model resembling a tree-like structure of decisions. Each internal node represents a "test" on a feature, each branch represents the outcome of the test, and each leaf node represents a class label or a value prediction. 
+                Decision Trees are intuitive, easy to interpret, and can handle both classification and regression tasks, making them popular across various domains including finance, healthcare, and computer vision.
             </p>
 
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/decision_tree_concept.png" alt="Decision Tree Concept">
+                    <img src="images/supervised/decision_tree.png" alt="Decision Tree Concept">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This visualization shows a simplified decision tree for audio classification. Starting from the root node (top), the algorithm makes decisions based on acoustic features, following different paths until reaching a leaf node that represents a sound category. Each internal node splits the data based on a feature threshold that optimally separates the classes.
+                        This visualization shows a simple decision tree with 4 features. Starting from the root node (top), the algorithm makes decisions based on features, following different paths until reaching a leaf node that represents a decision category. Each internal node splits the data based on a feature threshold that optimally separates the classes.
                     </p>
                 </div>
             </div>
@@ -616,7 +725,7 @@ conf_matrix_bnb = confusion_matrix(y_test, y_pred_bnb)
 
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/impurity_measures.png" alt="Gini and Entropy Comparison">
+                    <img src="images/supervised/gini_vs_entropy.jpeg" alt="Gini and Entropy Comparison">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
@@ -625,63 +734,75 @@ conf_matrix_bnb = confusion_matrix(y_test, y_pred_bnb)
                 </div>
             </div>
 
-            <h4 class="text-centered">Impurity Measures and Information Gain</h4>
+            <h3 class="text-centered">Impurity Measures and Information Gain</h4>
             <p class="text-justified">
                 The quality of a split in a Decision Tree is determined by how much it reduces impurity. This reduction is quantified using Information Gain, which measures the difference in entropy (or Gini impurity) before and after a split. Let's understand these concepts with a simple example:
             </p>
 
+        
             <div class="method-card">
-                <h4 class="text-centered">Example: Using Entropy and Information Gain</h4>
                 <p class="text-justified">
-                    Consider a subset of our audio dataset with 100 samples from three categories: "dog_bark" (40 samples), "guitar" (35 samples), and "sirens" (25 samples). We want to determine whether to split the data based on the feature "spectral_centroid" with a threshold of 0.6.
+                  Consider a synthesized dataset with 12 audio samples from three categories: "rain", "fireworks", and "birds".
+                  Each sample has a feature "zero_crossing_rate".
                 </p>
-                
-                <p class="text-justified">
-                    First, we calculate the entropy of the parent node:
-                </p>
-                
-                <div class="equation">
-                    Entropy(parent) = -(0.4 * log₂(0.4) + 0.35 * log₂(0.35) + 0.25 * log₂(0.25)) = 1.55
-                </div>
-                
-                <p class="text-justified">
-                    After splitting on "spectral_centroid > 0.6", we get:
-                </p>
+              
                 <ul class="ul-list">
-                    <li>Left child (spectral_centroid ≤ 0.6): 60 samples - 35 "dog_bark", 20 "guitar", 5 "sirens"</li>
-                    <li>Right child (spectral_centroid > 0.6): 40 samples - 5 "dog_bark", 15 "guitar", 20 "sirens"</li>
+                  <li>Rain: 4 samples</li>
+                  <li>Fireworks: 4 samples</li>
+                  <li>Birds: 4 samples</li>
                 </ul>
-                
+              
                 <p class="text-justified">
-                    Now we calculate the entropy of each child node:
+                  We want to determine whether to split the data based on the feature "zero_crossing_rate" with a threshold of 0.5.
                 </p>
-                
-                <div class="equation">
-                    Entropy(left) = -(35/60 * log₂(35/60) + 20/60 * log₂(20/60) + 5/60 * log₂(5/60)) = 1.29
-                </div>
-                
-                <div class="equation">
-                    Entropy(right) = -(5/40 * log₂(5/40) + 15/40 * log₂(15/40) + 20/40 * log₂(20/40)) = 1.33
-                </div>
-                
+              
                 <p class="text-justified">
-                    The weighted average entropy after the split is:
+                  First, we calculate the entropy of the parent node:
                 </p>
-                
+              
                 <div class="equation">
-                    Entropy(after split) = (60/100 * 1.29) + (40/100 * 1.33) = 1.31
+                  Entropy(parent) = -(4/12 * log₂(4/12) + 4/12 * log₂(4/12) + 4/12 * log₂(4/12)) = 1.58
                 </div>
-                
+              
                 <p class="text-justified">
-                    Finally, we calculate the Information Gain:
+                  After splitting on "zero_crossing_rate > 0.5", we get:
                 </p>
-                
-                <div class="equation">
-                    Information Gain = Entropy(parent) - Entropy(after split) = 1.55 - 1.31 = 0.24
-                </div>
-                
+              
+                <ul class="ul-list">
+                  <li>Left child (zero_crossing_rate ≤ 0.5): 6 samples – 4 "rain", 2 "birds"</li>
+                  <li>Right child (zero_crossing_rate > 0.5): 6 samples – 4 "fireworks", 2 "birds"</li>
+                </ul>
+              
                 <p class="text-justified">
-                    This positive Information Gain of 0.24 indicates that splitting on "spectral_centroid > 0.6" reduces impurity and is a good candidate for decision making in our tree. The tree algorithm would compare this gain with other potential feature splits and select the one with the highest information gain.
+                  Now we calculate the entropy of each child node:
+                </p>
+              
+                <div class="equation">
+                  Entropy(left) = -(4/6 * log₂(4/6) + 2/6 * log₂(2/6)) = 0.92
+                </div>
+              
+                <div class="equation">
+                  Entropy(right) = -(4/6 * log₂(4/6) + 2/6 * log₂(2/6)) = 0.92
+                </div>
+              
+                <p class="text-justified">
+                  The weighted average entropy after the split is:
+                </p>
+              
+                <div class="equation">
+                  Entropy(after split) = (6/12 * 0.92) + (6/12 * 0.92) = 0.92
+                </div>
+              
+                <p class="text-justified">
+                  Finally, we calculate the Information Gain:
+                </p>
+              
+                <div class="equation">
+                  Information Gain = Entropy(parent) - Entropy(after split) = 1.58 - 0.92 = 0.66
+                </div>
+              
+                <p class="text-justified">
+                  This positive Information Gain of 0.66 indicates that splitting on "zero_crossing_rate > 0.5" is effective in reducing impurity and is a strong candidate for decision making in our tree. The decision tree algorithm would compare this gain with other feature splits and choose the one with the highest gain.
                 </p>
             </div>
 
@@ -701,7 +822,7 @@ conf_matrix_bnb = confusion_matrix(y_test, y_pred_bnb)
 
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/decision_tree_complexity.png" alt="Decision Tree Complexity">
+                    <img src="images/supervised/decision_trees_varying_complexity.png" alt="Decision Tree Complexity">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
@@ -710,157 +831,285 @@ conf_matrix_bnb = confusion_matrix(y_test, y_pred_bnb)
                 </div>
             </div>
 
-            <h3 class="text-centered">Data Preparation</h3>
+            <h3 class="text-centered">Decision Tree Classification of Audio Data</h2>
             <p class="text-justified">
-                For Decision Tree classification of audio data, we use the same fundamental approach as with Naive Bayes: splitting the dataset into training and testing sets. However, Decision Trees have different preprocessing requirements, as they can work with both categorical and numerical features without assumptions about feature distributions.
+                For Decision Tree classification of audio data, we specifically use audio data from two categories: <strong>birds</strong> and <strong>dog_bark</strong>. The dataset is shown below.
             </p>
 
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/dt_dataset.png" alt="Decision Tree Dataset">
+                    <img src="images/supervised/decision_tree_raw_data.png" alt="Decision Tree Dataset">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        The dataset used for Decision Tree analysis includes all 43 acoustic features without transformation. Decision Trees can naturally handle continuous features by finding optimal thresholds for splits. The only preprocessing applied was standardization (mean=0, std=1) to ensure features with larger scales don't dominate those with smaller scales during the initial split evaluations.
+                        The dataset used for Decision Tree analysis includes all 43 acoustic features for the two categories birds and dog_bark. 
                     </p>
                 </div>
-            </div>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Train-Test Split</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/dt_train_test.png" alt="Decision Tree Train-Test Split">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        As with the Naive Bayes models, the dataset was split into 80% training and 20% testing sets using stratified sampling. This train-test split is crucial for objective evaluation of model performance and remains constant across all supervised learning methods for fair comparison.
-                    </p>
-                </div>
-            </div>
-
-            <h3 class="text-centered">Code Implementation</h3>
-            <p class="text-justified">
-                The implementation of Decision Trees for audio classification uses scikit-learn's DecisionTreeClassifier. Three different trees were created with varying parameters to explore their impact on performance:
-            </p>
-
-            <div class="code-block">
-                <pre>
-# Decision Tree Implementation
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix
-from sklearn.preprocessing import StandardScaler
-
-# Preprocess data - standardize features
-scaler = StandardScaler()
-X_train_std = scaler.fit_transform(X_train)
-X_test_std = scaler.transform(X_test)
-
-# Tree 1: Default parameters with Gini impurity
-dt1 = DecisionTreeClassifier(random_state=42)
-dt1.fit(X_train_std, y_train)
-y_pred_dt1 = dt1.predict(X_test_std)
-
-# Tree 2: Using entropy with max_depth=10
-dt2 = DecisionTreeClassifier(criterion='entropy', max_depth=10, random_state=42)
-dt2.fit(X_train_std, y_train)
-y_pred_dt2 = dt2.predict(X_test_std)
-
-# Tree 3: Using different root node by setting max_features
-dt3 = DecisionTreeClassifier(max_features='sqrt', min_samples_split=10, random_state=42)
-dt3.fit(X_train_std, y_train)
-y_pred_dt3 = dt3.predict(X_test_std)
-
-# Evaluate all trees
-for i, (dt, y_pred) in enumerate([(dt1, y_pred_dt1), (dt2, y_pred_dt2), (dt3, y_pred_dt3)], 1):
-    accuracy = accuracy_score(y_test, y_pred)
-    conf_matrix = confusion_matrix(y_test, y_pred)
-    print(f"Tree {i} Accuracy: {accuracy:.4f}")
-    
-    # Feature importance
-    feature_importances = dt.feature_importances_
-    
-    # Visualize tree
-    plt.figure(figsize=(20, 10))
-    plot_tree(dt, feature_names=feature_names, class_names=class_names, 
-              filled=True, max_depth=3, fontsize=10)
-</pre>
             </div>
 
             <p class="text-justified">
-                The complete implementation with additional metrics, visualizations, and hyperparameter tuning can be found in the 
-                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/decision_trees.py" target="_blank">GitHub repository</a>.
+                The label column is encoded into binary form: birds = 1 and dog_bark = 0. This becomes the target variable for the decision tree classification models. The dataset after this transformation is shown below.
             </p>
 
-            <h3 class="text-centered">Results</h3>
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/decision_tree_raw_data_encoded.png" alt="Decision Tree Dataset Encoded">
+                </div>
+            </div>
+
+
             <p class="text-justified">
-                The three Decision Tree models were evaluated on the audio classification task, each revealing different aspects of tree-based learning:
+                The same fundamental approach as with Naive Bayes is used: splitting the dataset into training and testing sets with 70% used for training and 30% used for testing sets using stratified sampling. This train-test split is crucial for objective evaluation of model performance and remains constant across all supervised learning methods for fair comparison. However, Decision Trees have different preprocessing requirements, as they can work with both categorical and numerical features without assumptions about feature distributions. 
             </p>
 
             <div class="visualization-section">
-                <h4 class="text-centered">Tree Visualizations</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/dt_visualization.png" alt="Decision Tree Visualization">
+                    <img src="images/supervised/decision_tree_train_data.png" alt="Decision Tree Training data">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This is a visualization of the first three levels of Tree 1 (Gini impurity). Each node shows the test condition, Gini impurity, samples count, and class distribution. The root node splits on mfcc_4, followed by splits on spectral_contrast_3 and zero_crossing_rate. Leaf nodes are colored by majority class, with purer nodes having darker colors.
+                        The image shows the training dataset for the decision tree classifiers. It contains 70% of the original dataset.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/decision_tree_test_data.png" alt="Decision Tree Testing data">
+                </div>
+
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The image shows the testing dataset for the decision tree classifiers. It contains 30% of the original dataset.
                     </p>
                 </div>
             </div>
 
+            <p class="text-justified">
+                Decision Trees can naturally handle continuous features by finding optimal thresholds for splits. 
+                The only preprocessing applied was standardization (mean=0, std=1) to ensure features with larger scales don't dominate those with smaller scales during the initial split evaluations.
+            </p>
+
             <div class="visualization-section">
-                <h4 class="text-centered">Accuracy Comparison</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/dt_accuracy.png" alt="Decision Tree Accuracy Comparison">
+                    <img src="images/supervised/decision_tree_train_data_scaled.png" alt="Decision Tree Training data scaled">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        The accuracy comparison shows Tree 1 (unconstrained) at 82.3%, Tree 2 (entropy, max_depth=10) at 79.5%, and Tree 3 (sqrt features, min_samples_split=10) at 77.8%. The unconstrained tree performs best but may be overfitting, while the more constrained trees trade some accuracy for better generalization.
+                        The image shows the scaled training dataset for the decision tree classifiers. 
+                        The features are scaled to a standard normal distribution with mean=0 and variance=1.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/decision_tree_test_data_scaled.png" alt="Decision Tree Testing data">
+                </div>
+
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The image shows the scaled testing dataset for the decision tree classifiers. 
+                        The features are scaled to a standard normal distribution using parameters calculated on the training data.
                     </p>
                 </div>
             </div>
 
+            <h3 class="text-centered">Implementing Decision Trees with Varying Parameters</h3>
+
+            <p class="text-justified">
+                The implementation of Decision Trees for audio classification uses scikit-learn's <code>DecisionTreeClassifier</code>. Three different trees were created, each with unique hyperparameters to explore how variations in depth, feature selection, and splitting criteria influence the structure and decision paths of the trees:
+                <ul class="ul-list">
+                    <li>Tree 1: Uses the Gini impurity criterion, with a maximum depth of 3 and a maximum of 10 features considered.</li>
+                    <li>Tree 2: Uses the log loss (cross-entropy) criterion, with a maximum depth of 2 and only 5 features considered.</li>
+                    <li>Tree 3: Uses the entropy criterion, with a maximum depth of 3 and no restriction on the number of features.</li>
+                </ul>
+            </p>
+            <p class="text-justified">
+                The three Decision Tree models were evaluated on the audio classification task, each revealing different aspects of tree-based learning.
+            </p>
+
+            <h3 class="text-centered">Tree 1 Classification Results</h3>
+
+            <p class="text-justified">
+                The first tree model's predictions are tested against the testing data. The performance is evaluated using confusion matrix, classification heatmap, and ROC curve.
+            </p>
+
+
             <div class="visualization-section">
-                <h4 class="text-centered">Confusion Matrix - Tree 1</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/dt_confusion_matrix.png" alt="Decision Tree Confusion Matrix">
+                    <img src="plots/decision_trees/tree_1_tree_plot.png" alt="Tree Plot - Tree 1">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        The confusion matrix for Tree 1 shows strong diagonal elements, indicating good classification across most sound categories. The tree performs particularly well on distinctive sounds like "sirens", "piano", and "cat_meow". Areas of confusion include "traffic_sounds" with "train_sounds" and "construction_noise" with "crowd_noise", similar to the patterns observed with Naive Bayes models.
+                        The decision tree uses Gini impurity to classify audio as "birds" or "dog_bark" with a maximum depth of 3 and 10 features. 
+                        The root node splits on mfcc_1 (threshold 0.125) with 1050 total samples. Key features include zero_crossing_rate (0.217) leading to dog_bark classifications and spectral_bandwidth (0.381) typically leading to birds classifications. 
+                        Terminal nodes show good separation with low Gini values, demonstrating that acoustic features effectively distinguish between the two sound types.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/decision_trees/tree_1_classification_report.png" alt="Classification Report - Tree 1">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The heatmap summarizes how well the decision tree model performs across the two classes: dog_bark and birds. 
+                        For class 0 (dog_bark), the precision is 0.887, recall is 0.842, and F1-score is 0.864. 
+                        For class 1 (birds), the precision is 0.838, recall is 0.884, and F1-score is 0.860. 
+                        The overall accuracy of the model is 86.2%, and the macro averages for precision, recall, and F1-score are all close to 0.86, indicating balanced classification performance across both classes.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/decision_trees/tree_1_confusion_matrix.png" alt="Confusion Matrix - Tree 1">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrix provides a detailed breakdown of the model’s predictions. 
+                        The model correctly predicted 197 dog_bark sounds and 191 bird sounds. 
+                        However, it misclassified 37 dog_bark sounds as birds and 25 bird sounds as dog_bark. 
+                        While the majority of predictions were accurate, the misclassifications indicate areas where the model could still improve.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/decision_trees/tree_1_roc_curve.png" alt="ROC Curve - Tree 1">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The ROC curve shows the model’s ability to distinguish between the two classes across various threshold values. 
+                        The curve trends toward the top-left corner, and the Area Under the Curve (AUC) is 0.914. 
+                        This high AUC score reflects the model’s strong capacity to separate dog_bark and bird sounds effectively.
                     </p>
                 </div>
             </div>
 
+            <h3 class="text-centered">Tree 2 Classification Results</h3>
+
+            <p class="text-justified">
+                Next, the second tree model's predictions are tested against the testing data. The performance is evaluated using confusion matrix, classification heatmap, and ROC curve.
+            </p>
+
+
             <div class="visualization-section">
-                <h4 class="text-centered">Feature Importance</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/dt_feature_importance.png" alt="Decision Tree Feature Importance">
+                    <img src="plots/decision_trees/tree_2_tree_plot.png" alt="Tree Plot - Tree 1">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This chart shows the top 15 most important features across all three tree models. MFCCs, spectral contrast features, and zero-crossing rate consistently emerge as the most discriminative for audio classification. These features capture key tonal and temporal characteristics that distinguish different sound categories.
+                        The decision tree uses LogLoss criterion with a maximum depth of 2 and considers only 5 features. 
+                        The root node splits on chroma_5 (threshold 0.034) with 1050 total samples. 
+                        When chroma_5 ≤ 0.034, it further splits on mfcc_2 (threshold -1.108) leading primarily to dog_bark classifications. 
+                        When chroma_5 > 0.034, samples maintain birds classification with most leaf nodes showing decreasing log_loss values. 
+                        The model efficiently categorizes audio samples using minimal depth while achieving reasonable separation between bird sounds and dog barks.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/decision_trees/tree_2_classification_report.png" alt="Classification Report - Tree 1">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The heatmap shows the performance of the decision tree model (Tree 2) across the two classes: dog_bark and birds. 
+                        For class 0 (dog_bark), the model achieved a precision of 0.847, recall of 0.756, and F1-score of 0.799. 
+                        For class 1 (birds), the precision was 0.763, recall was 0.852, and F1-score was 0.805. 
+                        The overall accuracy of the model is 80.2%, and the macro-averaged precision, recall, and F1-score are all close to 0.80, indicating balanced but slightly reduced performance compared to deeper trees.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/decision_trees/tree_2_confusion_matrix.png" alt="Confusion Matrix - Tree 1">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrix shows how the model’s predictions are distributed. 
+                        The model correctly identified 177 dog_bark sounds and 184 bird sounds. 
+                        However, 57 dog_bark samples were misclassified as birds, while 32 bird sounds were labeled as dog_bark. 
+                        While the model shows reasonable accuracy, the higher misclassification of dog_bark samples suggests room for improvement.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/decision_trees/tree_2_roc_curve.png" alt="ROC Curve - Tree 1">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The ROC curve illustrates the trade-off between the true positive rate and false positive rate at various thresholds. 
+                        For this model, the curve has a noticeable upward bend but doesn’t sharply hug the top-left corner, and the Area Under the Curve (AUC) is 0.827. 
+                        This AUC value suggests that while the model can distinguish between classes reasonably well, its discriminative ability is slightly lower than Tree 1.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Tree 3 Classification Results</h3>
+
+            <p class="text-justified">
+                Finally, the third tree model's predictions are tested against the testing data. The performance is evaluated using confusion matrix, classification heatmap, and ROC curve.
+            </p>
+
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/decision_trees/tree_3_tree_plot.png" alt="Tree Plot - Tree 1">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The decision tree uses Entropy criterion with a maximum depth of 3 and no feature restrictions. 
+                        The root node splits on spectral_contrast_7 (threshold 0.213) with 1050 total samples. 
+                        Key features include mfcc_4 (threshold -0.228) leading to dog_bark classifications and spectral_contrast_3 (threshold -0.541) typically resulting in birds classifications. 
+                        Several terminal nodes achieve perfect separation (entropy = 0.0), particularly in the bird classification branches. 
+                        The tree effectively leverages acoustic spectral features and MFCCs to distinguish between the two sound types. 
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/decision_trees/tree_3_classification_report.png" alt="Classification Report - Tree 1">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The heatmap summarizes the classification performance of the decision tree model (Tree 3) across dog_bark and bird sounds. 
+                        For class 0 (dog_bark), the model achieved a precision of 0.868, recall of 0.868, and F1-score of 0.868. 
+                        For class 1 (birds), the precision was 0.856, recall was 0.856, and F1-score was 0.856. 
+                        The overall accuracy of the model is 86.2%, and the macro averages for precision, recall, and F1-score are all 0.862, indicating consistent and balanced performance between the two classes.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/decision_trees/tree_3_confusion_matrix.png" alt="Confusion Matrix - Tree 1">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrix shows that the model correctly classified 203 dog_bark sounds and 185 bird sounds. 
+                        However, it also misclassified 31 samples from each class, with dog_bark sounds predicted as birds and vice versa. 
+                        Despite these misclassifications, the model made 388 correct predictions out of 450 total, reflecting strong reliability in identifying both categories.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/decision_trees/tree_3_roc_curve.png" alt="ROC Curve - Tree 1">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The ROC curve highlights the model’s strong ability to differentiate between the two classes. 
+                        The curve hugs the top-left corner closely, and the Area Under the Curve (AUC) is 0.937, the highest among the three trees. 
+                        This indicates excellent discriminative performance, with the model maintaining high sensitivity and specificity across thresholds.
                     </p>
                 </div>
             </div>
 
             <h3 class="text-centered">Conclusion</h3>
+
             <p class="text-justified">
-                The Decision Tree analysis provided several valuable insights for audio classification:
+                Decision Tree classifiers demonstrated solid performance in classifying between bird and dog_bark sounds based on extracted audio features. 
+                All three trees—using Gini, LogLoss, and Entropy as splitting criteria—achieved accuracy between 80% and 86%, with Tree 3 (Entropy, depth=3) performing the best overall. 
+                It had the most balanced precision and recall across classes and the highest AUC of 0.937, indicating excellent class separation capability.
             </p>
-            
-            <ul class="ul-list">
-                <li>Decision Trees outperformed Naive Bayes models, achieving up to 82.3% accuracy compared to Gaussian NB's 76.8%, suggesting that the hierarchical, non-linear decision boundaries of trees better capture the complex relationships in audio data.</li>
-                <li>Tree-based models naturally identified the most discriminative acoustic features, with MFCCs and spectral contrast features consistently appearing in the top nodes, aligning with audio processing domain knowledge.</li>
-                <li>Constraining tree complexity through max_depth and min_samples_split hyperparameters reduced performance slightly but created more interpretable models less prone to overfitting.</li>
-                <li>Different impurity measures (Gini vs. Entropy) produced trees with similar overall accuracy but different structures, offering flexibility in model design based on interpretability needs.</li>
-                <li>Decision Trees provide transparent decision paths that allow us to understand exactly which acoustic thresholds separate different sound categories, making them valuable for both classification and knowledge discovery.</li>
-            </ul>
-            
             <p class="text-justified">
-                While Decision Trees perform well as individual models, they could potentially be improved further using ensemble methods like Random Forests or Gradient Boosting, which combine multiple trees to reduce variance and improve overall prediction accuracy. The interpretability of individual trees, however, makes them a valuable tool for understanding the acoustic features that define different sound categories, providing insights that more complex models might obscure.
+                These results highlight the interpretability and flexibility of decision trees, especially when working with structured feature sets. 
+                Even shallow trees with limited depth were able to capture meaningful distinctions between sound types, showing that hierarchical rule-based models can be effective for sound classification when the features are informative.
+            </p>
+            <p class="text-justified">
+                The full script to run Decision Tree Classification along with preprocessing and evaluation visualizations is available 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/decision_tree.py" target="_blank">here.</a>
             </p>
         </div>
+        <!-- End of Decision Trees Section -->
 
         <!-- Regression Section -->
         <div id="regression" class="content-section" data-aos="fade-up">
@@ -987,60 +1236,6 @@ for i, (dt, y_pred) in enumerate([(dt1, y_pred_dt1), (dt2, y_pred_dt2), (dt3, y_
                 </div>
             </div>
 
-            <div class="code-block">
-                <pre>
-# Logistic Regression vs. Naive Bayes for Binary Classification
-from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
-from sklearn.model_selection import train_test_split
-
-# Filter dataset for binary classification
-binary_data = data[data['category'].isin(['dog_bark', 'sirens'])]
-X_binary = binary_data.drop(['category', 'filepath'], axis=1)
-y_binary = binary_data['category']
-
-# Train-test split
-X_train, X_test, y_train, y_test = train_test_split(
-    X_binary, y_binary, test_size=0.2, random_state=42, stratify=y_binary
-)
-
-# Standardize features for Logistic Regression
-scaler_lr = StandardScaler()
-X_train_std = scaler_lr.fit_transform(X_train)
-X_test_std = scaler_lr.transform(X_test)
-
-# Scale features to non-negative values for Multinomial NB
-scaler_nb = MinMaxScaler()
-X_train_mm = scaler_nb.fit_transform(X_train)
-X_test_mm = scaler_nb.transform(X_test)
-
-# Train Logistic Regression
-lr = LogisticRegression(max_iter=1000, random_state=42)
-lr.fit(X_train_std, y_train)
-y_pred_lr = lr.predict(X_test_std)
-y_prob_lr = lr.predict_proba(X_test_std)
-
-# Train Multinomial Naive Bayes
-mnb = MultinomialNB()
-mnb.fit(X_train_mm, y_train)
-y_pred_nb = mnb.predict(X_test_mm)
-y_prob_nb = mnb.predict_proba(X_test_mm)
-
-# Evaluate both models
-for name, y_pred, y_prob in [('Logistic Regression', y_pred_lr, y_prob_lr), 
-                             ('Multinomial Naive Bayes', y_pred_nb, y_prob_nb)]:
-    accuracy = accuracy_score(y_test, y_pred)
-    conf_matrix = confusion_matrix(y_test, y_pred)
-    report = classification_report(y_test, y_pred)
-    
-    print(f"{name} Accuracy: {accuracy:.4f}")
-    print(f"Confusion Matrix:\n{conf_matrix}")
-    print(f"Classification Report:\n{report}")
-</pre>
-            </div>
-
             <h3 class="text-centered">Results Comparison</h3>
             <p class="text-justified">
                 Both logistic regression and Multinomial Naive Bayes were evaluated on the binary classification task:
@@ -1100,7 +1295,7 @@ for name, y_pred, y_prob in [('Logistic Regression', y_pred_lr, y_prob_lr),
             </p>
         </div>
 
-        <!-- Support Vector Machines Section -->
+        <!-- Support Vector Machines Section
         <div id="svm" class="content-section" data-aos="fade-up">
             <h2>Support Vector Machines</h2>
             
@@ -1156,61 +1351,7 @@ for name, y_pred, y_prob in [('Logistic Regression', y_pred_lr, y_prob_lr),
                 We implemented SVM classification for our audio dataset using scikit-learn's SVC (Support Vector Classification) with different kernel functions. Due to the computational intensity of training SVMs on large datasets, we used a stratified subset of the data with 500 samples per class.
             </p>
             
-            <div class="code-block">
-                <pre>
-# SVM Implementation with different kernels
-from sklearn.svm import SVC
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score, confusion_matrix
-from sklearn.model_selection import GridSearchCV
 
-# Preprocess data - standardize features
-scaler = StandardScaler()
-X_train_std = scaler.fit_transform(X_train)
-X_test_std = scaler.transform(X_test)
-
-# Linear SVM
-linear_svm = SVC(kernel='linear', C=1.0, random_state=42)
-linear_svm.fit(X_train_std, y_train)
-y_pred_linear = linear_svm.predict(X_test_std)
-
-# RBF Kernel SVM
-rbf_svm = SVC(kernel='rbf', gamma='scale', C=10.0, random_state=42)
-rbf_svm.fit(X_train_std, y_train)
-y_pred_rbf = rbf_svm.predict(X_test_std)
-
-# Polynomial Kernel SVM
-poly_svm = SVC(kernel='poly', degree=3, C=1.0, random_state=42)
-poly_svm.fit(X_train_std, y_train)
-y_pred_poly = poly_svm.predict(X_test_std)
-
-# Evaluate all models
-for name, y_pred in [('Linear SVM', y_pred_linear), 
-                      ('RBF SVM', y_pred_rbf), 
-                      ('Polynomial SVM', y_pred_poly)]:
-    accuracy = accuracy_score(y_test, y_pred)
-    conf_matrix = confusion_matrix(y_test, y_pred)
-    print(f"{name} Accuracy: {accuracy:.4f}")
-
-# Hyperparameter tuning with Grid Search
-param_grid = {
-    'C': [0.1, 1, 10, 100],
-    'gamma': ['scale', 'auto', 0.1, 0.01]
-}
-
-grid_search = GridSearchCV(
-    SVC(kernel='rbf', random_state=42),
-    param_grid,
-    cv=5,
-    scoring='accuracy',
-    n_jobs=-1
-)
-
-grid_search.fit(X_train_std, y_train)
-best_svm = grid_search.best_estimator_
-y_pred_best = best_svm.predict(X_test_std)
-</pre>
-            </div>
 
             <p class="text-justified">
                 The complete implementation with additional metrics, visualizations, and hyperparameter tuning can be found in the 
@@ -1286,9 +1427,9 @@ y_pred_best = best_svm.predict(X_test_std)
             <p class="text-justified">
                 SVMs provide a powerful approach for audio classification, particularly when accuracy is prioritized over training efficiency. Their ability to handle high-dimensional data with complex relationships makes them well-suited for capturing the nuanced spectral and temporal patterns in audio signals. While SVMs don't provide the same level of interpretability as Decision Trees, their strong performance and theoretical foundations in statistical learning theory make them a valuable tool in the audio classification toolkit.
             </p>
-        </div>
+        </div> -->
 
-        <div class="content-section" data-aos="fade-up">
+        <!-- <div class="content-section" data-aos="fade-up">
             <h3 class="text-centered">Overall Comparison of Supervised Learning Methods</h3>
             <p class="text-justified">
                 After evaluating four different supervised learning approaches on the audio classification task, we can compare their performance, strengths, and limitations:
@@ -1353,7 +1494,7 @@ y_pred_best = best_svm.predict(X_test_std)
             <p class="text-justified">
                 In practice, ensemble methods that combine these approaches or deeper neural network architectures might achieve even better performance for complex audio classification tasks. However, the methods explored here provide strong foundations and valuable insights into the acoustic properties that differentiate various sound categories.
             </p>
-        </div>
+        </div> -->
 
         <div class="navigation-buttons">
             <button class="nav-button" onclick="location.href='unsupervised.html'">
