@@ -173,7 +173,7 @@ def results_visualization(X_test,y_test,y_pred,model,model_name):
     report = classification_report(y_test, y_pred, output_dict=True)
     df_report = pd.DataFrame(report).T
     plt.figure(figsize=(8, 6))
-    sns.heatmap(df_report.iloc[:-1, :-1], annot=True, cmap="coolwarm", fmt=".4f")
+    sns.heatmap(df_report.iloc[:-1, :-1], annot=True, cmap="coolwarm", fmt=".3f")
     
     plt.title(f"Classification Report Heatmap - {figname}", fontsize=14, fontweight='bold')
     plt.savefig(f"{output_path}/{model_name}_classification_report_heatmap.png", dpi=200, bbox_inches='tight')
@@ -184,7 +184,7 @@ def results_visualization(X_test,y_test,y_pred,model,model_name):
     fpr,tpr,_=roc_curve(y_test, y_prob)
     roc_auc=auc(fpr, tpr)
     plt.figure(figsize=(8, 6))
-    plt.plot(fpr, tpr, color='royalblue', linewidth=2.5, label=f'AUC = {roc_auc:.2f}')
+    plt.plot(fpr, tpr, color='royalblue', linewidth=2.5, label=f'AUC = {roc_auc:.3f}')
     plt.plot([0, 1], [0, 1], linestyle='--', color='gray', linewidth=1.5)
 
     plt.xlabel("False Positive Rate", fontsize=12, fontweight='bold')
