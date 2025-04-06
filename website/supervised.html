@@ -377,7 +377,8 @@
             <h3 class="text-centered">Naive Bayes Classification of Audio Data</h2>
 
             <p class="text-justified">
-                To apply Naive Bayes classification to audio data, a dataset consisting of extracted features from six sound categories: piano, guitar, drums, thunder sounds, rain sounds, and wind sounds, is selected. 
+                To apply Naive Bayes classification to audio data, a dataset consisting of extracted features from six sound categories: piano, guitar, drums, thunder sounds, rain sounds, and wind sounds, is selected.
+                This dataset is shown below. 
             </p>
 
             <div class="visualization-section">
@@ -416,7 +417,8 @@
 
             <p class="text-justified">
                 All supervised learning methods require splitting data into training and testing sets to evaluate model performance objectively. This ensures that models are evaluated on data they haven't seen during training, providing a reliable estimate of how well they'll perform on new, unseen data.
-                The dataset is split into training and testing sets in a 7:3 ratio. This means 70% of the dataset is used for training the models, and 30% is used for testing them.
+                The dataset is split into training and testing sets in a 7:3 ratio. This means 70% of the dataset is used for training the models, and 30% is used for testing them. 
+                The training and testing sets respectively are shown below.
             </p>
 
             <div class="visualization-section">
@@ -448,6 +450,7 @@
 
             <p class="text-justified">
                 Multinomial Naive Bayes expects discrete feature values. To prepare the data, MinMaxScaler is first applied to scale features between 0 and 1. The scaled values are then multiplied by 100 and rounded to integers.
+                The transformed training and testing sets respectively are shown below.
             </p>
 
             <div class="visualization-section">
@@ -471,7 +474,8 @@
             </div>
 
             <p class="text-justified">
-                To make the features discrete numbers, the scaled values are then multiplied by 100 and converted to integers by rounding them off.
+                To make the features discrete numbers, the scaled values are then multiplied by 100 and converted to integers by rounding them off. 
+                The discretized training and testing sets respectively are shown below.
             </p>
 
             <div class="visualization-section">
@@ -545,6 +549,7 @@
             <p class="text-justified">
                 Gaussian Naive Bayes assumes normally distributed features. 
                 Therefore, features are standardized using StandardScaler to have zero mean and unit variance.
+                The scaled training and testing datasets respectively are shown below.
             </p>
 
             <div class="visualization-section">
@@ -618,6 +623,7 @@
             <p class="text-justified">
                 Bernoulli Naive Bayes requires binary features. 
                 Each feature value is binarized: if greater than the mean of that feature, it is set to 1; otherwise, it is set to 0.
+                The binary encoded training and testing datasets respectively are shown below.
             </p>
 
             <div class="visualization-section">
@@ -852,7 +858,8 @@
             </div>
 
             <p class="text-justified">
-                The label column is encoded into binary form: birds = 1 and dog_bark = 0. This becomes the target variable for the decision tree classification models. The dataset after this transformation is shown below.
+                The label column is encoded into binary form: birds = 1 and dog_bark = 0. This becomes the target variable for the decision tree classification models. 
+                The dataset after this transformation is shown below.
             </p>
 
             <div class="visualization-section">
@@ -864,6 +871,7 @@
 
             <p class="text-justified">
                 The same fundamental approach as with Naive Bayes is used: splitting the dataset into training and testing sets with 70% used for training and 30% used for testing sets using stratified sampling. This train-test split is crucial for objective evaluation of model performance and remains constant across all supervised learning methods for fair comparison. However, Decision Trees have different preprocessing requirements, as they can work with both categorical and numerical features without assumptions about feature distributions. 
+                The training and testing sets respectively are shown below.
             </p>
 
             <div class="visualization-section">
@@ -890,6 +898,7 @@
             <p class="text-justified">
                 Decision Trees can naturally handle continuous features by finding optimal thresholds for splits. 
                 The only preprocessing applied was standardization (mean=0, std=1) to ensure features with larger scales don't dominate those with smaller scales during the initial split evaluations.
+                The standardized training and testing datasets respectively are shown below.
             </p>
 
             <div class="visualization-section">
