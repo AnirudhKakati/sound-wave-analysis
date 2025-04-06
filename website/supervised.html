@@ -6,6 +6,10 @@
     <title>Supervised Learning - ML Project</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
     <style>
         /* Dropdown styles */
         .dropdown {
@@ -249,13 +253,14 @@
         }
 
         .equation {
-            background: rgba(255, 255, 255, 0.05);
+            /* background: rgba(255, 255, 255, 0.05); */
             padding: 1rem;
             border-radius: 0.5rem;
             margin: 1rem 0;
             text-align: center;
             font-family: monospace;
             font-size: 1.2rem;
+            color: var(--primary);
         }
 
     </style>
@@ -366,7 +371,7 @@
             </div>
 
             <p class="text-justified">
-                The main differences between these variants lie in their assumptions about feature distributions. Multinomial assumes features follow a multinomial distribution suitable for count data. Gaussian works with continuous values assuming normal distributions. Bernoulli is optimal for binary features. Categorical handles nominal features without forcing numeric conversion. The appropriate variant should be selected based on your data characteristics for best performance.
+                The main differences between these variants lie in their assumptions about feature distributions. Multinomial assumes features follow a multinomial distribution suitable for count data. Gaussian works with continuous values assuming normal distributions. Bernoulli is optimal for binary features. Categorical handles nominal features without forcing numeric conversion. The appropriate variant should be selected based on the data characteristics for best performance.
             </p>
 
             <h3 class="text-centered">Naive Bayes Classification of Audio Data</h2>
@@ -387,7 +392,7 @@
             </div>
 
             <p class="text-justified">
-                The raw data is grouped into two classes: <strong>music</strong> for records of categories piano, guitar, drums and <strong>outdoor</strong> for records of categories thunder, rain, wind.
+                The raw data is grouped into two classes: music for records of categories piano, guitar, drums and outdoor for records of categories thunder, rain, wind.
                 This transformation helps in converting a multi-class problem into a binary classification task, simplifying model training and evaluation.
                 The categorized dataset is shown below.
             </p>
@@ -436,7 +441,7 @@
             </div>
 
             <p class="text-justified">
-                Three variants of Naive Bayes classifiers are used: <strong>MultinomialNB</strong>, <strong>GaussianNB</strong>, and <strong>BernoulliNB</strong>. Each model has different feature format requirements. The training and testing datasets are transformed according to the models.
+                Three variants of Naive Bayes classifiers are used: MultinomialNB, GaussianNB, and BernoulliNB. Each model has different feature format requirements. The training and testing datasets are transformed according to the models.
             </p>
 
             <h3 class="text-centered">Performing Multinomial Naive Bayes Classification</h3>
@@ -694,7 +699,6 @@
                 <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/naive_bayes.py" target="_blank">here.</a>
             </p>
 
-
         </div>
         <!-- End of Naive Bayes Section -->
 
@@ -753,11 +757,11 @@
                 </ul>
               
                 <p class="text-justified">
-                  We want to determine whether to split the data based on the feature "zero_crossing_rate" with a threshold of 0.5.
+                    The decision is to be made regarding whether the data should be split based on the feature "zero_crossing_rate" using a threshold of 0.5.
                 </p>
               
                 <p class="text-justified">
-                  First, we calculate the entropy of the parent node:
+                  First, the entropy of the parent node is calculated:
                 </p>
               
                 <div class="equation">
@@ -765,7 +769,7 @@
                 </div>
               
                 <p class="text-justified">
-                  After splitting on "zero_crossing_rate > 0.5", we get:
+                  After splitting on "zero_crossing_rate > 0.5", the result is:
                 </p>
               
                 <ul class="ul-list">
@@ -774,7 +778,7 @@
                 </ul>
               
                 <p class="text-justified">
-                  Now we calculate the entropy of each child node:
+                  Now the entropy of each child node is calculated:
                 </p>
               
                 <div class="equation">
@@ -794,7 +798,7 @@
                 </div>
               
                 <p class="text-justified">
-                  Finally, we calculate the Information Gain:
+                  Finally, the Information Gain is calculated:
                 </p>
               
                 <div class="equation">
@@ -802,7 +806,7 @@
                 </div>
               
                 <p class="text-justified">
-                  This positive Information Gain of 0.66 indicates that splitting on "zero_crossing_rate > 0.5" is effective in reducing impurity and is a strong candidate for decision making in our tree. The decision tree algorithm would compare this gain with other feature splits and choose the one with the highest gain.
+                  This positive Information Gain of 0.66 indicates that splitting on "zero_crossing_rate > 0.5" is effective in reducing impurity and is a strong candidate for decision making in the tree. The decision tree algorithm would compare this gain with other feature splits and choose the one with the highest gain.
                 </p>
             </div>
 
@@ -833,7 +837,7 @@
 
             <h3 class="text-centered">Decision Tree Classification of Audio Data</h2>
             <p class="text-justified">
-                For Decision Tree classification of audio data, we specifically use audio data from two categories: <strong>birds</strong> and <strong>dog_bark</strong>. The dataset is shown below.
+                For Decision Tree classification of audio data, audio data from two categories: birds and dog_bark, are used. The dataset is shown below.
             </p>
 
             <div class="visualization-section">
@@ -1115,16 +1119,16 @@
         <div id="regression" class="content-section" data-aos="fade-up">
             <h2>Regression</h2>
             
-            <h3 class="text-centered">Understanding Regression Models</h3>
+            <!-- <h3 class="text-centered">Understanding Regression Models</h3> -->
             
-            <h4 class="text-centered">Linear Regression</h4>
+            <h3 class="text-centered">Linear Regression</h3>
             <p class="text-justified">
                 Linear regression is a supervised learning algorithm that models the relationship between a dependent variable and one or more independent variables by fitting a linear equation to the observed data. The model assumes a linear relationship where the output is a weighted sum of the input features plus a bias term. Linear regression is primarily used for predicting continuous values and estimating the strength of relationships between variables. Its simplicity, interpretability, and computational efficiency make it a foundational technique in statistics and machine learning.
             </p>
 
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/linear_regression.png" alt="Linear Regression Visualization">
+                    <img src="images/supervised/simple_linear_regression.png" alt="Linear Regression Visualization">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
@@ -1133,7 +1137,7 @@
                 </div>
             </div>
 
-            <h4 class="text-centered">Logistic Regression</h4>
+            <h3 class="text-centered">Logistic Regression</h4>
             <p class="text-justified">
                 Logistic regression is a supervised learning algorithm used for binary classification problems. Despite its name, it's a classification algorithm rather than a regression technique. Logistic regression models the probability that an instance belongs to a particular class using the logistic function (sigmoid) to transform a linear combination of features into a value between 0 and 1. This probability can then be thresholded to make binary predictions. Logistic regression is widely used in fields like medicine, marketing, and risk assessment for its interpretable results and probability estimates.
             </p>
@@ -1144,156 +1148,291 @@
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This visualization illustrates logistic regression for binary classification. The colored points represent data from two classes, and the curved line represents the decision boundary where the predicted probability equals 0.5. The S-shaped curve shows how the linear model is transformed by the sigmoid function to produce probabilities between 0 and 1.
+                        This visualization illustrates logistic regression for binary classification. The gray dots represent binary training data points (0 or 1), and the cyan S-shaped curve shows how logistic regression fits a sigmoid function to this data. The curve models the probability of the positive class (1) based on the input feature, transitioning smoothly from 0 to 1. 
                     </p>
                 </div>
             </div>
 
-            <h4 class="text-centered">Similarities and Differences</h4>
-            <p class="text-justified">
-                Linear and logistic regression share several similarities but serve fundamentally different purposes:
-            </p>
-
-            <div class="comparison-table">
-                <table>
-                    <tr>
-                        <th>Aspect</th>
-                        <th>Linear Regression</th>
-                        <th>Logistic Regression</th>
-                    </tr>
-                    <tr>
-                        <td>Purpose</td>
-                        <td>Predicts continuous numerical values</td>
-                        <td>Predicts probabilities for classification</td>
-                    </tr>
-                    <tr>
-                        <td>Output Range</td>
-                        <td>Unbounded (any real number)</td>
-                        <td>Bounded between 0 and 1</td>
-                    </tr>
-                    <tr>
-                        <td>Transformation Function</td>
-                        <td>None (linear combination of inputs)</td>
-                        <td>Sigmoid function</td>
-                    </tr>
-                    <tr>
-                        <td>Loss Function</td>
-                        <td>Mean Squared Error</td>
-                        <td>Cross-Entropy Loss</td>
-                    </tr>
-                    <tr>
-                        <td>Optimization Method</td>
-                        <td>Closed-form solution or gradient descent</td>
-                        <td>Typically gradient descent</td>
-                    </tr>
-                    <tr>
-                        <td>Interpretability</td>
-                        <td>Coefficients represent change in output per unit change in input</td>
-                        <td>Coefficients represent log-odds ratios</td>
-                    </tr>
-                </table>
-            </div>
+            <h3 class="text-centered">Similarities and Differences</h4>
 
             <p class="text-justified">
-                Both models are linear in their parameters, making them interpretable and efficient to train. However, they differ significantly in their applications, with linear regression focusing on value prediction and logistic regression on class probability estimation. Their different output ranges and loss functions reflect these distinct purposes.
+                While linear and logistic regression differ in output type and application, they share several foundational traits:
+                <ul class="ul-list">
+                    <li>Both are supervised learning algorithms used for predictive modeling.</li>
+                    <li>They rely on a linear combination of input features.</li>
+                    <li>They can be regularized using techniques like L1 (Lasso) or L2 (Ridge).</li>
+                    <li>Both models are computationally efficient and offer interpretable coefficients.</li>
+                    <li>They use gradient-based optimization when closed-form solutions are impractical.</li>
+                </ul>
             </p>
 
-            <h4 class="text-centered">The Sigmoid Function in Logistic Regression</h4>
             <p class="text-justified">
-                Yes, logistic regression uses the sigmoid function (also called the logistic function) as its key component. The sigmoid function transforms the linear combination of input features into a probability value between 0 and 1. It has an S-shaped curve defined by the equation σ(z) = 1/(1+e^(-z)), where z is the linear combination of features. The sigmoid function solves a fundamental problem: while linear regression outputs can range from negative infinity to positive infinity, probabilities must be bounded between 0 and 1. The function's shape also creates a natural decision boundary at 0.5 probability.
+                However, both of these serve fundamentally different purposes:
             </p>
-
-            <div class="visualization-section">
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/sigmoid_function.png" alt="Sigmoid Function">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This graph shows the sigmoid function σ(z) = 1/(1+e^(-z)). The function approaches 0 as z goes to negative infinity and approaches 1 as z goes to positive infinity. At z=0, the function outputs exactly 0.5. This property creates a natural classification threshold where values above 0 are classified as the positive class and values below 0 as the negative class.
-                    </p>
-                </div>
-            </div>
-
-            <h4 class="text-centered">Maximum Likelihood and Logistic Regression</h4>
-            <p class="text-justified">
-                Maximum likelihood estimation (MLE) is the statistical principle underlying logistic regression training. While linear regression minimizes the sum of squared errors, logistic regression maximizes the likelihood of observing the given data under the model's probability distributions. The likelihood function measures how probable the observed data is given the current model parameters. For each data point, logistic regression computes the probability of the observed class, and the goal is to find parameter values that maximize the product of these probabilities (or, equivalently, the sum of log probabilities). This approach naturally leads to the cross-entropy loss function used in logistic regression and provides not just class predictions but well-calibrated probability estimates.
-            </p>
-
-            <h3 class="text-centered">Implementing Logistic Regression for Audio Classification</h3>
-            <p class="text-justified">
-                For our audio classification task, we implemented multinomial logistic regression (also known as softmax regression for multi-class problems) and compared it with Multinomial Naive Bayes. To create a binary classification problem as required, we selected two distinct sound categories: "dog_bark" and "sirens".
-            </p>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Binary Dataset</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/binary_dataset.png" alt="Binary Classification Dataset">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        The binary classification dataset contains samples from only two sound categories: "dog_bark" and "sirens". These categories were chosen because they represent distinctly different acoustic patterns—animal vocalizations versus mechanical warning sounds. All 43 acoustic features were retained for the classification task.
-                    </p>
-                </div>
-            </div>
-
-            <h3 class="text-centered">Results Comparison</h3>
-            <p class="text-justified">
-                Both logistic regression and Multinomial Naive Bayes were evaluated on the binary classification task:
-            </p>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Performance Metrics</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/lr_nb_comparison.png" alt="Logistic Regression vs. Naive Bayes">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This comparison shows that Logistic Regression achieved 94.2% accuracy, outperforming Multinomial Naive Bayes at 89.7%. Logistic Regression also showed higher precision, recall, and F1-score for both classes. The superiority of Logistic Regression can be attributed to its ability to model feature interactions implicitly through the weight optimization process, while Naive Bayes's independence assumption limits its capacity to capture complex feature relationships.
-                    </p>
+            
+            <div class="plot-container">
+                <div class="comparison-table">
+                    <table>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Linear Regression</th>
+                            <th>Logistic Regression</th>
+                        </tr>
+                        <tr>
+                            <td>Purpose</td>
+                            <td>Predicts continuous numerical values</td>
+                            <td>Predicts probabilities for classification</td>
+                        </tr>
+                        <tr>
+                            <td>Output Range</td>
+                            <td>Unbounded (any real number)</td>
+                            <td>Bounded between 0 and 1</td>
+                        </tr>
+                        <tr>
+                            <td>Transformation Function</td>
+                            <td>None (linear combination of inputs)</td>
+                            <td>Sigmoid function</td>
+                        </tr>
+                        <tr>
+                            <td>Loss Function</td>
+                            <td>Mean Squared Error</td>
+                            <td>Cross-Entropy Loss</td>
+                        </tr>
+                        <tr>
+                            <td>Optimization Method</td>
+                            <td>Closed-form solution or gradient descent</td>
+                            <td>Typically gradient descent</td>
+                        </tr>
+                        <tr>
+                            <td>Interpretability</td>
+                            <td>Coefficients represent change in output per unit change in input</td>
+                            <td>Coefficients represent log-odds ratios</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
             <div class="visualization-section">
-                <h4 class="text-centered">Confusion Matrices</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/lr_nb_confusion.png" alt="Confusion Matrices Comparison">
+                    <img src="images/supervised/linear_vs_logistic_regression.png" alt="Linear vs logisitc regression">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        The confusion matrices reveal that Logistic Regression (left) has fewer misclassifications than Multinomial Naive Bayes (right). Logistic Regression particularly excels at correctly identifying "dog_bark" samples, while Naive Bayes shows more balanced errors between the two classes. These differences reflect the distinct mathematical foundations of the two algorithms.
+                        This visualization compares linear and logistic regression models. The straight line represents linear regression, extending beyond the [0, 1] range and predicting continuous values. In contrast, the S-shaped curve represents logistic regression, which maps inputs to probabilities using a sigmoid function. While linear regression is suited for predicting numeric outputs, logistic regression is ideal for binary classification tasks where outputs represent probabilities between 0 and 1.
                     </p>
                 </div>
             </div>
 
+            <h3 class="text-centered">The Sigmoid Function in Logistic Regression</h4>
+            <p class="text-justified">
+                Logistic regression uses the sigmoid function as its key component. The sigmoid function transforms the linear combination of input features into a probability value between 0 and 1. It has an S-shaped curve defined by the equation:  
+                $$\sigma(z) = \frac{1}{1 + e^{-z}}$$  
+                where \( z \) is the linear combination of features. The sigmoid function solves a fundamental problem: while linear regression outputs can range from negative infinity to positive infinity, probabilities must be bounded between 0 and 1. The function's shape also creates a natural decision boundary at 0.5 probability.
+            </p>
+
             <div class="visualization-section">
-                <h4 class="text-centered">Probability Calibration</h4>
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/probability_calibration.png" alt="Probability Calibration">
+                    <img src="images/supervised/logistic_regression_sigmoid_function.png" alt="Sigmoid Function">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This chart shows the probability distributions produced by both models for the test samples. Logistic Regression (blue) tends to produce more confident probability estimates, with most predictions clustered near 0 or 1. Naive Bayes (orange) generally produces more moderate probabilities, reflecting its different approach to probability estimation. Well-calibrated probabilities are important in applications where risk assessment is more important than just binary decisions.
+                        This graph shows how the sigmoid function transforms a linear model into a logistic model.  The sigmoid function $$p = \frac{1}{1 + e^{-(b₀+b₁x)}}$$  maps the linear predictor (blue line) to probability values between 0 and 1 (orange curve).
+                    </p>    
+                </div>
+            </div>
+
+            <h3 class="text-centered">Maximum Likelihood and Logistic Regression</h4>
+            <p class="text-justified">
+                Maximum likelihood estimation (MLE) is the statistical principle underlying logistic regression training. 
+                While linear regression minimizes the sum of squared errors, logistic regression maximizes the likelihood of observing the given data under the model's probability distributions. 
+                The likelihood function measures how probable the observed data is given the current model parameters. 
+                For each data point, logistic regression computes the probability of the observed class, and the goal is to find parameter values that maximize the product of these probabilities (or, equivalently, the sum of log probabilities). This approach naturally leads to the cross-entropy loss function used in logistic regression and provides not just class predictions but well-calibrated probability estimates.
+            </p>
+
+            <h3 class="text-centered">Logistic Regression for Audio Data</h3>
+            <p class="text-justified">
+                For Logistic Regression classification of audio data, sound samples from two categories sirens and fireworks, are selected to construct a binary classification problem. These categories offer clear contrast in acoustic profiles, making them suitable for this task.
+                The dataset is shown below.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/regression_raw_data.png" alt="Logistic Regression Dataset">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The dataset includes 43 extracted acoustic features for both sirens and fireworks. Each row represents one sound instance, with numerical values corresponding to different audio descriptors.
                     </p>
                 </div>
             </div>
+
+            <p class="text-justified">
+                The label column is converted into binary format: sirens = 0 and fireworks = 1. This binary label becomes the target variable for model training.
+                The dataset after this transformation is shown below.
+            </p>
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/regression_encoded_data.png" alt="Encoded Binary Dataset">
+                </div>
+            </div>
+
+            <p class="text-justified">
+                The dataset is split using stratified sampling to ensure class balance: 70% is used for training and 30% for testing. This same split is maintained across all supervised classification models for consistency.
+                The split training and testing datasets respectively are shown below.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/regression_train_data.png" alt="Training Dataset">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The training dataset contains 70% of the original samples. It is used to fit the model.
+                    </p>
+                </div>
+            
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/regression_test_data.png" alt="Testing Dataset">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The testing dataset comprises the remaining 30% and is used to evaluate model generalization performance.
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-justified">
+                To evaluate how well Logistic Regression performs compared to a probabilistic baseline, it is benchmarked against a Multinomial Naive Bayes model. 
+                Since Multinomial Naive Bayes expects discrete inputs, a shared preprocessing pipeline is applied: feature values are scaled to the [0, 1] range using <code>MinMaxScaler</code>, multiplied by 100, and converted to integers. 
+                This transformation allows both models to operate on the same discretized representation for a fair comparison. The scaled and discretized training and testing sets are shown below.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/regression_train_data_discretized.png" alt="Discretized Training Dataset">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The training dataset after discretization. All features are scaled to [0, 1], multiplied by 100, and converted to integers for compatibility with Multinomial Naive Bayes.
+                    </p>
+                </div>
+            
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/regression_test_data_discretized.png" alt="Discretized Testing Dataset">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The testing dataset undergoes the same transformation using parameters learned from the training data.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Logistic Regression Classification Results</h3>
+
+            <p class="text-justified">
+                The performance of the Logistic Regression model is evaluated on the binary classification task involving sirens and fireworks. The evaluation uses a confusion matrix, a classification heatmap, and a ROC curve to assess model effectiveness.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/logistic_regression/logistic_regression_classification_report_heatmap.png" alt="Classification Report - Logistic Regression">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The heatmap shows the classification report for the logistic regression model. 
+                        For class 0 (sirens), the precision is 0.881, recall is 0.884, and F1-score is 0.882. 
+                        For class 1 (fireworks), the precision is 0.884, recall is 0.880, and F1-score is 0.882. 
+                        The overall accuracy is 88.2%, with macro-averaged precision, recall, and F1-score all equal to 0.882, indicating strong and balanced performance across both classes.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/logistic_regression/logistic_regression_confusion_matrix.png" alt="Confusion Matrix - Logistic Regression">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrix summarizes the model’s prediction distribution. 
+                        The model correctly identified 199 siren samples and 198 fireworks samples. 
+                        It misclassified 26 fireworks as sirens and 27 sirens as fireworks. 
+                        The distribution of errors is fairly symmetrical, indicating balanced misclassification.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/logistic_regression/logistic_regression_roc_curve.png" alt="ROC Curve - Logistic Regression">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The ROC curve illustrates the trade-off between the true positive rate and false positive rate across different thresholds. 
+                        The curve closely hugs the top-left corner, demonstrating strong class separability. 
+                        The Area Under the Curve (AUC) is 0.951, indicating excellent discriminative capability of the logistic regression model.
+                    </p>
+                </div>
+            </div>
+
+
+            <h3 class="text-centered">Comparitive Multinomial Naive Bayes Classification Results</h3>
+
+            <p class="text-justified">
+                The Multinomial Naive Bayes model is also trained on the same binary classification task. This model is also evaluated using standard performance metrics including a confusion matrix, classification report heatmap, and ROC curve.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/logistic_regression/multinomial_nb_classification_report_heatmap.png" alt="Classification Report - MultinomialNB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The classification report highlights the performance of the Multinomial Naive Bayes model. 
+                        For class 0 (sirens), the precision is 0.850, recall is 0.778, and F1-score is 0.812. 
+                        For class 1 (fireworks), the precision is 0.795, recall is 0.862, and F1-score is 0.827. 
+                        The overall accuracy is 82.0%, with macro average precision, recall, and F1-score around 0.82. 
+                        While the model performs reasonably well, these scores are slightly lower than those achieved by the logistic regression model, which had a higher accuracy and more balanced precision-recall performance.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/logistic_regression/multinomial_nb_confusion_matrix.png" alt="Confusion Matrix - MultinomialNB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrix shows that the model correctly classified 175 siren samples and 194 fireworks samples. 
+                        However, it misclassified 50 fireworks as sirens and 31 sirens as fireworks. 
+                        Compared to the logistic regression model—which had fewer false positives and false negatives—the Multinomial Naive Bayes model makes more errors, particularly in predicting the siren class, leading to a drop in precision.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/logistic_regression/multinomial_nb_roc_curve.png" alt="ROC Curve - MultinomialNB">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The ROC curve shows how the model balances sensitivity and specificity across different thresholds. 
+                        The Area Under the Curve (AUC) is 0.857, which, while respectable, is lower than the 0.951 AUC of the logistic regression model. 
+                        This suggests that the logistic regression classifier has a stronger ability to separate the two sound classes compared to Multinomial Naive Bayes.
+                    </p>
+                </div>
+            </div>
+
 
             <h3 class="text-centered">Conclusion</h3>
+
             <p class="text-justified">
-                Our comparison of logistic regression and Multinomial Naive Bayes for binary audio classification yields several insights:
+                Logistic Regression outperformed Multinomial Naive Bayes on the binary classification task involving sirens and fireworks. 
+                With an accuracy of 88.2% and an AUC of 0.951, the logistic model demonstrated stronger class separation and higher precision across the board. 
+                It achieved higher precision, recall, and F1-scores for both classes compared to the Multinomial Naive Bayes model, which reached an accuracy of 82.0% and AUC of 0.857.
             </p>
-            
-            <ul class="ul-list">
-                <li>Logistic regression significantly outperformed Naive Bayes (94.2% vs. 89.7% accuracy) for distinguishing between "dog_bark" and "sirens" sounds, demonstrating its effectiveness for audio classification tasks.</li>
-                <li>The performance advantage of logistic regression likely stems from its ability to model conditional dependencies between features, which is particularly relevant for audio data where spectral and temporal features are inherently related.</li>
-                <li>Logistic regression produces more confident probability estimates, which can be beneficial in applications requiring decisive classifications but may need calibration for risk assessment scenarios.</li>
-                <li>Both models provided interpretable coefficients that highlight which acoustic features are most discriminative between animal vocalizations and mechanical warning sounds.</li>
-                <li>Preprocessing played a crucial role in both models' performance, with standardization being essential for logistic regression and non-negative scaling for Multinomial Naive Bayes.</li>
-            </ul>
-            
             <p class="text-justified">
-                While our binary classification task was simplified compared to the full 20-class problem, it demonstrated the fundamental differences between generative (Naive Bayes) and discriminative (logistic regression) approaches to classification. Logistic regression's strong performance suggests it could be a valuable component in ensemble methods or as a benchmark for more complex models in audio classification tasks.
+                While both models used the same discretized features, Logistic Regression benefited from its ability to model continuous probability boundaries, whereas Multinomial Naive Bayes relied on count-based assumptions. 
+                The results highlight that even with identical input representations, model choice can significantly impact classification performance; Logistic Regression consistently outperformed Multinomial Naive Bayes across every evaluation metric.
             </p>
+            <p class="text-justified">
+                The full script to perform both Logistic Regression and Multinomial Naive Bayes classification, including preprocessing and visualizations, can be found 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/regression.py" target="_blank">here.</a>
+            </p>
+
         </div>
+        <!-- End of Regression Section -->
 
         <!-- Support Vector Machines Section
         <div id="svm" class="content-section" data-aos="fade-up">
@@ -1496,6 +1635,8 @@
             </p>
         </div> -->
 
+
+
         <div class="navigation-buttons">
             <button class="nav-button" onclick="location.href='unsupervised.html'">
                 ← Back to Unsupervised Learning
@@ -1504,6 +1645,7 @@
                 Next: Conclusion →
             </button>
         </div>
+        
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
