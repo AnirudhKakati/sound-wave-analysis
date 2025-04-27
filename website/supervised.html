@@ -285,7 +285,8 @@
                     <a href="supervised.html#naive-bayes">Naive Bayes</a>
                     <a href="supervised.html#decision-trees">Decision Trees</a>
                     <a href="supervised.html#regression">Regression</a>
-                    <!-- <a href="supervised.html#svm">SVM</a> -->
+                    <a href="supervised_2.html#svm">SVM</a>
+                    <a href="supervised_2.html#ensemble">Ensemble</a>
                 </div>
             </li>
             <li><a href="conclusion.html">Conclusion</a></li>
@@ -1443,215 +1444,13 @@
         </div>
         <!-- End of Regression Section -->
 
-        <!-- Support Vector Machines Section
-        <div id="svm" class="content-section" data-aos="fade-up">
-            <h2>Support Vector Machines</h2>
-            
-            <h3 class="text-centered">Overview</h3>
-            <p class="text-justified">
-                Support Vector Machines (SVMs) are powerful supervised learning algorithms used for classification, regression, and outlier detection. SVMs are particularly effective in high-dimensional spaces and cases where the number of dimensions exceeds the number of samples. The core idea behind SVMs is to find the optimal hyperplane that maximizes the margin between different classes in the feature space. This margin maximization gives SVMs strong generalization properties, making them less prone to overfitting compared to many other classifiers.
-            </p>
-
-            <div class="visualization-section">
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_concept.png" alt="SVM Concept">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This illustration shows the fundamental concept of SVMs. The algorithm finds the hyperplane (solid line) that maximizes the margin between classes. The margin is the distance between the hyperplane and the closest data points from each class, known as support vectors (circled). These support vectors are the only data points that determine the hyperplane's position, making SVMs robust to outliers far from the decision boundary.
-                    </p>
-                </div>
-            </div>
-
-            <p class="text-justified">
-                One of SVM's most powerful features is the kernel trick, which allows the algorithm to operate in an implicit higher-dimensional feature space without ever computing the coordinates of the data in that space. This enables SVMs to find nonlinear decision boundaries in the original feature space by mapping the data into a higher-dimensional space where a linear boundary can separate the classes.
-            </p>
-
-            <div class="visualization-section">
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/kernel_trick.png" alt="Kernel Trick Visualization">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This visualization demonstrates the kernel trick. The left side shows data that's not linearly separable in 2D space. The middle shows how these points can be mapped to a higher-dimensional space (3D in this example) where they become linearly separable. The right side shows the resulting nonlinear decision boundary when projected back to the original 2D space. Common kernels include linear, polynomial, radial basis function (RBF), and sigmoid.
-                    </p>
-                </div>
-            </div>
-            
-            <h3 class="text-centered">Data Preparation</h3>
-            <p class="text-justified">
-                SVMs are sensitive to feature scaling, so proper preprocessing is essential. For our audio classification task, we standardized all features to have zero mean and unit variance, which helps prevent features with larger scales from dominating the model. We maintained the same train-test split used for previous models to ensure fair comparison.
-            </p>
-
-            <div class="visualization-section">
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_data_prep.png" alt="SVM Data Preparation">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This image shows the effect of standardization on the feature distributions. The left side shows the original feature distributions with varying scales and centers. The right side shows the standardized features, all centered at zero with similar scales. This preprocessing is crucial for SVM performance, as the algorithm's distance calculations are directly affected by feature magnitudes.
-                    </p>
-                </div>
-            </div>
-
-            <h3 class="text-centered">SVM Implementation</h3>
-            <p class="text-justified">
-                We implemented SVM classification for our audio dataset using scikit-learn's SVC (Support Vector Classification) with different kernel functions. Due to the computational intensity of training SVMs on large datasets, we used a stratified subset of the data with 500 samples per class.
-            </p>
-            
-
-
-            <p class="text-justified">
-                The complete implementation with additional metrics, visualizations, and hyperparameter tuning can be found in the 
-                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/svm.py" target="_blank">GitHub repository</a>.
-            </p>
-
-            <h3 class="text-centered">Results</h3>
-            <p class="text-justified">
-                We evaluated the performance of SVMs with different kernels on our audio classification task:
-            </p>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Accuracy Comparison</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_accuracy.png" alt="SVM Accuracy Comparison">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This chart compares the accuracy of SVM models with different kernels. The RBF kernel achieved the highest accuracy at 84.7%, followed by the polynomial kernel at 82.1%, and the linear kernel at 79.5%. The optimized RBF model after hyperparameter tuning reached 86.3%, demonstrating the importance of parameter selection in SVM performance.
-                    </p>
-                </div>
-            </div>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Confusion Matrix - RBF Kernel</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_confusion_matrix.png" alt="SVM Confusion Matrix">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        The confusion matrix for the RBF kernel SVM shows strong classification performance across most sound categories. The model excels at recognizing distinct sounds like "sirens" and "piano" with few confusions. Similar to other classifiers, there are some confusions between acoustically similar categories like "traffic_sounds" and "train_sounds". The RBF kernel's ability to capture complex, nonlinear relationships in the feature space contributes to its superior performance.
-                    </p>
-                </div>
-            </div>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Decision Boundaries Visualization</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_decision_boundaries.png" alt="SVM Decision Boundaries">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This visualization shows decision boundaries for different SVM kernels in a simplified 2D space using the first two principal components. The linear kernel (left) creates straight-line boundaries, while the polynomial (middle) and RBF (right) kernels create curved boundaries that can capture more complex relationships. The RBF kernel produces the most flexible decision boundary, allowing it to better separate the sound categories in this reduced feature space.
-                    </p>
-                </div>
-            </div>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Hyperparameter Sensitivity</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_hyperparameters.png" alt="SVM Hyperparameter Sensitivity">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This heatmap shows the impact of different C and gamma values on the RBF kernel SVM's accuracy. The regularization parameter C controls the trade-off between margin maximization and training error minimization, while gamma determines the influence radius of each support vector. Higher accuracy is observed with moderate C values (10-100) and lower gamma values (0.01-0.1), indicating that a moderately complex model with broader influence regions performs best for audio classification.
-                    </p>
-                </div>
-            </div>
-
-            <h3 class="text-centered">Conclusion</h3>
-            <p class="text-justified">
-                The SVM analysis yielded several important insights for audio classification:
-            </p>
-            
-            <ul class="ul-list">
-                <li>SVMs with the RBF kernel achieved the highest accuracy among all individual models tested (86.3% after optimization), demonstrating their effectiveness for audio classification tasks.</li>
-                <li>The superior performance of nonlinear kernels (RBF and polynomial) compared to the linear kernel indicates that audio features have complex, nonlinear relationships that benefit from more flexible decision boundaries.</li>
-                <li>Hyperparameter tuning significantly improved SVM performance, highlighting the importance of parameter selection, particularly for the regularization parameter C and the kernel parameter gamma.</li>
-                <li>SVMs showed strong generalization ability, maintaining good performance across diverse sound categories despite being trained on a smaller subset of the data.</li>
-                <li>The primary drawback of SVMs was their computational intensity, requiring significantly longer training times than Naive Bayes or Decision Trees, particularly for large datasets with many classes.</li>
-            </ul>
-            
-            <p class="text-justified">
-                SVMs provide a powerful approach for audio classification, particularly when accuracy is prioritized over training efficiency. Their ability to handle high-dimensional data with complex relationships makes them well-suited for capturing the nuanced spectral and temporal patterns in audio signals. While SVMs don't provide the same level of interpretability as Decision Trees, their strong performance and theoretical foundations in statistical learning theory make them a valuable tool in the audio classification toolkit.
-            </p>
-        </div> -->
-
-        <!-- <div class="content-section" data-aos="fade-up">
-            <h3 class="text-centered">Overall Comparison of Supervised Learning Methods</h3>
-            <p class="text-justified">
-                After evaluating four different supervised learning approaches on the audio classification task, we can compare their performance, strengths, and limitations:
-            </p>
-
-            <div class="visualization-section">
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/overall_comparison.png" alt="Overall Comparison">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This chart compares the best-performing model from each approach. The optimized SVM with RBF kernel achieved the highest accuracy at 86.3%, followed by Decision Trees at 82.3%, Logistic Regression at 78.9% (on the full multi-class problem), and Gaussian Naive Bayes at 76.8%. This progression reflects the increasing model complexity and flexibility in capturing nonlinear relationships in the data.
-                    </p>
-                </div>
-            </div>
-
-            <div class="comparison-table">
-                <table>
-                    <tr>
-                        <th>Method</th>
-                        <th>Strengths</th>
-                        <th>Limitations</th>
-                        <th>Best Use Cases</th>
-                    </tr>
-                    <tr>
-                        <td>Naive Bayes</td>
-                        <td>Fast training, works well with limited data, probabilistic output</td>
-                        <td>Independence assumption often violated, lower accuracy</td>
-                        <td>Baseline model, real-time classification, text-based audio metadata</td>
-                    </tr>
-                    <tr>
-                        <td>Decision Trees</td>
-                        <td>Highly interpretable, handles mixed feature types, no scaling required</td>
-                        <td>Prone to overfitting, unstable (small changes in data can cause large changes in tree)</td>
-                        <td>Exploratory analysis, rule extraction, feature importance assessment</td>
-                    </tr>
-                    <tr>
-                        <td>Logistic Regression</td>
-                        <td>Well-calibrated probabilities, efficient for multi-class problems, interpretable weights</td>
-                        <td>Limited to linear decision boundaries, sensitive to feature scaling</td>
-                        <td>Binary audio classification, probability estimation, baseline model</td>
-                    </tr>
-                    <tr>
-                        <td>SVM</td>
-                        <td>Highest accuracy, effective in high dimensions, robust generalization</td>
-                        <td>Computationally intensive, sensitive to hyperparameters, less interpretable</td>
-                        <td>Optimal classification accuracy, complex audio patterns, black-box classification</td>
-                    </tr>
-                </table>
-            </div>
-
-            <p class="text-justified">
-                Each method offers a unique balance of interpretability, performance, and computational efficiency. For audio classification, the most appropriate model depends on specific requirements:
-            </p>
-            <ul class="ul-list">
-                <li>If computational efficiency and real-time classification are priorities, Naive Bayes provides a good baseline.</li>
-                <li>If understanding feature relationships and extracting rules are important, Decision Trees offer the most transparency.</li>
-                <li>If well-calibrated probability estimates are needed, Logistic Regression is ideal.</li>
-                <li>If maximum classification accuracy is the goal and computational resources are available, SVMs with the RBF kernel deliver the best performance.</li>
-            </ul>
-
-            <p class="text-justified">
-                In practice, ensemble methods that combine these approaches or deeper neural network architectures might achieve even better performance for complex audio classification tasks. However, the methods explored here provide strong foundations and valuable insights into the acoustic properties that differentiate various sound categories.
-            </p>
-        </div> -->
-
-
 
         <div class="navigation-buttons">
             <button class="nav-button" onclick="location.href='unsupervised.html'">
                 ← Back to Unsupervised Learning
             </button>
-            <button class="nav-button" onclick="location.href='conclusion.html'">
-                Next: Conclusion →
+            <button class="nav-button" onclick="location.href='supervised_2.html'">
+                Next: Supervised Learning (cont.) →
             </button>
         </div>
         
