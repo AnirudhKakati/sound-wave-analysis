@@ -1,7 +1,6 @@
 # Sound Wave Analysis
 
-Checkout the project website:  
-👉 [https://anirudhkakati.github.io/sound-wave-analysis/index.html](https://anirudhkakati.github.io/sound-wave-analysis/index.html)
+Checkout the project here:  [https://anirudhkakati.github.io/sound-wave-analysis/index.html](https://anirudhkakati.github.io/sound-wave-analysis/index.html)
 
 This project explores the fascinating world of sound waves by analyzing and classifying various sound categories using machine learning techniques. It covers the full journey from raw data collection to building a public-facing website.
 
