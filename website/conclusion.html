@@ -71,6 +71,14 @@
             border-radius: 0.5rem;
         }
 
+        .plot-description {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
         .full-width-container {
             width: 90%;
             margin: 2rem auto;
@@ -221,16 +229,16 @@
                 <h3 class="text-centered">Key Project Insights</h3>
                 <div class="takeaway-grid">
                     <div class="takeaway-card">
-                        <h4>Sound Has Structure</h4>
-                        <p>Different sound categories have consistent, identifiable patterns in their acoustic features that machine learning can detect and classify with up to 94% accuracy.</p>
+                        <h4 class="text-centered">Sound Has Structure</h4>
+                        <p class="text-justified">Different sound categories have consistent, identifiable patterns in their acoustic features that machine learning can detect and classify with up to 94% accuracy.</p>
                     </div>
                     <div class="takeaway-card">
-                        <h4>Natural Groupings</h4>
-                        <p>Without any labels, sounds naturally cluster into 3-5 families that align with human categorization: musical, vocal, mechanical, and environmental sounds.</p>
+                        <h4 class="text-centered">Natural Groupings</h4>
+                        <p class="text-justified">Without any labels, sounds naturally cluster into 3-5 families that align with human categorization: musical, vocal, mechanical, and environmental sounds.</p>
                     </div>
                     <div class="takeaway-card">
-                        <h4>Feature Connections</h4>
-                        <p>Spectral features like rolloff, centroid, and bandwidth are strongly interconnected, with specific combinations reliably indicating certain sound types.</p>
+                        <h4 class="text-centered">Feature Connections</h4>
+                        <p class="text-justified">Spectral features like rolloff, centroid, and bandwidth are strongly interconnected, with specific combinations reliably indicating certain sound types.</p>
                     </div>
                 </div>
             </div>
@@ -251,6 +259,18 @@
                 <div class="plot-description">
                     <p class="text-justified">
                         This chart compares the accuracy of all models implemented in this project. Support Vector Machines with RBF kernel achieved the highest accuracy at 94.2%, followed by Linear SVM at 93.1% and Random Forest at 92.7%. Even simpler models like Naive Bayes variants performed remarkably well, demonstrating that sound classification is achievable with a variety of techniques.
+                    </p>
+                </div>
+
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/conclusion/model_macro_f1_score_chart.png" alt="Model F1 score">
+                </div>
+                <div class="plot-description">
+                    <!-- <p class="text-justified">
+                        This chart compares the accuracy of all models implemented in this project. Support Vector Machines with RBF kernel achieved the highest accuracy at 94.2%, followed by Linear SVM at 93.1% and Random Forest at 92.7%. Even simpler models like Naive Bayes variants performed remarkably well, demonstrating that sound classification is achievable with a variety of techniques.
+                    </p> -->
+                    <p class="text-justified">
+                        This chart compares the macro average F1 scores across all models, providing insight into balanced classification performance. The RBF SVM with C=10 demonstrates the highest macro F1 score at 94.3%, indicating exceptional performance across all classes. Linear SVM follows at 93.2%, with Random Forest close behind at 92.6%. These high macro F1 scores confirm that advanced models maintain consistent performance regardless of the sound category. Even the simpler Naive Bayes models achieve respectable macro F1 scores between 85-86%, showing that they can reliably distinguish between different sound types despite their simplicity. The consistency between accuracy and macro F1 scores suggests that the models aren't biased toward any particular sound class.
                     </p>
                 </div>
             </div>
