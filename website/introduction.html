@@ -49,6 +49,22 @@
             object-fit: cover;
         }
 
+        .plot-container {
+            width: 80%; 
+            text-align: center;
+            margin: 2rem auto;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .plot-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .questions-section {
             background: rgba(122, 4, 235, 0.1);
             padding: 3rem;
@@ -124,17 +140,6 @@
     </style>
 </head>
 <body>
-    <!-- <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="introduction.html" class="active">Introduction</a></li>
-            <li><a href="data-exploration.html">Data Preparation & Exploration</a></li>
-            <li><a href="unsupervised.html">Unsupervised Learning</a></li>
-            <li><a href="supervised.html">Supervised Learning</a></li>
-            <li><a href="conclusion.html">Conclusion</a></li>
-            <li><a href="about.html">About Me</a></li>
-        </ul>
-    </nav> -->
 
     <nav>
         <ul>
@@ -241,23 +246,43 @@
                     Addressing these limitations requires interdisciplinary approaches that combine signal processing expertise with advanced machine learning while maintaining interpretability.
                 </p>
             </div>
+            <div class="paragraph-section" data-aos="fade-up">
+                <h2>Project Scope and Models Implemented</h2>
+                <p class="text-justified">
+                    This project focuses on analyzing and classifying different types of sounds by extracting and leveraging meaningful audio features. 
+                    Beginning with metadata collection and audio downloads from the Freesound API, the dataset was built by curating a wide range of sound categories. 
+                    Preprocessing steps standardized the dataset by converting all audio files to a uniform length and sample rate, ensuring consistency across categories. 
+                    Feature extraction techniques were then applied to compute a diverse set of properties, including MFCCs, chroma vectors, spectral contrast, zero-crossing rates, energy measurements, and tonal features. 
+                    Principal Component Analysis (PCA) was performed to reduce the high-dimensional feature space and identify dominant patterns in the dataset. 
+                    Unsupervised clustering algorithms such as K-Means, Hierarchical Clustering, and DBSCAN were used to group sounds based on their feature similarities, with evaluation metrics like silhouette scores guiding parameter choices. 
+                    Association Rule Mining (ARM) was applied to uncover strong, interpretable relationships between different audio features, revealing how certain spectral and temporal characteristics co-occur within categories. 
+                    Supervised machine learning models—including Logistic Regression, Decision Trees, multiple Naive Bayes variants, Support Vector Machines, and Random Forests—were trained to classify sounds into their respective categories. 
+                    Model performance was evaluated using confusion matrices, classification report heatmaps, ROC curves, and decision boundary plots to understand the strengths and weaknesses of each approach. 
+                    Throughout the project, careful attention was paid to feature behavior across categories, such as how chroma features, spectral energy, and zero-crossing rates varied and contributed to the final classification performance. 
+                    By integrating signal processing, machine learning, and visualization, the project provides a comprehensive exploration of how different types of sounds can be systematically characterized and predicted.
+                </p>
+            </div>
+            <div class="plot-container" data-aos="fade-up">
+                <img src="images/introduction/introduction4.jpg" alt="introduction 1">
+            </div>
+           
         </div>
 
         <!-- Questions Section -->
         <div class="questions-section" data-aos="fade-up">
             <h2>Research Questions</h2>
-            <p>Through this project, the following research questions will be explored: <br><br></p>
+            <p>Through this project, the following research questions were explored:<br><br></p>
             <ul class="question-list">
-                <li>Can we classify different types of sounds using machine learning based on their spectral and temporal features?</li>
-                <li>Which audio features (MFCCs, spectral contrast, chroma features, etc.) contribute the most to sound classification?</li>
-                <li>How do different sound categories compare in terms of frequency and energy distribution?</li>
-                <li>Can we distinguish between natural and artificial sounds using spectral and temporal features?</li>
-                <li>How does the zero-crossing rate vary across different sound categories?</li>
-                <li>Do certain sound types have more variation in MFCCs and spectral contrast than others?</li>
-                <li>How well do clustering techniques group sounds based on their extracted features?</li>
-                <li>Can we identify distinct frequency patterns in different categories using spectral analysis?</li>
-                <li>How do sound categories differ in their chroma features, and can this be used for classification?</li>
-                <li>What are the most distinguishing features between similar-sounding categories?</li>
+                <li>Can different types of sounds be classified effectively using machine learning models based on spectral, chroma, MFCC, and temporal features?</li>
+                <li>Which features among MFCCs, spectral contrast, chroma features, and others contribute the most to distinguishing between sound categories?</li>
+                <li>How do sound categories differ in their frequency and energy distributions, and can these differences aid in classification?</li>
+                <li>Is it possible to distinguish between natural sounds (e.g., rain, birds) and artificial sounds (e.g., sirens, footsteps) using extracted audio features?</li>
+                <li>How does the zero-crossing rate vary across different categories, and does it serve as a useful feature for classification?</li>
+                <li>Which sound types exhibit the most variability in their MFCCs, spectral contrast, and tonal features?</li>
+                <li>How effectively can clustering algorithms (K-Means, Hierarchical, DBSCAN) group sounds based on principal components of extracted features?</li>
+                <li>Can association rule mining uncover strong, interpretable relationships between specific audio features and sound categories?</li>
+                <li>How do chroma features vary across different sounds, and can chroma-based patterns enhance classification performance?</li>
+                <li>What are the most distinguishing spectral and temporal characteristics between similar-sounding categories, and how can models leverage them?</li>
             </ul>
         </div>
 
