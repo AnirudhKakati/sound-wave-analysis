@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Sound Wave Analysis</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        .content-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-text {
+            font-size: 1.5rem;
+            text-align: justify;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+
+        .about-image-container {
+            width: 20%;
+            max-width: 600px;
+            margin: 2rem auto;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .about-image-container:hover {
+            transform: scale(1.03);
+        }
+
+        .link-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .link-buttons a {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 1rem;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .link-buttons a:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="data-exploration.html">Data Preparation & Exploration</a></li>
+            <li class="dropdown">
+                <a href="unsupervised.html">Unsupervised Learning</a>
+                <div class="dropdown-content">
+                    <a href="unsupervised.html#pca">PCA</a>
+                    <a href="unsupervised.html#clustering">Clustering</a>
+                    <a href="unsupervised.html#arm">ARM</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="supervised.html">Supervised Learning</a>
+                <div class="dropdown-content">
+                    <a href="supervised.html#naive-bayes">Naive Bayes</a>
+                    <a href="supervised.html#decision-trees">Decision Trees</a>
+                    <a href="supervised.html#regression">Regression</a>
+                    <a href="supervised_2.html#svm">SVM</a>
+                    <a href="supervised_2.html#ensemble">Ensemble</a>
+                </div>
+            </li>
+            <li><a href="conclusion.html">Conclusion</a></li>
+            <li><a href="about.html" class="active">About Me</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        <div class="content-section" data-aos="fade-up">
+            <br><br><br>
+            <h1>About Me</h1>
+
+            <div class="about-image-container" data-aos="fade-up">
+                <img src="images/about/about_me_image.jpg" alt="About Me Image">
+            </div>
+
+            <div class="about-text" data-aos="fade-up">
+                <p class="text-justified">
+                    Hi! This project was created by a data enthusiast who loves music more than anything. 
+                    The goal of this project was to not just build models, but to tell a story about how data can unlock new ways of seeing (or hearing) the world.
+                </p>
+                <p class="text-justified">
+                    Thank you for visiting this project website! 
+                    Hopefully, this journey through sound waves and machine learning was as fun to explore as it was to create!
+                </p>
+            </div>
+
+            <p class="text-justified">
+                Feel free to explore my GitHub, LinkedIn, and personal website below!
+            </p>
+            <div class="link-buttons">
+                <a href="https://github.com/AnirudhKakati" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/anirudh-kakati-300a40146/" target="_blank">LinkedIn</a>
+                <a href="https://anirudhkakati.github.io/personal-website/" target="_blank">My Website</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    
+</body>
+</html>
