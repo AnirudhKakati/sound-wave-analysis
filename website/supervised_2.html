@@ -1104,10 +1104,10 @@
             </p>
             
             <ul class="ul-list">
-                <li><strong>Bagging (Bootstrap Aggregating):</strong> Trains multiple instances of the same learner on random subsets of the training data and aggregates their predictions. Random Forest is a prominent example of a bagging ensemble.</li>
-                <li><strong>Boosting:</strong> Builds models sequentially, with each new model focusing on correctly classifying examples that previous models misclassified. AdaBoost, Gradient Boosting, and XGBoost are popular boosting algorithms.</li>
-                <li><strong>Stacking:</strong> Combines predictions from multiple models using another model as a meta-learner, which learns how to best combine the base models' predictions.</li>
-                <li><strong>Voting:</strong> Simple ensembles that combine predictions from multiple models through majority voting (for classification) or averaging (for regression).</li>
+                <li>Bagging (Bootstrap Aggregating): Trains multiple instances of the same learner on random subsets of the training data and aggregates their predictions. Random Forest is a prominent example of a bagging ensemble.</li>
+                <li>Boosting: Builds models sequentially, with each new model focusing on correctly classifying examples that previous models misclassified. AdaBoost, Gradient Boosting, and XGBoost are popular boosting algorithms.</li>
+                <li>Stacking: Combines predictions from multiple models using another model as a meta-learner, which learns how to best combine the base models' predictions.</li>
+                <li>Voting: Simple ensembles that combine predictions from multiple models through majority voting (for classification) or averaging (for regression).</li>
             </ul>
     
             <div class="visualization-section">
@@ -1131,10 +1131,10 @@
             </p>
             
             <ul class="ul-list">
-                <li><strong>Bootstrap Sampling:</strong> Each tree in the forest is trained on a random sample of the training data, drawn with replacement (bootstrap sampling). This introduces diversity among the trees and helps prevent overfitting.</li>
-                <li><strong>Random Feature Selection:</strong> When splitting a node, only a random subset of features is considered. This further decorrelates the trees and makes the ensemble more robust.</li>
-                <li><strong>Tree Diversity:</strong> The combination of bootstrap sampling and random feature selection ensures that each tree in the forest is different, capturing unique patterns in the data.</li>
-                <li><strong>Voting Mechanism:</strong> For classification, the final prediction is determined by majority voting across all trees, while for regression, it's the average of individual tree predictions.</li>
+                <li>Bootstrap Sampling: Each tree in the forest is trained on a random sample of the training data, drawn with replacement (bootstrap sampling). This introduces diversity among the trees and helps prevent overfitting.</li>
+                <li>Random Feature Selection: When splitting a node, only a random subset of features is considered. This further decorrelates the trees and makes the ensemble more robust.</li>
+                <li>Tree Diversity: The combination of bootstrap sampling and random feature selection ensures that each tree in the forest is different, capturing unique patterns in the data.</li>
+                <li>Voting Mechanism: For classification, the final prediction is determined by majority voting across all trees, while for regression, it's the average of individual tree predictions.</li>
             </ul>
 
             <div class="visualization-section">
