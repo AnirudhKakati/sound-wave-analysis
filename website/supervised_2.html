@@ -1082,136 +1082,187 @@
         <!-- Ensemble (Random Forest) Section -->
         <div id="ensemble" class="content-section" data-aos="fade-up">
             <h2>Ensembles</h2>
-            
-            <!-- <h3 class="text-centered">Overview</h3>
+
+            <h3 class="text-centered">Overview</h3>
             <p class="text-justified">
-                Support Vector Machines (SVMs) are powerful supervised learning algorithms used for classification, regression, and outlier detection. SVMs are particularly effective in high-dimensional spaces and cases where the number of dimensions exceeds the number of samples. The core idea behind SVMs is to find the optimal hyperplane that maximizes the margin between different classes in the feature space. This margin maximization gives SVMs strong generalization properties, making them less prone to overfitting compared to many other classifiers.
+                Ensemble methods are powerful machine learning techniques that combine multiple individual models to create a more robust, accurate, and stable predictive system. The core principle behind ensemble methods is that a group of "weak learners" can come together to form a "strong learner." By aggregating the predictions of several base estimators, ensemble methods reduce variance (bagging), bias (boosting), or improve predictions (stacking). This collective decision-making approach often outperforms any single model, as it mitigates the weaknesses of individual models and harnesses their combined strengths.
             </p>
 
             <div class="visualization-section">
                 <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_concept.png" alt="SVM Concept">
+                    <img src="images/supervised/ensemble_concept.png" alt="Ensemble Methods Concept">
                 </div>
                 <div class="plot-description">
                     <p class="text-justified">
-                        This illustration shows the fundamental concept of SVMs. The algorithm finds the hyperplane (solid line) that maximizes the margin between classes. The margin is the distance between the hyperplane and the closest data points from each class, known as support vectors (circled). These support vectors are the only data points that determine the hyperplane's position, making SVMs robust to outliers far from the decision boundary.
+                        This illustration demonstrates the fundamental concept of ensemble methods. Multiple individual models (weak learners) are trained on different subsets of data or features. Their predictions are then combined through various strategies like voting, averaging, or weighted aggregation to produce a final prediction that is typically more accurate and robust than any single model's prediction.
                     </p>
                 </div>
             </div>
 
             <p class="text-justified">
-                One of SVM's most powerful features is the kernel trick, which allows the algorithm to operate in an implicit higher-dimensional feature space without ever computing the coordinates of the data in that space. This enables SVMs to find nonlinear decision boundaries in the original feature space by mapping the data into a higher-dimensional space where a linear boundary can separate the classes.
-            </p>
-
-            <div class="visualization-section">
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/kernel_trick.png" alt="Kernel Trick Visualization">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This visualization demonstrates the kernel trick. The left side shows data that's not linearly separable in 2D space. The middle shows how these points can be mapped to a higher-dimensional space (3D in this example) where they become linearly separable. The right side shows the resulting nonlinear decision boundary when projected back to the original 2D space. Common kernels include linear, polynomial, radial basis function (RBF), and sigmoid.
-                    </p>
-                </div>
-            </div>
-            
-            <h3 class="text-centered">Data Preparation</h3>
-            <p class="text-justified">
-                SVMs are sensitive to feature scaling, so proper preprocessing is essential. For our audio classification task, we standardized all features to have zero mean and unit variance, which helps prevent features with larger scales from dominating the model. We maintained the same train-test split used for previous models to ensure fair comparison.
-            </p>
-
-            <div class="visualization-section">
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_data_prep.png" alt="SVM Data Preparation">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This image shows the effect of standardization on the feature distributions. The left side shows the original feature distributions with varying scales and centers. The right side shows the standardized features, all centered at zero with similar scales. This preprocessing is crucial for SVM performance, as the algorithm's distance calculations are directly affected by feature magnitudes.
-                    </p>
-                </div>
-            </div>
-
-            <h3 class="text-centered">SVM Implementation</h3>
-            <p class="text-justified">
-                We implemented SVM classification for our audio dataset using scikit-learn's SVC (Support Vector Classification) with different kernel functions. Due to the computational intensity of training SVMs on large datasets, we used a stratified subset of the data with 500 samples per class.
-            </p>
-            
-
-
-            <p class="text-justified">
-                The complete implementation with additional metrics, visualizations, and hyperparameter tuning can be found in the 
-                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/svm.py" target="_blank">GitHub repository</a>.
-            </p>
-
-            <h3 class="text-centered">Results</h3>
-            <p class="text-justified">
-                We evaluated the performance of SVMs with different kernels on our audio classification task:
-            </p>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Accuracy Comparison</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_accuracy.png" alt="SVM Accuracy Comparison">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This chart compares the accuracy of SVM models with different kernels. The RBF kernel achieved the highest accuracy at 84.7%, followed by the polynomial kernel at 82.1%, and the linear kernel at 79.5%. The optimized RBF model after hyperparameter tuning reached 86.3%, demonstrating the importance of parameter selection in SVM performance.
-                    </p>
-                </div>
-            </div>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Confusion Matrix - RBF Kernel</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_confusion_matrix.png" alt="SVM Confusion Matrix">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        The confusion matrix for the RBF kernel SVM shows strong classification performance across most sound categories. The model excels at recognizing distinct sounds like "sirens" and "piano" with few confusions. Similar to other classifiers, there are some confusions between acoustically similar categories like "traffic_sounds" and "train_sounds". The RBF kernel's ability to capture complex, nonlinear relationships in the feature space contributes to its superior performance.
-                    </p>
-                </div>
-            </div>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Decision Boundaries Visualization</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_decision_boundaries.png" alt="SVM Decision Boundaries">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This visualization shows decision boundaries for different SVM kernels in a simplified 2D space using the first two principal components. The linear kernel (left) creates straight-line boundaries, while the polynomial (middle) and RBF (right) kernels create curved boundaries that can capture more complex relationships. The RBF kernel produces the most flexible decision boundary, allowing it to better separate the sound categories in this reduced feature space.
-                    </p>
-                </div>
-            </div>
-
-            <div class="visualization-section">
-                <h4 class="text-centered">Hyperparameter Sensitivity</h4>
-                <div class="plot-container" data-aos="fade-up">
-                    <img src="images/supervised/svm_hyperparameters.png" alt="SVM Hyperparameter Sensitivity">
-                </div>
-                <div class="plot-description">
-                    <p class="text-justified">
-                        This heatmap shows the impact of different C and gamma values on the RBF kernel SVM's accuracy. The regularization parameter C controls the trade-off between margin maximization and training error minimization, while gamma determines the influence radius of each support vector. Higher accuracy is observed with moderate C values (10-100) and lower gamma values (0.01-0.1), indicating that a moderately complex model with broader influence regions performs best for audio classification.
-                    </p>
-                </div>
-            </div>
-
-            <h3 class="text-centered">Conclusion</h3>
-            <p class="text-justified">
-                The SVM analysis yielded several important insights for audio classification:
+                Ensemble methods can be categorized into several main types:
             </p>
             
             <ul class="ul-list">
-                <li>SVMs with the RBF kernel achieved the highest accuracy among all individual models tested (86.3% after optimization), demonstrating their effectiveness for audio classification tasks.</li>
-                <li>The superior performance of nonlinear kernels (RBF and polynomial) compared to the linear kernel indicates that audio features have complex, nonlinear relationships that benefit from more flexible decision boundaries.</li>
-                <li>Hyperparameter tuning significantly improved SVM performance, highlighting the importance of parameter selection, particularly for the regularization parameter C and the kernel parameter gamma.</li>
-                <li>SVMs showed strong generalization ability, maintaining good performance across diverse sound categories despite being trained on a smaller subset of the data.</li>
-                <li>The primary drawback of SVMs was their computational intensity, requiring significantly longer training times than Naive Bayes or Decision Trees, particularly for large datasets with many classes.</li>
+                <li><strong>Bagging (Bootstrap Aggregating):</strong> Trains multiple instances of the same learner on random subsets of the training data and aggregates their predictions. Random Forest is a prominent example of a bagging ensemble.</li>
+                <li><strong>Boosting:</strong> Builds models sequentially, with each new model focusing on correctly classifying examples that previous models misclassified. AdaBoost, Gradient Boosting, and XGBoost are popular boosting algorithms.</li>
+                <li><strong>Stacking:</strong> Combines predictions from multiple models using another model as a meta-learner, which learns how to best combine the base models' predictions.</li>
+                <li><strong>Voting:</strong> Simple ensembles that combine predictions from multiple models through majority voting (for classification) or averaging (for regression).</li>
             </ul>
+    
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/ensemble_types.png" alt="Types of Ensemble Methods">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This visualization compares different ensemble techniques. The left panel shows bagging, where models train on bootstrap samples and make independent predictions that are averaged. The right panel illustrates boosting, where models learn sequentially with each model focusing on previously misclassified samples. The bottom panel shows stacking, where predictions from multiple base models become inputs to a meta-model that produces the final prediction.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Random Forest Classifier</h3>
+            <p class="text-justified">
+                Random Forest is a popular ensemble learning method that operates by constructing multiple decision trees during training and outputting the class that is the mode of the classes (for classification) or mean prediction (for regression) of the individual trees. It was developed by Leo Breiman and Adele Cutler, and combines the concepts of bagging (bootstrap aggregation) with random feature selection to create a powerful and versatile algorithm.
+            </p>
+
+            <p class="text-justified">
+                The core principles that make Random Forests effective include:
+            </p>
+            
+            <ul class="ul-list">
+                <li><strong>Bootstrap Sampling:</strong> Each tree in the forest is trained on a random sample of the training data, drawn with replacement (bootstrap sampling). This introduces diversity among the trees and helps prevent overfitting.</li>
+                <li><strong>Random Feature Selection:</strong> When splitting a node, only a random subset of features is considered. This further decorrelates the trees and makes the ensemble more robust.</li>
+                <li><strong>Tree Diversity:</strong> The combination of bootstrap sampling and random feature selection ensures that each tree in the forest is different, capturing unique patterns in the data.</li>
+                <li><strong>Voting Mechanism:</strong> For classification, the final prediction is determined by majority voting across all trees, while for regression, it's the average of individual tree predictions.</li>
+            </ul>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/random_forest.png" alt="Random Forest Concept">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        This illustration shows how a Random Forest classifier works. Multiple decision trees are trained on different bootstrap samples of the training data, with each tree considering only a random subset of features at each split. For classification tasks, the final prediction is determined by majority voting across all trees in the forest.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Random Forest Classification of Audio Data</h3>
             
             <p class="text-justified">
-                SVMs provide a powerful approach for audio classification, particularly when accuracy is prioritized over training efficiency. Their ability to handle high-dimensional data with complex relationships makes them well-suited for capturing the nuanced spectral and temporal patterns in audio signals. While SVMs don't provide the same level of interpretability as Decision Trees, their strong performance and theoretical foundations in statistical learning theory make them a valuable tool in the audio classification toolkit.
-            </p> -->
+                To apply Random Forest to audio classification, a dataset consisting of audio features from two categories is selected: "speech" and "crowd_noise". This binary classification task provides a clear benchmark for evaluating the Random Forest algorithm's effectiveness in distinguishing between different audio types. The dataset for random forest classification is shown below.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/rf_raw_data.png" alt="Random Forest Raw Dataset">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The dataset contains extracted audio features for both "speech" and "crowd_noise" categories. Each row represents one audio sample, with columns corresponding to various audio features like spectral contrast, MFCCs, chroma, and other acoustic descriptors used for classification.
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-justified">
+                For the classification task, the categories are encoded as binary values: "speech" as 0 and "crowd_noise" as 1. This encoded dataset serves as the foundation for the Random Forest model.
+                The encoded dataset is shown below.
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/rf_encoded_data.png" alt="Random Forest Encoded Dataset">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The dataset after binary encoding of categories. The "category" column now contains numeric values (0 for "speech", 1 for "crowd_noise") suitable for machine learning algorithms.
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-justified">
+                The dataset is split into training (70%) and testing (30%) sets using stratified sampling to maintain class distribution. The training and testing sets are shown below.
+            </p>
+    
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/rf_train_data.png" alt="Random Forest Training Data">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The training dataset contains 70% of the original samples, maintaining the same class distribution. This set is used to train the Random Forest classifier.
+                    </p>
+                </div>
+            
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="images/supervised/rf_test_data.png" alt="Random Forest Testing Data">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The testing dataset contains the remaining 30% of samples and is used to evaluate model performance on unseen data.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-centered">Implementing Random Forest Classification</h3>
+            
+            <p class="text-justified">
+                For this audio classification task, a Random Forest classifier with default parameters is implemented. The implementation uses scikit-learn's RandomForestClassifier with a fixed random seed for reproducibility. Random forest classifier is a tree based model and does not require any feature scaling. So the train and test sets are used directly here. The model is evaluated on the test set using multiple metrics including accuracy, precision, recall, F1-score, confusion matrix, and area under the ROC curve (AUC).
+            </p>
+
+            <div class="visualization-section">
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/ensemble/randomforest_classification_report_heatmap.png" alt="Classification Report - Random Forest">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The classification report shows the performance metrics for the Random Forest classifier. For class 0 (speech), the model achieved a precision of 0.949, recall of 0.902, and F1-score of 0.925. For class 1 (crowd_noise), the precision was 0.907, recall was 0.951, and F1-score was 0.928. The overall accuracy is 92.7%, with similar macro-average metrics, indicating balanced performance across both classes.
+                    </p>
+                </div>
+                
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/ensemble/randomforest_confusion_matrix.png" alt="Confusion Matrix - Random Forest">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The confusion matrix provides a detailed breakdown of predictions. The model correctly classified 203 speech samples and 214 crowd noise samples, while misclassifying 22 speech samples as crowd noise and 11 crowd noise samples as speech. This visualization helps understand where the model makes errors and whether it has any bias toward a particular class.
+                    </p>
+                </div>
+                
+                <div class="plot-container" data-aos="fade-up">
+                    <img src="plots/ensemble/randomforest_roc_curve.png" alt="ROC Curve - Random Forest">
+                </div>
+                <div class="plot-description">
+                    <p class="text-justified">
+                        The ROC curve illustrates the model's performance across different classification thresholds. The Area Under the Curve (AUC) is 0.973, indicating excellent classification performance. The curve's proximity to the top-left corner reflects the model's ability to differentiate between speech and crowd noise with high confidence.
+                    </p>
+                </div>
+            </div>
+            
+            <h3 class="text-centered">Conclusion</h3>
+            <p class="text-justified">
+                The Random Forest classifier demonstrated strong performance in distinguishing between speech and crowd noise audio, achieving an accuracy of 92.7% and an AUC of 0.973. These results highlight key insights:
+            </p>
+
+            <ul class="ul-list">
+                <li>The ensemble approach effectively captures complex audio patterns, leading to high classification accuracy.</li>
+                <li>Balanced F1-scores (0.925 for speech, 0.928 for crowd noise) indicate no significant bias toward either class.</li>
+                <li>The high AUC of 0.973 shows the model's strong ability to distinguish between audio categories across different thresholds.</li>
+                <li>Random Forest’s feature selection capability identifies the most informative audio features without needing explicit scaling or normalization.</li>
+            </ul>
+
+            <p class="text-justified">
+                These findings suggest that Random Forest is highly effective for audio classification tasks, handling high-dimensional feature spaces with minimal preprocessing or tuning.
+            </p>
+
+            <p class="text-justified">
+                The complete script for Random Forest classification, including data preparation and visualizations, is available 
+                <a href="https://github.com/AnirudhKakati/sound-wave-analysis/blob/main/scripts/ensemble.py" target="_blank">here.</a>
+            </p>
+            
         </div>
+        <!-- End of Ensemble Section -->
 
         <!-- <div class="content-section" data-aos="fade-up">
             <h3 class="text-centered">Overall Comparison of Supervised Learning Methods</h3>
